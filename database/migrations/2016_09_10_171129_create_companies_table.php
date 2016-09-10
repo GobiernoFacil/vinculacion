@@ -17,7 +17,6 @@ class CreateCompaniesTable extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('creator_id')->nullable();
             $table->string('company_rfc')->unique();
-            $table->string('company_email')->nullable();
             $table->string('company_comercial_name')->nullable();
             $table->string('company_social_reason')->nullable();
             $table->string('company_comercial_activity')->nullable();

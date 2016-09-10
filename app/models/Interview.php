@@ -7,4 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Interview extends Model
 {
     //
+    protected $fillable = ['student_id','company_id','creator_id'];
+
+    //modelosrelacionados
+    function company(){
+      return $this->belongsTo("App\Company");
+    }
+
 }
