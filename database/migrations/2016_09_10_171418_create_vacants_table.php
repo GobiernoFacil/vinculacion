@@ -14,6 +14,9 @@ class CreateVacantsTable extends Migration
     {
         Schema::create('vacants', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id');
+            $table->integer('opd_id')->nullable();
+            $table->integer('academic_offer_id')->nullable();
             $table->timestamps();
         });
     }

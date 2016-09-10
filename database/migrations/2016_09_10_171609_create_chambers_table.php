@@ -15,6 +15,7 @@ class CreateChambersTable extends Migration
         Schema::create('chambers', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('user_id');
         });
     }
 

@@ -15,6 +15,8 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('company_id');
+            $table->integer('opd_id');
         });
     }
 
