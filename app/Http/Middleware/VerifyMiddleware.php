@@ -15,7 +15,7 @@ class VerifyMiddleware
      */
     public function handle($request, Closure $next, $url)
     {
-      if($request->user()->type== $type){
+      if(!$request->user()->enabled){
         return redirect($url);
       }
     

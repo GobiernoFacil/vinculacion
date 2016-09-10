@@ -15,7 +15,7 @@ class TypeMiddleware
      */
     public function handle($request, Closure $next, $type, $url)
     {
-      if($request->user()->type== $type){
+      if(! $request->user()->type== $type){
         return redirect($url);
       }
 
