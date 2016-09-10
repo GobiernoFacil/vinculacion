@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('oferta-laboral/{page?}', "Front@offers");
+Route::get('oferta/{id}', "Front@offer");
+Route::get('universidades/{page?}', "Front@opds");
+Route::get('universidade/{id}', "Front@opd");
+Route::get('datos-abiertos', "Front@openData");
+Route::get('privacidad', "Front@privacy");
+
 /* RUTAS QUE REQUIEREN VALIDACIÓN
  * --------------------------------------------------------------------------------
  *
@@ -30,6 +37,10 @@ Route::group(['middleware' => ['auth']], function () {
 
   });
 
+
+
+
+
   /* RUTAS DE LA EMPRESA
    * --------------------------------------------------------------------------------
    *
@@ -43,6 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
   });
 
+
+
+
+
+
   /* RUTAS DE LA OPD
    * --------------------------------------------------------------------------------
    *
@@ -50,6 +66,11 @@ Route::group(['middleware' => ['auth']], function () {
   Route::group(['middleware' => 'type:opd,tablero-opd' ], function(){
 
   });
+
+
+
+
+
 
   /* RUTAS DEL ALUMNO
    * --------------------------------------------------------------------------------
@@ -64,6 +85,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
   });
 
+
+
+
+
+
   /* RUTAS DE LA CÁMARA
    * --------------------------------------------------------------------------------
    *
@@ -72,3 +98,6 @@ Route::group(['middleware' => ['auth']], function () {
 
   });
 });
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
