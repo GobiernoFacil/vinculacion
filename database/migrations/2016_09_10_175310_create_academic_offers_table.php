@@ -14,6 +14,7 @@ class CreateAcademicOffersTable extends Migration
     {
         Schema::create('academic_offers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('academic_name')->nullable();
             $table->timestamps();
         });
     }
