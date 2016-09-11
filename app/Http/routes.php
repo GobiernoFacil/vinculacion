@@ -67,15 +67,35 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/yo/editar', 'Admin@changeMe');
     Route::post('dashboard/yo/editar', 'Admin@updateMe');
 
-    // E S T U D I A N T E S
+    // A D M I N I S T R A D O R E S
     // ----------------------------------------------------------------
     // @Admin controller
-    Route::get('dashboard/estudiante/crear', 'Admin@studentAdd');
-    Route::post('dashboard/estudiante/crear', 'Admin@studentSave');
-    Route::get('dashboard/estudiante/editar/{id}', 'Admin@studentEdit');
-    Route::post('dashboard/estudiante/editar/{id}', 'Admin@studentUpdate');
-    Route::get('dashboard/estudiante/eliminar/{id}', 'Admin@studentDelete');
-    Route::get('dashboard/estudiante/{id}', 'Admin@student');
+    Route::get('dashboard/administrador/crear', 'Admin@add');
+    Route::post('dashboard/administrador/crear', 'Admin@save');
+    Route::get('dashboard/administrador/editar/{id}', 'Admin@edit');
+    Route::post('dashboard/administrador/editar/{id}', 'Admin@update');
+    Route::get('dashboard/administrador/eliminar/{id}', 'Admin@delete');
+    Route::get('dashboard/administrador/{id}', 'Admin@view');
+
+    // E S T U D I A N T E S
+    // ----------------------------------------------------------------
+    // @AdminStudents controller
+    Route::get('dashboard/estudiante/crear', 'AdminStudents@add');
+    Route::post('dashboard/estudiante/crear', 'AdminStudents@save');
+    Route::get('dashboard/estudiante/editar/{id}', 'AdminStudents@edit');
+    Route::post('dashboard/estudiante/editar/{id}', 'AdminStudents@update');
+    Route::get('dashboard/estudiante/eliminar/{id}', 'AdminStudents@delete');
+    Route::get('dashboard/estudiante/{id}', 'AdminStudents@view');
+
+    // C Á M A R A S
+    // ----------------------------------------------------------------
+    // @AdminChambers controller
+    Route::get('dashboard/camara/crear', 'AdminChambers@add');
+    Route::post('dashboard/camara/crear', 'AdminChambers@save');
+    Route::get('dashboard/camara/editar/{id}', 'AdminChambers@edit');
+    Route::post('dashboard/camara/editar/{id}', 'AdminChambers@update');
+    Route::get('dashboard/camara/eliminar/{id}', 'AdminChambers@delete');
+    Route::get('dashboard/camara/{id}', 'AdminChambers@view');
   });
 
 
