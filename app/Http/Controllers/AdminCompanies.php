@@ -13,27 +13,27 @@ class AdminCompanies extends Controller
    * ----------------------------------------------------------------
    */
 
-  public function company($id){
+  public function view($id){
 
   }
 
-  public function companyAdd(){
+  public function add(){
 
   }
 
-  public function companySave(Request $request){
+  public function save(Request $request){
 
   }
 
-  public function companyEdit($id){
+  public function edit($id){
 
   }
 
-  public function companyUpdate(Request $request, $id){
+  public function update(Request $request, $id){
 
   }
 
-  public function companyDelete($id){
+  public function delete($id){
 
   }
 }

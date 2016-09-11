@@ -13,43 +13,39 @@ class AdminVacancies extends Controller
    * ----------------------------------------------------------------
    */
 
-  public function vacancies($page = 1){
+  public function view($id){
 
   }
 
-  public function vacancy($id){
+  public function add(){
 
   }
 
-  public function vacancyAdd(){
+  public function save(Request $request){
 
   }
 
-  public function vacancySave(Request $request){
+  public function edit($id){
 
   }
 
-  public function vacancyEdit($id){
+  public function update(Request $request, $id){
 
   }
 
-  public function vacancyUpdate(Request $request, $id){
+  public function delete($id){
 
   }
 
-  public function vacancyDelete($id){
+  public function enable($id){
 
   }
 
-  public function vacancyEnable($id){
+  public function disable($id){
 
   }
 
-  public function vacancyDisable($id){
-
-  }
-
-  public function vacancyStudents($id, $page = 1){
+  public function students($id, $page = 1){
 
   }
 }

@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/opds/{page?}', 'Admin@opds');
     Route::get('dashboard/estudiantes/{page?}', 'Admin@students');
     Route::get('dashboard/empresas/{page?}', 'Admin@companies');
+    Route::get('dashboard/vacantes/{page?}', 'Admin@vacancies');
 
     // P E R F I L   D E L   A D M I N I S T R A D O R
     // ----------------------------------------------------------------
@@ -96,6 +97,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/camara/editar/{id}', 'AdminChambers@update');
     Route::get('dashboard/camara/eliminar/{id}', 'AdminChambers@delete');
     Route::get('dashboard/camara/{id}', 'AdminChambers@view');
+
+    // E M P R E S A S
+    // ----------------------------------------------------------------
+    // @AdminCompanies controller
+    Route::get('dashboard/empresa/crear', 'AdminCompanies@add');
+    Route::post('dashboard/empresa/crear', 'AdminCompanies@save');
+    Route::get('dashboard/empresa/editar/{id}', 'AdminCompanies@edit');
+    Route::post('dashboard/empresa/editar/{id}', 'AdminCompanies@update');
+    Route::get('dashboard/empresa/eliminar/{id}', 'AdminCompanies@delete');
+    Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
   });
 
 

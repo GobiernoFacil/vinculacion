@@ -17,7 +17,7 @@ use App\models\Vacancy;
 class Admin extends Controller
 {
   /*
-   * D A S H B O A R D   Y   L I S T A   D E   U S U A R I O S
+   * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
    */
 
@@ -70,6 +70,13 @@ class Admin extends Controller
 
   }
 
+  // Las vacantes
+  //
+  //
+  public function vacancies(Request $request, $page = 1){
+
+  }
+
 
 
 
@@ -104,23 +111,23 @@ class Admin extends Controller
 
   }
 
-  public function Add(){
+  public function add(){
 
   }
 
-  public function Save(Request $request){
+  public function save(Request $request){
 
   }
 
-  public function Edit($id){
+  public function edit($id){
 
   }
 
-  public function Update(Request $request, $id){
+  public function update(Request $request, $id){
 
   }
 
-  public function Delete($id){
+  public function delete($id){
 
   }
 

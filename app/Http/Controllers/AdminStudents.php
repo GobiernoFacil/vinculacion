@@ -17,23 +17,23 @@ class AdminStudents extends Controller
 
   }
 
-  public function Add(){
+  public function add(){
 
   }
 
-  public function Save(Request $request){
+  public function save(Request $request){
 
   }
 
-  public function Edit($id){
+  public function edit($id){
 
   }
 
-  public function Update(Request $request, $id){
+  public function update(Request $request, $id){
 
   }
 
-  public function Delete($id){
+  public function delete($id){
 
   }
 }

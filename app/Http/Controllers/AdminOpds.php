@@ -13,27 +13,27 @@ class AdminOpds extends Controller
    * ----------------------------------------------------------------
    */
 
-  public function opd($id){
+  public function view($id){
 
   }
 
-  public function opdAdd(){
+  public function add(){
 
   }
 
-  public function opdSave(Request $request){
+  public function save(Request $request){
 
   }
 
-  public function opdEdit($id){
+  public function edit($id){
 
   }
 
-  public function opdUpdate(Request $request, $id){
+  public function update(Request $request, $id){
 
   }
 
-  public function opdDelete($id){
+  public function delete($id){
 
   }
 }
