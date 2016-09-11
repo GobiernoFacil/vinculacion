@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
 // models
 use App\User;
 use App\models\Chamber;
@@ -26,7 +28,13 @@ class Admin extends Controller
   //
   //
   public function index(){
+        $user = Auth::user();
+        $data                = [];
+        $data['title']       = 'Dashboard | ';
+        $data['description'] = 'Dashboard de Vinculación';
+        $data['body_class']  = 'dashboard';
 
+        return view('admin.dashboard_admin_view')->with([$user,$data]);
   }
 
   // Todos los usuarios
