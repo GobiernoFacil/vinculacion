@@ -94,46 +94,34 @@ class Admin extends Controller
 
 
 
+
   /*
-   * E S T U D I A N T E S
+   * A D M I N I S T R A D O R E S
    * ----------------------------------------------------------------
    */
 
-  public function student($id){
+  public function view($id){
 
   }
 
-  public function studentAdd(){
+  public function Add(){
 
   }
 
-  public function studentSave(Request $request){
+  public function Save(Request $request){
 
   }
 
-  public function studentEdit($id){
+  public function Edit($id){
 
   }
 
-  public function studentUpdate(Request $request, $id){
+  public function Update(Request $request, $id){
 
   }
 
-  public function studentDelete($id){
+  public function Delete($id){
 
   }
 
-
-
-
-  /*
-   * V A C A N T E S
-   * ----------------------------------------------------------------
-   */
-
-  public function vacancies($page = 1){
-
-  }
-
-  
 }
