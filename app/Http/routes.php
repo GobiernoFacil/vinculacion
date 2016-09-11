@@ -22,6 +22,15 @@ Route::get('universidade/{id}', "Front@opd");
 Route::get('datos-abiertos', "Front@openData");
 Route::get('privacidad', "Front@privacy");
 
+
+/* RUTAS PARA REGISTRO
+ * --------------------------------------------------------------------------------
+ *
+ */
+
+    Route::get('registro', 'Auth\AuthController@showRegistrationForm');
+    Route::post('registro', 'Suscribe@suscribe');
+    Route::get('password-reset', 'Auth\PasswordController@showResetForm');
 /* RUTAS QUE REQUIEREN VALIDACIÓN
  * --------------------------------------------------------------------------------
  *
