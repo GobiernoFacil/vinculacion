@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-  /* RUTAS DEL ADMIN
+  /* R U T A S   D E L   A D M I N
    * --------------------------------------------------------------------------------
    *
    */
@@ -115,6 +115,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/empresa/editar/{id}', 'AdminCompanies@update');
     Route::get('dashboard/empresa/eliminar/{id}', 'AdminCompanies@delete');
     Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
+
+    // O P D S
+    // ----------------------------------------------------------------
+    // @AdminOpds controller
+    Route::get('dashboard/opd/crear', 'AdminOpds@add');
+    Route::post('dashboard/opd/crear', 'AdminOpds@save');
+    Route::get('dashboard/opd/editar/{id}', 'AdminOpds@edit');
+    Route::post('dashboard/opd/editar/{id}', 'AdminOpds@update');
+    Route::get('dashboard/opd/eliminar/{id}', 'AdminOpds@delete');
+    Route::get('dashboard/opd/{id}', 'AdminOpds@view');
   });
 
 
