@@ -125,6 +125,32 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/opd/editar/{id}', 'AdminOpds@update');
     Route::get('dashboard/opd/eliminar/{id}', 'AdminOpds@delete');
     Route::get('dashboard/opd/{id}', 'AdminOpds@view');
+
+    // V A C A N T E S
+    // ----------------------------------------------------------------
+    // @AdminVacancies controller
+    Route::get('dashboard/vacante/crear', 'AdminVacancies@add');
+    Route::post('dashboard/vacante/crear', 'AdminVacancies@save');
+    Route::get('dashboard/vacante/editar/{id}', 'AdminVacancies@edit');
+    Route::post('dashboard/vacante/editar/{id}', 'AdminVacancies@update');
+    Route::get('dashboard/vacante/eliminar/{id}', 'AdminVacancies@delete');
+    Route::get('dashboard/vacante/{id}', 'AdminVacancies@view');
+    Route::post('dashboard/vacante/habilitar/{id}', 'AdminVacancies@enable');
+    Route::post('dashboard/vacante/deshabilitar/{id}', 'AdminVacancies@disable');
+    Route::get('dashboard/vacante/{id}/estudiantes/{page?}', 'AdminVacancies@students');
+
+    // C O N R A T O S
+    // ----------------------------------------------------------------
+    // @AdminContracts controller
+    Route::get('dashboard/contrato/crear', 'AdminContracts@add');
+    Route::post('dashboard/contrato/crear', 'AdminContracts@save');
+    Route::get('dashboard/contrato/editar/{id}', 'AdminContracts@edit');
+    Route::post('dashboard/contrato/editar/{id}', 'AdminContracts@update');
+    Route::get('dashboard/contrato/eliminar/{id}', 'AdminContracts@delete');
+    Route::get('dashboard/contrato/{id}', 'AdminContracts@view');
+    Route::post('dashboard/contrato/habilitar/{id}', 'AdminContracts@enable');
+    Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');
+    Route::get('dashboard/contrato/{id}/estudiantes/{page?}', 'AdminContracts@students');
   });
 
 

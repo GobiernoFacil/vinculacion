@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\User;
 use App\models\Chamber;
 use App\models\Company;
+use App\models\Contract;
 use App\models\Opd;
 use App\models\Student;
 use App\models\Vacancy;
