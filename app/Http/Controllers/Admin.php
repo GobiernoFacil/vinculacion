@@ -131,5 +131,9 @@ class Admin extends Controller
    * ----------------------------------------------------------------
    */
 
+  public function vacancies($page = 1){
+
+  }
+
   
 }

@@ -51,7 +51,31 @@ Route::group(['middleware' => ['auth']], function () {
     
     // D A S H B O A R D   Y   L I S T A   D E   U S U A R I O S
     // ----------------------------------------------------------------
+    // @Admin controller
     Route::get('dashboard', 'Admin@index');
+    Route::get('dashboard/usuarios/{page?}', 'Admin@users');
+    Route::get('dashboard/administradores/{page?}', 'Admin@admins');
+    Route::get('dashboard/camaras/{page?}', 'Admin@chambers');
+    Route::get('dashboard/opds/{page?}', 'Admin@opds');
+    Route::get('dashboard/estudiantes/{page?}', 'Admin@students');
+    Route::get('dashboard/empresas/{page?}', 'Admin@companies');
+
+    // P E R F I L   D E L   A D M I N I S T R A D O R
+    // ----------------------------------------------------------------
+    // @Admin controller
+    Route::get('dashboard/yo', 'Admin@me');
+    Route::get('dashboard/yo/editar', 'Admin@changeMe');
+    Route::post('dashboard/yo/editar', 'Admin@updateMe');
+
+    // E S T U D I A N T E S
+    // ----------------------------------------------------------------
+    // @Admin controller
+    Route::get('dashboard/estudiante/crear', 'Admin@studentAdd');
+    Route::post('dashboard/estudiante/crear', 'Admin@studentSave');
+    Route::get('dashboard/estudiante/editar/{id}', 'Admin@studentEdit');
+    Route::post('dashboard/estudiante/editar/{id}', 'Admin@studentUpdate');
+    Route::get('dashboard/estudiante/eliminar/{id}', 'Admin@studentDelete');
+    Route::get('dashboard/estudiante/{id}', 'Admin@student');
   });
 
 
