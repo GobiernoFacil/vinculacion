@@ -69,4 +69,18 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function authenticated($request,$user){
+          if($user->type ==='admin'){
+              return redirect('dashboard');
+          }else if($user->type==='opd'){
+              return redirect('tablero-opd');
+          }else if($user->type==='chamber'){
+              return redirect('tablero-camara');
+          }else if($user->type==='company'){
+              return redirect('tablero-empresa');
+          }else if($user->type==='student'){
+              return redirect('tablero-estudiante');
+          }
+    }
 }

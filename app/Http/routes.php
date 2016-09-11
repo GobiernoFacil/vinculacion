@@ -23,10 +23,18 @@ Route::get('empresa/{id}', "Front@company");
 Route::get('datos-abiertos', "Front@openData");
 Route::get('privacidad', "Front@privacy");
 
+
+
+/* RUTAS PARA REGISTRO
+ * --------------------------------------------------------------------------------
+ *
+ */
+
 // @Suscribe controller
 // el proceso de inscripción
 Route::get('registro', "Suscribe@index");
 Route::post('registro', "Suscribe@suscribe");
+
 
 /* RUTAS QUE REQUIEREN VALIDACIÓN
  * --------------------------------------------------------------------------------
@@ -48,7 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group(['middleware' => 'type:admin,dashbard' ], function(){
-    
+
     // D A S H B O A R D   Y   L I S T A   D E   U S U A R I O S
     // ----------------------------------------------------------------
     // @Admin controller
