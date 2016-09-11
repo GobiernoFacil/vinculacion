@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+// models
+use App\User;
+use App\models\Chamber;
+use App\models\Company;
+use App\models\Opd;
+use App\models\Student;
+use App\models\Vacancy;
+
 class Admin extends Controller
 {
   /*
@@ -17,6 +25,7 @@ class Admin extends Controller
   //
   //
   public function index(){
+
   }
 
   // Todos los usuarios
@@ -60,6 +69,67 @@ class Admin extends Controller
   public function companies(Request $request, $page = 1){
 
   }
+
+
+
+
+
+  /*
+   * P E R F I L   D E L   A D M I N I S T R A D O R
+   * ----------------------------------------------------------------
+   */
+
+  public function me(){
+
+  }
+
+  public function changeMe(){
+
+  }
+
+  public function updateMe(){
+
+  }
+
+
+
+
+  /*
+   * E S T U D I A N T E S
+   * ----------------------------------------------------------------
+   */
+
+  public function student($id){
+
+  }
+
+  public function studentAdd(){
+
+  }
+
+  public function studentSave(Request $request){
+
+  }
+
+  public function studentEdit($id){
+
+  }
+
+  public function studentUpdate(Request $request, $id){
+
+  }
+
+  public function studentDelete($id){
+
+  }
+
+
+
+
+  /*
+   * V A C A N T E S
+   * ----------------------------------------------------------------
+   */
 
   
 }

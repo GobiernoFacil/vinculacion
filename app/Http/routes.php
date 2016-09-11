@@ -17,7 +17,9 @@ Route::get('/', "Front@index");
 Route::get('oferta-laboral/{page?}', "Front@offers");
 Route::get('oferta/{id}', "Front@offer");
 Route::get('universidades/{page?}', "Front@opds");
-Route::get('universidade/{id}', "Front@opd");
+Route::get('universidad/{id}', "Front@opd");
+Route::get('empresas/{page?}', "Front@companies");
+Route::get('empresa/{id}', "Front@company");
 Route::get('datos-abiertos', "Front@openData");
 Route::get('privacidad', "Front@privacy");
 
