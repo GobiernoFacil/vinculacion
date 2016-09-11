@@ -30,7 +30,6 @@ Route::get('privacidad', "Front@privacy");
  *
  */
 
-
 // @Suscribe controller
 // el proceso de inscripción
 Route::get('registro', "Suscribe@index");

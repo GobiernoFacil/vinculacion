@@ -34,7 +34,7 @@ class Suscribe extends Controller
   //
   //
   public function index(){
-
+      return view('auth.register');
   }
 
   // registra al usuario, le el objeto que lo define, y lo lleva por primera vez
