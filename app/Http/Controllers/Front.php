@@ -24,6 +24,14 @@ class Front extends Controller
 
   }
 
+  public function companies($page = 1){
+
+  }
+
+  public function company($id){
+
+  }
+
   public function openData(){
 
   }
