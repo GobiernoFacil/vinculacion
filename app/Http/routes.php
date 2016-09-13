@@ -40,6 +40,7 @@ Route::post('registro', "Suscribe@suscribe");
  *
  */
 
+
 Route::group(['middleware' => ['auth']], function () {
   // @Suscribe controller
   // una vez autorizado el usuario, se redireciona al dashboard que le corresponde
@@ -49,12 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-
   /* R U T A S   D E L   A D M I N
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:admin,dashboard' ], function(){
+  Route::group(['middleware' => 'type:admin' ], function(){
 
     // D A S H B O A R D   Y   L I S T A   D E   U S U A R I O S
     // ----------------------------------------------------------------
@@ -160,7 +160,9 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:company,tablero-empresa' ], function(){
+  Route::group(['middleware' => 'type:company' ], function(){
+    // @Companies controller
+    Route::get("tablero-empresa", "Companies@index");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
@@ -178,7 +180,7 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:opd,tablero-opd' ], function(){
+  Route::group(['middleware' => 'type:opd' ], function(){
 
   });
 
@@ -191,7 +193,7 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:student,tablero-estudiante' ], function(){
+  Route::group(['middleware' => 'type:student' ], function(){
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
@@ -209,7 +211,7 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:chamber,tablero-camara' ], function(){
+  Route::group(['middleware' => 'type:chamber' ], function(){
 
   });
 });

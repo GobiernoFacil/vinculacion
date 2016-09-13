@@ -8,6 +8,13 @@ use App\Http\Requests;
 
 class Front extends Controller
 {
+  // La página de inicio
+  //
+  //
+  public function index(){
+    return view("elcoruco-test");
+  }
+
   public function offers($page = 1){
 
   }
