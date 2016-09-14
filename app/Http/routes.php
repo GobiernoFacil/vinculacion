@@ -138,7 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/vacante/deshabilitar/{id}', 'AdminVacancies@disable');
     Route::get('dashboard/vacante/{id}/estudiantes/{page?}', 'AdminVacancies@students');
 
-    // C O N R A T O S
+    // C O N T R A T O S
     // ----------------------------------------------------------------
     // @AdminContracts controller
     Route::get('dashboard/contrato/crear', 'AdminContracts@add');
@@ -150,6 +150,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/contrato/habilitar/{id}', 'AdminContracts@enable');
     Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');
     Route::get('dashboard/contrato/{id}/estudiantes/{page?}', 'AdminContracts@students');
+
+    // E S T A D Í S T I C A S
+    // ----------------------------------------------------------------
+    // @AdminStatistics controller
+    Route::get('dashboard/estadisticas', 'AdminStatistics@index');
   });
 
 
@@ -167,7 +172,7 @@ Route::group(['middleware' => ['auth']], function () {
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-empresa' ], function(){
-
+      // Aquí está por definir qué no puede hacer una empresa no registrada
     });
   });
 
@@ -180,7 +185,7 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:opd' ], function(){
+  Route::group([ 'middleware' => 'type:opd' ], function(){
 
   });
 

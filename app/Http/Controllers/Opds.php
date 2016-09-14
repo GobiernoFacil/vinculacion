@@ -6,14 +6,39 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class Companies extends Controller
+class Opds extends Controller
 {
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
    */
+
+  // El dashboard
+  //
+  //
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de empresa!"]);
+
+  }
+
+  // Las cámaras
+  //
+  //
+  public function chambers($page = 1){
+
+  }
+
+  // Los estudiantes
+  //
+  //
+  public function students($page = 1){
+
+  }
+
+  // Las empresas
+  //
+  //
+  public function companies($page = 1){
+
   }
 
   // Las vacantes
@@ -30,8 +55,12 @@ class Companies extends Controller
 
   }
 
+
+
+
+
   /*
-   * P E R F I L   D E   L A   E M P R E S A
+   * P E R F I L   D E  L A   O P D
    * ----------------------------------------------------------------
    */
 
@@ -45,8 +74,5 @@ class Companies extends Controller
 
   public function updateMe(){
 
-  }
-
-  public function validateMe(){
   }
 }

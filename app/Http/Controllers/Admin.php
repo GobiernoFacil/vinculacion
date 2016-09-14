@@ -19,6 +19,8 @@ use App\models\Vacancy;
 
 class Admin extends Controller
 {
+  public $pageSize = 20;
+
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
@@ -40,49 +42,62 @@ class Admin extends Controller
   // Todos los usuarios
   //
   //
-  public function users(Request $request, $page = 1){
-
+  public function users(Request $request){
+    // posible ejemplo de cómo manejar todas las listas de lo que sea
+    $user  = Auth::user();
+    $users = User::paginate($this->pageSize);
+    return view('admin.dashboard_admin_view')->with([
+      "user"  => $me,
+      "users" => $users
+    ]);
   }
 
   // Los administradores
   //
   //
-  public function admins(Request $request, $page = 1){
+  public function admins(Request $request){
 
   }
 
   // Las cámaras
   //
   //
-  public function chambers(Request $request, $page = 1){
+  public function chambers(Request $request){
 
   }
 
   // Las opds
   //
   //
-  public function opds(Request $request, $page = 1){
+  public function opds(Request $request){
 
   }
 
   // Los estudiantes
   //
   //
-  public function students(Request $request, $page = 1){
+  public function students(Request $request){
 
   }
 
   // Las empresas
   //
   //
-  public function companies(Request $request, $page = 1){
+  public function companies(Request $request){
 
   }
 
   // Las vacantes
   //
   //
-  public function vacancies(Request $request, $page = 1){
+  public function vacancies(Request $request){
+
+  }
+
+  // Los convenios
+  //
+  //
+  public function contracts(Request $request){
 
   }
 
