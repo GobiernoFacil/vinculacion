@@ -935,9 +935,13 @@ input:focus, select:focus, textarea:focus {
     height: 25px;
     width: 30px; }
 
+a {
+  transition: background 400ms; }
+
 header {
-  background: rgba(0, 82, 146, 0.9);
-  min-height: 117px; }
+  background: rgba(0, 82, 145, 0.9);
+  min-height: 117px;
+  position: relative; }
   header ul {
     margin: 0;
     padding: 0;
@@ -952,8 +956,7 @@ header {
       display: block;
       padding: 30px 0 0;
       height: 117px;
-      text-align: center;
-      transition: background 400ms; }
+      text-align: center; }
       header ul a span, header ul a:visited span {
         display: block; }
       header ul a:hover, header ul a:visited:hover {
@@ -966,6 +969,57 @@ header {
         background: #eb7c23; }
         header ul a.vacancies:hover, header ul a:visited.vacancies:hover {
           background: #e06d14; }
+
+.home .bgd {
+  background: url('img/home2.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  height: 800px;
+  position: fixed; }
+  .home .bgd:after {
+    background: rgba(93, 93, 93, 0.5);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+.home h1 {
+  color: white;
+  font: 500 60px 'Montserrat', Helvetica, Arial, sans-serif;
+  padding: 124px 0 30px;
+  text-align: center; }
+.home p.lead {
+  color: white;
+  font-size: 19px;
+  text-align: center; }
+.home .signup {
+  background: rgba(0, 152, 185, 0.7);
+  min-height: 185px; }
+  .home .signup.company {
+    background: rgba(235, 124, 35, 0.7); }
+    .home .signup.company a {
+      background: #eb7c23; }
+      .home .signup.company a:hover {
+        background: #e06d14; }
+  .home .signup p {
+    color: white;
+    padding: 30px 20px 0;
+    font: 500 24px 'Montserrat', Helvetica, Arial, sans-serif; }
+    .home .signup p strong {
+      display: block;
+      font-size: 50px; }
+  .home .signup a {
+    background: #0098b9;
+    font: 700 20px 'Oxygen', Helvetica, Arial, sans-serif;
+    color: white;
+    display: block;
+    padding: 0 20px;
+    line-height: 60px; }
+    .home .signup a:hover {
+      background: #00afd3; }
 
 /* =Media queries
 -------------------------------------------------------------- */
