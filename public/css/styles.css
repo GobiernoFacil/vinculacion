@@ -1168,6 +1168,9 @@ a.btn, a.btn:visited {
 
 .admin header {
   min-height: 58px; }
+.admin nav {
+  background: #133150;
+  min-height: 58px; }
 .admin .abierto {
   margin-top: 20px;
   font-size: 21px;
@@ -1179,6 +1182,25 @@ a.btn, a.btn:visited {
     width: 20px; }
 .admin.company header {
   background: #eb7c23; }
+.admin.company .main_nav a:hover {
+  color: #eb7c23; }
+.admin.company .main_nav a.current {
+  color: #eb7c23; }
+
+.main_nav a {
+  color: white;
+  background: #133150;
+  display: inline-block;
+  border-right: 1px solid white;
+  line-height: 58px;
+  padding: 0 30px 0 20px; }
+  .main_nav a:first-child {
+    border-left: 1px solid white; }
+  .main_nav a:hover {
+    background: #0e253b; }
+  .main_nav a.current {
+    background: white;
+    color: #133150; }
 
 /* =Footer
 -------------------------------------------------------------- */

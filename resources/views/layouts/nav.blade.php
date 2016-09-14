@@ -12,8 +12,16 @@
                 	<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                 	    {{ csrf_field() }}
                 	</form>
-                
 			</div>
 		</div>
 	</div>
 </header>
+<nav class="main_nav">
+	<div class="container">
+		<div class="col-sm-12">
+			<a href="" class="current"><i class="material-icons">home</i> Tablero</a>
+			<a href=""><i class="material-icons">business_center</i> Vacantes</a>
+			<a href=""><i class="material-icons">domain</i> Perfil</a>
+		</div>
+	</div>
+</nav>
