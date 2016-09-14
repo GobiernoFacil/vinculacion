@@ -6,32 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class Companies extends Controller
+class Students extends Controller
 {
   /*
-   * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
+   * D A S H B O A R D
    * ----------------------------------------------------------------
    */
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de empresa!"]);
-  }
-
-  // Las vacantes
-  //
-  //
-  public function vacancies($page = 1){
-
-  }
-
-  // Los convenios
-  //
-  //
-  public function contracts($page = 1){
-
+    return view("elcoruco-test")->with(["message" => "estás en el dashboard de estudiante!"]);
   }
 
   /*
-   * P E R F I L   D E   L A   E M P R E S A
+   * P E R F I L   D E L   E S T U D I A N T E
    * ----------------------------------------------------------------
    */
 
@@ -48,5 +34,21 @@ class Companies extends Controller
   }
 
   public function validateMe(){
+  }
+
+  /*
+   * C V
+   * ----------------------------------------------------------------
+   */
+  public function viewCV($id){
+
+  }
+
+  public function editCV($id){
+
+  }
+
+  public function updateCV(Request $request, $id){
+
   }
 }
