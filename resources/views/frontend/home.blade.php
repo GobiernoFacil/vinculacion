@@ -8,27 +8,53 @@
 @endsection
 
 @section('content')
-<div class="md-modal md-effect-5" id="modal-1">
+
+<!--modal login -->
+<div class="md-modal md-effect-5" id="modal-3">
 	<div class="md-content">
-		<h3>Registrar Estudiante</h3>
+		<div class="row">
+			<div class="col-sm-3 col-sm-offset-9 right">
+				<a class="btn danger md-close" href="#">x</a>
+			</div>
+		</div>
+		<h3><i class="material-icons">person</i> Iniciar Sesión</h3>
 		<div class="row">
 			<div class="col-sm-12">
+			@include('layouts.forms.login_form')
 			</div>
-			<div class="col-sm-3 col-sm-offset-9">
-				<a class="btn danger md-close" href="#">Cancelar</a>
-			</div>
+			
 		</div>
 	</div>
 </div>
 
+<!--modal registrar estudiantes-->
+<div class="md-modal md-effect-5" id="modal-1">
+	<div class="md-content">
+		<div class="row">
+			<div class="col-sm-3 col-sm-offset-9 right">
+				<a class="btn danger md-close" href="#">x</a>
+			</div>
+		</div>
+		<h3><i class="material-icons">person_add</i> Regístrate y encuentra empleo</h3>
+		<div class="row">
+			<div class="col-sm-12">
+			@include('layouts.forms.register_form')
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!--modal registrar empresas-->
 <div class="md-modal md-effect-5" id="modal-2">
 	<div class="md-content">
+		<div class="row">
+			<div class="col-sm-3 col-sm-offset-9 right">
+				<a class="btn danger md-close" href="#">x</a>
+			</div>
+		</div>		
 		<h3>Registrar Empresa</h3>
 		<div class="row">
 			<div class="col-sm-12">
-			</div>
-			<div class="col-sm-3 col-sm-offset-9">
-				<a class="btn danger md-close" href="#">Cancelar</a>
 			</div>
 		</div>
 	</div>
