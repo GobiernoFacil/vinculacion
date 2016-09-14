@@ -34,7 +34,10 @@
         window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
     </script>
 </head>
-<body>
+<body class="{{ !empty($__env->yieldContent('bodyclass')) ?   $__env->yieldContent('bodyclass')  : "" }}">
+	@if($__env->yieldContent('bodyclass') == 'home') 
+	<div class="bgd"></div>
+	@endif
 	<!--header-->
      @include('layouts.header')
 	<!--content-->
