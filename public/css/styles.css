@@ -1152,6 +1152,34 @@ a.btn, a.btn:visited {
     a.btn.danger:hover, a.btn:visited.danger:hover {
       background: #e60000; }
 
+/* =ADMIN
+-------------------------------------------------------------- */
+.logout {
+  background: red;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0 13px;
+  color: white;
+  line-height: 37px;
+  font-size: 12px;
+  margin-top: 10px; }
+  .logout:hover {
+    cursor: pointer;
+    background: #e60000; }
+
+.admin header {
+  min-height: 58px; }
+.admin .abierto {
+  margin-top: 20px;
+  font-size: 21px;
+  padding: 0;
+  text-align: left; }
+  .admin .abierto i.logo {
+    background-size: auto 16px;
+    height: 16px;
+    width: 20px; }
+.admin.company header {
+  background: #eb7c23; }
+
 /* =Footer
 -------------------------------------------------------------- */
 footer {
