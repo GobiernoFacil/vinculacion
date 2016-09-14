@@ -13,7 +13,7 @@ class Companies extends Controller
    * ----------------------------------------------------------------
    */
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de empresa!"]);
+    return view("companies.dashboard");
   }
 
   // Las vacantes
