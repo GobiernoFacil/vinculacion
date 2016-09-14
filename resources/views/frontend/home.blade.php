@@ -55,6 +55,7 @@
 		<h3>Registrar Empresa</h3>
 		<div class="row">
 			<div class="col-sm-12">
+			@include('layouts.forms.register_form')
 			</div>
 		</div>
 	</div>
