@@ -3,27 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	@if(!empty($data['title']))
-    <title>{{  $data['title'] }} | Vinculación</title>
+	
+    @if ($__env->yieldContent('title'))
+	<title>@yield('title') | Vinculación</title>
     @else
-    	@if ($__env->yieldContent('title'))
-		<title>@yield('title') | Vinculación</title>
-    	@else
-    	<title>Vinculación</title>
-    	@endif
+    <title>Empleo Abierto del Estado de Puebla</title>
     @endif
-    @if(!empty($data['description']))
-    <meta name="description" content="{{  $data['description'] }} ">
+
+    
+    @if ($__env->yieldContent('description'))
+	<meta name="description" content="@yield('description')">
     @else
-    	@if ($__env->yieldContent('description'))
-		<meta name="description" content="@yield('description')">
-    	@else
-		<meta name="description" content="Plataforma de Vinculación">
-    	@endif
+	<meta name="description" content="Empleo Abierto del Estado de Puebla">
     @endif
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- css -->
-
+	<!-- css--->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen|Montserrat|Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -34,7 +30,7 @@
 
 </head>
 
-<body>
+<body class="admin {{ !empty($__env->yieldContent('bodyclass')) ?   $__env->yieldContent('bodyclass')  : "" }}">
 	<!--header-->
 	@include('layouts.nav')
 
