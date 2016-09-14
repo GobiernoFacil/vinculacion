@@ -12,7 +12,7 @@ class Front extends Controller
   //
   //
   public function index(){
-    return view("elcoruco-test");
+    return view("frontend.home");
   }
 
   public function offers($page = 1){
