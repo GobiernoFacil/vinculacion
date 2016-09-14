@@ -18,3 +18,5 @@
 		<a href="http://gobiernofacil.com/" class="gobiernofacil">Gobierno Fácil</a>
 	</div>
 </footer>
+<!--js-scripts-->
+@yield('js-scripts')

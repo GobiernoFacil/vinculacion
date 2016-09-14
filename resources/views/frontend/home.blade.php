@@ -2,8 +2,38 @@
 @section('title', 'Empleo Abierto')
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
 @section('bodyclass', 'home')
+@section('js-scripts')
+<script src="{{ url('js/home/classie.js') }}"></script>
+<script src="{{ url('js/home/modalEffects.js') }}"></script>
+@endsection
 
 @section('content')
+<div class="md-modal md-effect-5" id="modal-1">
+	<div class="md-content">
+		<h3>Registrar Estudiante</h3>
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
+			<div class="col-sm-3 col-sm-offset-9">
+				<a class="btn danger md-close" href="#">Cancelar</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="md-modal md-effect-5" id="modal-2">
+	<div class="md-content">
+		<h3>Registrar Empresa</h3>
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
+			<div class="col-sm-3 col-sm-offset-9">
+				<a class="btn danger md-close" href="#">Cancelar</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="welcome">
 	<div class="row">
@@ -18,13 +48,13 @@
 		<div class="col-sm-4 col-sm-offset-2">
 			<div class="signup">
 				<p><strong>1200</strong> vacantes, envía tu CV</p>
-				<a>Regístrate</a>
+				<a class="md-trigger"  data-modal="modal-1">Regístrate</a>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="signup company">
 				<p><strong>56</strong> sectores con talento</p>
-				<a>Publica vacante</a>
+				<a class="md-trigger"  data-modal="modal-2">Publica vacante</a>
 			</div>
 		</div>
 	</div>
@@ -122,4 +152,6 @@
 		</div>
 	</div>
 </section>
+<div class="md-overlay"></div><!-- the overlay element -->
+
 @endsection
