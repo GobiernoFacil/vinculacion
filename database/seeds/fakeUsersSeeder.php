@@ -38,10 +38,16 @@ class fakeUsersSeeder extends Seeder
          //$u->posts()->save(factory(App\Post::class)->make());
       });
 
-      // [4] crea 3 cámaras de comercio
+      // [4] crea 5 cámaras de comercio
       Chamber::truncate();
-      factory(App\User::class, 20)->create(["type" => "chamber"])->each(function($u){
-         $u->chamber()->firstOrCreate(factory(App\models\Chamber::class)->make()->toArray());//chamber()->save(factory(App\Post::class)->make());
+      factory(App\User::class, 5)->create(["type" => "chamber"])->each(function($u){
+         $u->chamber()->firstOrCreate(factory(App\models\Chamber::class)->make()->toArray());
+      });
+
+      // [5] crea 40 empresas ligadas a un usuario
+      Company::truncate();
+      factory(App\User::class, 40)->create(["type" => "company"])->each(function($u){
+         $u->company()->firstOrCreate(factory(App\models\Company::class)->make()->toArray());
       });
       
     }
