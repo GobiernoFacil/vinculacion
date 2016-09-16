@@ -26,21 +26,21 @@ class User extends Authenticatable
 
     //modelosrelacionados
     function opd(){
-     return $this->hasOne("App\Opd");
+     return $this->hasOne("App\models\Opd");
     }
 
     //modelosrelacionados
     function company(){
-     return $this->hasOne("App\Company");
+     return $this->hasOne("App\models\Company");
     }
 
     //modelosrelacionados
     function student(){
-     return $this->hasOne("App\Student");
+     return $this->hasOne("App\models\Student");
     }
 
     //modelosrelacionados
     function chamber(){
-     return $this->hasOne("App\Chamber");
+     return $this->hasOne("App\models\Chamber");
     }
 }

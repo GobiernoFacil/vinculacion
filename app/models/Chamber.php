@@ -13,7 +13,7 @@ class Chamber extends Model
 
     // modelos relacionados
     function company(){
-      return $this->hasMany("App\Company");
+      return $this->hasMany("App\models\Company");
     }
 
     //modelosrelacionados
