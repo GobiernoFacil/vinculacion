@@ -44,10 +44,29 @@ class fakeUsersSeeder extends Seeder
          $u->chamber()->firstOrCreate(factory(App\models\Chamber::class)->make()->toArray());
       });
 
-      // [5] crea 40 empresas ligadas a un usuario
+      // [5] crea 20 empresas ligadas a un usuario
       Company::truncate();
-      factory(App\User::class, 40)->create(["type" => "company"])->each(function($u){
+      factory(App\User::class, 20)->create(["type" => "company"])->each(function($u){
          $u->company()->firstOrCreate(factory(App\models\Company::class)->make()->toArray());
+      });
+
+      // [5] crea 15 universidades
+      Opd::truncate();
+      factory(App\User::class, 15)->create(["type" => "opd"])->each(function($u){
+         $u->opd()->firstOrCreate(factory(App\models\Opd::class)->make()->toArray());
+      });
+
+      // [6] crea 1000 estudiantes, repartidos entre las distintas universidades
+      Student::truncate();
+
+      $opds = User::where("type", "opd")->get();
+      $ids  = $opds->pluck("id");
+      factory(App\User::class, 100)->create(["type" => "student"])->each(function($u) use($ids){
+        $id = $ids->random();
+        $u->student()->firstOrCreate(factory(App\models\Student::class)->make([
+          "opd_id"     => $id,
+          "creator_id" => $id
+        ])->toArray());
       });
       
     }

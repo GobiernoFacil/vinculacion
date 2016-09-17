@@ -47,32 +47,6 @@ $factory->define(App\models\Chamber::class, function ($faker) use ($factory) {
     ];
 });
 
-/*
-| user_id                    | int(11)          | YES  |     | NULL    |                |
-| creator_id                 | int(11)          | YES  |     | NULL    |                |
-| company_rfc                | varchar(255)     | NO   | UNI | NULL    |                |
-| company_comercial_name     | varchar(255)     | YES  |     | NULL    |                |
-| company_social_reason      | varchar(255)     | YES  |     | NULL    |                |
-| company_comercial_activity | varchar(255)     | YES  |     | NULL    |                |
-| company_activity_sector    | varchar(255)     | YES  |     | NULL    |                |
-| company_sector             | varchar(255)     | YES  |     | NULL    |                |
-| company_description        | text             | YES  |     | NULL    |                |
-| company_ceo                | varchar(255)     | YES  |     | NULL    |                |
-| company_street             | varchar(255)     | YES  |     | NULL    |                |
-| company_ext_number         | int(11)          | YES  |     | NULL    |                |
-| company_int_number         | varchar(255)     | YES  |     | NULL    |                |
-| company_zip                | int(11)          | YES  |     | NULL    |                |
-| company_colony             | varchar(255)     | YES  |     | NULL    |                |
-| company_state              | varchar(255)     | YES  |     | NULL    |                |
-| company_city               | varchar(255)     | YES  |     | NULL    |                |
-| company_web                | varchar(255)     | YES  |     | NULL    |                |
-| company_contact_name       | varchar(255)     | YES  |     | NULL    |                |
-| company_contact_position   | varchar(255)     | YES  |     | NULL    |                |
-| company_contact_email      | varchar(255)     | YES  |     | NULL    |                |
-| company_contact_phone      | int(11)          | YES  |     | NULL    |                |
-| company_contact_mobile     | int(11)          | YES  |     | NULL    | 
-*/
-
 // company
 //
 //
@@ -96,23 +70,42 @@ $factory->define(App\models\Company::class, function ($faker) use ($factory) {
     ];
 });
 
-/*
+
 // opd
 //
 //
-$factory->defineAs(App\User::class, 'opd', function ($faker) use ($factory) {
-    $user = $factory->raw(App\User::class);
-    return array_merge($user, ['type' => "opd"]);
+$factory->define(App\models\Opd::class, function ($faker) use ($factory) {
+    return [
+        'opd_name'             => $faker->unique()->company,
+        'opd_chancellor'       => $faker->optional()->name,
+        'opd_description'      => $faker->optional()->text,
+        'opd_street'           => $faker->optional()->streetName,
+        'opd_ext_number'       => $faker->optional()->randomDigitNotNull,
+        'opd_zip'              => $faker->optional()->postcode,
+        'opd_state'            => $faker->optional()->state,
+        'opd_city'             => $faker->optional()->city,
+        'opd_web'              => $faker->optional()->url,
+        'opd_contact_name'     => $faker->optional()->name,
+        'opd_contact_position' => $faker->optional()->jobTitle,
+        'opd_contact_email'    => $faker->unique()->safeEmail,
+        'opd_contact_phone'    => $faker->optional()->numerify("##########"),
+        'opd_contact_mobile'   => $faker->optional()->numerify("##########"),
+    ];
 });
 
 
 // student
 //
 //
-$factory->defineAs(App\User::class, 'student', function ($faker) use ($factory) {
-    $user = $factory->raw(App\User::class);
-    return array_merge($user, ['type' => "student"]);
+$factory->define(App\models\Student::class, function ($faker) use ($factory) {
+    return [
+        'student_registration_id'   => $faker->numerify("##########"),
+        'student_name'              => $faker->optional()->firstName,
+        'student_primary_last_name' => $faker->optional()->lastName,
+        'student_second_last_name'  => $faker->optional()->lastName,
+        'student_phone'             => $faker->optional()->numerify("##########"),
+        'student_mobile'            => $faker->optional()->numerify("##########"),
+    ];
 });
-*/
 
 
