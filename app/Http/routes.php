@@ -14,11 +14,11 @@
 // @Front controller
 // Las páginas estáticas y de consulta
 Route::get('/', "Front@index");
-Route::get('oferta-laboral/{page?}', "Front@offers");
+Route::get('oferta-laboral', "Front@offers");
 Route::get('oferta/{id}', "Front@offer");
-Route::get('universidades/{page?}', "Front@opds");
+Route::get('universidades', "Front@opds");
 Route::get('universidad/{id}', "Front@opd");
-Route::get('empresas/{page?}', "Front@companies");
+Route::get('empresas', "Front@companies");
 Route::get('empresa/{id}', "Front@company");
 Route::get('datos-abiertos', "Front@openData");
 Route::get('privacidad', "Front@privacy");
@@ -60,13 +60,12 @@ Route::group(['middleware' => ['auth']], function () {
     // ----------------------------------------------------------------
     // @Admin controller
     Route::get('dashboard', 'Admin@index');
-    //Route::get('dashboard/usuarios/{page?}', 'Admin@users');
-    Route::get('dashboard/administradores/{page?}', 'Admin@admins');
-    Route::get('dashboard/camaras/{page?}', 'Admin@chambers');
-    Route::get('dashboard/opds/{page?}', 'Admin@opds');
-    Route::get('dashboard/estudiantes/{page?}', 'Admin@students');
-    Route::get('dashboard/empresas/{page?}', 'Admin@companies');
-    Route::get('dashboard/vacantes/{page?}', 'Admin@vacancies');
+    Route::get('dashboard/administradores', 'Admin@admins');
+    Route::get('dashboard/camaras', 'Admin@chambers');
+    Route::get('dashboard/opds', 'Admin@opds');
+    Route::get('dashboard/estudiantes', 'Admin@students');
+    Route::get('dashboard/empresas', 'Admin@companies');
+    Route::get('dashboard/vacantes', 'Admin@vacancies');
 
     // P E R F I L   D E L   A D M I N I S T R A D O R
     // ----------------------------------------------------------------
@@ -136,7 +135,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/vacante/{id}', 'AdminVacancies@view');
     Route::post('dashboard/vacante/habilitar/{id}', 'AdminVacancies@enable');
     Route::post('dashboard/vacante/deshabilitar/{id}', 'AdminVacancies@disable');
-    Route::get('dashboard/vacante/{id}/estudiantes/{page?}', 'AdminVacancies@students');
+    Route::get('dashboard/vacante/{id}/estudiantes', 'AdminVacancies@students');
 
     // C O N T R A T O S
     // ----------------------------------------------------------------
@@ -149,7 +148,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/contrato/{id}', 'AdminContracts@view');
     Route::post('dashboard/contrato/habilitar/{id}', 'AdminContracts@enable');
     Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');
-    Route::get('dashboard/contrato/{id}/estudiantes/{page?}', 'AdminContracts@students');
+    Route::get('dashboard/contrato/{id}/estudiantes', 'AdminContracts@students');
 
     // E S T A D Í S T I C A S
     // ----------------------------------------------------------------

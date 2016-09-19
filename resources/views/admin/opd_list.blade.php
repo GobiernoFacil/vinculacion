@@ -1,12 +1,12 @@
 @extends('layouts.master-admin')
 @section('content')
 
-<!-- Admins -->
-<h4>Admins</h4>
+<!-- Universidades -->
+<h4>Universidades</h4>
 @if($opds->count())
   <ul>
   @foreach($opds as $opd)
-    <li>{{$opd->name}}</li>
+    <li>{{$opd->opd->opd_name}}</li>
   @endforeach
   </ul>
 
