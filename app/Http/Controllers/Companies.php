@@ -36,7 +36,7 @@ class Companies extends Controller
    */
 
   public function me(){
-
+    return view("companies.me_view");
   }
 
   public function changeMe(){
