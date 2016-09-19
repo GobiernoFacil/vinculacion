@@ -19,7 +19,7 @@ use App\models\Vacancy;
 
 class Admin extends Controller
 {
-  public $pageSize = 20;
+  public $pageSize = 10;
 
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
@@ -36,9 +36,23 @@ class Admin extends Controller
         $data['description'] = 'Dashboard de Vinculación';
         $data['body_class']  = 'dashboard';
 
-        return view('admin.dashboard_admin_view')->with([$user,$data]);
+        $admins = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
+        //$students
+        //$companies
+        //$chambers
+        $opds     = User::where("type", "opd")->with("opd")->take(5)->get();
+
+        return view('admin.dashboard_admin_view')->with([
+          "user" => $user,
+          "data" => $data,
+
+          // users
+          "admins" => $admins,
+          "opds" => $opds
+        ]);
   }
 
+  /*
   // Todos los usuarios
   //
   //
@@ -51,12 +65,20 @@ class Admin extends Controller
       "users" => $users
     ]);
   }
+  */
 
   // Los administradores
   //
   //
   public function admins(Request $request){
-
+    $user   = Auth::user();
+    $admins = User::where("type", "admin")
+                 ->where("id", "!=", $user->id)->paginate($this->pageSize);
+    
+    return view('admin.admin_list')->with([
+      "user"   => $user,
+      "admins" => $admins
+    ]);
   }
 
   // Las cámaras
@@ -70,7 +92,13 @@ class Admin extends Controller
   //
   //
   public function opds(Request $request){
-
+    $user   = Auth::user();
+    $opds = User::where("type", "opd")->paginate($this->pageSize);
+    
+    return view('admin.opd_list')->with([
+      "user" => $user,
+      "opds" => $opds
+    ]);
   }
 
   // Los estudiantes

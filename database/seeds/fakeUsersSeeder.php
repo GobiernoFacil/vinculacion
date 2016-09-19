@@ -46,13 +46,13 @@ class fakeUsersSeeder extends Seeder
 
       // [5] crea 20 empresas ligadas a un usuario
       Company::truncate();
-      factory(App\User::class, 20)->create(["type" => "company"])->each(function($u){
+      factory(App\User::class, 25)->create(["type" => "company"])->each(function($u){
          $u->company()->firstOrCreate(factory(App\models\Company::class)->make()->toArray());
       });
 
       // [5] crea 15 universidades
       Opd::truncate();
-      factory(App\User::class, 15)->create(["type" => "opd"])->each(function($u){
+      factory(App\User::class, 11)->create(["type" => "opd"])->each(function($u){
          $u->opd()->firstOrCreate(factory(App\models\Opd::class)->make()->toArray());
       });
 

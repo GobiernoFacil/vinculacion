@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
     // ----------------------------------------------------------------
     // @Admin controller
     Route::get('dashboard', 'Admin@index');
-    Route::get('dashboard/usuarios/{page?}', 'Admin@users');
+    //Route::get('dashboard/usuarios/{page?}', 'Admin@users');
     Route::get('dashboard/administradores/{page?}', 'Admin@admins');
     Route::get('dashboard/camaras/{page?}', 'Admin@chambers');
     Route::get('dashboard/opds/{page?}', 'Admin@opds');

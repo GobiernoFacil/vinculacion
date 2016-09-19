@@ -17,7 +17,7 @@
 	<meta name="description" content="Empleo Abierto del Estado de Puebla">
     @endif
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- css--->
+	<!-- css -->
     <link href="https://fonts.googleapis.com/css?family=Oxygen|Montserrat|Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}"/>
     <!-- CSRF Token -->
