@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     //
-    protected $fillable = ['student_registration_id','user_id','opd_id','creator_id','user_id','creator_id','student_name','student_primary_last_name','student_second_last_name',
+    protected $fillable = ['student_registration_id',/*'user_id','opd_id','creator_id','user_id','creator_id',*/'student_name','student_primary_last_name','student_second_last_name',
                            'student_street','student_ext_number','student_int_number','student_zip','student_colony','student_state','student_city','student_phone','student_mobile'];
 
 
@@ -18,7 +18,17 @@ class Student extends Model
 
   //modelosrelacionados
   function Opd(){
-    return $this->belongsTo("App\Opd");
+    return $this->belongsTo("App\models\Opd");
+  }
+
+  //modelosrelacionados
+  function interviews(){
+    return $this->hasMany("App\models\Interview");
+  }
+
+  //modelosrelacionados
+  function vacants(){
+    return $this->hasMany("App\models\Vacant");
   }
 
 
