@@ -14,7 +14,7 @@
 @if($admins->count())
   <ul>
   @foreach($admins as $admin)
-    <li>{{$admin->name}}</li>
+    <li><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></li>
   @endforeach
   </ul>
   <p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
@@ -22,12 +22,14 @@
 <p>Eres el único administrador</p>
 @endif
 
+
 <!-- Opds -->
 <h4>Universidades</h4>
 @if($opds->count())
   <ul>
   @foreach($opds as $opd)
     <li>{{$opd->opd->opd_name}}</li>
+    <li><a href="{{url("dashboard/opd/{$opd->id}")}}"> {{$opd->name}}</a></li>
   @endforeach
   </ul>
   <p><a href="{{url("dashboard/opds")}}">universidades</a></p>

@@ -6,7 +6,7 @@
 @if($admins->count())
   <ul>
   @foreach($admins as $admin)
-    <li>{{$admin->name}}</li>
+    <li><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></li>
   @endforeach
   </ul>
 

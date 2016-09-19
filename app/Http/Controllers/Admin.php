@@ -18,7 +18,7 @@ use App\models\Student;
 use App\models\Vacancy;
 
 // FormValidators
-use App\Http\Requests\UpdateAdminRequest;
+use App\Http\Requests\UpdateMeRequest;
 
 class Admin extends Controller
 {
@@ -26,7 +26,7 @@ class Admin extends Controller
   public $pageSize = 10;
 
   /*
-   * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
+   * D A S H B O A R D   Y   L I S T A S   D E   O B J E T O S
    * ----------------------------------------------------------------
    */
 
@@ -48,7 +48,7 @@ class Admin extends Controller
     $opds   = User::where("type", "opd")->with("opd")->take(5)->get();
 
     // [4] regresa el view
-    return view('admin.dashboard_admin_view')->with([
+    return view('admin.dashboard')->with([
       "user" => $user,
       "data" => $data,
 
@@ -74,7 +74,7 @@ class Admin extends Controller
                  ->where("id", "!=", $user->id)->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.admin_list')->with([
+    return view('admin.admin-list')->with([
       "user"   => $user,
       "admins" => $admins
     ]);
@@ -92,7 +92,7 @@ class Admin extends Controller
     $opds = User::where("type", "opd")->with("opd")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.opd_list')->with([
+    return view('admin.opd-list')->with([
       "user" => $user,
       "opds" => $opds
     ]);
@@ -142,6 +142,9 @@ class Admin extends Controller
    * ----------------------------------------------------------------
    */
 
+  // El perfil del admin
+  //
+  //
   public function me(){
     $user = Auth::user();
 
@@ -150,17 +153,23 @@ class Admin extends Controller
     ]);
   }
 
+  // el formulario para editarlo
+  //
+  //
   public function changeMe(){
     $user = Auth::user();
 
-    return view("admin.me_form")->with([
+    return view("admin.me-update")->with([
       "user" => $user
     ]);
   }
 
-  public function updateMe(UpdateAdminRequest $request){
+  // la función que edita al admin
+  //
+  //
+  public function updateMe(UpdateMeRequest $request){
     // La validación de esta maroma está aquí:
-    // App\Http\Requests\UpdateAdminRequest
+    // App\Http\Requests\UpdateMeRequest
 
     // [1] el usuario del sistema
     $user = Auth::user();
@@ -171,7 +180,6 @@ class Admin extends Controller
     if(!empty($request->password)){
       $user->password = Hash::make($request->password);
     }
-
     $user->save();
 
     // [3] lo manda de nuevo al perfil
@@ -188,11 +196,21 @@ class Admin extends Controller
    */
 
   public function view($id){
+    $user  = Auth::user();
+    $admin = User::find($id);
 
+    return view("admin.admin-profile")->with([
+      "user"  => $user,
+      "admin" => $admin
+    ]); 
   }
 
   public function add(){
+    $user  = Auth::user();
 
+    return view("admin.admin-create")->with([
+      "user"  => $user
+    ]); 
   }
 
   public function save(Request $request){
