@@ -996,6 +996,8 @@ input:focus, select:focus, textarea:focus {
 
 a {
   transition: background 400ms; }
+  a:hover {
+    cursor: pointer; }
 
 h2 {
   color: #133150;
@@ -1186,21 +1188,38 @@ a.btn, a.btn:visited {
   color: #eb7c23; }
 .admin.company .main_nav a.current {
   color: #eb7c23; }
+.admin.company .btn.edit {
+  background: #0098b9;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 30px; }
+  .admin.company .btn.edit:hover {
+    background: #00afd3;
+    cursor: pointer; }
 
 .main_nav a {
   color: white;
   background: #133150;
   display: inline-block;
-  border-right: 1px solid white;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
   line-height: 58px;
   padding: 0 30px 0 20px; }
   .main_nav a:first-child {
-    border-left: 1px solid white; }
+    border-left: 1px solid rgba(255, 255, 255, 0.5); }
   .main_nav a:hover {
     background: #0e253b; }
   .main_nav a.current {
     background: white;
     color: #133150; }
+
+.box {
+  margin: 40px 0;
+  background: #f2f2f2;
+  min-height: 180px;
+  padding: 30px 20px 20px; }
+  .box h5 span {
+    font: 700 60px 'Montserrat', Helvetica, Arial, sans-serif; }
 
 /* =Footer
 -------------------------------------------------------------- */

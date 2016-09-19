@@ -168,6 +168,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::group(['middleware' => 'type:company' ], function(){
     // @Companies controller
     Route::get("tablero-empresa", "Companies@index");
+    Route::get("tablero-empresa/yo", "Companies@me");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
