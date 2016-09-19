@@ -33,9 +33,12 @@ class UpdateAdminRequest extends Request
 
     public function messages(){
       return [
-        'name'         => 'El nombre es requerido',
-        'password.min' => 'tu nueva contraseña debe tener por lo menos 6 caracteres',
-        'email'        => 'tu correo debe ser válido y no estar en el sistema'
+        'name.required'  => 'El nombre es requerido',
+        'password.min'   => 'tu nueva contraseña debe tener por lo menos 6 caracteres',
+        'email.required' => 'tu correo debe ser válido y no estar en el sistema',
+        'email.email'    => 'tu correo debe ser válido y no estar en el sistema',
+        'email.max'      => 'tu correo debe ser válido y no estar en el sistema',
+        'email.unique'   => 'tu correo debe ser válido y no estar en el sistema'
       ];
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.master-admin')
 @section('content')
-
+<div class="container">
 <!-- Formulario de perfil -->
 <h4>Mi perfil</h4>
 
@@ -15,14 +15,15 @@
      App\Http\Requests\UpdateAdminRequest
      Esto remueve toda lógica de validación en el controller
 -->
-
-{!! Form::model($user, ['url' => 'dashboard/yo/editar']) !!}
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+{!! Form::model($user, ['url' => 'dashboard/yo/editar', "class" => "form-horizontal"]) !!}
 
 <p>
   <label>nombre</label>
-  {{Form::text('name')}}
+  {{Form::text('name', null, ["class" => "form-control"])}}
   @if($errors->has('name'))
-    {{$errors->first('name', '<p>:message</p>')}}
+    <strong>{{$errors->first('name')}}</strong>
   @endif
 </p>
 
@@ -30,7 +31,7 @@
   <label>correo</label>
   {{Form::text('email')}}
   @if($errors->has('email'))
-    {{$errors->first('email', '<p>:message</p>')}}
+    <strong>{{$errors->first('email')}}</strong>
   @endif
 </p>
 
@@ -46,4 +47,8 @@
 
 <!-- se cierra el form -->
 {!! Form::close() !!}
+</div>
+</div>
+
+</div>
 @endsection
