@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+// libs
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Auth;
+use Hash;
 
 class Companies extends Controller
 {
@@ -13,7 +15,11 @@ class Companies extends Controller
    * ----------------------------------------------------------------
    */
   public function index(){
-    return view("companies.dashboard");
+	// [1] el usuario del sistema
+    $user = Auth::user();
+    return view("companies.dashboard")->with([
+     	"user"   => $user
+    ]);
   }
 
   // Las vacantes
@@ -36,7 +42,11 @@ class Companies extends Controller
    */
 
   public function me(){
-    return view("companies.me_view");
+	  // [1] el usuario del sistema
+	  $user = Auth::user();
+	  return view("companies.me_view")->with([
+     	"user"   => $user
+    ]);
   }
 
   public function changeMe(){
