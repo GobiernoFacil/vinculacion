@@ -46,9 +46,11 @@ class Admin extends Controller
     $data['body_class']  = 'dashboard';
     
     // [3] cinco de cada cosa, como en el arca de noé. Bueno, el otro noé
-    $admins   = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
-    $opds     = User::where("type", "opd")->with("opd")->take(5)->get();
-    $chambers = User::where("type", "chamber")->with("chamber")->take(5)->get();
+    $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
+    $opds      = User::where("type", "opd")->with("opd")->take(5)->get();
+    $chambers  = User::where("type", "chamber")->with("chamber")->take(5)->get();
+    $students  = User::where("type", "student")->with("student")->take(5)->get();
+    $companies = User::where("type", "company")->with("company")->take(5)->get();
 
     // [4] regresa el view
     return view('admin.dashboard')->with([
@@ -56,9 +58,11 @@ class Admin extends Controller
       "data" => $data,
 
       // users
-      "admins"   => $admins,
-      "opds"     => $opds,
-      "chambers" => $chambers
+      "admins"    => $admins,
+      "opds"      => $opds,
+      "chambers"  => $chambers,
+      "students"  => $students,
+      "companies" => $chambers,
     ]);
   }
 

@@ -4,8 +4,12 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
+// [ LOAD TRAITS ]
+use App\Traits\MessagesTrait;
+
 class SuscribePostRequest extends Request
 {
+    use MessagesTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,10 +36,12 @@ class SuscribePostRequest extends Request
       ];
     }
 
+    /*
     public function messages(){
       return [
         'conditions.required' =>'Debes aceptar las condiciones de privacidad',
         'type.required'       =>'Debes seleccionar un tipo de empresa'
       ];
     }
+    */
 }
