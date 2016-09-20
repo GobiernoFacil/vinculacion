@@ -1,41 +1,49 @@
 @extends('layouts.master-admin')
+@section('title', 'Dashboard Empleo Abierto')
+@section('description', 'Dashboard Empleo Abierto del Gobierno del Estado de Puebla')
+@section('bodyclass', 'admin')
+
 @section('content')
-<div class="container">
-    <div class="row">
-		<div class="col-sm-12">
-			<h1>Panel de control</h1>
+<section>
+	<div class="container">
+	    <div class="row">
+			<div class="col-sm-12">
+				<h1>Panel de control</h1>
+			</div>
 		</div>
+		<div class="row">
+			<!-- Admins -->
+			<div class="col-sm-4">
+				<div class="box">
+					@if($admins->count())
+					<h4>Usuarios Administradores</h4>
+					<h5><span>{{$admins->count()}}</span></h5>
+					@else
+					<h4>Eres el único administrador</h4>
+					@endif
+				</div>
+				<p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
+			</div>
+			<!-- Universidades -->
+			<div class="col-sm-4">
+				<div class="box">
+					@if($opds->count())
+					<h4>Universidades</h4>
+					<h5><span>{{$opds->count()}}</span></h5>
+					@else
+					<h4>Eres el único administrador</h4>
+					@endif
+				</div>
+				<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
+			</div>
+		</div>
+
+
+
+
+
+
 	</div>
-</div>
 
-
-<!-- Admins -->
-<h4>Admins</h4>
-@if($admins->count())
-  <ul>
-  @foreach($admins as $admin)
-    <li><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></li>
-  @endforeach
-  </ul>
-  <p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
-@else
-<p>Eres el único administrador</p>
-@endif
-
-
-<!-- Opds -->
-<h4>Universidades</h4>
-@if($opds->count())
-  <ul>
-  @foreach($opds as $opd)
-    <li>{{$opd->opd->opd_name}}</li>
-    <li><a href="{{url("dashboard/opd/{$opd->id}")}}"> {{$opd->name}}</a></li>
-  @endforeach
-  </ul>
-  <p><a href="{{url("dashboard/opds")}}">universidades</a></p>
-@else
-<p>No hay universidades registradas</p>
-@endif
-
-
+</section>
 @endsection
