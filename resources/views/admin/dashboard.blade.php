@@ -37,13 +37,6 @@
 				<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
 			</div>
 		</div>
-
-
-
-
-
-
 	</div>
-
 </section>
 @endsection
