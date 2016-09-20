@@ -13,8 +13,8 @@
 	<!-- Admins -->
 	<div class="col-sm-4">
 		<div class="box">
-			@if($admins->count())
 			<h4>Usuarios Administradores</h4>
+			@if($admins->count())
 			<h5><span>{{$admins->count()}}</span></h5>
 			@else
 			<h4>Eres el único administrador</h4>
@@ -25,8 +25,8 @@
 	<!-- Universidades -->
 	<div class="col-sm-4">
 		<div class="box">
-			@if($opds->count())
 			<h4>Universidades</h4>
+			@if($opds->count())
 			<h5><span>{{$opds->count()}}</span></h5>
 			@else
 			<h4>Eres el único administrador</h4>
@@ -34,5 +34,18 @@
 		</div>
 		<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
 	</div>
+	<!-- Chambers -->
+	<div class="col-sm-4">
+		<div class="box">
+			<h4>Cámaras</h4>
+			@if($chambers->count())
+			<h5><span>{{$opds->count()}}</span></h5>
+			@else
+			<h4>No hay cámaras registradas</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/camaras")}}">Cámaras</a></p>
+	</div>
 </div>
+
 @endsection

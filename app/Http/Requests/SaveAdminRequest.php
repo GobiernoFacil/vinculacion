@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 
 // [ LOAD TRAITS ]
 use App\Traits\MessagesTrait;
 
-class UpdateMeRequest extends Request
+class SaveAdminRequest extends Request
 {
     use MessagesTrait;
     /**
@@ -28,10 +27,10 @@ class UpdateMeRequest extends Request
      */
     public function rules()
     {
-      return [
+        return [
         'name'     => 'required',
-        'email'    => 'required|email|max:255' . (Auth::user()->email != $this->email ? '|unique:users' : ''),
-        'password' => 'min:6',
+        'email'    => 'required|email|max:255|unique:users',
+        'password' => 'required|min:6'
       ];
     }
 

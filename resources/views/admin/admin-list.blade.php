@@ -11,8 +11,10 @@
   </ul>
 
 @else
-<p>Eres el único administrador</p>
+  <p>Eres el único administrador</p>
 @endif
+
+<p><a href="{{url("dashboard/administrador/crear")}}">Crear administrador</a></p>
 
 
 {{ $admins->links() }}
