@@ -126,7 +126,16 @@ class Admin extends Controller
   //
   //
   public function students(Request $request){
-
+    // [1] el usuario del sistema
+    $user     = Auth::user();
+    // [2] los estudiantes
+    $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
+    
+    // [3] regresa el view
+    return view('admin.student-list')->with([
+      "user"     => $user,
+      "students" => $students
+    ]);
   }
 
   // Las empresas
