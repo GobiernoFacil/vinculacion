@@ -4,39 +4,35 @@
 @section('bodyclass', 'admin')
 
 @section('content')
-<section>
-	<div class="container">
-	    <div class="row">
-			<div class="col-sm-12">
-				<h1>Panel de control</h1>
-			</div>
-		</div>
-		<div class="row">
-			<!-- Admins -->
-			<div class="col-sm-4">
-				<div class="box">
-					@if($admins->count())
-					<h4>Usuarios Administradores</h4>
-					<h5><span>{{$admins->count()}}</span></h5>
-					@else
-					<h4>Eres el único administrador</h4>
-					@endif
-				</div>
-				<p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
-			</div>
-			<!-- Universidades -->
-			<div class="col-sm-4">
-				<div class="box">
-					@if($opds->count())
-					<h4>Universidades</h4>
-					<h5><span>{{$opds->count()}}</span></h5>
-					@else
-					<h4>Eres el único administrador</h4>
-					@endif
-				</div>
-				<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
-			</div>
-		</div>
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Panel de control</h1>
 	</div>
-</section>
+</div>
+<div class="row">
+	<!-- Admins -->
+	<div class="col-sm-4">
+		<div class="box">
+			@if($admins->count())
+			<h4>Usuarios Administradores</h4>
+			<h5><span>{{$admins->count()}}</span></h5>
+			@else
+			<h4>Eres el único administrador</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
+	</div>
+	<!-- Universidades -->
+	<div class="col-sm-4">
+		<div class="box">
+			@if($opds->count())
+			<h4>Universidades</h4>
+			<h5><span>{{$opds->count()}}</span></h5>
+			@else
+			<h4>Eres el único administrador</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
+	</div>
+</div>
 @endsection
