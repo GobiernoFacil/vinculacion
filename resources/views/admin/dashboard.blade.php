@@ -46,7 +46,7 @@
   @foreach($chambers as $chamber)
     <li>
       cam: {{$chamber->chamber->chamber_comercial_name}} | 
-      <a href="{{url("dashboard/chamber/{$chamber->id}")}}">user: {{$chamber->name}}</a>
+      <a href="{{url("dashboard/camara/{$chamber->id}")}}">user: {{$chamber->name}}</a>
     </li>
   @endforeach
   </ul>

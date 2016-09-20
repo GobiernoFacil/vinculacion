@@ -13,6 +13,7 @@ use App\User;
 use App\models\Chamber;
 
 // FormValidators
+use App\Http\Requests\UpdateChamberRequest;
 
 class AdminChambers extends Controller
 {
@@ -22,7 +23,15 @@ class AdminChambers extends Controller
    */
 
   public function view($id){
-
+    // [1] el usuario del sistema
+    $user    = Auth::user();
+    // [2] el usuario a editar
+    $chamber = User::find($id);
+    // [3] el view del perfil
+    return view("admin.chamber-profile")->with([
+      "user"    => $user,
+      "chamber" => $chamber
+    ]);
   }
 
   public function add(){
@@ -34,20 +43,46 @@ class AdminChambers extends Controller
   }
 
   public function edit($id){
+    // [1] el usuario del sistema
     $user    = Auth::user();
+    // [2] el usuario a editar
     $chamber = User::with("chamber")->find($id);
-
+    // [3] el view para editar
     return view("admin.chamber-update")->with([
       "user"    => $user,
       "chamber" => $chamber
     ]);
   }
 
-  public function update(Request $request, $id){
+  public function update(UpdateChamberRequest $request, $id){
+    // [1] el usuario a editar
+    $chamber = User::find($id);
 
+    // [2] actualiza la info de usuario
+    $chamber->name  = $request->name;
+    $chamber->email = $request->email;
+    if(!empty($request->password)){
+      $chamber->password = Hash::make($request->password);
+    }
+    $chamber->save();
+
+    // [3] actualiza la información de la cámara
+    //     La información que se guarda depende de los campos
+    //     del array $fillable en el modelo de Chamber
+    $chamber->chamber->update($request->all());
+
+    // [4] redirecciona a la lista de cámaras
+    return redirect("dashboard/camaras");
   }
 
   public function delete($id){
-
+    // [1] el usuario a eliminar
+    $user = User::find($id);
+    // [2] se elimina el usuario
+    $user->chamber()->delete();
+    $user->delete();
+    
+    // [4] redirecciona a la lista de cámaras
+    return redirect("dashboard/camaras");
   }
 }

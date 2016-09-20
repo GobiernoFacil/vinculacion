@@ -4,7 +4,7 @@
 <!-- Formulario de cámara -->
 <h4>Editar Cámara</h4>
 
-{!! Form::model($chamber, ['url' => "dashboard/administrador/editar/{$chamber->id}", "class" => "form-horizontal"]) !!}
+{!! Form::model($chamber, ['url' => "dashboard/camara/editar/{$chamber->id}", "class" => "form-horizontal"]) !!}
 
 <!-- cosas del user -->
 <fieldset>
