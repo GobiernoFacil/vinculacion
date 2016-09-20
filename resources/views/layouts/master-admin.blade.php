@@ -35,7 +35,7 @@
 	@include('layouts.nav')
 
 	<!-- breadcrumb-->
-	
+	@include('layouts.breadcrumb')
 	<!--content-->
     <section>
 	    <div class="container">
