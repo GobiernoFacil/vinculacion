@@ -19,6 +19,7 @@ use App\models\Vacancy;
 
 // FormValidators
 use App\Http\Requests\UpdateMeRequest;
+use App\Http\Requests\SaveAdminRequest;
 
 class Admin extends Controller
 {
@@ -213,8 +214,15 @@ class Admin extends Controller
     ]); 
   }
 
-  public function save(Request $request){
+  public function save(SaveAdminRequest $request){
+    $admin           = new User();
+    $admin->type     = "admin";
+    $admin->name     = $request->name;
+    $admin->email    = $request->email;
+    $admin->password = Hash::make($request->password);
+    $admin->save();
 
+    return redirect("dashboard/administradores");
   }
 
   public function edit($id){
