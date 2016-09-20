@@ -7,6 +7,7 @@
   <ul>
   @foreach($opds as $opd)
     <li>{{$opd->opd->opd_name}}</li>
+    <li><a href="{{url("dashboard/opd/{$opd->id}")}}"> {{$opd->name}}</a></li>
   @endforeach
   </ul>
 
