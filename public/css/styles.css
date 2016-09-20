@@ -1221,6 +1221,26 @@ a.btn, a.btn:visited {
   .box h5 span {
     font: 700 60px 'Montserrat', Helvetica, Arial, sans-serif; }
 
+/* =breadcrumb
+-------------------------------------------------------------- */
+.breadcrumb {
+  margin: 20px 0 0; }
+  .breadcrumb ul {
+    margin: 0; }
+  .breadcrumb li {
+    color: #ccc;
+    display: inline-block; }
+    .breadcrumb li i {
+      vertical-align: middle; }
+    .breadcrumb li:after {
+      content: ">";
+      font-weight: 700;
+      margin: 10px; }
+    .breadcrumb li:last-child:after {
+      content: ""; }
+    .breadcrumb li a, .breadcrumb li a:visited {
+      color: #133150; }
+
 /* =Footer
 -------------------------------------------------------------- */
 footer {

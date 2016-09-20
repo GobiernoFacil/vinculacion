@@ -33,9 +33,12 @@
 <body class="admin {{ !empty($__env->yieldContent('bodyclass')) ?   $__env->yieldContent('bodyclass')  : "" }}">
 	<!--header-->
 	@include('layouts.nav')
-
-	<!-- breadcrumb-->
-	@include('layouts.breadcrumb')
+	
+	@if ($__env->yieldContent('breadcrumb'))
+	    <!-- breadcrumb-->
+		@include($__env->yieldContent('breadcrumb'))
+	@endif
+	
 	<!--content-->
     <section>
 	    <div class="container">
