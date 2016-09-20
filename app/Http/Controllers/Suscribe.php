@@ -59,6 +59,7 @@ class Suscribe extends Controller
     }elseif($u->type==='student'){
       return redirect('tablero-estudiante');
     }else{
+      die("o________o");
       return redirect("");
     }
   }
