@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+// libs
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Auth;
+use Hash;
+
+// models
+use App\User;
+use App\models\Chamber;
+
+// FormValidators
 
 class AdminChambers extends Controller
 {
@@ -26,7 +34,13 @@ class AdminChambers extends Controller
   }
 
   public function edit($id){
+    $user    = Auth::user();
+    $chamber = User::with("chamber")->find($id);
 
+    return view("admin.chamber-update")->with([
+      "user"    => $user,
+      "chamber" => $chamber
+    ]);
   }
 
   public function update(Request $request, $id){

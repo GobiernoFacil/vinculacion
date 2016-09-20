@@ -28,13 +28,31 @@
 @if($opds->count())
   <ul>
   @foreach($opds as $opd)
-    <li>{{$opd->opd->opd_name}}</li>
-    <li><a href="{{url("dashboard/opd/{$opd->id}")}}"> {{$opd->name}}</a></li>
+    <li>
+      univ: {{$opd->opd->opd_name}} | 
+      <a href="{{url("dashboard/opd/{$opd->id}")}}">user: {{$opd->name}}</a>
+    </li>
   @endforeach
   </ul>
   <p><a href="{{url("dashboard/opds")}}">universidades</a></p>
 @else
 <p>No hay universidades registradas</p>
+@endif
+
+<!-- Chambers -->
+<h4>Cámaras</h4>
+@if($chambers->count())
+  <ul>
+  @foreach($chambers as $chamber)
+    <li>
+      cam: {{$chamber->chamber->chamber_comercial_name}} | 
+      <a href="{{url("dashboard/chamber/{$chamber->id}")}}">user: {{$chamber->name}}</a>
+    </li>
+  @endforeach
+  </ul>
+  <p><a href="{{url("dashboard/camaras")}}">Cámaras</a></p>
+@else
+<p>No hay cámaras registradas</p>
 @endif
 
 

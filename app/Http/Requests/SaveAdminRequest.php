@@ -4,8 +4,12 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
+// [ LOAD TRAITS ]
+use App\Traits\MessagesTrait;
+
 class SaveAdminRequest extends Request
 {
+    use MessagesTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -30,6 +34,7 @@ class SaveAdminRequest extends Request
       ];
     }
 
+    /*
     public function messages(){
       return [
         'name.required'  => 'El nombre es requerido',
@@ -40,4 +45,5 @@ class SaveAdminRequest extends Request
         'email.unique'   => 'tu correo debe ser válido y no estar en el sistema'
       ];
     }
+    */
 }

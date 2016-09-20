@@ -5,8 +5,12 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Auth;
 
+// [ LOAD TRAITS ]
+use App\Traits\MessagesTrait;
+
 class UpdateMeRequest extends Request
 {
+    use MessagesTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,6 +35,7 @@ class UpdateMeRequest extends Request
       ];
     }
 
+    /*
     public function messages(){
       return [
         'name.required'  => 'El nombre es requerido',
@@ -41,4 +46,5 @@ class UpdateMeRequest extends Request
         'email.unique'   => 'tu correo debe ser válido y no estar en el sistema'
       ];
     }
+    */
 }

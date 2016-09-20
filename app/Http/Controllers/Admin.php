@@ -20,6 +20,7 @@ use App\models\Vacancy;
 // FormValidators
 use App\Http\Requests\UpdateMeRequest;
 use App\Http\Requests\SaveAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
 
 class Admin extends Controller
 {
@@ -45,8 +46,9 @@ class Admin extends Controller
     $data['body_class']  = 'dashboard';
     
     // [3] cinco de cada cosa, como en el arca de noé. Bueno, el otro noé
-    $admins = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
-    $opds   = User::where("type", "opd")->with("opd")->take(5)->get();
+    $admins   = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
+    $opds     = User::where("type", "opd")->with("opd")->take(5)->get();
+    $chambers = User::where("type", "chamber")->with("chamber")->take(5)->get();
 
     // [4] regresa el view
     return view('admin.dashboard')->with([
@@ -54,8 +56,9 @@ class Admin extends Controller
       "data" => $data,
 
       // users
-      "admins" => $admins,
-      "opds"   => $opds
+      "admins"   => $admins,
+      "opds"     => $opds,
+      "chambers" => $chambers
     ]);
   }
 
@@ -103,7 +106,16 @@ class Admin extends Controller
   //
   //
   public function chambers(Request $request){
-
+    // [1] el usuario del sistema
+    $user     = Auth::user();
+    // [2] las cámaras de comercio
+    $chambers = User::where("type", "chamber")->with("chamber")->paginate($this->pageSize);
+    
+    // [3] regresa el view
+    return view('admin.chamber-list')->with([
+      "user"     => $user,
+      "chambers" => $chambers
+    ]);
   }
 
   // Los estudiantes
@@ -226,11 +238,26 @@ class Admin extends Controller
   }
 
   public function edit($id){
+    $user  = Auth::user();
+    $admin = User::find($id);
 
+    return view("admin.admin-update")->with([
+      "user"  => $user,
+      "admin" => $admin 
+    ]);
   }
 
-  public function update(Request $request, $id){
+  public function update(UpdateAdminRequest $request, $id){
+    $admin        = User::find($id);
+    $admin->name  = $request->name;
+    $admin->email = $request->email;
 
+    if(!empty($request->password)){
+      $admin->password = Hash::make($request->password);
+    }
+    $admin->save();
+
+    return redirect("dashboard/administradores");
   }
 
   public function delete($id){
