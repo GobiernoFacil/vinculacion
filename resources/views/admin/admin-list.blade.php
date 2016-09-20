@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Admins -->
-<h4>Admins</h4>
+<h1>Admins</h1>
 @if($admins->count())
   <ul>
   @foreach($admins as $admin)

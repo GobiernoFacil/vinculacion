@@ -1,59 +1,51 @@
 @extends('layouts.master-admin')
+@section('title', 'Dashboard Empleo Abierto')
+@section('description', 'Dashboard Empleo Abierto del Gobierno del Estado de Puebla')
+@section('bodyclass', 'admin')
+
 @section('content')
-<div class="container">
-    <div class="row">
-		<div class="col-sm-12">
-			<h1>Panel de control</h1>
-		</div>
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Panel de control</h1>
 	</div>
 </div>
-
-
-<!-- Admins -->
-<h4>Admins</h4>
-@if($admins->count())
-  <ul>
-  @foreach($admins as $admin)
-    <li><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></li>
-  @endforeach
-  </ul>
-  <p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
-@else
-<p>Eres el único administrador</p>
-@endif
-
-
-<!-- Opds -->
-<h4>Universidades</h4>
-@if($opds->count())
-  <ul>
-  @foreach($opds as $opd)
-    <li>
-      univ: {{$opd->opd->opd_name}} | 
-      <a href="{{url("dashboard/opd/{$opd->id}")}}">user: {{$opd->name}}</a>
-    </li>
-  @endforeach
-  </ul>
-  <p><a href="{{url("dashboard/opds")}}">universidades</a></p>
-@else
-<p>No hay universidades registradas</p>
-@endif
-
-<!-- Chambers -->
-<h4>Cámaras</h4>
-@if($chambers->count())
-  <ul>
-  @foreach($chambers as $chamber)
-    <li>
-      cam: {{$chamber->chamber->chamber_comercial_name}} | 
-      <a href="{{url("dashboard/camara/{$chamber->id}")}}">user: {{$chamber->name}}</a>
-    </li>
-  @endforeach
-  </ul>
-  <p><a href="{{url("dashboard/camaras")}}">Cámaras</a></p>
-@else
-<p>No hay cámaras registradas</p>
-@endif
-
+<div class="row">
+	<!-- Admins -->
+	<div class="col-sm-4">
+		<div class="box">
+			<h4>Usuarios Administradores</h4>
+			@if($admins->count())
+			<h5><span>{{$admins->count()}}</span></h5>
+			@else
+			<h4>Eres el único administrador</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
+	</div>
+	<!-- Universidades -->
+	<div class="col-sm-4">
+		<div class="box">
+			<h4>Universidades</h4>
+			@if($opds->count())
+			<h5><span>{{$opds->count()}}</span></h5>
+			@else
+			<h4>Eres el único administrador</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
+	</div>
+	<!-- Chambers -->
+	<div class="col-sm-4">
+		<div class="box">
+			<h4>Cámaras</h4>
+			@if($chambers->count())
+			<h5><span>{{$opds->count()}}</span></h5>
+			@else
+			<h4>No hay cámaras registradas</h4>
+			@endif
+		</div>
+		<p><a href="{{url("dashboard/camaras")}}">Cámaras</a></p>
+	</div>
+</div>
 
 @endsection

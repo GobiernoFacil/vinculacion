@@ -34,12 +34,14 @@
 	<!--header-->
 	@include('layouts.nav')
 
-
-		<!-- breadcrumb-->
-
+	<!-- breadcrumb-->
+	@include('layouts.breadcrumb')
 	<!--content-->
-    @yield('content')
-
+    <section>
+	    <div class="container">
+		@yield('content')
+	    </div>
+    </section>
      <!--footer-->
 	@include('layouts.footer')
 </body>

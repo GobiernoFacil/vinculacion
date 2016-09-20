@@ -10,12 +10,16 @@
 			</div>
 			<div class="col-sm-3 right">
 				<a href="http://www.bancomundial.org/es/country/mexico" class="banco">Banco Mundial</a>
+				
+				<div class="clearfix"></div>
+				<div class="author">
+				<p>Con la colaboración artesanal de</p>
+				<a href="http://gobiernofacil.com/" class="gobiernofacil">Gobierno Fácil</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="author">
-		<p>Forjado Artesanalmente por</p>
-		<a href="http://gobiernofacil.com/" class="gobiernofacil">Gobierno Fácil</a>
+	<div class="support">
 	</div>
 </footer>
 <!--js-scripts-->
