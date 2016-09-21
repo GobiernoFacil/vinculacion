@@ -1,4 +1,9 @@
 @extends('layouts.master-admin')
+@section('title', 'Mi perfil')
+@section('description', 'Mi perfil en la plataforma de vinculación del Gobierno del Estado de Puebla')
+@section('bodyclass', 'me')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_a', 'me')
 @section('content')
 
 <!-- Perfil -->
