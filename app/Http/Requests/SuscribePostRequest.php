@@ -35,13 +35,4 @@ class SuscribePostRequest extends Request
         'type'                  => 'required'
       ];
     }
-
-    /*
-    public function messages(){
-      return [
-        'conditions.required' =>'Debes aceptar las condiciones de privacidad',
-        'type.required'       =>'Debes seleccionar un tipo de empresa'
-      ];
-    }
-    */
 }

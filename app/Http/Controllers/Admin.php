@@ -38,31 +38,24 @@ class Admin extends Controller
   public function index(){
     // [1] el usuario del sistema
     $user = Auth::user();
-
-    // [2] información del view. Hay que buscar la manera de quitarla de aquí o algo :P
-    $data                = [];
-    $data['title']       = 'Dashboard | ';
-    $data['description'] = 'Dashboard de Vinculación';
-    $data['body_class']  = 'dashboard';
     
-    // [3] cinco de cada cosa, como en el arca de noé. Bueno, el otro noé
-    $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
-    $opds      = User::where("type", "opd")->with("opd")->take(5)->get();
-    $chambers  = User::where("type", "chamber")->with("chamber")->take(5)->get();
-    $students  = User::where("type", "student")->with("student")->take(5)->get();
-    $companies = User::where("type", "company")->with("company")->take(5)->get();
+    // [2] contamos cuántos de cada uno
+    $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->count();
+    $opds      = User::where("type", "opd")->with("opd")->count();
+    $chambers  = User::where("type", "chamber")->with("chamber")->count();
+    $students  = User::where("type", "student")->with("student")->count();
+    $companies = User::where("type", "company")->with("company")->count();
 
-    // [4] regresa el view
+    // [3] regresa el view
     return view('admin.dashboard')->with([
       "user" => $user,
-      "data" => $data,
 
       // users
       "admins"    => $admins,
       "opds"      => $opds,
       "chambers"  => $chambers,
       "students"  => $students,
-      "companies" => $chambers,
+      "companies" => $companies,
     ]);
   }
 
@@ -126,13 +119,13 @@ class Admin extends Controller
   //
   //
   public function students(Request $request){
-    // [1] el usuario del sistema
+	  // [1] el usuario del sistema
     $user     = Auth::user();
-    // [2] los estudiantes
+    // [2] estudiantes
     $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.student-list')->with([
+    return view('admin.students-list')->with([
       "user"     => $user,
       "students" => $students
     ]);
@@ -142,6 +135,16 @@ class Admin extends Controller
   //
   //
   public function companies(Request $request){
+	// [1] el usuario del sistema
+    $user     = Auth::user();
+    // [2] empresas
+    $companies = User::where("type", "company")->with("company")->paginate($this->pageSize);
+    
+    // [3] regresa el view
+    return view('admin.companies-list')->with([
+      "user"     => $user,
+      "companies" => $companies
+    ]);
 
   }
 
