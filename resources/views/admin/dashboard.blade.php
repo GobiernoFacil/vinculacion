@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Dashboard Empleo Abierto')
 @section('description', 'Dashboard Empleo Abierto del Gobierno del Estado de Puebla')
-@section('bodyclass', 'admin')
+@section('bodyclass', 'dashboard')
 
 @section('content')
 <div class="row">
