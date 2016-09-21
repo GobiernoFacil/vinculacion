@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Dashboard Empleo Abierto')
 @section('description', 'Dashboard Empleo Abierto del Gobierno del Estado de Puebla')
-@section('bodyclass', 'admin users')
+@section('bodyclass', 'users')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_a', 'user')
 
