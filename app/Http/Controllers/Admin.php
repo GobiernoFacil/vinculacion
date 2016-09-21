@@ -39,12 +39,12 @@ class Admin extends Controller
     // [1] el usuario del sistema
     $user = Auth::user();
     
-    // [2] cinco de cada cosa, como en el arca de noé. Bueno, el otro noé
-    $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->take(5)->get();
-    $opds      = User::where("type", "opd")->with("opd")->take(5)->get();
-    $chambers  = User::where("type", "chamber")->with("chamber")->take(5)->get();
-    $students  = User::where("type", "student")->with("student")->take(5)->get();
-    $companies = User::where("type", "company")->with("company")->take(5)->get();
+    // [2] contamos cuántos de cada uno
+    $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->count();
+    $opds      = User::where("type", "opd")->with("opd")->count();
+    $chambers  = User::where("type", "chamber")->with("chamber")->count();
+    $students  = User::where("type", "student")->with("student")->count();
+    $companies = User::where("type", "company")->with("company")->count();
 
     // [3] regresa el view
     return view('admin.dashboard')->with([
@@ -55,7 +55,7 @@ class Admin extends Controller
       "opds"      => $opds,
       "chambers"  => $chambers,
       "students"  => $students,
-      "companies" => $chambers,
+      "companies" => $companies,
     ]);
   }
 
