@@ -1233,6 +1233,29 @@ a.btn, a.btn:visited {
     background: rgba(242, 242, 242, 0.3); }
     .list li:nth-child(odd) {
       background: rgba(242, 242, 242, 0.1); }
+  .list .note {
+    font-size: 13px;
+    color: #ccc; }
+
+.pagination {
+  list-style: none; }
+  .pagination li {
+    margin: 0 10px;
+    display: inline-block; }
+    .pagination li:first-child {
+      margin-left: 0; }
+    .pagination li.active span {
+      background: #133150;
+      color: white;
+      padding: 3px 7px; }
+    .pagination li.disabled {
+      color: #ccc; }
+    .pagination li a {
+      background: #eb7c23;
+      color: white;
+      padding: 3px 7px; }
+      .pagination li a:hover {
+        background: #e06d14; }
 
 .box {
   margin: 40px 0;
