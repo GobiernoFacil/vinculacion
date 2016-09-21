@@ -1,4 +1,10 @@
 @extends('layouts.master-admin')
+@section('title', 'Lista de Universidades')
+@section('description', 'Lista de Universidade del Gobierno del Estado de Puebla')
+@section('bodyclass', 'opds')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_a', 'opds')
+
 @section('content')
 
 <!-- Universidades -->
