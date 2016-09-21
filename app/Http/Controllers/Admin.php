@@ -135,6 +135,16 @@ class Admin extends Controller
   //
   //
   public function companies(Request $request){
+	// [1] el usuario del sistema
+    $user     = Auth::user();
+    // [2] empresas
+    $companies = User::where("type", "company")->with("company")->paginate($this->pageSize);
+    
+    // [3] regresa el view
+    return view('admin.companies-list')->with([
+      "user"     => $user,
+      "companies" => $companies
+    ]);
 
   }
 
