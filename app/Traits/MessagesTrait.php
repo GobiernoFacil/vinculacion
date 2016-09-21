@@ -18,7 +18,10 @@ trait MessagesTrait{
         'email.unique'   => 'el correo debe ser único en el sistema',
 
         // CHAMBER
-        'chamber_comercial_name.required' => 'el nombre de la cámara es necesario'
+        'chamber_comercial_name.required' => 'el nombre de la cámara es necesario',
+        'chamber_rfc.required'            => 'el rfc es requerido',
+        'chamber_rfc.max'                 => 'el campo no puede tener más de 14 caracteres',
+        'chamber_rfc.unique'              => 'el rfc ya está registrado por otra cámara',
       ];
     }
 }

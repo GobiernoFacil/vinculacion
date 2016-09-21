@@ -7,7 +7,7 @@ use App\Http\Requests\Request;
 // [ LOAD TRAITS ]
 use App\Traits\MessagesTrait;
 
-class SaveAdminRequest extends Request
+class SaveChamberRequest extends Request
 {
     use MessagesTrait;
     /**
@@ -28,9 +28,11 @@ class SaveAdminRequest extends Request
     public function rules()
     {
         return [
-          'name'     => 'required',
-          'email'    => 'required|email|max:255|unique:users',
-          'password' => 'required|min:6'
+          'name'                   => 'required',
+          'email'                  => 'required|email|max:255|unique:users',
+          'password'               => 'required|min:6',
+          'chamber_comercial_name' => 'required',
+          'chamber_rfc'            => 'required|max:14|unique:chambers'
         ];
     }
 }

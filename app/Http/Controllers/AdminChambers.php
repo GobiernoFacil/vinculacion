@@ -14,6 +14,7 @@ use App\models\Chamber;
 
 // FormValidators
 use App\Http\Requests\UpdateChamberRequest;
+use App\Http\Requests\SaveChamberRequest;
 
 class AdminChambers extends Controller
 {
@@ -35,11 +36,26 @@ class AdminChambers extends Controller
   }
 
   public function add(){
-
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    // [3] el formulario de crear cámara
+    return view("admin.chamber-create")->with([
+      "user" => $user
+    ]);
   }
 
-  public function save(Request $request){
+  public function save(SaveChamberRequest $request){
+    // [1] se genera el nuevo usuario para la cámara
+    $new_user = new User();
+    $new_user->name     = $request->name;
+    $new_user->email    = $request->email;
+    $new_user->password = Hash::make($request->password);
+    $new_user->type     = "chamber";
+    $new_user->save();
 
+    $chm = $new_user->chamber()->firstOrCreate($request->except(['_token', 'name', 'email', 'password']));
+
+    return redirect("dashboard/camaras");
   }
 
   public function edit($id){
