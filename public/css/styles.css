@@ -1210,7 +1210,8 @@ a.btn, a.btn:visited {
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   float: left;
   line-height: 58px;
-  padding: 0 30px 0 20px; }
+  padding: 0 30px 0 20px;
+  margin: 0; }
   .main_nav a:first-child {
     border-left: 1px solid rgba(255, 255, 255, 0.5); }
   .main_nav a:hover {
@@ -1218,6 +1219,20 @@ a.btn, a.btn:visited {
   .main_nav a.current {
     background: white;
     color: #133150; }
+
+.list {
+  list-style: none;
+  margin: 40px 0; }
+  .list .titles {
+    background: white;
+    border-bottom: 1px solid #ccc;
+    font-weight: 700; }
+  .list li {
+    padding: 10px 0 15px;
+    border-bottom: 1px dotted #ccc;
+    background: rgba(242, 242, 242, 0.3); }
+    .list li:nth-child(odd) {
+      background: rgba(242, 242, 242, 0.1); }
 
 .box {
   margin: 40px 0;
