@@ -1,8 +1,20 @@
 @extends('layouts.master-admin')
+@section('title', 'Crear Usuario Administrador')
+@section('description', 'Crear Usuario Administrador en la plataforma SEP del Gobierno del Estado de Puebla')
+@section('bodyclass', 'users')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_a', 'user create')
+
+
 @section('content')
 <div class="container">
-<!-- Formulario de nuevo admin -->
-<h4>Crear administrador</h4>
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Crear administrador</h1>
+		</div>
+	</div>	
+	
+	<!-- Formulario de nuevo admin -->
 
 <!-- 
      El form se pega a un objeto, y así se llenan automáticamente los inputs
