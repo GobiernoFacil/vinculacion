@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h1>Crear administrador</h1>
+			<h1 class="separator">Crear administrador</h1>
 		</div>
 	</div>	
 	
@@ -32,7 +32,7 @@
 {!! Form::open(['url' => 'dashboard/administrador/crear', "class" => "form-horizontal"]) !!}
 
 <p>
-  <label>nombre</label>
+  <label>Nombre</label>
   {{Form::text('name', null, ["class" => "form-control"])}}
   @if($errors->has('name'))
     <strong>{{$errors->first('name')}}</strong>
@@ -40,7 +40,7 @@
 </p>
 
 <p>
-  <label>correo</label>
+  <label>Correo</label>
   {{Form::text('email', null, ["class" => "form-control"])}}
   @if($errors->has('email'))
     <strong>{{$errors->first('email')}}</strong>
@@ -48,14 +48,14 @@
 </p>
 
 <p>
-  <label>password</label>
+  <label>Contraseña</label>
   {{Form::password('password', ['class' => 'form-control'])}}
   @if($errors->has('password'))
     <strong>{{$errors->first('password')}}</strong>
   @endif
 </p>
 
-<p>{{Form::submit('Crear administrador')}}</p>
+<p>{{Form::submit('Crear administrador', ['class' => 'btn'])}}</p>
 
 <!-- se cierra el form -->
 {!! Form::close() !!}
