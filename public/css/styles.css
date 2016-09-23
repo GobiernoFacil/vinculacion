@@ -225,6 +225,17 @@ input[type="search"]::-webkit-search-decoration {
     background-color: #e8e8e8;
     border: 0; }
 
+input.btn {
+  border: 0;
+  background: #eb7c23;
+  color: white;
+  font-size: 15px;
+  line-height: 50px;
+  padding: 0 20px; }
+  input.btn:hover {
+    background: #e06d14;
+    cursor: pointer; }
+
 .table {
   width: 100%;
   max-width: 100%;
@@ -1117,6 +1128,17 @@ section {
       list-style: none;
       font-size: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.admin section {
+  padding: 60px 0 120px; }
+  .admin section h1 {
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px; }
+    .admin section h1.separator {
+      margin-bottom: 60px; }
+
+.admin.dashboard section {
+  padding: 90px 0 120px; }
 
 .img_company {
   padding: 10px 0;
