@@ -27,15 +27,20 @@ class Suscribe extends Controller
     // la documentación para usar este tipo de validación, está en:
     // https://laravel.com/docs/5.2/validation#form-request-validation
     $user = new User([
-      'name'     => '(ಠ_ಠ)',
+      'name'     => '(ಠ_ಠ) mi nombre es...',
       'email'    => $request->email,
       'password' => Hash::make($request->password),
       'type'     => $request->type,
     ]);
 
     $user->save();
-    Auth::login($user);
 
+    // envía el correo de suscripción
+    $path = base_path();
+    exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
+
+    // autoriza al usuario y lo redirecciona a su dashboard
+    Auth::login($user);
     return redirect('guide-me');
 
 

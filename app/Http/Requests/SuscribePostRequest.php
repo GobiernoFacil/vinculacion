@@ -32,7 +32,7 @@ class SuscribePostRequest extends Request
         'password'              => 'required|min:6|confirmed',
         'password_confirmation' => 'required|min:6|same:password',
         'conditions'            => 'required',
-        'type'                  => 'required'
+        'type'                  => 'required|in:company,student'
       ];
     }
 }
