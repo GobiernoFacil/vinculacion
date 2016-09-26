@@ -8,6 +8,13 @@ use App\Http\Requests;
 use Auth;
 use Hash;
 
+// models
+use App\User;
+use App\models\Vacant;
+use App\models\Interview;
+use App\models\Student;
+use App\models\Contract;
+
 class Companies extends Controller
 {
   /*
@@ -15,8 +22,9 @@ class Companies extends Controller
    * ----------------------------------------------------------------
    */
   public function index(){
-	// [1] el usuario del sistema
-    $user = Auth::user();
+	// [1] el usuario del sistema, los convenios, las ofertas de trabajo y las entrevistas
+    $user     = Auth::user();
+    $company  = $user->company->with(["contracts.opd", "vacancies", "interviews.student"])->get();
     return view("companies.dashboard")->with([
      	"user"   => $user
     ]);
@@ -25,14 +33,14 @@ class Companies extends Controller
   // Las vacantes
   //
   //
-  public function vacancies($page = 1){
+  public function vacancies(){
 
   }
 
   // Los convenios
   //
   //
-  public function contracts($page = 1){
+  public function contracts(){
 
   }
 

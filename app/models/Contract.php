@@ -17,12 +17,12 @@ protected $fillable=['company_id','opd_id','contract_timestamp','contract_opd','
 
 //modelosrelacionados
 function opd(){
-return $this->belongsTo("App\Opd");
+return $this->belongsTo("App\models\Opd");
 }
 
 //modelosrelacionados
 function company(){
-return $this->belongsTo("App\Company");
+return $this->belongsTo("App\models\Company");
 }
 
 

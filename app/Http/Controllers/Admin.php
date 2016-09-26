@@ -224,6 +224,9 @@ class Admin extends Controller
    * ----------------------------------------------------------------
    */
 
+  //
+  //
+  //
   public function view($id){
     $user  = Auth::user();
     $admin = User::find($id);
@@ -234,6 +237,9 @@ class Admin extends Controller
     ]); 
   }
 
+  //
+  //
+  //
   public function add(){
     $user  = Auth::user();
 
@@ -242,6 +248,9 @@ class Admin extends Controller
     ]); 
   }
 
+  //
+  //
+  //
   public function save(SaveAdminRequest $request){
     $admin           = new User();
     $admin->type     = "admin";
@@ -253,6 +262,9 @@ class Admin extends Controller
     return redirect("dashboard/administradores");
   }
 
+  //
+  //
+  //
   public function edit($id){
     $user  = Auth::user();
     $admin = User::find($id);
@@ -263,6 +275,9 @@ class Admin extends Controller
     ]);
   }
 
+  //
+  //
+  //
   public function update(UpdateAdminRequest $request, $id){
     $admin        = User::find($id);
     $admin->name  = $request->name;
@@ -276,6 +291,9 @@ class Admin extends Controller
     return redirect("dashboard/administradores");
   }
 
+  //
+  //
+  //
   public function delete($id){
 
   }

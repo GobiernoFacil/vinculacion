@@ -27,17 +27,17 @@ class Company extends Model
 
 
     // modelos relacionados
-    function contract(){
+    function contracts(){
       return $this->hasMany("App\models\Contract");
     }
 
     // modelos relacionados
-    function vacant(){
+    function vacancies(){
       return $this->hasMany("App\models\Vacant");
     }
 
     // modelos relacionados
-    function interview(){
+    function interviews(){
       return $this->hasMany("App\models\Interview");
     }
 }

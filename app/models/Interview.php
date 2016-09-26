@@ -11,7 +11,12 @@ class Interview extends Model
 
     //modelosrelacionados
     function company(){
-      return $this->belongsTo("App\Company");
+      return $this->belongsTo("App\models\Company");
+    }
+
+    //modelosrelacionados
+    function student(){
+      return $this->belongsTo("App\models\Student");
     }
 
 }
