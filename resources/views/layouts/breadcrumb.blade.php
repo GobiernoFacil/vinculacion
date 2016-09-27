@@ -17,6 +17,11 @@
 				</a></li>
 				<li>Editar Usuario</li>
 				@endif
+				@if ($__env->yieldContent('breadcrumb_a') == 'user-view')
+				<li><a href="{{ url('dashboard/administradores')}}">Usuarios Administradores
+				</a></li>
+				<li>Ver Usuario</li>
+				@endif
 												
 				@if ($__env->yieldContent('breadcrumb_a') == 'opds')
 				<!-- opds -->
