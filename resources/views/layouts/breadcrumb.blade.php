@@ -11,7 +11,13 @@
 				<li><a href="{{ url('dashboard/administradores')}}">Usuarios Administradores
 				</a></li>
 				<li>Crear Usuario</li>
-				@endif								
+				@endif
+				@if ($__env->yieldContent('breadcrumb_a') == 'user-update')
+				<li><a href="{{ url('dashboard/administradores')}}">Usuarios Administradores
+				</a></li>
+				<li>Editar Usuario</li>
+				@endif
+												
 				@if ($__env->yieldContent('breadcrumb_a') == 'opds')
 				<!-- opds -->
 				<li>Universidades</li>
