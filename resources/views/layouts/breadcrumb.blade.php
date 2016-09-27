@@ -28,6 +28,11 @@
 				<!-- me -->
 				<li>Mi Perfil</li>
 				@endif
+				@if ($__env->yieldContent('breadcrumb_a') == 'me-update')
+				<li><a href="{{ url('dashboard/yo')}}">Mi Perfil
+				</a></li>
+				<li>Editar Perfil</li>
+				@endif
 			</ul>
 		</div>
 	</div>
