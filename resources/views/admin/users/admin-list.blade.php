@@ -28,7 +28,7 @@
 				<li class="row">
 					<span class="col-sm-4"><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></span>
 					<span class="col-sm-4">{{$admin->email}}</span>
-					<span class="col-sm-2">{{$admin->enabled == 0 ? "Habilitado" : "Deshabilitado"}}</span>
+					<span class="col-sm-2">{{$admin->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</span>
 					<span class="col-sm-2">{{date('d-m-Y', strtotime($admin->created_at))}}</span>
 				</li>
 		  @endforeach
