@@ -7,7 +7,8 @@ trait MessagesTrait{
       return [
         // SUSCRIBE
         'conditions.required' =>'Debes aceptar las condiciones de privacidad',
-        'type.required'       =>'Debes seleccionar un tipo de empresa',
+        'type.required'       =>'Debes seleccionar un tipo de usuario',
+        'type.in'             => "Solo puedes registrar empresas o estudiantes",
         
         // USER
         'name.required'  => 'El nombre es requerido',

@@ -168,6 +168,50 @@ Route::group(['middleware' => ['auth']], function () {
     // @Companies controller
     Route::get("tablero-empresa", "Companies@index");
     Route::get("tablero-empresa/yo", "Companies@me");
+    Route::get('tablero-empresa/yo/editar', 'Companies@changeMe');
+    Route::post('tablero-empresa/yo/editar', 'Companies@updateMe');
+    // @Companies controller
+    Route::get("tablero-empresa/vacantes", "Companies@vacancies");
+    Route::get("tablero-empresa/convenios", "Companies@contracts");
+    // @CompaniesVacancies controller
+    Route::get('tablero-empresa/vacante/crear', 'CompanyVacancies@add');
+    Route::post('tablero-empresa/vacante/crear', 'CompanyVacancies@save');
+    Route::get('tablero-empresa/vacante/editar/{id}', 'CompanyVacancies@edit');
+    Route::post('tablero-empresa/vacante/editar/{id}', 'CompanyVacancies@update');
+    Route::get('tablero-empresa/vacante/eliminar/{id}', 'CompanyVacancies@delete');
+    Route::get('tablero-empresa/vacante/{id}', 'CompanyVacancies@view');
+    Route::post('tablero-empresa/vacante/habilitar/{id}', 'CompanyVacancies@enable');
+    Route::post('tablero-empresa/vacante/deshabilitar/{id}', 'CompanyVacancies@disable');
+    // @CompaniesVacancies controller
+    Route::get('tablero-empresa/vacante/{id}/estudiantes', 'CompanyVacancies@students');
+    Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}', 'CompanyVacancies@student');
+    Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}/calificar', 'CompanyVacancies@rateStudent');
+    Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
+    Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
+
+/*
+ public function students($id, $page = 1){
+
+  }
+
+  
+  public function student($id){
+
+  }
+
+  public function rateStudent($id){
+
+  }
+
+  public function interviews($id, $page = 1){
+
+  }
+
+  public function interview($id){
+
+  }
+
+*/
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
