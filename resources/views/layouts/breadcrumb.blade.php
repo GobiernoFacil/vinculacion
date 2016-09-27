@@ -27,6 +27,12 @@
 				<!-- opds -->
 				<li>Universidades</li>
 				@endif
+				@if ($__env->yieldContent('breadcrumb_a') == 'opd-view')
+				<li><a href="{{ url('dashboard/opds')}}">Universidades
+				</a></li>
+				<li>Ver Universidad</li>
+				@endif
+				
 				@if ($__env->yieldContent('breadcrumb_a') == 'estudiantes')
 				<!-- estudiantes -->
 				<li>Estudiantes</li>
