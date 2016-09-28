@@ -37,10 +37,18 @@
 				<!-- estudiantes -->
 				<li>Estudiantes</li>
 				@endif
+				@if ($__env->yieldContent('breadcrumb_a') == 'student-view')
+				<li><a href="{{ url('dashboard/estudiantes')}}">Estudiantes
+				</a></li>
+				<li>Ver Estudiante</li>
+				@endif
+				
+				
 				@if ($__env->yieldContent('breadcrumb_a') == 'empresas')
-				<!-- estudiantes -->
+				<!-- empresas -->
 				<li>Empresas</li>
 				@endif
+				
 				@if ($__env->yieldContent('breadcrumb_a') == 'me')
 				<!-- me -->
 				<li>Mi Perfil</li>
