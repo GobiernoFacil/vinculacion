@@ -1170,7 +1170,8 @@ a.btn, a.btn:visited {
   line-height: 50px;
   text-align: center; }
   a.btn:hover, a.btn:visited:hover {
-    background: #e06d14; }
+    background: #e06d14;
+    color: white; }
   a.btn.danger, a.btn:visited.danger {
     background: red; }
     a.btn.danger.md-close, a.btn:visited.danger.md-close {
@@ -1184,7 +1185,17 @@ a.btn, a.btn:visited {
       -ms-border-radius: 50%;
       border-radius: 50%; }
     a.btn.danger:hover, a.btn:visited.danger:hover {
-      background: #e60000; }
+      background: #e60000;
+      color: white; }
+  a.btn.add, a.btn:visited.add {
+    background: #005291; }
+    a.btn.add:hover, a.btn:visited.add:hover {
+      background: #004477; }
+  a.btn.xs, a.btn:visited.xs {
+    font-size: 14px;
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 10px; }
 
 /* =ADMIN
 -------------------------------------------------------------- */
@@ -1260,9 +1271,22 @@ a.btn, a.btn:visited {
     background: rgba(242, 242, 242, 0.3); }
     .list li:nth-child(odd) {
       background: rgba(242, 242, 242, 0.1); }
+    .list li a.link_view {
+      border-bottom: 1px solid #005291;
+      display: inline-block;
+      font-weight: 700;
+      margin-bottom: 10px; }
+      .list li a.link_view:hover {
+        color: #005291; }
   .list .note {
     font-size: 13px;
     color: #ccc; }
+  .list .disabled, .list .enabled {
+    font-size: 13px;
+    padding-left: 5px;
+    border-left: 5px solid red; }
+  .list .enabled {
+    border-left: 5px solid green; }
 
 .list_data {
   border-top: 1px solid rgba(90, 90, 90, 0.1);
