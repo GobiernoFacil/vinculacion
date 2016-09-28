@@ -125,7 +125,7 @@ class Admin extends Controller
     $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.students-list')->with([
+    return view('admin.students.students-list')->with([
       "user"     => $user,
       "students" => $students
     ]);
