@@ -12,7 +12,7 @@
 		<h1>Usuarios Administradores</h1>
 	</div>
 	<div class="col-sm-3 col-sm-offset-9">
-		<p><a href="{{url("dashboard/administrador/crear")}}" class="btn"> + Crear administrador</a></p>
+		<p><a href="{{url("dashboard/administrador/crear")}}" class="btn add"> + Crear administrador</a></p>
 	</div>
 	<div class="col-sm-12">
 		@if($admins->count())
@@ -21,15 +21,21 @@
 			  		<span class="col-sm-4">Nombre</span>
 			  		<span class="col-sm-4">Email</span>
 			  		<span class="col-sm-2">Estado</span>
-			  		<span class="col-sm-2">Creado</span>
+			  		<span class="col-sm-2">Acciones</span>
 			  </li>
 			  
 		  @foreach($admins as $admin)
 				<li class="row">
-					<span class="col-sm-4"><a href="{{url("dashboard/administrador/{$admin->id}")}}"> {{$admin->name}}</a></span>
+					<span class="col-sm-4"><a href="{{url("dashboard/administrador/{$admin->id}")}}" class="link_view"> {{$admin->name}}</a><br>
+					<span class="note">Creado: {{date('d-m-Y', strtotime($admin->created_at))}}</span>
+					</span>
 					<span class="col-sm-4">{{$admin->email}}</span>
-					<span class="col-sm-2">{{$admin->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</span>
-					<span class="col-sm-2">{{date('d-m-Y', strtotime($admin->created_at))}}</span>
+					<span class="col-sm-2">{!! $admin->enabled == 0 ? '<span class="disabled">Deshabilitado</span>' : '<span class="enabled">Habilitado</span>' !!}
+					</span>
+					<span class="col-sm-2">
+						<a href="{{url("dashboard/administrador/editar/{$admin->id}")}}" class="btn xs">Editar</a>
+						<a href="{{url("dashboard/administrador/eliminar/{$admin->id}")}}" class="btn danger xs">Eliminar</a>
+					</span>
 				</li>
 		  @endforeach
 		  </ul>
