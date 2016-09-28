@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Auth;
+// models
+use App\User;
+
 
 class AdminStudents extends Controller
 {
@@ -14,6 +18,13 @@ class AdminStudents extends Controller
    */
 
   public function view($id){
+	$user  = Auth::user();
+    $student = User::find($id);
+
+    return view("admin.students.student-profile")->with([
+      "user"  	=> $user,
+      "student" => $student
+    ]);
 
   }
 
