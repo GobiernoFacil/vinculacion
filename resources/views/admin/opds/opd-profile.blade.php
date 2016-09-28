@@ -22,7 +22,7 @@
 		<p><a href="{{url("dashboard/opd/editar/{$opd->id}")}}" class="btn">Editar</a></p>
 	</div>
 	<div class="col-sm-3">
-		<p><a href="{{url("dashboard/op/eliminar/{$opd->id}")}}" class="btn danger">Eliminar</a></p>
+		<p><a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger">Eliminar</a></p>
 	</div>
 </div>
 @endsection
