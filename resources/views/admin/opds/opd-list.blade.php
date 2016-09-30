@@ -15,20 +15,24 @@
 	@if($opds->count())
 	  <ul class="list">
 	  	<li class="row titles">
-	  	  	<span class="col-sm-4">Nombre</span>
-	  	  	<span class="col-sm-3">Email</span>
-	  	  	<span class="col-sm-2">Ubicación</span>
+	  	  	<span class="col-sm-4">Universidad</span>
+	  	  	<span class="col-sm-3">Ubicación</span>
 	  	  	<span class="col-sm-3">Contacto</span>
+	  	  	<span class="col-sm-2">Acciones</span>
 	  	</li>
 	  @foreach($opds as $opd)
 	    <li class="row">
-	    	<span class="col-sm-4"><a href="{{url("dashboard/opd/{$opd->id}")}}"> {{$opd->name}}</a><br>
+	    	<span class="col-sm-4"><a href="{{url("dashboard/opd/{$opd->id}")}}" class="link_view"> {{$opd->name}}</a><br>
+	    	{{$opd->email}}<br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</span></span>
-			<span class="col-sm-3">{{$opd->email}}</span>
-			<span class="col-sm-2">{{$opd->opd->opd_city}}, {{$opd->opd->opd_state}}</span>
+			<span class="col-sm-3">{{$opd->opd->opd_city}}, {{$opd->opd->opd_state}}</span>
 			<span class="col-sm-3">{!!$opd->opd->opd_contact_name ? $opd->opd->opd_contact_name  . '<br>' : '' !!} 
 			{!!$opd->opd->opd_contact_email ? $opd->opd->opd_contact_email . '<br>' : ''!!}
 			{{ $opd->opd->opd_contact_phone }} </span>
+			<span class="col-sm-2">
+				<a href="{{url("dashboard/opd/editar/{$opd->id}")}}" class="btn xs">Editar</a>
+						<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs">Eliminar</a>
+			</span>
 	    </li>
 	  @endforeach
 	  </ul>
