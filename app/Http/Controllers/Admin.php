@@ -93,7 +93,7 @@ class Admin extends Controller
     $opds = User::where("type", "opd")->with("opd")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.opd-list')->with([
+    return view('admin.opds.opd-list')->with([
       "user" => $user,
       "opds" => $opds
     ]);
