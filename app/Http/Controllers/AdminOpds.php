@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Auth;
+// models
+use App\User;
 class AdminOpds extends Controller
 {
   /*
@@ -14,7 +16,13 @@ class AdminOpds extends Controller
    */
 
   public function view($id){
+  	$user  = Auth::user();
+    $opd = User::find($id);
 
+    return view("admin.opds.opd-profile")->with([
+      "user"  => $user,
+      "opd" => $opd
+    ]);
   }
 
   public function add(){

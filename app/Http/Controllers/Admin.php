@@ -75,7 +75,7 @@ class Admin extends Controller
                  ->where("id", "!=", $user->id)->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.admin-list')->with([
+    return view('admin.users.admin-list')->with([
       "user"   => $user,
       "admins" => $admins
     ]);
@@ -93,7 +93,7 @@ class Admin extends Controller
     $opds = User::where("type", "opd")->with("opd")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.opd-list')->with([
+    return view('admin.opds.opd-list')->with([
       "user" => $user,
       "opds" => $opds
     ]);
@@ -125,7 +125,7 @@ class Admin extends Controller
     $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
     
     // [3] regresa el view
-    return view('admin.students-list')->with([
+    return view('admin.students.students-list')->with([
       "user"     => $user,
       "students" => $students
     ]);
@@ -231,7 +231,7 @@ class Admin extends Controller
     $user  = Auth::user();
     $admin = User::find($id);
 
-    return view("admin.admin-profile")->with([
+    return view("admin.users.admin-profile")->with([
       "user"  => $user,
       "admin" => $admin
     ]); 
@@ -243,7 +243,7 @@ class Admin extends Controller
   public function add(){
     $user  = Auth::user();
 
-    return view("admin.admin-create")->with([
+    return view("admin.users.admin-create")->with([
       "user"  => $user
     ]); 
   }
@@ -269,7 +269,7 @@ class Admin extends Controller
     $user  = Auth::user();
     $admin = User::find($id);
 
-    return view("admin.admin-update")->with([
+    return view("admin.users.admin-update")->with([
       "user"  => $user,
       "admin" => $admin 
     ]);

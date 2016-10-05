@@ -4,13 +4,17 @@
 @section('bodyclass', 'me')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_a', 'me')
+
 @section('content')
-
-<!-- Perfil -->
-<h4>Mi perfil</h4>
-
-<p>nombre: {{$user->name}}</p>
-<p>correo: {{$user->email}}</p>
-
-<p><a href="{{url('dashboard/yo/editar')}}">editar</a></p>
+<div class="row">
+	<div class="col-sm-10 col-sm-offset-1">
+		<!-- Perfil -->
+		<h1>{{$user->name}}</h1>
+		
+		<p>{{$user->email}}</p>
+	</div>
+	<div class="col-sm-4 col-sm-offset-1">
+		<p><a href="{{url('dashboard/yo/editar')}}" class="btn">Editar Perfil</a></p>
+	</div>
+</div>
 @endsection
