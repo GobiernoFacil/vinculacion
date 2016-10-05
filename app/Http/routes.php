@@ -189,29 +189,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
     Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
 
-/*
- public function students($id, $page = 1){
-
-  }
-
-  
-  public function student($id){
-
-  }
-
-  public function rateStudent($id){
-
-  }
-
-  public function interviews($id, $page = 1){
-
-  }
-
-  public function interview($id){
-
-  }
-
-*/
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
