@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      $this->call(fakeUsersSeeder::class);
-      $this->call(OpdsTableSeeder::class);
+      $this->call(OnlyAdminSeeder::class);
+      $this->call(RealOpdSeeder::class);
     }
 }
