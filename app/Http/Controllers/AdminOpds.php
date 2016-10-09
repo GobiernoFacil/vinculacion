@@ -34,7 +34,15 @@ class AdminOpds extends Controller
   }
 
   public function edit($id){
-
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    // [2] el usuario a editar
+    $opd  = User::with("opd.contact")->find($id);
+    // [3] el view para editar
+    return view("admin.opd-update")->with([
+      "user" => $user,
+      "opd"  => $opd
+    ]);
   }
 
   public function update(Request $request, $id){

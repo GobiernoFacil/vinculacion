@@ -31,6 +31,6 @@ protected $fillable = ["name", "url", "city", "state", "address", "zip"];
 
   public function contact()
   {
-    return $this->morphMany('App\models\Contact', 'contact');
+    return $this->morphOne('App\models\Contact', 'contact');
   }
 }

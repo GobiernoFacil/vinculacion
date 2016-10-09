@@ -33,14 +33,14 @@ class RealOpdSeeder extends Seeder
           $opd_user->save();
           
           // [2] Genera la opd
-          $opd          = new Opd;
-          $opd->name    = $row->universidad;
-          $opd->url     = $row->url;
-          $opd->city    = $row->municipio;
-          $opd->state   = $row->estado;
-          $opd->address = $row->dirección;
-          $opd->zip     = $row->zip;
-          $opd->user_id = $opd_user->id;
+          $opd           = new Opd;
+          $opd->opd_name = $row->universidad;
+          $opd->url      = $row->url;
+          $opd->city     = $row->municipio;
+          $opd->state    = $row->estado;
+          $opd->address  = $row->dirección;
+          $opd->zip      = $row->zip;
+          $opd->user_id  = $opd_user->id;
           $opd->save();
 
           // [3] Genera el contacto de la opd

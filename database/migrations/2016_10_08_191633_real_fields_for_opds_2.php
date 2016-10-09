@@ -13,14 +13,7 @@ class RealFieldsForOpds2 extends Migration
     public function up()
     {
         Schema::table('opds', function (Blueprint $table) {
-            $table->string("name")->nullable();
-            $table->string("url")->nullable();
-            $table->string("city")->nullable();
-            $table->string("state")->nullable();
-            $table->string("address")->nullable();
-            $table->string("zip")->nullable();
-
-            $table->dropColumn('opd_name');
+            //$table->dropColumn('opd_name');
             $table->dropColumn('opd_description');
             $table->dropColumn('opd_chancellor');
             $table->dropColumn('opd_street');
@@ -36,6 +29,13 @@ class RealFieldsForOpds2 extends Migration
             $table->dropColumn('opd_contact_email');
             $table->dropColumn('opd_contact_phone');
             $table->dropColumn('opd_contact_mobile');
+
+            //$table->string("opd_name")->nullable();
+            $table->string("url")->nullable();
+            $table->string("city")->nullable();
+            $table->string("state")->nullable();
+            $table->string("address")->nullable();
+            $table->string("zip")->nullable();
             //
         });
     }
