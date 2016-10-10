@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Hash;
 // models
 use App\User;
 
@@ -30,11 +31,43 @@ class AdminCompanies extends Controller
   }
 
   public function add(){
+    $user    = Auth::user();
+
+    return view("admin.companies.company-add")->with([
+      "user"  => $user,
+    ]);
 
   }
 
   public function save(Request $request){
 
+    // [1] crea el usuario
+    $user = new User([
+      'name'     => $request->name,
+      'email'    => $request->email,
+      'type'     => 'company',
+    ]);
+    if(!empty($request->password)){
+      $user->password = Hash::make($request->password);
+    }
+
+    $user->save();
+
+    // [2] envía el correo de suscripción
+    $path = base_path();
+    exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
+
+    // [3] se crea el objeto empresa
+    $company = $user->company()->firstOrCreate([]);
+    $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    $company->contact()->firstOrCreate([]);
+    $company->contact->update([
+      "name"  => $request->cname,
+      "email" => $request->cemail,
+      "phone" => $request->cphone,
+    ]);
+    // send to view
+    return redirect("dashboard/empresa/{$user->id}");
   }
 
   public function edit($id){
