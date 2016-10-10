@@ -11,7 +11,7 @@
 <h5>Datos de usuario</h5>
 <p>
   <label>nombre</label>
-  {{Form::text('uname', $opd->name)}}
+  {{Form::text('name', $opd->name)}}
   @if($errors->has('name'))
     <strong>{{$errors->first('name')}}</strong>
   @endif
@@ -19,7 +19,7 @@
 
 <p>
   <label>correo</label>
-  {{Form::text('uemail', $opd->email)}}
+  {{Form::text('email', $opd->email)}}
   @if($errors->has('email'))
     <strong>{{$errors->first('email')}}</strong>
   @endif
@@ -39,9 +39,9 @@
 <h5>Datos de la universidad</h5>
   <p>
     <label>universidad</label>
-    {{Form::text('name')}}
-    @if($errors->has('name'))
-      <strong>{{$errors->first('name')}}</strong>
+    {{Form::text('opd_name')}}
+    @if($errors->has('opd_name'))
+      <strong>{{$errors->first('opd_name')}}</strong>
     @endif
   </p>
 

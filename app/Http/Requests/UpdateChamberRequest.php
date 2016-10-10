@@ -31,11 +31,12 @@ class UpdateChamberRequest extends Request
     public function rules()
     {
         $user = User::find($this->route("id"));
+        
         return [
-        'name'                   => 'required',
-        'email'                  => 'required|email|max:255' . ($user->email != $this->email ? '|unique:users' : ''),
-        'password'               => 'min:6',
-        'chamber_comercial_name' => 'required'
-      ];
+          'name'                   => 'required',
+          'email'                  => 'required|email|max:255' . ($user->email != $this->email ? '|unique:users' : ''),
+          'password'               => 'min:6',
+          'chamber_comercial_name' => 'required'
+        ];
     }
 }
