@@ -38,7 +38,7 @@ class Admin extends Controller
   public function index(){
     // [1] el usuario del sistema
     $user = Auth::user();
-    
+
     // [2] contamos cuántos de cada uno
     $admins    = User::where("type", "admin")->where("id", "!=", $user->id)->count();
     $opds      = User::where("type", "opd")->with("opd")->count();
@@ -73,7 +73,7 @@ class Admin extends Controller
     //     en el view se muestra la paginación básica, aunque no está mal.
     $admins = User::where("type", "admin")
                  ->where("id", "!=", $user->id)->paginate($this->pageSize);
-    
+
     // [3] regresa el view
     return view('admin.users.admin-list')->with([
       "user"   => $user,
@@ -91,7 +91,7 @@ class Admin extends Controller
     //      número de elementos por página. Para más info:
     //      https://laravel.com/docs/5.2/pagination
     $opds = User::where("type", "opd")->with("opd")->paginate($this->pageSize);
-    
+
     // [3] regresa el view
     return view('admin.opds.opd-list')->with([
       "user" => $user,
@@ -107,7 +107,7 @@ class Admin extends Controller
     $user     = Auth::user();
     // [2] las cámaras de comercio
     $chambers = User::where("type", "chamber")->with("chamber")->paginate($this->pageSize);
-    
+
     // [3] regresa el view
     return view('admin.chamber-list')->with([
       "user"     => $user,
@@ -123,7 +123,7 @@ class Admin extends Controller
     $user     = Auth::user();
     // [2] estudiantes
     $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
-    
+
     // [3] regresa el view
     return view('admin.students.students-list')->with([
       "user"     => $user,
@@ -139,9 +139,9 @@ class Admin extends Controller
     $user     = Auth::user();
     // [2] empresas
     $companies = User::where("type", "company")->with("company")->paginate($this->pageSize);
-    
+
     // [3] regresa el view
-    return view('admin.companies-list')->with([
+    return view('admin.companies.companies-list')->with([
       "user"     => $user,
       "companies" => $companies
     ]);
@@ -234,7 +234,7 @@ class Admin extends Controller
     return view("admin.users.admin-profile")->with([
       "user"  => $user,
       "admin" => $admin
-    ]); 
+    ]);
   }
 
   //
@@ -245,7 +245,7 @@ class Admin extends Controller
 
     return view("admin.users.admin-create")->with([
       "user"  => $user
-    ]); 
+    ]);
   }
 
   //
@@ -271,7 +271,7 @@ class Admin extends Controller
 
     return view("admin.users.admin-update")->with([
       "user"  => $user,
-      "admin" => $admin 
+      "admin" => $admin
     ]);
   }
 
