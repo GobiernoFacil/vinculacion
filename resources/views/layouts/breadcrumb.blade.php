@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12 breadcrumb">
 			<ul>
-				<li><a href="{{ url('dashboard')}}"><i class="material-icons">home</i> </a></li>				
+				<li><a href="{{ url('dashboard')}}"><i class="material-icons">home</i> </a></li>
 				@if ($__env->yieldContent('breadcrumb_a') == 'user')
 				<!-- users -->
 				<li>Usuarios Administradores</li>
@@ -22,7 +22,7 @@
 				</a></li>
 				<li>Ver Usuario</li>
 				@endif
-												
+
 				@if ($__env->yieldContent('breadcrumb_a') == 'opds')
 				<!-- opds -->
 				<li>Universidades</li>
@@ -32,7 +32,7 @@
 				</a></li>
 				<li>Ver Universidad</li>
 				@endif
-				
+
 				@if ($__env->yieldContent('breadcrumb_a') == 'estudiantes')
 				<!-- estudiantes -->
 				<li>Estudiantes</li>
@@ -42,13 +42,18 @@
 				</a></li>
 				<li>Ver Estudiante</li>
 				@endif
-				
-				
+
+
 				@if ($__env->yieldContent('breadcrumb_a') == 'empresas')
 				<!-- empresas -->
 				<li>Empresas</li>
 				@endif
-				
+				@if ($__env->yieldContent('breadcrumb_a') == 'company-view')
+				<li><a href="{{ url('dashboard/empresas')}}">Empresas
+				</a></li>
+				<li>Ver Empresa</li>
+				@endif
+
 				@if ($__env->yieldContent('breadcrumb_a') == 'me')
 				<!-- me -->
 				<li>Mi Perfil</li>
