@@ -3,11 +3,12 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\User;
+
 // [ LOAD TRAITS ]
 use App\Traits\MessagesTrait;
-class UpdateCompanyRequest extends Request
+class SaveCompanyRequest extends Request
 {
+    use MessagesTrait;
   /**
   * Determine if the user is authorized to make this request.
   *
@@ -25,12 +26,10 @@ class UpdateCompanyRequest extends Request
   */
   public function rules()
   {
-    $user = User::find($this->route("id"));
-
     return [
       // user rules
       'name'     => 'required',
-      'email'    => 'required|email|max:255' . ($user->email != $this->email ? '|unique:users' : ''),
+      'email'    => 'required|email|max:255|unique:users',
       'password' => 'min:6',
 
       // company rules

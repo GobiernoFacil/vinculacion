@@ -13,6 +13,7 @@ use App\User;
 
 // FormValidators
 use App\Http\Requests\UpdateCompanyRequest;
+use App\Http\Requests\SaveCompanyRequest;
 class AdminCompanies extends Controller
 {
   /*
@@ -39,7 +40,7 @@ class AdminCompanies extends Controller
 
   }
 
-  public function save(Request $request){
+  public function save(SaveCompanyRequest $request){
 
     // [1] crea el usuario
     $user = new User([
