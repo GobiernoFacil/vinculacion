@@ -9,6 +9,9 @@ use Auth;
 // models
 use App\User;
 
+
+// FormValidators
+use App\Http\Requests\UpdateCompanyRequest;
 class AdminCompanies extends Controller
 {
   /*
@@ -47,7 +50,7 @@ class AdminCompanies extends Controller
 
   }
 
-  public function update(Request $request, $id){
+  public function update(UpdateCompanyRequest $request, $id){
     $user = User::find($id);
     $old_email = $user->email;
 

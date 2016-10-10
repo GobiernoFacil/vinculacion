@@ -28,9 +28,9 @@
 			<span class="col-sm-2">{{$company->email}}</span>
 			<span class="col-sm-2">{{$company->enabled == 0 ? 'Habilitado' : 'Deshabilitado'}}</span>
 			<span class="col-sm-3">
-				{!! $company->company->company_contact_name ? $company->company->company_contact_name . '<br>' : '' !!}
-				{!! $company->company->company_contact_phone ? $company->company->company_contact_phone . '<br>' : '' !!}
-				{!! $company->company->company_contact_email ? $company->company->company_contact_email : '' !!}
+				{!!$company->company->has('contact') ? $company->company->contact->name  . '<br>' : '' !!}
+				{!!$company->company->has('contact') ? $company->company->contact->email . '<br>' : ''!!}
+				{{ $company->company->has('contact') ? $company->company->contact->phone : '' }} </span>
 			</span>
 			<span class="col-sm-2">
 				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
