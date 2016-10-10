@@ -40,4 +40,9 @@ class Company extends Model
     function interviews(){
       return $this->hasMany("App\models\Interview");
     }
+    // modelos relacionados
+    public function contact()
+    {
+      return $this->morphOne('App\models\Contact', 'contact');
+    }
 }

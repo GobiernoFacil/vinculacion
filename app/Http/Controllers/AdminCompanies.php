@@ -35,6 +35,15 @@ class AdminCompanies extends Controller
   }
 
   public function edit($id){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    // [2] el usuario a editar
+    $company  = User::with("company.contact")->find($id);
+    // [3] el view para editar
+    return view("admin.companies.company-update")->with([
+      "user" => $user,
+      "company"  => $company
+    ]);
 
   }
 

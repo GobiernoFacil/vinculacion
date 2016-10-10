@@ -33,7 +33,7 @@
 				{!! $company->company->company_contact_email ? $company->company->company_contact_email : '' !!}
 			</span>
 			<span class="col-sm-2">
-				<a href="{{url("dashboard/empresas/editar/{$company->id}")}}" class="btn xs">Editar</a>
+				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
 						<a href="{{url("dashboard/empresa/eliminar/{$company->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>
 	    </li>
