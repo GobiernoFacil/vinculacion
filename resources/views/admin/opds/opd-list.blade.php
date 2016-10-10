@@ -23,7 +23,7 @@
 	  @foreach($opds as $opd)
 	    <li class="row">
 	    	<span class="col-sm-4"><a href="{{url("dashboard/opd/{$opd->id}")}}" class="link_view"> {{$opd->opd->id}}</a><br>
-	    	{{$opd->email}}<br>
+	    	{{$opd->opd->opd_name}}<br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</span></span>
 			<span class="col-sm-3">{{$opd->opd->city}}, {{$opd->opd->state}}</span>
 			<span class="col-sm-3">{!!$opd->opd->has('contact') ? $opd->opd->contact->name  . '<br>' : '' !!} 

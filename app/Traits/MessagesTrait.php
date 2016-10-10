@@ -23,6 +23,17 @@ trait MessagesTrait{
         'chamber_rfc.required'            => 'el rfc es requerido',
         'chamber_rfc.max'                 => 'el campo no puede tener más de 14 caracteres',
         'chamber_rfc.unique'              => 'el rfc ya está registrado por otra cámara',
+
+        // OPD
+        'opd_name.required' => "el nombre de la universidad es requerido",
+        'opd_name.max'      => "el nombre debe tener menos de 255 caracteres",
+        
+        // ALL
+        'url.url'        => 'el campo debe ser un url válido',
+        'city.required'  => 'el campo de municipio es requerido',
+        'state.required' => 'el campo de estado es requerido',
+        'zip.numeric'    => 'el código postal solo acepta números',
+        'zip.max'        => 'el código postal solo puede tener 5 dígitos',
       ];
     }
 }

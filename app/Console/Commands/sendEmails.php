@@ -45,6 +45,9 @@ class sendEmails extends Command
         case "suscribe":
           $this->suscribeMessage($this->argument('data'));
           break;
+        case "new_email":
+          $this->changeEmail($this->argument('data'));
+          break;
 
         default: 
           return;
@@ -58,6 +61,15 @@ class sendEmails extends Command
       Mail::send('emails.suscribe', ['user' => $user], function ($m) use ($user) {
         $m->from('hello@gapeapp.com', 'GAPE app');
         $m->to($user->email, "Estimado usuario")->subject('bienvenido a la plataforma de trabajo abierto!');
+      });
+    }
+
+    private function changeEmail($id){
+      $user = User::findOrFail($id);
+
+      Mail::send('emails.new-email', ['user' => $user], function($m) use($user){
+        $m->from('hello@gapeapp.com', 'GAPE app');
+        $m->to($user->email, "Estimado usuario")->subject('Tu usuario de empleo abierto ha cambiado!');
       });
     }
 }

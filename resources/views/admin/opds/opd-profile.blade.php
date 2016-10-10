@@ -1,5 +1,5 @@
 @extends('layouts.master-admin')
-@section('title', 'Universidad: ' . $opd->name)
+@section('title', 'Universidad: ' . $opd->opd->name)
 @section('description', 'Universidad')
 @section('bodyclass', 'opds')
 @section('breadcrumb', 'layouts.breadcrumb')
@@ -12,7 +12,7 @@
 		<h3>Universidad</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$opd->name}}</h2>
+		<h2>{{$opd->opd->name}}</h2>
 		<p>{{$opd->email}}</p>
 		<p>{{$opd->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</p>
 		<p>Creado: {{date('d-m-Y', strtotime($opd->created_at))}}</p>

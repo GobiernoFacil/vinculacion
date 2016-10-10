@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+
 // models
 use App\User;
+
+// FormValidators
+use App\Http\Requests\UpdateOpdRequest;
 class AdminOpds extends Controller
 {
   /*
@@ -45,8 +49,35 @@ class AdminOpds extends Controller
     ]);
   }
 
-  public function update(Request $request, $id){
+  public function update(UpdateOpdRequest $request, $id){
+    $user = User::find($id);
+    $old_email = $user->email;
 
+    // update user
+    $user->name  = $request->name;
+    $user->email = $request->email;
+    if(!empty($request->password)){
+      $user->password = Hash::make($request->password);
+    }
+    $user->save();
+
+    // send email if distinct
+    if($user->email != $old_email){
+      exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
+    }
+
+    // update opd
+    $user->opd->update($request->only(['opd_name', 'state', 'city', 'address', 'zip', 'url']));
+
+    // update opd
+    $user->opd->contact->update([
+      "name"  => $request->cname,
+      "email" => $request->cemail,
+      "phone" => $request->cphone,
+    ]);
+
+    // send to view
+    return redirect("dashboard/opd/{$id}");
   }
 
   public function delete($id){
