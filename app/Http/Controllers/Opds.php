@@ -17,41 +17,55 @@ class Opds extends Controller
   //
   //
   public function index(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    
+    // [2] contamos cuántos de cada uno
+    $students  = User::where("type", "student")->with("student")->count();
+    $companies = User::where("type", "company")->with("company")->count();
 
+    // [3] regresa el view
+    return view('admin.dashboard')->with([
+      "user" => $user,
+      // students
+      "students"  => $students,
+      // companies
+      "companies" => $companies,
+    ]);
   }
 
   // Las cámaras
   //
   //
-  public function chambers($page = 1){
+  public function chambers(){
 
   }
 
   // Los estudiantes
   //
   //
-  public function students($page = 1){
+  public function students(){
 
   }
 
   // Las empresas
   //
   //
-  public function companies($page = 1){
+  public function companies(){
 
   }
 
   // Las vacantes
   //
   //
-  public function vacancies($page = 1){
+  public function vacancies(){
 
   }
 
   // Los convenios
   //
   //
-  public function contracts($page = 1){
+  public function contracts(){
 
   }
 

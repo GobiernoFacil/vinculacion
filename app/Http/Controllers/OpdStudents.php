@@ -36,4 +36,12 @@ class OpdStudents extends Controller
   public function delete($id){
 
   }
+
+  public function addMultiple(){
+
+  }
+
+  public function saveMultiple(Request $request){
+
+  }
 }

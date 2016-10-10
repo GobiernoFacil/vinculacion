@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Hash;
 
 // models
 use App\User;
@@ -63,6 +64,7 @@ class AdminOpds extends Controller
 
     // send email if distinct
     if($user->email != $old_email){
+      $path = base_path();
       exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
     }
 

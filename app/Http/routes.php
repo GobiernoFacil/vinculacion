@@ -207,7 +207,7 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group([ 'middleware' => 'type:opd' ], function(){
-
+    Route::get("tablero-universidad", "Opds@index");
   });
 
 
