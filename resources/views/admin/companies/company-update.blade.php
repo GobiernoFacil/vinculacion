@@ -1,4 +1,7 @@
 @extends('layouts.master-admin')
+@section('title', 'Empresa: ' . $company->name)
+@section('description', 'Actualizar empresa')
+@section('bodyclass', 'empresas')
 @section('content')
 <div class="container">
 <!-- Formulario de company -->
@@ -10,23 +13,23 @@
 <fieldset>
 <h5>Datos de usuario</h5>
 <p>
-  <label>nombre</label>
-  {{Form::text('uname', $company->name)}}
+  <label>Nombre</label>
+  {{Form::text('name', $company->name)}}
   @if($errors->has('name'))
     <strong>{{$errors->first('name')}}</strong>
   @endif
 </p>
 
 <p>
-  <label>correo</label>
-  {{Form::text('uemail', $company->email)}}
+  <label>Correo</label>
+  {{Form::text('email', $company->email)}}
   @if($errors->has('email'))
     <strong>{{$errors->first('email')}}</strong>
   @endif
 </p>
 
 <p>
-  <label>password</label>
+  <label>Contraseña</label>
   {{Form::password('password')}}
   @if($errors->has('password'))
     <strong>{{$errors->first('password')}}</strong>
@@ -36,34 +39,34 @@
 
 <!-- cosas de su objeto -->
 <fieldset>
-<h5>Datos de la universidad</h5>
+<h5>Datos de la empresa</h5>
   <p>
-    <label>universidad</label>
-    {{Form::text('name')}}
-    @if($errors->has('name'))
-      <strong>{{$errors->first('name')}}</strong>
+    <label>R.F.C.</label>
+    {{Form::text('rfc',$company->rfc)}}
+    @if($errors->has('rfc'))
+      <strong>{{$errors->first('rfc')}}</strong>
     @endif
   </p>
 
   <p>
-    <label>estado</label>
-    {{Form::text('state')}}
-    @if($errors->has('state'))
-      <strong>{{$errors->first('state')}}</strong>
+    <label>Razón Social</label>
+    {{Form::text('razon_social',$company->razon_social)}}
+    @if($errors->has('razon_social'))
+      <strong>{{$errors->first('razon_social')}}</strong>
     @endif
   </p>
 
   <p>
-    <label>municipio</label>
-    {{Form::text('city')}}
-    @if($errors->has('city'))
-      <strong>{{$errors->first('city')}}</strong>
+    <label>Nombre Comercial</label>
+    {{Form::text('nombre_comercial',$company->nombre_comercial)}}
+    @if($errors->has('nombre_comercial'))
+      <strong>{{$errors->first('nombre_comercial')}}</strong>
     @endif
   </p>
 
   <p>
-    <label>dirección</label>
-    {{Form::text('address')}}
+    <label>Dirección</label>
+    {{Form::text('address',$company->address)}}
     @if($errors->has('address'))
       <strong>{{$errors->first('address')}}</strong>
     @endif
@@ -71,17 +74,38 @@
 
   <p>
     <label>C.P.</label>
-    {{Form::text('zip')}}
+    {{Form::text('zip',$company->zip)}}
     @if($errors->has('zip'))
       <strong>{{$errors->first('zip')}}</strong>
     @endif
   </p>
 
   <p>
-    <label>url</label>
-    {{Form::text('url')}}
-    @if($errors->has('url'))
-      <strong>{{$errors->first('url')}}</strong>
+    <label>Teléfono</label>
+    {{Form::text('phone', $company->phone)}}
+    @if($errors->has('phone'))
+      <strong>{{$errors->first('cphone')}}</strong>
+    @endif
+  </p>
+  <p>
+    <label>Giro Comercial</label>
+    {{Form::text('giro_comercial', $company->giro_comercial)}}
+    @if($errors->has('giro_comercial'))
+      <strong>{{$errors->first('giro_comercial')}}</strong>
+    @endif
+  </p>
+  <p>
+    <label>Alcance</label>
+    {{Form::text('alcance', $company->alcance)}}
+    @if($errors->has('alcance'))
+      <strong>{{$errors->first('alcance')}}</strong>
+    @endif
+  </p>
+  <p>
+    <label>Tamaño</label>
+    {{Form::text('size', $company->size)}}
+    @if($errors->has('size'))
+      <strong>{{$errors->first('size')}}</strong>
     @endif
   </p>
 </fieldset>
@@ -90,14 +114,14 @@
 <fieldset>
 <h5>Datos del contacto</h5>
   <p>
-    <label>nombre</label>
+    <label>Nombre</label>
     {{Form::text('cname', $company->company->contact->name)}}
     @if($errors->has('cname'))
       <strong>{{$errors->first('cname')}}</strong>
     @endif
   </p>
   <p>
-    <label>teléfono</label>
+    <label>Teléfono</label>
     {{Form::text('cphone', $company->company->contact->phone)}}
     @if($errors->has('cphone'))
       <strong>{{$errors->first('cphone')}}</strong>
@@ -105,7 +129,7 @@
   </p>
 
   <p>
-    <label>correo</label>
+    <label>Correo</label>
     {{Form::text('cemail', $company->company->contact->email)}}
     @if($errors->has('cemail'))
       <strong>{{$errors->first('cemail')}}</strong>

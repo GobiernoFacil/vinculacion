@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Empresa: ' . $company->name)
 @section('description', 'Empresas')
-@section('bodyclass', 'opds')
+@section('bodyclass', 'empresas')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_a', 'company-view')
 

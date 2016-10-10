@@ -48,6 +48,35 @@ class AdminCompanies extends Controller
   }
 
   public function update(Request $request, $id){
+    $user = User::find($id);
+    $old_email = $user->email;
+
+    // update user
+    $user->name  = $request->name;
+    $user->email = $request->email;
+    if(!empty($request->password)){
+      $user->password = Hash::make($request->password);
+    }
+    $user->save();
+
+    // send email if distinct
+    if($user->email != $old_email){
+      $path = base_path();
+      exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
+    }
+
+    // update company
+    $user->company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+
+    // update company contact
+    $user->company->contact->update([
+      "name"  => $request->cname,
+      "email" => $request->cemail,
+      "phone" => $request->cphone,
+    ]);
+
+    // send to view
+    return redirect("dashboard/empresa/{$id}");
 
   }
 
