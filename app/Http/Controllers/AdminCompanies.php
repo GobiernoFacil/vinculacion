@@ -118,6 +118,11 @@ class AdminCompanies extends Controller
   }
 
   public function delete($id){
+    $user     = User::find($id);
+    $user->company->contact->delete();
+    $user->company->delete();
+    $user->delete();
+    return redirect('dashboard/empresas');
 
   }
 }
