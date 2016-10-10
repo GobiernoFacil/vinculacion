@@ -120,14 +120,14 @@
         <h5>Datos del contacto</h5>
         <p>
           <label>Nombre</label>
-          {{Form::text('cname', $company->company->contact->name,["class" => "form-control"])}}
+          {{Form::text('cname', !empty($company->company->contact->name) ? $company->company->contact->name : "", ['class' => 'form-control'])}}
           @if($errors->has('cname'))
           <strong>{{$errors->first('cname')}}</strong>
           @endif
         </p>
         <p>
           <label>Teléfono</label>
-          {{Form::text('cphone', $company->company->contact->phone,["class" => "form-control"])}}
+          {{Form::text('cphone', !empty($company->company->contact->phone) ? $company->company->contact->phone : "", ['class' => 'form-control'])}}
           @if($errors->has('cphone'))
           <strong>{{$errors->first('cphone')}}</strong>
           @endif
@@ -135,7 +135,7 @@
 
         <p>
           <label>Correo</label>
-          {{Form::text('cemail', $company->company->contact->email,["class" => "form-control"])}}
+          {{Form::text('cemail', !empty($company->company->contact->email) ? $company->company->contact->email : "", ['class' => 'form-control'])}}
           @if($errors->has('cemail'))
           <strong>{{$errors->first('cemail')}}</strong>
           @endif

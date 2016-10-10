@@ -68,7 +68,7 @@ class Companies extends Controller
     ]);
   }
 
-  public function updateMe(Request $request){
+  public function updateMe(UpdateCompanyRequest $request){
     $user = Auth::user();
 
     // update user

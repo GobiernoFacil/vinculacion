@@ -26,7 +26,11 @@ class UpdateCompanyRequest extends Request
   */
   public function rules()
   {
+    if($this->route("id")){
       $user = User::find($this->route("id"));
+    }else{
+      $user = Auth::user();
+    }
 
 
     return [
