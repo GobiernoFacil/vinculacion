@@ -4,9 +4,14 @@
 @section('bodyclass', 'empresas')
 @section('content')
 <div class="container">
-<!-- Formulario de company -->
-<h4>Crear Empresa</h4>
-
+  <!-- Formulario de company -->
+  <div class="row">
+    <div class="col-sm-12">
+<h1 class="separator">Crear Empresa</h1>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
 {!! Form::model("",['url' => "dashboard/empresa/crear", "class" => "form-horizontal"]) !!}
 
 <!-- cosas del user -->
@@ -14,7 +19,7 @@
 <h5>Datos de usuario</h5>
 <p>
   <label>Nombre</label>
-  {{Form::text('name')}}
+  {{Form::text('name','',["class" => "form-control"])}}
   @if($errors->has('name'))
     <strong>{{$errors->first('name')}}</strong>
   @endif
@@ -22,7 +27,7 @@
 
 <p>
   <label>Correo</label>
-  {{Form::text('email')}}
+  {{Form::text('email','',["class" => "form-control"])}}
   @if($errors->has('email'))
     <strong>{{$errors->first('email')}}</strong>
   @endif
@@ -30,7 +35,7 @@
 
 <p>
   <label>Contraseña</label>
-  {{Form::password('password')}}
+  {{Form::password('password',["class" => "form-control"])}}
   @if($errors->has('password'))
     <strong>{{$errors->first('password')}}</strong>
   @endif
@@ -42,7 +47,7 @@
 <h5>Datos de la empresa</h5>
   <p>
     <label>R.F.C.</label>
-    {{Form::text('rfc')}}
+    {{Form::text('rfc','',["class" => "form-control"])}}
     @if($errors->has('rfc'))
       <strong>{{$errors->first('rfc')}}</strong>
     @endif
@@ -50,7 +55,7 @@
 
   <p>
     <label>Razón Social</label>
-    {{Form::text('razon_social')}}
+    {{Form::text('razon_social','',["class" => "form-control"])}}
     @if($errors->has('razon_social'))
       <strong>{{$errors->first('razon_social')}}</strong>
     @endif
@@ -58,7 +63,7 @@
 
   <p>
     <label>Nombre Comercial</label>
-    {{Form::text('nombre_comercial')}}
+    {{Form::text('nombre_comercial','',["class" => "form-control"])}}
     @if($errors->has('nombre_comercial'))
       <strong>{{$errors->first('nombre_comercial')}}</strong>
     @endif
@@ -66,7 +71,7 @@
 
   <p>
     <label>Dirección</label>
-    {{Form::text('address')}}
+    {{Form::text('address','',["class" => "form-control"])}}
     @if($errors->has('address'))
       <strong>{{$errors->first('address')}}</strong>
     @endif
@@ -74,7 +79,7 @@
 
   <p>
     <label>C.P.</label>
-    {{Form::text('zip')}}
+    {{Form::text('zip','',["class" => "form-control"])}}
     @if($errors->has('zip'))
       <strong>{{$errors->first('zip')}}</strong>
     @endif
@@ -82,28 +87,28 @@
 
   <p>
     <label>Teléfono</label>
-    {{Form::text('phone')}}
+    {{Form::text('phone','',["class" => "form-control"])}}
     @if($errors->has('phone'))
       <strong>{{$errors->first('cphone')}}</strong>
     @endif
   </p>
   <p>
     <label>Giro Comercial</label>
-    {{Form::text('giro_comercial')}}
+    {{Form::text('giro_comercial','',["class" => "form-control"])}}
     @if($errors->has('giro_comercial'))
       <strong>{{$errors->first('giro_comercial')}}</strong>
     @endif
   </p>
   <p>
     <label>Alcance</label>
-    {{Form::text('alcance')}}
+    {{Form::text('alcance','',["class" => "form-control"])}}
     @if($errors->has('alcance'))
       <strong>{{$errors->first('alcance')}}</strong>
     @endif
   </p>
   <p>
     <label>Tamaño</label>
-    {{Form::text('size')}}
+    {{Form::text('size','',["class" => "form-control"])}}
     @if($errors->has('size'))
       <strong>{{$errors->first('size')}}</strong>
     @endif
@@ -115,14 +120,14 @@
 <h5>Datos del contacto</h5>
   <p>
     <label>Nombre</label>
-    {{Form::text('cname')}}
+    {{Form::text('cname','',["class" => "form-control"])}}
     @if($errors->has('cname'))
       <strong>{{$errors->first('cname')}}</strong>
     @endif
   </p>
   <p>
     <label>Teléfono</label>
-    {{Form::text('cphone')}}
+    {{Form::text('cphone','',["class" => "form-control"])}}
     @if($errors->has('cphone'))
       <strong>{{$errors->first('cphone')}}</strong>
     @endif
@@ -130,14 +135,14 @@
 
   <p>
     <label>Correo</label>
-    {{Form::text('cemail')}}
+    {{Form::text('cemail','',["class" => "form-control"])}}
     @if($errors->has('cemail'))
       <strong>{{$errors->first('cemail')}}</strong>
     @endif
   </p>
 </fieldset>
 
-<p>{{Form::submit('Crear')}}</p>
+<p>{{Form::submit('Crear',["class" => "btn"])}}</p>
 
 <!-- se cierra el form -->
 {!! Form::close() !!}

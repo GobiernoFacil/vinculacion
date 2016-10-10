@@ -39,9 +39,6 @@ class UpdateCompanyRequest extends Request
       'rfc' => 'required',
       'razon_social' => 'required|max:255',
       'nombre_comercial' => 'required|max:255',
-      'state'    => 'required|max:255',
-      'city'     => 'required|max:255',
-      'state'    => 'required|max:255',
       'zip'      => 'digits_between:3,6',
 
       // contact rules
