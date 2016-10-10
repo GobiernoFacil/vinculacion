@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use App\User;
+use Auth;
 // [ LOAD TRAITS ]
 use App\Traits\MessagesTrait;
 class UpdateCompanyRequest extends Request
@@ -25,7 +26,8 @@ class UpdateCompanyRequest extends Request
   */
   public function rules()
   {
-    $user = User::find($this->route("id"));
+      $user = User::find($this->route("id"));
+
 
     return [
       // user rules

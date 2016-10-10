@@ -15,6 +15,7 @@ use App\models\Interview;
 use App\models\Student;
 use App\models\Contract;
 
+use App\Http\Requests\UpdateCompanyRequest;
 class Companies extends Controller
 {
   /*
@@ -58,10 +59,48 @@ class Companies extends Controller
   }
 
   public function changeMe(){
-
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $company  = User::with("company.contact")->find($user->id);
+    return view("companies.me_update")->with([
+      "user"   => $user,
+      "company" =>$company
+    ]);
   }
 
-  public function updateMe(){
+  public function updateMe(Request $request){
+    $user = Auth::user();
+
+    // update user
+    $user->name  = $request->name;
+    $user->email = $request->email;
+    if(!empty($request->password)){
+      $user->password = Hash::make($request->password);
+    }
+    $user->save();
+
+    // update company
+    $user->company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+     if(!$user->company->contact){
+      $user =  $user->company->contact()->firstOrCreate([]);
+      // update company contact
+      $user->contact->update([
+        "name"  => $request->cname,
+        "email" => $request->cemail,
+        "phone" => $request->cphone,
+      ]);
+     }else{
+       // update company contact
+       $user->company->contact->update([
+         "name"  => $request->cname,
+         "email" => $request->cemail,
+         "phone" => $request->cphone,
+       ]);
+     }
+
+
+    // send to view
+    return redirect("tablero-empresa/yo");
 
   }
 

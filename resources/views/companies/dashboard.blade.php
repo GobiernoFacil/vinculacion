@@ -23,7 +23,7 @@
 						<h3>Bimbo S.A. de C.V.</h3>
 						<p>Puebla, Puebla<br>
 						<a href="mailto:">hola@bimbi.com</a></p>
-						<p><a class="btn edit">Edita tu perfil</a></p>
+						<p><a class="btn edit" href ="{{url('tablero-empresa/yo/editar')}}">Edita tu perfil</a></p>
 					</div>
 					<div class="clearfix"></div>
 				</div>

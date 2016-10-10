@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+// models
+use App\User;
+
 class Opds extends Controller
 {
   /*
@@ -19,7 +23,7 @@ class Opds extends Controller
   public function index(){
     // [1] el usuario del sistema
     $user = Auth::user();
-    
+
     // [2] contamos cuántos de cada uno
     $students  = User::where("type", "student")->with("student")->count();
     $companies = User::where("type", "company")->with("company")->count();
