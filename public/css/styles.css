@@ -1471,6 +1471,13 @@ a.btn:visited {
   .list_data span {
     color: #ccc; }
 
+.listinfo li {
+  color: #777;
+  list-style: none;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px; }
+
 .pagination {
   list-style: none; }
   .pagination li {
@@ -1490,6 +1497,12 @@ a.btn:visited {
       padding: 3px 7px; }
       .pagination li a:hover {
         background: #e06f14; }
+
+.figure i {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 120px;
+  margin: 0 auto;
+  display: block; }
 
 .box {
   margin: 40px 0;
