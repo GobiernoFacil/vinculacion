@@ -27,8 +27,9 @@
       <li class="row titles">
           <span class="col-sm-2">Matricula</span>
           <span class="col-sm-4">Nombre</span>
-          <span class="col-sm-3">Carrera</span>
-          <span class="col-sm-3">Status</span>
+          <span class="col-sm-2">Carrera</span>
+          <span class="col-sm-2">Status</span>
+          <span class="col-sm-2">Acciones</span>
       </li>
     @foreach($students as $student)
       <li class="row">
@@ -38,8 +39,12 @@
         </a><br>
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span>
       </span>
-      <span class="col-sm-3">{{$student->carrera}}</span>
-      <span class="col-sm-3">{{$student->status}}</span>
+      <span class="col-sm-2">{{$student->carrera}}</span>
+      <span class="col-sm-2">{{$student->status}}</span>
+      <span class="col-sm-2">
+				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn xs">Editar</a>
+						<a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs">Eliminar</a>
+			</span>
 
       </li>
     @endforeach

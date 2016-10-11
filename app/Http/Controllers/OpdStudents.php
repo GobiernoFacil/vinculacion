@@ -43,21 +43,33 @@ class OpdStudents extends Controller
 
   public function save(Request $request){
       $user    = Auth::user();
+      $opd     = $user->opd;
       $data    = $request->except('_token');
       $student = new Student($data);
       $student->nombre_completo = $data['nombre']." ".$data['apellido_paterno']." ".$data['apellido_materno'];
-      $student->opd_id = $user->id;
+      $student->opd_id = $opd->id;
       $student->creator_id = $user->id;
       $student->save();
       return redirect("tablero-opd/estudiante/ver/$student->id");
   }
 
   public function edit($id){
+    $user    = Auth::user();
+    $student = Student::find($id);
+    return view("opds.students.students-update")->with([
+      "user"  => $user,
+      "student" => $student
+    ]);
 
   }
 
   public function update(Request $request, $id){
-
+    $student = Student::find($id);
+    // update student
+    $student->update($request->only(['nombre', 'apellido_paterno', 'apellido_materno', 'curp', 'matricula', 'carrera','status']));
+    $student->nombre_completo = $request->nombre." ".$request->apellido_paterno." ".$request->apellido_materno;
+    $student->save();
+    return redirect("tablero-opd/estudiante/ver/$student->id");
   }
 
   public function delete($id){
