@@ -12,6 +12,9 @@ use App\User;
 
 class Opds extends Controller
 {
+  // el tamaño de la paginación
+  public $pageSize = 10;
+
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
@@ -30,7 +33,7 @@ class Opds extends Controller
 
     // [3] regresa el view
     return view('admin.dashboard')->with([
-      "user" => $user,
+      "user"      => $user,
       // students
       "students"  => $students,
       // companies
@@ -49,7 +52,18 @@ class Opds extends Controller
   //
   //
   public function students(){
+    // [1] el usuario del sistema
+    $user     = Auth::user();
+    $opd = $user->opd;
+    // [2] estudiantes
+    $students_num = $opd->students->count();
+    $students     = $opd->students()->paginate($this->pageSize);
 
+    // [3] regresa el view
+    return view('opds.students-list')->with([
+      "user"     => $user,
+      "students" => $students
+    ]);
   }
 
   // Las empresas

@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+use Artisan;
+
+// models
+use App\User;
+
+// FormValidators
+use App\Http\Requests\AddStudentsByFile;
+
 class OpdStudents extends Controller
 {
   /*
@@ -38,10 +47,20 @@ class OpdStudents extends Controller
   }
 
   public function addMultiple(){
-
+    $user = Auth::user();
+    return view("opds.students-add-xlsx")->with(["user" => $user]);
   }
 
-  public function saveMultiple(Request $request){
+  public function saveMultiple(AddStudentsByFile $request){
+    $user  = Auth::user();
+    $path  = base_path();
+    $_path = storage_path('app');
+    $_file = str_random(16);
+    $file  = $_path . '/' . $_file;
+    $request->file('file')->move($_path, $_file);
 
+    exec("php {$path}/artisan update:students {$user->id} '{$file}' > /dev/null &");
+
+    return redirect("tablero-opd/estudiantes");
   }
 }

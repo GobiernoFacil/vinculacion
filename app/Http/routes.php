@@ -207,7 +207,11 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group([ 'middleware' => 'type:opd' ], function(){
-    Route::get("tablero-universidad", "Opds@index");
+    Route::get("tablero-opd", "Opds@index");
+    Route::get("tablero-opd/estudiantes", "Opds@students");
+    Route::get("tablero-opd/estudiante/crear", "OpdStudents@add");
+    Route::get("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@addMultiple");
+    Route::post("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@saveMultiple");
   });
 
 

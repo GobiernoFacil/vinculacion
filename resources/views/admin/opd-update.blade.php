@@ -97,14 +97,14 @@
         <h5>Datos del contacto</h5>
         <p>
           <label>Nombre</label>
-          {{Form::text('cname', !empty($opd-opd->contact->name) ? $opd-opd->contact->name : "", ['class' => 'form-control'])}}
+          {{Form::text('cname', !empty($opd->opd->contact->name) ? $opd->opd->contact->name : "", ['class' => 'form-control'])}}
           @if($errors->has('cname'))
           <strong>{{$errors->first('cname')}}</strong>
           @endif
         </p>
         <p>
           <label>Teléfono</label>
-          {{Form::text('cphone', !empty($opd-opd->contact->phone) ? $opd-opd->contact->phone : "", ['class' => 'form-control'])}}
+          {{Form::text('cphone', !empty($opd->opd->contact->phone) ? $opd->opd->contact->phone : "", ['class' => 'form-control'])}}
           @if($errors->has('cphone'))
           <strong>{{$errors->first('cphone')}}</strong>
           @endif
@@ -112,7 +112,7 @@
 
         <p>
           <label>Correo</label>
-          {{Form::text('cemail', !empty($opd-opd->contact->email) ? $opd-opd->contact->email : "", ['class' => 'form-control'])}}
+          {{Form::text('cemail', !empty($opd->opd->contact->email) ? $opd->opd->contact->email : "", ['class' => 'form-control'])}}
           @if($errors->has('cemail'))
           <strong>{{$errors->first('cemail')}}</strong>
           @endif

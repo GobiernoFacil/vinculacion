@@ -34,6 +34,12 @@ trait MessagesTrait{
         'state.required' => 'el campo de estado es requerido',
         'zip.numeric'    => 'el código postal solo acepta números',
         'zip.max'        => 'el código postal solo puede tener 5 dígitos',
+
+        // files
+        'file.required' => 'El archivo es requerido',
+        'file.file'     => 'El archivo debe ser válido',
+        'file.mimes'    => 'El archivo debe ser del tipo requerido',
+        'file.max'      => 'El archivo no puede ser mayor al límite establecido',
       ];
     }
 }

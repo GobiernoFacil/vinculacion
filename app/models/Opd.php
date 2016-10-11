@@ -15,7 +15,7 @@ protected $fillable = ["name", "url", "city", "state", "address", "zip"];
   }
 
   //modelosrelacionados
-  function student(){
+  function students(){
    return $this->hasMany("App\models\Student");
   }
 
