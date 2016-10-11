@@ -25,16 +25,20 @@ class Opds extends Controller
     $user = Auth::user();
 
     // [2] contamos cuántos de cada uno
-    $students  = User::where("type", "student")->with("student")->count();
-    $companies = User::where("type", "company")->with("company")->count();
+    $opd       = $user->opd;
+    $students  = $opd->students->count();
+    $companies = $opd->companies->count();
+    $contracts = $opd->contracts->count();
 
     // [3] regresa el view
     return view('admin.dashboard')->with([
-      "user" => $user,
+      "user"      => $user,
       // students
       "students"  => $students,
       // companies
       "companies" => $companies,
+      // contracts
+      "contracts" => $contracts
     ]);
   }
 

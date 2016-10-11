@@ -33,4 +33,9 @@ protected $fillable = ["name", "url", "city", "state", "address", "zip"];
   {
     return $this->morphOne('App\models\Contact', 'contact');
   }
+
+  public function companies()
+  {
+    return $this->hasMany('App\models\Company', 'creator_id', 'user_id');
+  }
 }
