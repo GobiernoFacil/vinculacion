@@ -9,6 +9,7 @@ use Auth;
 use Hash;
 // models
 use App\User;
+use App\models\Company;
 
 
 // FormValidators
@@ -123,6 +124,36 @@ class AdminCompanies extends Controller
     $user->company->delete();
     $user->delete();
     return redirect('dashboard/empresas');
+
+  }
+
+  public function search(Request $request){
+      $member = $request->match;
+      $results = User::where('name', 'like', "$member%")
+                ->where('type','company')
+                 ->orwhere('email','like',"$member%")->get();
+      if($results->isempty()){
+        $results = Company::where('razon_social', 'like', "$member%")
+                   ->orwhere('nombre_comercial','like',"$member%")->get();
+        if($results->isempty()){
+                   return ['false'];
+        }else{
+          $temp = array();
+          foreach($results as $result){
+            $company  = User::with("company.contact")->find($result->user_id);
+            $temp[] = $company;
+          }
+           return response()->json($results)->header('Access-Control-Allow-Origin', '*');
+        }
+      }else{
+        $temp = array();
+        foreach($results as $result){
+          $company  = User::with("company.contact")->find($result->id);
+          $temp[] = $company;
+        }
+        return response()->json($temp)->header('Access-Control-Allow-Origin', '*');
+      }
+
 
   }
 }
