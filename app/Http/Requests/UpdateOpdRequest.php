@@ -11,6 +11,7 @@ use App\Traits\MessagesTrait;
 
 class UpdateOpdRequest extends Request
 {
+  use MessagesTrait;
     /**
      * Determine if the user is authorized to make this request.
      *

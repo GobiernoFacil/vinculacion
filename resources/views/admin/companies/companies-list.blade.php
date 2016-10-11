@@ -11,6 +11,9 @@
 	<div class="col-sm-12">
 		<h1>Empresas</h1>
 	</div>
+	<div class="col-sm-3 col-sm-offset-9">
+		<p><a href="{{url("dashboard/empresa/crear")}}" class="btn add"> + Crear empresa</a></p>
+	</div>
 	<div class="col-sm-12">
 	@if($companies->count())
 	  <ul class="list">
