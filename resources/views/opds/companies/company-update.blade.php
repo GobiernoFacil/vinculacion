@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Actualizar Empresa')
 @section('description', 'Actualizar nueva empresa en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'empresas')
+@section('bodyclass', 'opd empresas')
 
 @section('content')
 <div class="container">

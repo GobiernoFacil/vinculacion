@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Actualizar Estudiante')
 @section('description', 'ACtualizar estudiante en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'estudiantes')
+@section('bodyclass', 'opd estudiantes')
 
 @section('content')
 <div class="container">
