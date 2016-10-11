@@ -11,6 +11,7 @@ use Artisan;
 
 // models
 use App\User;
+use App\models\Student;
 
 // FormValidators
 use App\Http\Requests\AddStudentsByFile;
@@ -23,15 +24,32 @@ class OpdStudents extends Controller
    */
 
   public function view($id){
+    $user    = Auth::user();
+    $student = Student::find($id);
+    return view("opds.students.students-view")->with([
+      "user"  => $user,
+      "student" => $student
+    ]);
 
   }
 
   public function add(){
+    $user    = Auth::user();
+    return view("opds.students.students-add")->with([
+      "user"  => $user,
+    ]);
 
   }
 
   public function save(Request $request){
-
+      $user    = Auth::user();
+      $data    = $request->except('_token');
+      $student = new Student($data);
+      $student->nombre_completo = $data['nombre']." ".$data['apellido_paterno']." ".$data['apellido_materno'];
+      $student->opd_id = $user->id;
+      $student->creator_id = $user->id;
+      $student->save();
+      return redirect("tablero-opd/estudiante/ver/$student->id");
   }
 
   public function edit($id){
@@ -48,7 +66,7 @@ class OpdStudents extends Controller
 
   public function addMultiple(){
     $user = Auth::user();
-    return view("opds.students-add-xlsx")->with(["user" => $user]);
+    return view("opds.students.students-add-xlsx")->with(["user" => $user]);
   }
 
   public function saveMultiple(AddStudentsByFile $request){
