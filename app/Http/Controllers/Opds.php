@@ -34,7 +34,7 @@ class Opds extends Controller
     $contracts = $opd->contracts->count();
 
     // [3] regresa el view
-    return view('admin.dashboard')->with([
+    return view('opds.dashboard')->with([
       "user"      => $user,
       // students
       "students"  => $students,
