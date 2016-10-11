@@ -73,7 +73,9 @@ class OpdStudents extends Controller
   }
 
   public function delete($id){
-
+    $student  = Student::find($id);
+    $student->delete();
+    return redirect('tablero-opd/estudiantes');
   }
 
   public function addMultiple(){
