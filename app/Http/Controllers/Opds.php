@@ -64,7 +64,7 @@ class Opds extends Controller
     $students     = $opd->students()->paginate($this->pageSize);
 
     // [3] regresa el view
-    return view('opds.students-list')->with([
+    return view('opds.students.students-list')->with([
       "user"     => $user,
       "students" => $students
     ]);
