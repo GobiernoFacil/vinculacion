@@ -20,7 +20,7 @@ protected $fillable = ["name", "url", "city", "state", "address", "zip"];
   }
 
   //modelosrelacionados
-  function contract(){
+  function contracts(){
    return $this->hasMany("App\models\Contract");
   }
 
