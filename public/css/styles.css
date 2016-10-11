@@ -1512,6 +1512,27 @@ a.btn:visited {
   .box h5 span {
     font: 700 60px "Montserrat", Helvetica, Arial, sans-serif; }
 
+a.box,
+a.box:visited {
+  color: #404040;
+  background: #f2f2f2;
+  display: block; }
+  a.box span,
+  a.box:visited span {
+    font-size: 1.2em;
+    display: block;
+    transition: color 400ms; }
+    a.box span.count,
+    a.box:visited span.count {
+      color: gray;
+      font: 700 60px "Montserrat", Helvetica, Arial, sans-serif; }
+  a.box:hover,
+  a.box:visited:hover {
+    background: rgba(242, 242, 242, 0.5); }
+    a.box:hover span,
+    a.box:visited:hover span {
+      color: black; }
+
 /* =breadcrumb
 -------------------------------------------------------------- */
 .breadcrumb {
