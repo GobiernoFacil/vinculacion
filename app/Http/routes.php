@@ -113,6 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/empresa/editar/{id}', 'AdminCompanies@update');
     Route::get('dashboard/empresa/eliminar/{id}', 'AdminCompanies@delete');
     Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
+    Route::post('dashboard/empresa/buscar', 'AdminCompanies@search');
 
     // O P D S
     // ----------------------------------------------------------------
