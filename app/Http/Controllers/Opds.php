@@ -100,12 +100,28 @@ class Opds extends Controller
   //
   //
   public function contracts(){
-
+  	$user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.contracts.list")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
   }
 
 
-
-
+  /*
+   * ESTADISTICAS   D E  L A   O P D
+   * ----------------------------------------------------------------
+   */
+   
+   public function stats(){
+    $user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.stats.reports")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
+  }
 
   /*
    * P E R F I L   D E  L A   O P D
@@ -115,7 +131,7 @@ class Opds extends Controller
   public function me(){
     $user = Auth::user();
     $opd = $user->opd;
-    return view("opds.me")->with([
+    return view("opds.me.me")->with([
       "user" => $user,
       "opd"  =>$opd
     ]);
@@ -124,7 +140,7 @@ class Opds extends Controller
   public function changeMe(){
     $user = Auth::user();
     $opd = $user->opd;
-    return view("opds.me-update")->with([
+    return view("opds.me.me-update")->with([
       "user" => $user,
       "opd"  =>$opd
     ]);

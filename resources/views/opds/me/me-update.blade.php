@@ -1,7 +1,9 @@
 @extends('layouts.master-admin')
 @section('title', 'Editar mi perfil')
 @section('description', 'Editar mi perfil en la plataforma de vinculación del Gobierno del Estado de Puebla')
-@section('bodyclass', 'me')
+@section('bodyclass', 'opd me')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'me-update')
 
 @section('content')
 <div class="container">

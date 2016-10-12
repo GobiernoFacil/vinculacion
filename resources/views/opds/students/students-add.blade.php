@@ -2,6 +2,8 @@
 @section('title', 'Agregar Estudiante')
 @section('description', 'Agregar nuevo estudiante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'estudiante add')
 
 @section('content')
 <div class="container">

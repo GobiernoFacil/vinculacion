@@ -2,6 +2,8 @@
 @section('title', 'Actualizar Estudiante')
 @section('description', 'ACtualizar estudiante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'estudiante actualizar')
 
 @section('content')
 <div class="container">

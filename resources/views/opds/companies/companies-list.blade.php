@@ -2,10 +2,9 @@
 @section('title', 'Lista de Empresas')
 @section('description', 'Lista de Empresas del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd empresas')
-<?php /*
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_a', 'empresas')
-*/ ?>
+@section('breadcrumb_o', 'empresas')
+
 @section('content')
 <div class="row">
 <!-- empresas -->

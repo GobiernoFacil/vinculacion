@@ -2,14 +2,15 @@
 @section('title', 'Agregar Empresa')
 @section('description', 'Agregar nueva empresa en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd empresas')
-
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'empresa add')
 
 @section('content')
 <div class="container">
   <!-- Formulario de company -->
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="separator">Crear Empresa</h1>
+      <h1 class="separator">Agregar Empresa</h1>
     </div>
   </div>
   <div class="row">

@@ -208,10 +208,13 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group([ 'middleware' => 'type:opd' ], function(){
+    // dashboard and self
     Route::get("tablero-opd", "Opds@index");
     Route::get("tablero-opd/yo", "Opds@me");
     Route::get("tablero-opd/yo/editar", "Opds@changeMe");
     Route::post("tablero-opd/yo/editar", "Opds@updateMe");
+
+    // students
     Route::get("tablero-opd/estudiantes", "Opds@students");
     Route::get("tablero-opd/estudiante/crear", "OpdStudents@add");
     Route::post("tablero-opd/estudiante/crear", "OpdStudents@save");
@@ -222,9 +225,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@addMultiple");
     Route::post("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@saveMultiple");
 
+    // opds
     Route::get("tablero-opd/empresas", "Opds@companies");
     Route::get("tablero-opd/empresas/actualizar/xlsx", "OpdCompanies@addMultiple");
     Route::post("tablero-opd/empresas/actualizar/xlsx", "OpdCompanies@saveMultiple");
+    
+    // stats
+    Route::get("tablero-opd/estadisticas", "Opds@stats");
+    
+    // contracts
+    Route::get("tablero-opd/convenios", "Opds@contracts");
   });
 
 
