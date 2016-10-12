@@ -34,7 +34,7 @@
     @foreach($students as $student)
       <li class="row">
       <span class="col-sm-2">{{$student->matricula}}</span>
-      <span class="col-sm-4"><a href="{{url("dashboard/estudiante/{$student->id}")}}">
+      <span class="col-sm-4"><a href="{{url("tablero-opd/estudiante/ver/{$student->id}")}}">
         {{empty($student->nombre) ? $student->nombre_completo : $student->nombre}}
         </a><br>
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span>
