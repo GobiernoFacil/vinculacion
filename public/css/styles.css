@@ -1533,6 +1533,9 @@ a.box:visited {
     a.box:visited:hover span {
       color: black; }
 
+.lead {
+  margin: 20px 0; }
+
 /* =breadcrumb
 -------------------------------------------------------------- */
 .breadcrumb {
