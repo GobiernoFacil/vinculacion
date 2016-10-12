@@ -2,6 +2,8 @@
 @section('title', 'Actualizar Empresa')
 @section('description', 'Actualizar nueva empresa en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd empresas')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'empresa actualizar')
 
 @section('content')
 <div class="container">

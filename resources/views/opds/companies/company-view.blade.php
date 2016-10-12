@@ -2,6 +2,8 @@
 @section('title', 'Ver Empresa')
 @section('description', 'Ver empresa en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd empresas')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'empresa ver')
 
 @section('content')
 <!-- Perfil -->
