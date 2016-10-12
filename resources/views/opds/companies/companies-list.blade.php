@@ -32,7 +32,7 @@
     @foreach($companies as $company)
       <li class="row">
       <span class="col-sm-2">{{$company->rfc}}</span>
-      <span class="col-sm-4"><a href="{{url("dashboard/empresa/{$company->id}")}}">
+      <span class="col-sm-4"><a href="{{url("tablero-opd/empresa/ver/{$company->id}")}}">
         {{$company->nombre_comercial}}
         </a><br>
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</span>

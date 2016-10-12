@@ -12,8 +12,10 @@
 		<h3>Empresa</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$company->name}}</h2>
-		<p>{{$company->email}}</p>
+		<h2>{{$company->rfc}}</h2>
+		<p>{{$company->razon_social}}</p>
+		<p>{{$company->nombre_comercial}}</p>
+		<p>{{$company->address}}</p>
 		<p>Creado: {{date('d-m-Y', strtotime($company->created_at))}}</p>
 		<p>Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</p>
 	</div>

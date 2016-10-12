@@ -24,22 +24,62 @@ class OpdCompanies extends Controller
    */
 
   public function view($id){
+    $user    = Auth::user();
+    $company     = $user->opd->companies->find($id);
+    return view("opds.companies.company-view")->with([
+      "user"  => $user,
+      "company" => $company
+    ]);
   }
 
   public function add(){
+    $user    = Auth::user();
+    return view("opds.companies.company-add")->with([
+      "user"  => $user,
+    ]);
 
   }
 
   public function save(Request $request){
+    $user     = Auth::user();
+    $company  = Company::firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    $company->creator_id = $user->opd->id;
+    $company->save();
+    $company->contact()->firstOrCreate(
+      ["name"  => $request->cname,
+        "email" => $request->cemail,
+        "phone" => $request->cphone,
+      ]);
+      return redirect("tablero-opd/empresa/ver/$company->id");
   }
 
   public function edit($id){
+    $user     = Auth::user();
+    $company  = $user->opd->companies()->with('contact')->find($id);
+    return view("opds.companies.company-update")->with([
+      "user"  => $user,
+      "company" => $company,
+    ]);
+
   }
 
   public function update(Request $request, $id){
+    $user        = Auth::user();
+    $company     = $user->opd->companies->find($id);
+    $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    $company->contact->update(
+      ["name"  => $request->cname,
+        "email" => $request->cemail,
+        "phone" => $request->cphone,
+      ]);
+  return redirect("tablero-opd/empresa/ver/$company->id");
   }
 
   public function delete($id){
+    $company = Auth::user()->opd->companies->find($id);
+    $company->contact->delete();
+    $company->delete();
+    return redirect("tablero-opd/empresas");
   }
 
   public function addMultiple(){
