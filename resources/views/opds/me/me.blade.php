@@ -10,13 +10,11 @@
 	<div class="col-sm-10 col-sm-offset-1">
 		<!-- Perfil -->
 		<h1>{{$user->name}}</h1>
-
-		<p>{{$user->email}}</p>
-    <p>{{$opd->address}}</p>
-    <p>{{$opd->zip}}</p>
-    <p>{{$opd->city}}</p>
-    <p>{{$opd->state}}</p>
-    <p>{{$opd->url}}</p>
+		<h2>{{$opd->city}}, {{$opd->state}}</h2>
+		<p><strong>web</strong>: {{$opd->url ? $opd->url : "Sin información"}}</p>
+		<p>{{$user->email ? $user->email : "Sin información"}}</p>
+		<p><strong>Dirección</strong>: {{$opd->address ? $opd->address : "No se agregó información"}}</p>
+		<p><strong>C.P.:</strong> {{$opd->zip ? $opd->zip : "No se agregó información"}}</p>
 	</div>
 	<div class="col-sm-4 col-sm-offset-1">
 		<p><a href="{{url('tablero-opd/yo/editar')}}" class="btn">Editar Perfil</a></p>
