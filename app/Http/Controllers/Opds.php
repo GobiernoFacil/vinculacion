@@ -104,8 +104,19 @@ class Opds extends Controller
   }
 
 
-
-
+  /*
+   * ESTADISTICAS   D E  L A   O P D
+   * ----------------------------------------------------------------
+   */
+   
+   public function stats(){
+    $user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.stats.reports")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
+  }
 
   /*
    * P E R F I L   D E  L A   O P D
