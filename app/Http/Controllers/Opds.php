@@ -115,7 +115,7 @@ class Opds extends Controller
   public function me(){
     $user = Auth::user();
     $opd = $user->opd;
-    return view("opds.me")->with([
+    return view("opds.me.me")->with([
       "user" => $user,
       "opd"  =>$opd
     ]);
@@ -124,7 +124,7 @@ class Opds extends Controller
   public function changeMe(){
     $user = Auth::user();
     $opd = $user->opd;
-    return view("opds.me-update")->with([
+    return view("opds.me.me-update")->with([
       "user" => $user,
       "opd"  =>$opd
     ]);
