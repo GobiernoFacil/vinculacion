@@ -2,10 +2,9 @@
 @section('title', 'Lista de Estudiantes')
 @section('description', 'Lista de Estudiantes del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
-<?php /*
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_a', 'estudiantes')
-*/ ?>
+@section('breadcrumb_o', 'estudiantes')
+
 @section('content')
 <div class="row">
 <!-- Estudiantes -->

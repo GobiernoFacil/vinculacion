@@ -1,7 +1,9 @@
 @extends('layouts.master-admin')
 @section('title', "Ver Estudiante :" . $student->nombre)
-@section('description', 'Agregar nuevo estudiante en plataforma de Gobierno del Estado de Puebla')
+@section('description', 'Ver estudiante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_o', 'estudiante ver')
 
 @section('content')
 <!-- Perfil -->

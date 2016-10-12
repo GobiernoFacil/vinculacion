@@ -2,10 +2,9 @@
 @section('title', 'Actualizar estudiantes vía Excel')
 @section('description', 'Lista de Estudiantes del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
-<?php /*
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_a', 'estudiantes')
-*/ ?>
+@section('breadcrumb_o', 'estudiantes xls')
+
 @section('content')
 <div class="row">
   <div class="col-sm-12">
