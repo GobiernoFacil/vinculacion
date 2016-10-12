@@ -74,7 +74,19 @@ class Opds extends Controller
   //
   //
   public function companies(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $opd  = $user->opd;
+    
+    // [2] empresas
+    $companies_num = $opd->companies->count();
+    $companies     = $opd->companies()->paginate($this->pageSize);
 
+    // [3] regresa el view
+    return view('opds.companies.companies-list')->with([
+      "user"     => $user,
+      "companies" => $companies
+    ]);
   }
 
   // Las vacantes
