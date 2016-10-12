@@ -15,7 +15,8 @@ use App\models\Student;
 
 // FormValidators
 use App\Http\Requests\AddStudentsByFile;
-
+use App\Http\Requests\OpdSaveStudentRequest;
+use App\Http\Requests\OpdUpdateStudentRequest;
 class OpdStudents extends Controller
 {
   /*
@@ -41,7 +42,7 @@ class OpdStudents extends Controller
 
   }
 
-  public function save(Request $request){
+  public function save(OpdSaveStudentRequest $request){
       $user    = Auth::user();
       $opd     = $user->opd;
       $data    = $request->except('_token');
@@ -63,7 +64,7 @@ class OpdStudents extends Controller
 
   }
 
-  public function update(Request $request, $id){
+  public function update(OpdUpdateStudentRequest $request, $id){
     $student = Auth::user()->opd->students->find($id);
     // update student
     $student->update($request->only(['nombre', 'apellido_paterno', 'apellido_materno', 'curp', 'matricula', 'carrera','status']));

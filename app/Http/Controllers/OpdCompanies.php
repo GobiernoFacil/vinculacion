@@ -15,6 +15,8 @@ use App\models\Company;
 
 // FormValidators
 use App\Http\Requests\AddCompaniesByFile;
+use App\Http\Requests\OpdSaveCompaniesRequest;
+use App\Http\Requests\OpdUpdateCompaniesRequest;
 
 class OpdCompanies extends Controller
 {
@@ -40,7 +42,7 @@ class OpdCompanies extends Controller
 
   }
 
-  public function save(Request $request){
+  public function save(OpdSaveCompaniesRequest $request){
     $user     = Auth::user();
     $company  = Company::firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
     $company->creator_id = $user->opd->id;
@@ -63,7 +65,7 @@ class OpdCompanies extends Controller
 
   }
 
-  public function update(Request $request, $id){
+  public function update(OpdUpdateCompaniesRequest $request, $id){
     $user        = Auth::user();
     $company     = $user->opd->companies->find($id);
     $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));

@@ -11,6 +11,8 @@ use Auth;
 use App\models\Contract;
 
 
+use App\Http\Requests\OpdSaveContractsRequest;
+use App\Http\Requests\OpdUpdateContractsRequest;
 class OpdContracts extends Controller
 {
   /*
@@ -34,7 +36,7 @@ class OpdContracts extends Controller
     ]);
   }
 
-  public function save(Request $request){
+  public function save(OpdSaveContractsRequest $request){
     $user      = Auth::user();
     $opd       = $user->opd;
     $data      = $request->except('_token');
@@ -55,7 +57,7 @@ class OpdContracts extends Controller
 
   }
 
-  public function update(Request $request, $id){
+  public function update(OpdUpdateContractsRequest $request, $id){
     $user        = Auth::user();
     $contract     = $user->opd->contracts->find($id);
     $data = $request->except('_token');
