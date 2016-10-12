@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
       Commands\sendEmails::class,
       Commands\UpdateStudents::class,
       Commands\Inspire::class,
+      Commands\AddCompaniesByFile::class,
     ];
 
     /**

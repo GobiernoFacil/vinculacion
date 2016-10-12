@@ -36,6 +36,6 @@ protected $fillable = ["name", "url", "city", "state", "address", "zip"];
 
   public function companies()
   {
-    return $this->hasMany('App\models\Company', 'creator_id', 'user_id');
+    return $this->hasMany('App\models\Company', 'creator_id');
   }
 }
