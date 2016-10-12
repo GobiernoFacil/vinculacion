@@ -38,6 +38,11 @@
 <li>Agregar Empresas</li>
 @endif
 
+@if ($__env->yieldContent('breadcrumb_o') == 'stats')
+<!-- stats -->
+<li>Estadísticas</li>
+@endif
+
 @if ($__env->yieldContent('breadcrumb_o') == 'me')
 <!-- me -->
 <li>Mi Perfil</li>
