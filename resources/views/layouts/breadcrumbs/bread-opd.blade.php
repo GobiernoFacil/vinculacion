@@ -47,6 +47,21 @@
 <!-- contracts -->
 <li>Convenios</li>
 @endif
+@if ($__env->yieldContent('breadcrumb_o') == 'convenio ver' || $__env->yieldContent('breadcrumb_o') == 'convenio actualizar' || $__env->yieldContent('breadcrumb_o') == 'convenio add' || $__env->yieldContent('breadcrumb_o') == 'convenios xls')
+<li><a href="{{ url('tablero-opd/convenios')}}">Convenios</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'convenio ver')
+<li>Ver Convenio</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'convenio actualizar')
+<li>Actualizar Convenio</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'convenio add')
+<li>Agregar Convenio</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'convenio xls')
+<li>Agregar Convenios</li>
+@endif
 
 @if ($__env->yieldContent('breadcrumb_o') == 'me')
 <!-- me -->

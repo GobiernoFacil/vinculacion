@@ -77,7 +77,7 @@ class Opds extends Controller
     // [1] el usuario del sistema
     $user = Auth::user();
     $opd  = $user->opd;
-    
+
     // [2] empresas
     $companies_num = $opd->companies->count();
     $companies     = $opd->companies()->paginate($this->pageSize);
@@ -102,10 +102,15 @@ class Opds extends Controller
   public function contracts(){
   	$user = Auth::user();
     $opd = $user->opd;
+    $contracts_num = $opd->contracts->count();
+    $contracts     = $opd->contracts()->paginate($this->pageSize);
+
     return view("opds.contracts.list")->with([
       "user" => $user,
-      "opd"  =>$opd
+      "contracts"  =>$contracts
     ]);
+
+
   }
 
 
@@ -113,7 +118,7 @@ class Opds extends Controller
    * ESTADISTICAS   D E  L A   O P D
    * ----------------------------------------------------------------
    */
-   
+
    public function stats(){
     $user = Auth::user();
     $opd = $user->opd;

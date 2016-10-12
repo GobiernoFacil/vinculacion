@@ -242,6 +242,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     // contracts
     Route::get("tablero-opd/convenios", "Opds@contracts");
+    Route::get("tablero-opd/convenio/ver/{id}", "OpdContracts@view");
+    Route::get("tablero-opd/convenio/crear", "OpdContracts@add");
+    Route::post("tablero-opd/convenio/crear", "OpdContracts@save");
+    Route::get("tablero-opd/convenio/editar/{id}", "OpdContracts@edit");
+    Route::post("tablero-opd/convenio/editar/{id}", "OpdContracts@update");
+    Route::get("tablero-opd/convenio/eliminar/{id}", "OpdContracts@delete");
   });
 
 

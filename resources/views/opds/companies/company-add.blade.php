@@ -88,6 +88,13 @@
           <strong>{{$errors->first('size')}}</strong>
           @endif
         </p>
+        <p>
+          <label>Tipo</label>
+          {{Form::text('type','',["class" => "form-control"])}}
+          @if($errors->has('type'))
+          <strong>{{$errors->first('type')}}</strong>
+          @endif
+        </p>
       </fieldset>
 
       <!-- cosas del contacto -->
