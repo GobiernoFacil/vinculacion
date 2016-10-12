@@ -218,6 +218,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-opd/estudiante/eliminar/{id}", "OpdStudents@delete");
     Route::get("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@addMultiple");
     Route::post("tablero-opd/estudiantes/actualizar/xlsx", "OpdStudents@saveMultiple");
+
+    Route::get("tablero-opd/empresas", "Opds@companies");
   });
 
 
