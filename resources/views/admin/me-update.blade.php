@@ -11,11 +11,11 @@
 <!-- Formulario de perfil -->
 <h2>Editar mi perfil</h2>
 
-<!-- 
+<!--
      El form se pega a un objeto, y así se llenan automáticamente los inputs
      Form::model($user, ['url' => 'dashboard/yo/editar'])
 
-     La guía de este chisme está aquí: 
+     La guía de este chisme está aquí:
      https://laravelcollective.com/docs/5.2/html
 
      La validación de esta maroma está aquí:

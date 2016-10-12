@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Ver Empresa')
 @section('description', 'Ver empresa en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'empresas')
+@section('bodyclass', 'opd empresas')
 
 @section('content')
 <!-- Perfil -->
