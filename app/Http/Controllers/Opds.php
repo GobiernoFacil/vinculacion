@@ -113,14 +113,36 @@ class Opds extends Controller
    */
 
   public function me(){
-
+    $user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.me")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
   }
 
   public function changeMe(){
-
+    $user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.me-update")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
   }
 
-  public function updateMe(){
+  public function updateMe(Request $request){
+      $user = Auth::user();
+      $user->name = $request->name;
+        $user->email = $request->email;
+        if(!empty($request->password)){
+          $user->password = Hash::make($request->password);
+        }
+     $user->save();
+     $opd = $user->opd;
+     $opd->update($request->only(['address', 'zip', 'city', 'state', 'url']));
+     $opd->opd_name = $request->name;
+     $opd->save();
+     return redirect("tablero-opd/yo");
 
   }
 }
