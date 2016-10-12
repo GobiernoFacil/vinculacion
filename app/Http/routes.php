@@ -226,6 +226,8 @@ Route::group(['middleware' => ['auth']], function () {
     
     // stats
     Route::get("tablero-opd/estadisticas", "Opds@stats");
+    // contracts
+    Route::get("tablero-opd/convenios", "Opds@contracts");
   });
 
 

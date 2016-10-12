@@ -43,6 +43,11 @@
 <li>Estadísticas</li>
 @endif
 
+@if ($__env->yieldContent('breadcrumb_o') == 'contracts')
+<!-- contracts -->
+<li>Convenios</li>
+@endif
+
 @if ($__env->yieldContent('breadcrumb_o') == 'me')
 <!-- me -->
 <li>Mi Perfil</li>

@@ -100,7 +100,12 @@ class Opds extends Controller
   //
   //
   public function contracts(){
-
+  	$user = Auth::user();
+    $opd = $user->opd;
+    return view("opds.contracts.list")->with([
+      "user" => $user,
+      "opd"  =>$opd
+    ]);
   }
 
 
