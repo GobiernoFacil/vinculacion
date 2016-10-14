@@ -277,9 +277,22 @@ Route::group(['middleware' => ['auth']], function () {
    * --------------------------------------------------------------------------------
    *
    */
-  Route::group(['middleware' => 'type:chamber' ], function(){
+  Route::group(['middleware' => 'type:chamber'], function(){
 
   });
+
+
+
+
+
+  /* RUTAS DE EMPLEOS PUEBLA
+   * --------------------------------------------------------------------------------
+   *
+   */
+  Route::group(['middleware' => 'type:puebla'], function(){
+
+  });
+
 });
 Route::auth();
 
