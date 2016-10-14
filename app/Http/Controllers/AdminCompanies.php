@@ -45,9 +45,10 @@ class AdminCompanies extends Controller
 
     // [1] crea el usuario
     $user = new User([
-      'name'     => $request->name,
-      'email'    => $request->email,
-      'type'     => 'company',
+      'name'    => $request->name,
+      'email'   => $request->email,
+      'type'    => 'company',
+      'enabled' => 1
     ]);
     if(!empty($request->password)){
       $user->password = Hash::make($request->password);
@@ -155,5 +156,13 @@ class AdminCompanies extends Controller
       }
 
 
+  }
+
+  public function enableToogle($id){
+    $company = User::find($id);
+    $company->enabled = ! $company->enabled;
+    $company->save();
+
+    return redirect("dashboard/empresa/{$id}");
   }
 }

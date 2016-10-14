@@ -18,16 +18,18 @@ use App\models\Contract;
 use App\Http\Requests\UpdateCompanyRequest;
 class Companies extends Controller
 {
+  public $pageSize = 10;
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
    */
   public function index(){
-	// [1] el usuario del sistema, los convenios, las ofertas de trabajo y las entrevistas
+	// [1] el usuario del sistema
     $user     = Auth::user();
-    $company  = $user->company->with(["contracts.opd", "vacancies", "interviews.student"])->get();
+    $company  = $user->company;
     return view("companies.dashboard")->with([
-     	"user"   => $user
+     	"user"   => $user,
+      "company" => $company
     ]);
   }
 
@@ -35,7 +37,20 @@ class Companies extends Controller
   //
   //
   public function vacancies(){
+    // [1] el usuario del sistema
+    $user      = Auth::user();
+    // [2] la empresa
+    $company   = $user->company;
+    // [3] las vacantes
+    $vacancies = $user->company->vacancies()->paginate($this->pageSize);
+    //User::where("type", "opd")->with("opd")->paginate($this->pageSize);
 
+    // [4] regresa el view
+    return view('companies.vacancies')->with([
+      "user"      => $user,
+      "company"   => $company,
+      "vacancies" => $vacancies
+    ]);
   }
 
   // Los convenios
@@ -80,7 +95,16 @@ class Companies extends Controller
     $user->save();
 
     // update company
-    $user->company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    $company_data = $request->only(['rfc', 'razon_social', 'nombre_comercial', 
+      'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']);
+
+    if($request->hasFile('logo')) {
+      $name = str_random(40);
+      $request->file('logo')->move(public_path('img/logos'), $name);
+      $company_data['logo'] = $name;
+    }
+
+    $user->company->update($company_data);
      if(!$user->company->contact){
       $user =  $user->company->contact()->firstOrCreate([]);
       // update company contact

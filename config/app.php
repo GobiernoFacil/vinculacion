@@ -159,6 +159,7 @@ return [
 
         // more stuff
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -209,6 +210,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

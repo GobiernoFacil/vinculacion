@@ -40,13 +40,14 @@ class UpdateCompanyRequest extends Request
       'password' => 'min:6',
 
       // company rules
-      'rfc' => 'required',
-      'razon_social' => 'required|max:255',
+      'rfc'              => 'required',
+      'razon_social'     => 'required|max:255',
       'nombre_comercial' => 'required|max:255',
-      'zip'      => 'digits_between:3,6',
+      'zip'              => 'digits_between:3,6',
+      'logo'             => 'image',
 
       // contact rules
-      'cname' => 'max:255',
+      'cname'  => 'max:255',
       'cphone' => 'max:255',
       'cemail' => 'email|max:255'
     ];

@@ -11,7 +11,11 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($company->company, ['url' => "tablero-empresa/yo/editar", "class" => "form-horizontal"]) !!}
+      {!! Form::model($company->company, [
+        'url'   => "tablero-empresa/yo/editar", 
+        "class" => "form-horizontal",
+        "files" => true
+      ]) !!}
 
       <!-- cosas del user -->
       <fieldset>
@@ -112,6 +116,16 @@
           <strong>{{$errors->first('size')}}</strong>
           @endif
         </p>
+
+        <p>
+          <label>Logo</label>
+          {{Form::file('logo', ['class' => 'form-control'])}}
+          @if($errors->has('logo'))
+          <strong>{{$errors->first('logo')}}</strong>
+          @endif
+        </p>
+
+        Form::file($name, $attributes = array());
       </fieldset>
 
       <!-- cosas del contacto -->

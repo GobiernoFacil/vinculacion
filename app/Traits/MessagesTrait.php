@@ -40,28 +40,30 @@ trait MessagesTrait{
         'file.file'     => 'El archivo debe ser válido',
         'file.mimes'    => 'El archivo debe ser del tipo requerido',
         'file.max'      => 'El archivo no puede ser mayor al límite establecido',
+        'logo.image'    => 'El archivo del logo debe ser una imagen válida',
 
         // students
-        'nombre.required'     =>   'El nombre es requerido',
-        'apellido_paterno.required'     =>   'El apellido paterno es requerido',
-        'apellido_materno.required'     =>   'El apellido materno es requerido',
-        'matricula.required'     =>   'La matrícula es requerida',
-        'matricula.unique'     =>   'Esta matrícula ya existe',
-        'curp.required'     =>   'El CURP es requerido',
-        'carrea.required'     =>   'La carrera es requerida',
+        'nombre.required'           =>   'El nombre es requerido',
+        'apellido_paterno.required' =>   'El apellido paterno es requerido',
+        'apellido_materno.required' =>   'El apellido materno es requerido',
+        'matricula.required'        =>   'La matrícula es requerida',
+        'matricula.unique'          =>   'Esta matrícula ya existe',
+        'curp.required'             =>   'El CURP es requerido',
+        'carrea.required'           =>   'La carrera es requerida',
 
         // companies
-        'rfc.required'     =>   'El R.F.C. es requerido',
+        'rfc.required'              =>   'El R.F.C. es requerido',
         'razon_social.required'     =>   'La razón social es requerida',
-        'nombre_comercial.required'     =>   'El nombre comercial  es requerido',
-        'rfc.unique'     =>   'Este R.F.C. ya existe',
+        'nombre_comercial.required' =>   'El nombre comercial  es requerido',
+        'rfc.unique'                =>   'Este R.F.C. ya existe',
+
         // contracts
-        'contract_opd.required'     =>   'El Organismo Público Descentralizado es requerido',
-        'contract_name.required'     =>   'El nombre es requerido',
-        'contract_objective.required'     =>   'El objetivo  es requerido',
-        'contract_description.required'     =>   'La descripción es requerida',
-        'contract_responsable_name.required'     =>   'El nombre del responsable es requerido',
-        'contract_responsable_email.required'     =>   'El correo del responsable es requerido',
+        'contract_opd.required'               =>   'El Organismo Público Descentralizado es requerido',
+        'contract_name.required'              =>   'El nombre es requerido',
+        'contract_objective.required'         =>   'El objetivo  es requerido',
+        'contract_description.required'       =>   'La descripción es requerida',
+        'contract_responsable_name.required'  =>   'El nombre del responsable es requerido',
+        'contract_responsable_email.required' =>   'El correo del responsable es requerido',
       ];
     }
 }

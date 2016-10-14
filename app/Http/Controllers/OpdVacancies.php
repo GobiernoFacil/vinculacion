@@ -17,7 +17,6 @@ class OpdVacancies extends Controller
   }
 
   public function add(){
-
   }
 
   public function save(Request $request){

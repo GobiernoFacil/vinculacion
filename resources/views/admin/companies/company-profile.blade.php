@@ -12,9 +12,13 @@
 		<h3>Empresa</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$company->name}}</h2>
+		<h2>{{$company->company->nombre_comercial}}</h2>
 		<p>{{$company->email}}</p>
-		<p>{{$company->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</p>
+		<p>
+		  <a href="{{url("dashboard/empresa/habilitar/{$company->id}")}}">
+		    {{$company->enabled == 0 ? "Habilitar" : "Deshabilitar"}}
+		  </a>
+		</p>
 		<p>Creado: {{date('d-m-Y', strtotime($company->created_at))}}</p>
 		<p>Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</p>
 	</div>

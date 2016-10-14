@@ -1,0 +1,25 @@
+{
+  "name": "empleo abierto puebla",
+  "homepage": "https://github.com/GobiernoFacil/vinculacion",
+  "authors": [
+    "el coruco <el.coruco@gmail.com>"
+  ],
+  "description": "app para bolsa de trabajo en puebla",
+  "main": "main.js",
+  "keywords": [
+    "empleo",
+    "puebla"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jquery-ui": "jqueryui#^1.12.1"
+  }
+}

@@ -10,7 +10,7 @@ class Company extends Model
 
     //
     protected $fillable=[/*'user_id','creator_id',*/'creator_id','rfc','razon_social','nombre_comercial','address',
-                         'zip','phone','email','giro_comercial','alcance','type','size'];
+                         'zip','phone','email','giro_comercial','alcance','type','size', 'logo'];
 
 
     // modelos relacionados

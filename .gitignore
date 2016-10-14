@@ -8,3 +8,7 @@ Homestead.json
 public/css/src_sass
 public/css/fonts
 stuff
+
+public/js/bower_components
+public/img/logos/*
+!public/img/logos/default.png

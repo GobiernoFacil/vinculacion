@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
     Route::post('dashboard/empresa/buscar', 'AdminCompanies@search');
 
+    Route::get('dashboard/empresa/habilitar/{id}', 'AdminCompanies@enableToogle');
+
     // O P D S
     // ----------------------------------------------------------------
     // @AdminOpds controller

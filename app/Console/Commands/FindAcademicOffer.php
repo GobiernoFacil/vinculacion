@@ -4,6 +4,12 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+// models
+use App\models\AcademicOffer;
+use App\models\Opd;
+use App\models\Student;
+use App\User;
+
 class FindAcademicOffer extends Command
 {
     /**
@@ -18,7 +24,7 @@ class FindAcademicOffer extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'genera una lista con la oferta laboral';
 
     /**
      * Create a new command instance.
@@ -37,6 +43,17 @@ class FindAcademicOffer extends Command
      */
     public function handle()
     {
-        //
+        $offers = Student::select('carrera')->distinct()->get();
+
+        $bar = $this->output->createProgressBar($offers->count());
+        
+        foreach($offers as $offer){
+            $c = AcademicOffer::firstOrCreate([
+                "academic_name" => $offer->carrera
+            ]);
+            $bar->advance();
+        }
+
+        $bar->finish();
     }
 }

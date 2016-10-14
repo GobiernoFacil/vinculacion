@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+
 class CompanyVacancies extends Controller
 {
   /*
@@ -17,7 +19,10 @@ class CompanyVacancies extends Controller
   }
 
   public function add(){
-
+    $user = Auth::user();
+    return view("companies.vacancies.vacancy-add")->with([
+      "user"  => $user
+    ]);
   }
 
   public function save(Request $request){
