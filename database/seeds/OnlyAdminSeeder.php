@@ -34,5 +34,7 @@ class OnlyAdminSeeder extends Seeder
       $admin_puebla->type     = "puebla";
       $admin_puebla->enabled  = 1;
       $admin_puebla->save();
+
+      $this->command->info('admin and puebla user created!');
     }
 }

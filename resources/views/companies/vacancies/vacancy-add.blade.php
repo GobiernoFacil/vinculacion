@@ -21,14 +21,14 @@
       <fieldset>
         <h5>Datos de la vacante</h5>
         <!-- 
-        job             | varchar(255)     | YES  |     | NULL    |                |
-| tags            | text             | YES  |     | NULL    |                |
+| job             | varchar(255)     | YES  |     | NULL    |       x        |
+| tags            | text             | YES  |     | NULL    |       x        |
 | age_from        | int(11)          | YES  |     | NULL    |                |
 | age_to          | int(11)          | YES  |     | NULL    |                |
 | travel          | tinyint(1)       | YES  |     | NULL    |                |
 | location        | tinyint(1)       | YES  |     | NULL    |                |
 | experience      | text             | YES  |     | NULL    |                |
-| salary          | double(8,2)      | YES  |     | NULL    |                |
+| salary          | double(8,2)      | YES  |     | NULL    |       x        |
 | work_from       | varchar(255)     | YES  |     | NULL    |                |
 | work_to         | varchar(255)     | YES  |     | NULL    |                |
 | benefits        | varchar(255)     | YES  |     | NULL    |                |
@@ -53,6 +53,22 @@
           <strong>{{$errors->first('job')}}</strong>
           @endif
         </p>
+
+        <p>
+          <label>carreras</label>
+          {{Form::text('tags',null,["class" => "form-control", "id" => "tags"])}}
+          @if($errors->has('tags'))
+          <strong>{{$errors->first('tags')}}</strong>
+          @endif
+        </p>
+
+        <p>
+          <label>salario</label>
+          {{Form::text('salary',null,["class" => "form-control"])}}
+          @if($errors->has('salary'))
+          <strong>{{$errors->first('salary')}}</strong>
+          @endif
+        </p>
       </fieldset>
 
       <p>{{Form::submit('Crear',["class" => "btn"])}}</p>
@@ -64,4 +80,56 @@
   </div>
 </div>
 
+<!-- scripts for tag selector -->
+<script src="{{url('js/bower_components/jquery/dist/jquery.js')}}"></script>
+<script src="{{url('js/bower_components/jquery-ui/jquery-ui.js')}}"></script>
+<script>
+
+$( function() {
+  /*
+   * este código es copy-paste de la página de jquery-ui
+   *
+   */
+    var availableTags = <?php echo json_encode($offer); ?>;
+
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#tags" )
+      // don't navigate away from the field on tab when selecting an item
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          // delegate back to autocomplete, but extract the last term
+          response( $.ui.autocomplete.filter(
+            availableTags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  } );
+  </script>
 @endsection

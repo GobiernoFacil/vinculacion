@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
+use App\models\Contract;
+use App\models\AcademicOffer;
 
 class CompanyVacancies extends Controller
 {
@@ -19,9 +21,12 @@ class CompanyVacancies extends Controller
   }
 
   public function add(){
-    $user = Auth::user();
+    $user  = Auth::user();
+    $offer = AcademicOffer::WhereNotNull('academic_name')->pluck('academic_name');
+
     return view("companies.vacancies.vacancy-add")->with([
-      "user"  => $user
+      "user"  => $user,
+      "offer" => $offer->toArray()
     ]);
   }
 

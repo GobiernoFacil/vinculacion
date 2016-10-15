@@ -19,6 +19,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- css -->
     <link href="https://fonts.googleapis.com/css?family=Oxygen|Montserrat|Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url('js/bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.3.theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('js/bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.3.custom.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

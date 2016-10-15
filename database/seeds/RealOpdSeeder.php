@@ -51,6 +51,8 @@ class RealOpdSeeder extends Seeder
           ]);
         }); // $reader->each
       })->first(); // Excel::load
+
+      $this->command->info('opds table seeded!');
     }
 }
 
