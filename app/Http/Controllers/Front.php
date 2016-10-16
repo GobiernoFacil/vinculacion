@@ -50,9 +50,9 @@ class Front extends Controller
   }
 
   public function opd($id){
-    $opd = User::find($id);
+    $opd = Opd::find($id);
 
-    return view("frontend.opds.opd-profile")->with([
+    return view("frontend.opd-profile")->with([
       "opd"  => $opd
     ]);
   }
