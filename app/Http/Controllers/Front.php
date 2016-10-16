@@ -57,12 +57,26 @@ class Front extends Controller
     ]);
   }
 
-  public function companies($page = 1){
+  public function companies(Request $request){
+    //$query
+    $companies = Company::orderBy('nombre_comercial', 'asc');
+    if($request->input('query')){
+      $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('query')}%");
+    }
+    $companies = $companies->paginate($this->pageSize);
 
+    // [3] regresa el view
+    return view('frontend.company-list')->with([
+      "companies" => $companies
+    ]);
   }
 
   public function company($id){
+    $company = Company::find($id);
 
+    return view("frontend.company-profile")->with([
+      "company"  => $company
+    ]);
   }
 
   public function openData(){
