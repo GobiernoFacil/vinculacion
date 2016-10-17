@@ -12,8 +12,10 @@
 		<h3>Universidad</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$opd->opd->name}}</h2>
-		<p>{{$opd->email}}</p>
+		<h2>{{$opd->opd->opd_name}}</h2>
+		<p>{{$opd->opd->city}}, {{$opd->opd->state}}</p>
+		<p>{{$opd->opd->url}}</p>
+		<p><strong>Email:</strong> {{$opd->email}}</p>
 		<p>{{$opd->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</p>
 		<p>Creado: {{date('d-m-Y', strtotime($opd->created_at))}}</p>
 		<p>Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</p>
