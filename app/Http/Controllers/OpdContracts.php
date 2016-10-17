@@ -79,7 +79,7 @@ class OpdContracts extends Controller
 
   }
 
-  public function students($id, $page = 1){
+  public function students($id){
 
   }
 }

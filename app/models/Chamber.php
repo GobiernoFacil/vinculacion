@@ -14,12 +14,18 @@ class Chamber extends Model
                            'chamber_contact_phone','chamber_contact_mobile'];
 
     // modelos relacionados
-    function company(){
-      return $this->hasMany("App\models\Company");
+    function companies(){
+      return $this->hasMany("App\models\Company", "creator_id");
     }
 
     //modelosrelacionados
     function user(){
      return $this->belongsTo("App\User");
+    }
+
+    // modelos relacionados
+    public function contact()
+    {
+      return $this->morphOne('App\models\Contact', 'contact');
     }
 }

@@ -74,7 +74,7 @@ class Suscribe extends Controller
     }elseif($u->type==='student'){
       return redirect('tablero-estudiante');
     }elseif($u->type==='puebla'){
-      return redirect('tablero-puebla');
+      return redirect('tablero-secotrade');
     }else{
       die("o________o");
       return redirect("");

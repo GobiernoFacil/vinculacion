@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ChamberVacancies extends Controller
+class PueblaVacancies extends Controller
 {
   /*
    * V A C A N T E S

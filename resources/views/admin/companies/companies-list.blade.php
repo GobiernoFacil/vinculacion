@@ -13,8 +13,8 @@
 	</div>
 
 	<div class="col-sm-3 ">
-			<form  role="form" method="POST" action="{{ url('') }}" id="search-input">
-		<input id = "search-company" type="search" name="searchBox" class="form-control" placeholder="Buscar ">
+			<form  role="form" method="GET" action="{{ url('dashboard/empresas') }}" id="search-input">
+		<input id = "search-company" type="search" name="searchBox" class="form-control" placeholder="Buscar " value="{{request('searchBox', '')}}">
 
 			<p id ="noResults" style="display:none;">No existen resultados</p>
 			</form>
@@ -36,18 +36,18 @@
 	  	</li>
 	  @foreach($companies as $company)
 	    <li class="row">
-	    	<span class="col-sm-3"><a href="{{url("dashboard/empresa/{$company->id}")}}"> {{$company->name}}</a><br>
+	    	<span class="col-sm-2"><a href="{{url("dashboard/empresa/{$company->user->id}")}}"> {{$company->nombre_comercial}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</span></span>
-			<span class="col-sm-3">{{$company->email}}</span>
-			<!--<span class="col-sm-2">{{$company->enabled == 0 ? 'Habilitado' : 'Deshabilitado'}}</span>-->
+			<span class="col-sm-2">{{$company->user->email}}</span>
+			<!--<span class="col-sm-2">{{!$company->user->enabled ? 'Habilitado' : 'Deshabilitado'}}</span>-->
 			<span class="col-sm-3">
-				{!!$company->company->has('contact') ? $company->company->contact->name  . '<br>' : '' !!}
-				{!!$company->company->has('contact') ? $company->company->contact->email . '<br>' : ''!!}
-				{{ $company->company->has('contact') ? $company->company->contact->phone : '' }} </span>
+				{!!$company->has('contact') ? $company->contact->name  . '<br>' : '' !!}
+				{!!$company->has('contact') ? $company->contact->email . '<br>' : ''!!}
+				{{ $company->has('contact') ? $company->contact->phone : '' }} </span>
 			</span>
 			<span class="col-sm-2">
-				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
-						<a href="{{url("dashboard/empresa/eliminar/{$company->id}")}}" class="btn danger xs">Eliminar</a>
+				<a href="{{url("dashboard/empresa/editar/{$company->user->id}")}}" class="btn xs">Editar</a>
+			  <a href="{{url("dashboard/empresa/eliminar/{$company->user->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>
 	    </li>
 	  @endforeach

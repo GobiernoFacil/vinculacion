@@ -135,17 +135,25 @@ class Admin extends Controller
   //
   //
   public function companies(Request $request){
-	// [1] el usuario del sistema
+	  // [1] el usuario del sistema
     $user     = Auth::user();
+    
     // [2] empresas
-    $companies = User::where("type", "company")->with("company")->paginate($this->pageSize);
+    $companies = Company::orderBy('nombre_comercial', 'asc')->with('user');
+    
+    // [3] la búsqueda, si aplica
+    if($request->input('searchBox')){
+      $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('rfc', 'like', "%{$request->input('searchBox')}%");
+    }
 
-    // [3] regresa el view
+    $companies = $companies->paginate($this->pageSize);
+
+    // [4] regresa el view
     return view('admin.companies.companies-list')->with([
-      "user"     => $user,
+      "user"      => $user,
       "companies" => $companies
     ]);
-
   }
 
   // Las vacantes
