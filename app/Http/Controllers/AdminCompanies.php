@@ -24,7 +24,7 @@ class AdminCompanies extends Controller
 
   public function view($id){
     $user    = Auth::user();
-    $company = User::find($id);
+    $company = Company::with('user')->find($id);
 
     return view("admin.companies.company-profile")->with([
       "user"  => $user,

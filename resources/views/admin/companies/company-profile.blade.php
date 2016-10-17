@@ -1,5 +1,5 @@
 @extends('layouts.master-admin')
-@section('title', 'Empresa: ' . $company->name)
+@section('title', 'Empresa: ' . $company->nombre_comercial)
 @section('description', 'Empresas')
 @section('bodyclass', 'empresas')
 @section('breadcrumb', 'layouts.breadcrumb')
@@ -12,12 +12,14 @@
 		<h3>Empresa</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$company->company->nombre_comercial}}</h2>
-		<p>{{$company->email}}</p>
+		<h2>{{$company->nombre_comercial}}</h2>
+		<p>{{!empty($company->user->email) ? $company->user->email : '' }}</p>
 		<p>
-		  <a href="{{url("dashboard/empresa/habilitar/{$company->id}")}}">
+			@if(!empty($company->user))
+		  <a href="{{url("dashboard/empresa/habilitar/{$company->user->id}")}}">
 		    {{$company->enabled == 0 ? "Habilitar" : "Deshabilitar"}}
 		  </a>
+			@endif
 		</p>
 		<p>Creado: {{date('d-m-Y', strtotime($company->created_at))}}</p>
 		<p>Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</p>
