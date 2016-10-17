@@ -11,15 +11,15 @@
   <div class="col-sm-12">
     <h1>Estudiantes</h1>
   </div>
-  <p>
     <div class="col-sm-3 col-sm-offset-6">
   		<p><a href="{{url("tablero-opd/estudiante/crear")}}" class="btn add"> + Agregar Estudiante</a></p>
   	</div>
     <div class="col-sm-3">
   		<p><a href="{{url("tablero-opd/estudiantes/actualizar/xlsx")}}" class="btn add">+ Agregar varios estudiantes</a></p>
   	</div>
-
-  </p>
+  	<div class="col-sm-12">
+  		<p>Esta lista de estudiantes corresponde a los registrados en la Universidad, para ver los estudiantes usuarios de la plataforma de clic <a href="{{ url('tablero-opd/estudiantes/usuarios') }}">aquí</a>.</p>
+  	</div>
   <div class="col-sm-12">
   @if($students->count())
     <ul class="list">
