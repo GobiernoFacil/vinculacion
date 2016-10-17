@@ -262,6 +262,7 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group(['middleware' => 'type:student' ], function(){
+    Route::get("tablero-estudiante", "Students@index");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
@@ -280,7 +281,7 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group(['middleware' => 'type:chamber'], function(){
-
+    Route::get("tablero-camara", "Chambers@index");
   });
 
 
@@ -292,7 +293,7 @@ Route::group(['middleware' => ['auth']], function () {
    *
    */
   Route::group(['middleware' => 'type:puebla'], function(){
-
+    Route::get("tablero-secotrade", "Puebla@index");
   });
 
 });

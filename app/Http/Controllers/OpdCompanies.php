@@ -96,7 +96,7 @@ class OpdCompanies extends Controller
     $_file = str_random(16);
     $file  = $_path . '/' . $_file;
     $request->file('file')->move($_path, $_file);
-// update:companies {user} {file}
+
     $code = Artisan::call('update:companies', [
       "user" => $user->id,
       "file" => $file
