@@ -137,10 +137,10 @@ class Admin extends Controller
   public function companies(Request $request){
 	  // [1] el usuario del sistema
     $user     = Auth::user();
-    
+
     // [2] empresas
     $companies = Company::orderBy('nombre_comercial', 'asc')->with('user');
-    
+
     // [3] la búsqueda, si aplica
     if($request->input('searchBox')){
       $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('searchBox')}%")
