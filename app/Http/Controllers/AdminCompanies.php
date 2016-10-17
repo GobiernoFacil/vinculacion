@@ -77,7 +77,7 @@ class AdminCompanies extends Controller
     // [1] el usuario del sistema
     $user = Auth::user();
     // [2] el usuario a editar
-    $company  = User::with("company.contact")->find($id);
+    $company  = Company::with("user")->with("contact")->find($id);
     // [3] el view para editar
     return view("admin.companies.company-update")->with([
       "user" => $user,
@@ -87,28 +87,47 @@ class AdminCompanies extends Controller
   }
 
   public function update(UpdateCompanyRequest $request, $id){
-    $user = User::find($id);
-    $old_email = $user->email;
+    $company = Company::with('user')->find($id);
+    if(!$company->user && !empty($request->email)){
+      // [1] crea el usuario
+      $user = new User([
+        'name'    => $request->name,
+        'email'   => $request->email,
+        'type'    => 'company',
+        'enabled' => 1
+      ]);
+      if(!empty($request->password)){
+        $user->password = Hash::make($request->password);
+      }
 
-    // update user
-    $user->name  = $request->name;
-    $user->email = $request->email;
-    if(!empty($request->password)){
-      $user->password = Hash::make($request->password);
-    }
-    $user->save();
-
-    // send email if distinct
-    if($user->email != $old_email){
+      $user->save();
       $path = base_path();
-      exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
+      exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+    }else{
+
+      $old_email = $company->user->email;
+      // update user
+      $company->user->name  = $request->name;
+      $company->user->email = $request->email;
+      if(!empty($request->password)){
+        $company->user->password = Hash::make($request->password);
+      }
+      $company->user->save();
+      // send email if distinct
+      if($company->user->email != $old_email){
+        $path = base_path();
+        exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+      }
+
     }
+
+
 
     // update company
-    $user->company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
 
     // update company contact
-    $user->company->contact->update([
+    $company->contact->update([
       "name"  => $request->cname,
       "email" => $request->cemail,
       "phone" => $request->cphone,

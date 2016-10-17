@@ -19,7 +19,7 @@
         <h5>Datos de usuario</h5>
         <p>
           <label>Nombre</label>
-          {{Form::text('name', $company->name,["class" => "form-control"])}}
+          {{Form::text('name', !empty($company->user->name) ? $company->user->name:'',["class" => "form-control"])}}
           @if($errors->has('name'))
           <strong>{{$errors->first('name')}}</strong>
           @endif
@@ -27,7 +27,7 @@
 
         <p>
           <label>Correo</label>
-          {{Form::text('email', $company->email,["class" => "form-control"])}}
+          {{Form::text('email', !empty($company->user->email) ? $company->user->email : '' ,["class" => "form-control"])}}
           @if($errors->has('email'))
           <strong>{{$errors->first('email')}}</strong>
           @endif
@@ -120,14 +120,14 @@
         <h5>Datos del contacto</h5>
         <p>
           <label>Nombre</label>
-          {{Form::text('cname', !empty($company->company->contact->name) ? $company->company->contact->name : "", ['class' => 'form-control'])}}
+          {{Form::text('cname', !empty($company->contact->name) ? $company->contact->name : "", ['class' => 'form-control'])}}
           @if($errors->has('cname'))
           <strong>{{$errors->first('cname')}}</strong>
           @endif
         </p>
         <p>
           <label>Teléfono</label>
-          {{Form::text('cphone', !empty($company->company->contact->phone) ? $company->company->contact->phone : "", ['class' => 'form-control'])}}
+          {{Form::text('cphone', !empty($company->contact->phone) ? $company->contact->phone : "", ['class' => 'form-control'])}}
           @if($errors->has('cphone'))
           <strong>{{$errors->first('cphone')}}</strong>
           @endif
@@ -135,7 +135,7 @@
 
         <p>
           <label>Correo</label>
-          {{Form::text('cemail', !empty($company->company->contact->email) ? $company->company->contact->email : "", ['class' => 'form-control'])}}
+          {{Form::text('cemail', !empty($company->contact->email) ? $company->contact->email : "", ['class' => 'form-control'])}}
           @if($errors->has('cemail'))
           <strong>{{$errors->first('cemail')}}</strong>
           @endif
