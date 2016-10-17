@@ -227,6 +227,13 @@ input[type="search"]::-webkit-search-decoration {
 .form-group {
   margin-bottom: 15px; }
 
+.form-search {
+  border-top: 1px solid #f2f2f2;
+  margin-top: 20px;
+  padding: 10px; }
+  .form-search p {
+    margin: 0; }
+
 .form-horizontal .control-label {
   padding-top: 7px;
   margin-bottom: 0;
@@ -1427,6 +1434,18 @@ a.btn:visited {
   .main_nav a.current {
     background: white;
     color: #133150; }
+
+a.back,
+a:visited.back {
+  color: #eb7c23;
+  border-bottom: 1px solid #eb7c23;
+  font-size: 13px;
+  margin-top: 10px;
+  display: inline-block; }
+  a.back:hover,
+  a:visited.back:hover {
+    color: #c96312;
+    border-bottom: 1px solid #c96312; }
 
 .list {
   list-style: none;
