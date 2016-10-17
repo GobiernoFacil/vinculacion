@@ -33,7 +33,7 @@
 	  </ul>
 	
 	@else
-		<p>No hay universidades</p>
+		<p>No hay estudiantes</p>
 	@endif
 	
 	
