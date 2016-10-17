@@ -36,18 +36,21 @@
 	  	</li>
 	  @foreach($companies as $company)
 	    <li class="row">
-	    	<span class="col-sm-2"><a href="{{url("dashboard/empresa/{$company->user->id}")}}"> {{$company->nombre_comercial}}</a><br>
+	    	<span class="col-sm-2"><a href="{{url("dashboard/empresa/{$company->id}")}}"> {{$company->nombre_comercial}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</span></span>
+					@if($company->user)
 			<span class="col-sm-2">{{$company->user->email}}</span>
-			<!--<span class="col-sm-2">{{!$company->user->enabled ? 'Habilitado' : 'Deshabilitado'}}</span>-->
+				@else
+				<span class="col-sm-2">Sin correo</span>
+					@endif
 			<span class="col-sm-3">
 				{!!$company->has('contact') ? $company->contact->name  . '<br>' : '' !!}
 				{!!$company->has('contact') ? $company->contact->email . '<br>' : ''!!}
 				{{ $company->has('contact') ? $company->contact->phone : '' }} </span>
 			</span>
 			<span class="col-sm-2">
-				<a href="{{url("dashboard/empresa/editar/{$company->user->id}")}}" class="btn xs">Editar</a>
-			  <a href="{{url("dashboard/empresa/eliminar/{$company->user->id}")}}" class="btn danger xs">Eliminar</a>
+				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
+			  <a href="{{url("dashboard/empresa/eliminar/{$company->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>
 	    </li>
 	  @endforeach
