@@ -12,12 +12,13 @@
 				<h1>Tablero de compradores</h1>
 			</div>
 		</div>
+		
 		<!--perfil-->
 		<div class="row">
 			<div class="col-sm-8">
 				<div class="box">
 					<div class="col-sm-4">
-					<img src="{{ url(empty($company->logo) ? 'default.png' : 'img/logos/' . $company->logo) }}">
+					<img src="{{ url(empty($company->logo) ? 'img/logos/default.png' : 'img/logos/' . $company->logo) }}">
 					</div>
 					<div class="col-sm-8">
 						<h3>{{$company->nombre_comercial}}</h3>
@@ -28,6 +29,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!--vacantes-->
 		<div class="row">
 			<div class="col-sm-4">
@@ -37,14 +39,7 @@
 				</div>
 			</div>
 
-			<!--
-			<div class="col-sm-4">
-				<div class="box">
-					<h4>Estudiantes que aplicaron</h4>
-					<h5><span>0</span></h5>
-				</div>
-			</div>
-			-->
+			<!-- convenios -->
 			<div class="col-sm-4">
 				<div class="box">
 					<h4>Tus Convenios</h4>
