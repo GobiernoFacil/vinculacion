@@ -3,13 +3,13 @@
 ## Dependencias:
 * Apache
 * PHP >= 5.6
--- php56-mbstring
--- php56-gd
--- php56-mcrypt
--- php56-soap
--- php56-tidy
--- php56-dbg
--- php56-cli
+ * php56-mbstring
+ * php56-gd
+ * php56-mcrypt
+ * php56-soap
+ * php56-tidy
+ * php56-dbg
+ * php56-cli
 * Mysql
 * Composer
 * Bower
