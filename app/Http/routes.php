@@ -302,6 +302,9 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:puebla'], function(){
     Route::get("tablero-secotrade", "Puebla@index");
+    Route::get("tablero-secotrade/yo", "Puebla@me");
+    Route::get("tablero-secotrade/yo/editar", "Puebla@changeMe");
+    Route::post("tablero-secotrade/yo/editar", "Puebla@updateMe");
   });
 
 });

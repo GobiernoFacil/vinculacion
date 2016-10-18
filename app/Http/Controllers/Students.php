@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
+use Hash;
 use App\Http\Requests\UpdateStudentProfileRequest;
 class Students extends Controller
 {
