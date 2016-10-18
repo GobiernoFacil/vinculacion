@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Artisan;
 use Hash;
 // models
 use App\User;
@@ -15,6 +16,7 @@ use App\models\Company;
 // FormValidators
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Requests\SaveCompanyRequest;
+use App\Http\Requests\AddCompaniesByFile;
 class AdminCompanies extends Controller
 {
   /*
@@ -194,5 +196,27 @@ class AdminCompanies extends Controller
     $company->save();
 
     return redirect("dashboard/empresa/{$id}");
+  }
+
+  public function addMultiple(){
+    $user = Auth::user();
+    return view("admin.companies.companies-add-xlsx")->with(["user" => $user]);
+  }
+
+  public function saveMultiple(AddCompaniesByFile $request){
+    $user  = Auth::user();
+    $path  = base_path();
+    $_path = storage_path('app');
+    $_file = str_random(16);
+    $file  = $_path . '/' . $_file;
+    $request->file('file')->move($_path, $_file);
+
+    $code = Artisan::call('update:adminCompanies', [
+      "user" => $user->id,
+      "file" => $file
+    ]);
+    //exec("php {$path}/artisan update:companies {$user->id} '{$file}' > /dev/null &");
+
+    return redirect("dashboard/empresas");
   }
 }

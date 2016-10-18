@@ -49,7 +49,7 @@ trait MessagesTrait{
         'matricula.required'        =>   'La matrícula es requerida',
         'matricula.unique'          =>   'Esta matrícula ya existe',
         'curp.required'             =>   'El CURP es requerido',
-        'carrea.required'           =>   'La carrera es requerida',
+        'carrera.required'           =>   'La carrera es requerida',
 
         // companies
         'rfc.required'              =>   'El R.F.C. es requerido',

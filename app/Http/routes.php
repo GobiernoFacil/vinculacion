@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/empresa/eliminar/{id}', 'AdminCompanies@delete');
     Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
     Route::post('dashboard/empresa/buscar', 'AdminCompanies@search');
+    Route::get("dashboard/empresas/actualizar/xlsx", "AdminCompanies@addMultiple");
+    Route::post("dashboard/empresas/actualizar/xlsx", "AdminCompanies@saveMultiple");
 
     Route::get('dashboard/empresa/habilitar/{id}', 'AdminCompanies@enableToogle');
 
