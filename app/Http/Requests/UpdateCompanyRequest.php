@@ -33,24 +33,46 @@ class UpdateCompanyRequest extends Request
       $user = Auth::user();
     }
 
+    if($this->email){
+      if(empty($company->user->email)){
+        $email = '';
+      }else{
+        $email = $company->user->email;
+      }
+      return [
+        // user rules
+        'name'     => 'required',
+        'email'    => 'required|email|max:255' . ($email != $this->email ? '|unique:users' : ''),
+        'password' => 'min:6',
 
-    return [
-      // user rules
-      'name'     => 'required',
-      'email'    => 'required|email|max:255' . ($company->user->email != $this->email ? '|unique:users' : ''),
-      'password' => 'min:6',
+        // company rules
+        'rfc'              => 'required'.($company->rfc != $this->rfc ? '|unique:companies' : ''),
+        'razon_social'     => 'required|max:255',
+        'nombre_comercial' => 'required|max:255',
+        'zip'              => 'digits_between:3,6',
+        'logo'             => 'image',
 
-      // company rules
-      'rfc'              => 'required',
-      'razon_social'     => 'required|max:255',
-      'nombre_comercial' => 'required|max:255',
-      'zip'              => 'digits_between:3,6',
-      'logo'             => 'image',
+        // contact rules
+        'cname'  => 'max:255',
+        'cphone' => 'max:255',
+        'cemail' => 'email|max:255'
+      ];
+    }else {
+      # code...
+      return [
 
-      // contact rules
-      'cname'  => 'max:255',
-      'cphone' => 'max:255',
-      'cemail' => 'email|max:255'
-    ];
+        // company rules
+        'rfc'              => 'required|'.($company->rfc != $this->rfc ? '|unique:companies' : ''),
+        'razon_social'     => 'required|max:255',
+        'nombre_comercial' => 'required|max:255',
+        'zip'              => 'digits_between:3,6',
+        'logo'             => 'image',
+
+        // contact rules
+        'cname'  => 'max:255',
+        'cphone' => 'max:255',
+        'cemail' => 'email|max:255'
+      ];
+    }
   }
 }

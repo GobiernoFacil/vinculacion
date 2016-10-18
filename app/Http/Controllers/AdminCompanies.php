@@ -88,43 +88,46 @@ class AdminCompanies extends Controller
 
   public function update(UpdateCompanyRequest $request, $id){
     $company = Company::with('user')->find($id);
-    if(!$company->user && !empty($request->email)){
-      // [1] crea el usuario
-      $user = new User([
-        'name'    => $request->name,
-        'email'   => $request->email,
-        'type'    => 'company',
-        'enabled' => 1
-      ]);
-      if(!empty($request->password)){
-        $user->password = Hash::make($request->password);
-      }
+    if(!empty($request->email)){
+      //Compañia no cuenta con usuario
+      if(!$company->user){
+        // [1] crea el usuario
+        $user = new User([
+          'name'    => $request->name,
+          'email'   => $request->email,
+          'type'    => 'company',
+          'enabled' => 1
+        ]);
+        if(!empty($request->password)){
+          $user->password = Hash::make($request->password);
+        }
 
-      $user->save();
-      $path = base_path();
-      exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
-    }else{
-
-      $old_email = $company->user->email;
-      // update user
-      $company->user->name  = $request->name;
-      $company->user->email = $request->email;
-      if(!empty($request->password)){
-        $company->user->password = Hash::make($request->password);
-      }
-      $company->user->save();
-      // send email if distinct
-      if($company->user->email != $old_email){
+        $user->save();
+        //agregar usuario a compañia
+        $company->user_id = $user->id;
+        $company->save();
         $path = base_path();
-        exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+        exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
+      }else{
+        $old_email = $company->user->email;
+        // update user
+        $company->user->name  = $request->name;
+        $company->user->email = $request->email;
+        if(!empty($request->password)){
+          $company->user->password = Hash::make($request->password);
+        }
+        $company->user->save();
+        // send email if distinct
+        if($company->user->email != $old_email){
+          $path = base_path();
+          exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+        }
       }
-
     }
-
-
 
     // update company
     $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+
 
     // update company contact
     $company->contact->update([
@@ -139,10 +142,10 @@ class AdminCompanies extends Controller
   }
 
   public function delete($id){
-    $user     = User::find($id);
-    $user->company->contact->delete();
-    $user->company->delete();
-    $user->delete();
+    $company  = Company::find($id);
+    $company->contact->delete();
+    $company->user->delete();
+    $company->delete();
     return redirect('dashboard/empresas');
 
   }
