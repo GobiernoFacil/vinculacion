@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Artisan;
 use Hash;
 // models
 use App\User;
@@ -15,6 +16,7 @@ use App\models\Company;
 // FormValidators
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Requests\SaveCompanyRequest;
+use App\Http\Requests\AddCompaniesByFile;
 class AdminCompanies extends Controller
 {
   /*
@@ -43,6 +45,7 @@ class AdminCompanies extends Controller
 
   public function save(SaveCompanyRequest $request){
 
+   if($request->email){
     // [1] crea el usuario
     $user = new User([
       'name'    => $request->name,
@@ -59,18 +62,25 @@ class AdminCompanies extends Controller
     // [2] envía el correo de suscripción
     $path = base_path();
     exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
-
     // [3] se crea el objeto empresa
-    $company = $user->company()->firstOrCreate([]);
-    $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
-    $company->contact()->firstOrCreate([]);
-    $company->contact->update([
+    $company = $user->company()->firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    $company->contact()->firstOrCreate([
       "name"  => $request->cname,
       "email" => $request->cemail,
       "phone" => $request->cphone,
     ]);
+  }else{
+    //[1] Crear empresa sin usuario
+    $company = new Company($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    $company->save();
+    $company->contact()->firstOrCreate([
+      "name"  => $request->cname,
+      "email" => $request->cemail,
+      "phone" => $request->cphone,
+    ]);
+  }
     // send to view
-    return redirect("dashboard/empresa/{$user->id}");
+    return redirect("dashboard/empresa/{$company->id}");
   }
 
   public function edit($id){
@@ -88,43 +98,46 @@ class AdminCompanies extends Controller
 
   public function update(UpdateCompanyRequest $request, $id){
     $company = Company::with('user')->find($id);
-    if(!$company->user && !empty($request->email)){
-      // [1] crea el usuario
-      $user = new User([
-        'name'    => $request->name,
-        'email'   => $request->email,
-        'type'    => 'company',
-        'enabled' => 1
-      ]);
-      if(!empty($request->password)){
-        $user->password = Hash::make($request->password);
-      }
+    if(!empty($request->email)){
+      //Compañia no cuenta con usuario
+      if(!$company->user){
+        // [1] crea el usuario
+        $user = new User([
+          'name'    => $request->name,
+          'email'   => $request->email,
+          'type'    => 'company',
+          'enabled' => 1
+        ]);
+        if(!empty($request->password)){
+          $user->password = Hash::make($request->password);
+        }
 
-      $user->save();
-      $path = base_path();
-      exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
-    }else{
-
-      $old_email = $company->user->email;
-      // update user
-      $company->user->name  = $request->name;
-      $company->user->email = $request->email;
-      if(!empty($request->password)){
-        $company->user->password = Hash::make($request->password);
-      }
-      $company->user->save();
-      // send email if distinct
-      if($company->user->email != $old_email){
+        $user->save();
+        //agregar usuario a compañia
+        $company->user_id = $user->id;
+        $company->save();
         $path = base_path();
-        exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+        exec("php {$path}/artisan email:send new_email {$user->id} > /dev/null &");
+      }else{
+        $old_email = $company->user->email;
+        // update user
+        $company->user->name  = $request->name;
+        $company->user->email = $request->email;
+        if(!empty($request->password)){
+          $company->user->password = Hash::make($request->password);
+        }
+        $company->user->save();
+        // send email if distinct
+        if($company->user->email != $old_email){
+          $path = base_path();
+          exec("php {$path}/artisan email:send new_email {$company->user->id} > /dev/null &");
+        }
       }
-
     }
-
-
 
     // update company
     $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+
 
     // update company contact
     $company->contact->update([
@@ -139,10 +152,10 @@ class AdminCompanies extends Controller
   }
 
   public function delete($id){
-    $user     = User::find($id);
-    $user->company->contact->delete();
-    $user->company->delete();
-    $user->delete();
+    $company  = Company::find($id);
+    $company->contact->delete();
+    $company->user->delete();
+    $company->delete();
     return redirect('dashboard/empresas');
 
   }
@@ -183,5 +196,27 @@ class AdminCompanies extends Controller
     $company->save();
 
     return redirect("dashboard/empresa/{$id}");
+  }
+
+  public function addMultiple(){
+    $user = Auth::user();
+    return view("admin.companies.companies-add-xlsx")->with(["user" => $user]);
+  }
+
+  public function saveMultiple(AddCompaniesByFile $request){
+    $user  = Auth::user();
+    $path  = base_path();
+    $_path = storage_path('app');
+    $_file = str_random(16);
+    $file  = $_path . '/' . $_file;
+    $request->file('file')->move($_path, $_file);
+
+    $code = Artisan::call('update:adminCompanies', [
+      "user" => $user->id,
+      "file" => $file
+    ]);
+    //exec("php {$path}/artisan update:companies {$user->id} '{$file}' > /dev/null &");
+
+    return redirect("dashboard/empresas");
   }
 }

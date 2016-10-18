@@ -1723,12 +1723,14 @@ footer {
     font-size: 14px;
     line-height: 1.5; }
     footer p a,
+    footer p a:link,
     footer p a:visited {
       color: white;
       border-bottom: 1px solid #0098b9; }
       footer p a:hover,
+      footer p a:link:hover,
       footer p a:visited:hover {
-        color: #0098b9; }
+        color: #20d7ff; }
   footer .author {
     margin-top: 50px; }
     footer .author p {
