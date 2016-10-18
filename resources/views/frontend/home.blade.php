@@ -124,7 +124,7 @@
 		<!--btn all-->
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
-				<a href="" class="btn">Ver todas las empresas</a>
+				<a href="{{url('empresas')}}" class="btn">Ver todas las empresas</a>
 			</div>
 		</div>
 	</section>
@@ -136,46 +136,26 @@
 			<div class="col-sm-12">
 				<h2>Encuentra un trabajo cerca de tu universidad</h2>
 			</div>
-			<div class="col-sm-4">
+			@if($opds->count())
+			<?php $o = 0;?>
+			
+				@foreach($opds as $opd)
+				<?php $o++;?>
+				@if($o == 1 || $o == 11 || $o == 21 )
+				<div class="col-sm-4">
 				<ul>
-					<li><a href="">Universidad Tecnológica Bilingüe, Internacional y Sustentable del Estado de Puebla </a> </li>
-					<li><a href="">Universidad Tecnológica de Huejotzingo											  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Izúcar de Matamoros									  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Oriental												  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Puebla												  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Tecamachalco											  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Tehuacán												  </a>  </li>
-					<li><a href="">Universidad Tecnológica de Xicotepec de Juárez									  </a>  </li>
-					<li><a href="">Universidad Politécnica de Amozoc de Mota										  </a>  </li>
-					<li><a href="">Universidad Politécnica de Puebla												  </a>  </li>
+				@endif
+					<li><a href="{{url('universidad/' . $opd->opd->id)}}">{{$opd->name}}</a></li>
+				@if($o == 10 || $o == 20 || $o == 30 || $opds->count() == $o )
 				</ul>
 			</div>
-			<div class="col-sm-4">
-				<ul>
-					<li><a href="">Universidad Politécnica Metropolitana de Puebla			   </a></li>
-					<li><a href="">Universidad Intercultural del Estado de Puebla			   </a></li>
-					<li><a href="">Universidad Interserrana del Estado de Puebla			   </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Acatlán de Osorio		   </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Atlixco				   </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Ciudad Serdán			   </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Huachinango			   </a></li>
-					<li><a href="">Instituto Tecnológico Superior de la Sierra Negra de Ajalpan</a></li>
-					<li><a href="">Instituto Tecnológico Superior de la Sierra Norte de Puebla </a></li>
-				</ul>
-			</div>
-			<div class="col-sm-4">
-				<ul>
-					<li><a href="">Instituto Tecnológico Superior de Libres				  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de San Martín Texmelucan</a></li>
-					<li><a href="">Instituto Tecnológico Superior de Tepeaca			  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Tepexi de Rodriguez  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Teziutlán			  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Tlatlauquitepec	  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Venustiano Carranza  </a></li>
-					<li><a href="">Instituto Tecnológico Superior de Zacapoaxtla		  </a></li>
-
-				</ul>
-			</div>
+				@endif
+				
+				@endforeach					
+				
+			@else
+			<p>No hay universidades registradas</p>
+			@endif
 		</div>
 	</div>
 </section>

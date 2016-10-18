@@ -137,14 +137,23 @@ class Admin extends Controller
   public function companies(Request $request){
 	  // [1] el usuario del sistema
     $user     = Auth::user();
-    
+
     // [2] empresas
     $companies = Company::orderBy('nombre_comercial', 'asc')->with('user');
-    
+
     // [3] la búsqueda, si aplica
     if($request->input('searchBox')){
       $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('searchBox')}%")
-                   ->orWhere('rfc', 'like', "%{$request->input('searchBox')}%");
+                   ->orWhere('rfc', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('razon_social', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('email', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('zip', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('phone', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('address', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('giro_comercial', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('alcance', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('type', 'like', "%{$request->input('searchBox')}%")
+                   ->orWhere('size', 'like', "%{$request->input('searchBox')}%");
     }
 
     $companies = $companies->paginate($this->pageSize);

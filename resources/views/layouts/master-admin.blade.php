@@ -22,6 +22,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('js/bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.3.theme.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('js/bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.3.custom.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('img/favicon-32x32.png') }}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ url('img/favicon-96x96.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ url('img/favicon-16x16.png') }}">
+	
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
