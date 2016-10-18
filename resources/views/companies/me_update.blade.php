@@ -124,8 +124,6 @@
           <strong>{{$errors->first('logo')}}</strong>
           @endif
         </p>
-
-        Form::file($name, $attributes = array());
       </fieldset>
 
       <!-- cosas del contacto -->
