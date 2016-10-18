@@ -137,22 +137,19 @@
 				<h2>Encuentra un trabajo cerca de tu universidad</h2>
 			</div>
 			@if($opds->count())
-			<?php $o = 0;?>
-			
+				<ul class="row">
 				@foreach($opds as $opd)
-				<?php $o++;?>
-				@if($o == 1 || $o == 11 || $o == 21 )
-				<div class="col-sm-4">
-				<ul>
-				@endif
-					<li><a href="{{url('universidad/' . $opd->opd->id)}}">{{$opd->name}}</a></li>
-				@if($o == 10 || $o == 20 || $o == 30 || $opds->count() == $o )
-				</ul>
-			</div>
-				@endif
-				
+					<li class="col-sm-2">
+						<a href="{{url('universidad/' . $opd->opd->id)}}">
+						<figure>
+							<img src="{{ url('img/banners/banner_default_sm.png') }}">
+						</figure>
+						<span>{{$opd->name}}</span>
+						<span class="location">{{$opd->opd->city}}</span>
+						</a>
+					</li>
 				@endforeach					
-				
+				</ul>
 			@else
 			<p>No hay universidades registradas</p>
 			@endif
