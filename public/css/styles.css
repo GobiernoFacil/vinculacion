@@ -1256,13 +1256,96 @@ header {
     .home .signup a:hover {
       background: #00add3; }
 
+.home section.opds li {
+  border: 0;
+  height: 200px;
+  margin-bottom: 10px; }
+  .home section.opds li a,
+  .home section.opds li a:visited {
+    display: block;
+    background: white;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    overflow: hidden; }
+    .home section.opds li a figure,
+    .home section.opds li a:visited figure {
+      position: absolute;
+      left: 0;
+      -webkit-transition: left 400ms;
+      transition: left 400ms; }
+      .home section.opds li a figure img,
+      .home section.opds li a:visited figure img {
+        max-width: 400px;
+        width: 165px;
+        -webkit-transition: width 400ms;
+        transition: width 400ms; }
+    .home section.opds li a span,
+    .home section.opds li a:visited span {
+      background: white;
+      color: #133150;
+      font-size: 12px;
+      padding: 15px;
+      position: absolute;
+      height: 50%;
+      top: 50%;
+      -webkit-transition: top 400ms;
+      transition: top 400ms; }
+      .home section.opds li a span.location,
+      .home section.opds li a:visited span.location {
+        background: rgba(19, 49, 80, 0.9);
+        -webkit-opacity: 0;
+        -moz-opacity: 0;
+        opacity: 0;
+        color: white;
+        top: 0;
+        height: 100%;
+        padding: 80px 15px 0;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        -webkit-transition: opacity 400ms;
+        transition: opacity 400ms; }
+        .home section.opds li a span.location:after,
+        .home section.opds li a:visited span.location:after {
+          content: "";
+          border-bottom: 1px solid white;
+          position: absolute;
+          top: 70px;
+          width: 10%;
+          left: 20%;
+          -webkit-transition: width 400ms;
+          transition: width 400ms; }
+    .home section.opds li a:hover,
+    .home section.opds li a:visited:hover {
+      background: red; }
+      .home section.opds li a:hover figure,
+      .home section.opds li a:visited:hover figure {
+        left: -25px; }
+        .home section.opds li a:hover figure img,
+        .home section.opds li a:visited:hover figure img {
+          width: 215px; }
+      .home section.opds li a:hover span,
+      .home section.opds li a:visited:hover span {
+        top: 100%; }
+        .home section.opds li a:hover span.location,
+        .home section.opds li a:visited:hover span.location {
+          top: 0;
+          -webkit-opacity: 1;
+          -moz-opacity: 1;
+          opacity: 1; }
+          .home section.opds li a:hover span.location:after,
+          .home section.opds li a:visited:hover span.location:after {
+            width: 60%; }
+
 section {
   padding: 90px 0 120px; }
   section.opds {
     color: white;
-    background: #0098b9; }
+    background: #e9e9e9; }
     section.opds h2 {
-      color: white; }
+      margin-bottom: 20px; }
     section.opds a,
     section.opds a:visited {
       color: white;
