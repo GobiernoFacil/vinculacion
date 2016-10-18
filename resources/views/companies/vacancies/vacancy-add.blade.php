@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-sm-12">
       @if(!$user->enabled)
-      <p>Para que tu información forme parte del sitio, y puedas publicar vacantes, un tecnológico debe autorizar tu registro. Si este procedimiento tarda, puedes contactarlos directamente, buscando su información en el directorio de <strong><a target="_blank" href = "{{url('tablero-empresas/universidades')}}">universidades</a></strong>.</p>
+          @include('companies.alert-message')
       @endif
       <h1 class="separator">Agregar vacante</h1>
     </div>
