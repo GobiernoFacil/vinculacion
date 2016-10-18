@@ -1,27 +1,137 @@
-# Laravel PHP Framework
+# Guía de instalación de Empleo abierto
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Dependencias:
+* Apache
+* PHP >= 5.6
+ * php56-mbstring
+ * php56-gd
+ * php56-mcrypt
+ * php56-soap
+ * php56-tidy
+ * php56-dbg
+ * php56-cli
+* Mysql
+* Composer
+* Bower
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Pasos para instalar el sistema
+1: copiar los archivos del siguiente repositorio:
+[https://github.com/GobiernoFacil/vinculacion] (https://github.com/hugovom/sectur.git)
 
-## Official Documentation
+2: en la carpeta raíz, hay que correr el siguiente comando:
+```bash
+composer install
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+3: en la carpeta raíz, hay que copiar el archivo .env.example a .env
+```bash
+cp .env.example .env
+```
 
-## Contributing
+4: crear la base de datos que se va a ocupar
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+5: editar el archivo .env, en el que se debe poner la información de conexión a la DB. También debe agregarse información del api de Correos. En el servidor de Gobierno fácil usamos Mailgun, pero hay otros disponibles.
+```bash
+MAIL_DRIVER=mailgun
+MAIL_HOST=smtp.mailgun.org
+MAIL_PORT=587
+MAIL_USERNAME=postmaster@xxxxxxxxxx.mailgun.org
+MAIL_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MAIL_ENCRYPTION=null
+MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
+MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
-## Security Vulnerabilities
+6: dentro de este mismo archivo de .env se debe definir el usuario para el primer admin del sistema, y para el usuario perteneciente a la SECOTRADE de la siguiente manera:
+```bash
+ADMIN_EMAIL=howdy@gobiernofacil.com
+ADMIN_NAME="arturo c."
+ADMIN_PASSWORD=secret_pass_1
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+ADMIN_PUEBLA_NAME="secotrade"
+ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
+ADMIN_PUEBLA_PASSWORD=secret_pass_2
+```
 
-## License
+El archivo .env debe verse más o menos así:
+```bash
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=some_key
+APP_URL=http://localhost
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gape
+DB_USERNAME=db_user
+DB_PASSWORD=secret_pass_0
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=mailgun
+MAIL_HOST=smtp.mailgun.org
+MAIL_PORT=587
+MAIL_USERNAME=postmaster@xxxxxxxxxx.mailgun.org
+MAIL_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MAIL_ENCRYPTION=null
+MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
+MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
+
+ADMIN_EMAIL=howdy@gobiernofacil.com
+ADMIN_NAME="arturo c."
+ADMIN_PASSWORD=secret_pass_1
+
+ADMIN_PUEBLA_NAME="secotrade"
+ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
+ADMIN_PUEBLA_PASSWORD=secret_pass_2
+```
+
+7: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
+```bash
+php artisan key:generate
+```
+
+8: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
+```bash
+php artisan migrate
+```
+
+9: Ya con las tablas disponibles, hay que copiar la información inicial: universidades, usuarios, códigos postales, etc., mediante el siguiente comando:
+```bash
+php artisan db:seed
+```
+(Esto puede tardar unos minutos, dependiendo de la velocidad del equipo)
+
+10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
+```bash
+bower update
+```
+
+y eso es todo amigos!
+
+## Guía para actualizar el sistema
+1: obtener los cambios del código con git
+```bash
+git pull origin master
+```
+
+2: es posible que haya cambios en la DB y nuevas librerías de PHP. Esto no es común, pero mejor revisar:
+```bash
+composer install
+php artisan migrate
+```
+
+3: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener nuevas dependencias de Javascript
+```bash
+bower update
+```
+
+(cuando esto se ejecuta en un servidor de producción, Artisan pide confirmación para realizar el _migrate_. Esto no debería afectar los registros de la DB).
