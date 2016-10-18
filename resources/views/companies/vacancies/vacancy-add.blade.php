@@ -10,6 +10,9 @@
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
+      @if(!$user->enabled)
+      <p>Para que tu información forme parte del sitio, y puedas publicar vacantes, un tecnológico debe autorizar tu registro. Si este procedimiento tarda, puedes contactarlos directamente, buscando su información en el directorio de <strong><a target="_blank" href = "{{url('tablero-empresas/universidades')}}">universidades</a></strong>.</p>
+      @endif
       <h1 class="separator">Agregar vacante</h1>
     </div>
   </div>
@@ -20,7 +23,7 @@
       <!-- cosas de su objeto -->
       <fieldset>
         <h5>Datos de la vacante</h5>
-        <!-- 
+        <!--
 | job             | varchar(255)     | YES  | vacante    | NULL    |       x        |
 | tags            | text             | YES  |  carreras   | NULL    |       x        |
 | age_from        | int(11)          | YES  |  edad mínima   | NULL    |                |
@@ -109,7 +112,7 @@ $( function() {
     function extractLast( term ) {
       return split( term ).pop();
     }
- 
+
     $( "#tags" )
       // don't navigate away from the field on tab when selecting an item
       .on( "keydown", function( event ) {
