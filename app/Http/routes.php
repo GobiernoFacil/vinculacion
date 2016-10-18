@@ -266,11 +266,13 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:student' ], function(){
     Route::get("tablero-estudiante", "Students@index");
+    Route::get("tablero-estudiante/yo", "Students@me");
+    Route::get("tablero-estudiante/yo/editar", "Students@changeMe");
+    Route::post("tablero-estudiante/yo/editar", "Students@updateMe");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-estudiante' ], function(){
-
     });
   });
 

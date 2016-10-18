@@ -22,21 +22,24 @@
 	  	</li>
 	  @foreach($students as $student)
 	    <li class="row">
-			<span class="col-sm-2">{{$student->student->student_registration_id}}</span>
-	    	<span class="col-sm-4"><a href="{{url("dashboard/estudiante/{$student->id}")}}"> {{$student->name}}</a><br>
+			<span class="col-sm-2">{{$student->matricula}}</span>
+	    	<span class="col-sm-4"><a href="{{url("dashboard/estudiante/{$student->id}")}}"> {{$student->nombre}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span></span>
+			@if(!empty($student->email))
 			<span class="col-sm-3">{{$student->email}}</span>
-			<span class="col-sm-3">{{$student->student->opd_id}}</span>
-
+      @else
+			<span class="col-sm-3">Sin correo</span>
+			@endif
+			<span class="col-sm-3">{{$student->opd_id}}</span>
 	    </li>
 	  @endforeach
 	  </ul>
-	
+
 	@else
 		<p>No hay estudiantes</p>
 	@endif
-	
-	
+
+
 	{{ $students->links() }}
 	</div>
 </div>
