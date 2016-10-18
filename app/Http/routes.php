@@ -287,6 +287,9 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:chamber'], function(){
     Route::get("tablero-camara", "Chambers@index");
+    Route::get("tablero-camara/yo", "Chambers@me");
+    Route::get("tablero-camara/yo/editar", "Chambers@changeMe");
+    Route::post("tablero-camara/yo/editar", "Chambers@updateMe");
   });
 
 
