@@ -1259,7 +1259,7 @@ header {
 .home section.opds li {
   border: 0;
   height: 200px;
-  margin-bottom: 10px; }
+  margin-bottom: 30px; }
   .home section.opds li a,
   .home section.opds li a:visited {
     display: block;
@@ -1272,23 +1272,26 @@ header {
     .home section.opds li a:visited figure {
       position: absolute;
       left: 0;
+      width: 100%;
       -webkit-transition: left 400ms;
       transition: left 400ms; }
       .home section.opds li a figure img,
       .home section.opds li a:visited figure img {
         max-width: 400px;
-        width: 165px;
+        width: 100%;
         -webkit-transition: width 400ms;
         transition: width 400ms; }
     .home section.opds li a span,
     .home section.opds li a:visited span {
       background: white;
       color: #133150;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 700;
       padding: 15px;
       position: absolute;
-      height: 50%;
-      top: 50%;
+      height: 40%;
+      width: 100%;
+      top: 60%;
       -webkit-transition: top 400ms;
       transition: top 400ms; }
       .home section.opds li a span.location,
@@ -1301,7 +1304,7 @@ header {
         top: 0;
         height: 100%;
         padding: 80px 15px 0;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         width: 100%;
         text-align: center;
         text-transform: uppercase;
@@ -1325,7 +1328,7 @@ header {
         left: -25px; }
         .home section.opds li a:hover figure img,
         .home section.opds li a:visited:hover figure img {
-          width: 215px; }
+          width: 376px; }
       .home section.opds li a:hover span,
       .home section.opds li a:visited:hover span {
         top: 100%; }

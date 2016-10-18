@@ -139,7 +139,7 @@
 			@if($opds->count())
 				<ul class="row">
 				@foreach($opds as $opd)
-					<li class="col-sm-2">
+					<li class="col-sm-3">
 						<a href="{{url('universidad/' . $opd->opd->id)}}">
 						<figure>
 							<img src="{{ url('img/banners/banner_default_sm.png') }}">
