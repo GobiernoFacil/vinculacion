@@ -122,7 +122,7 @@ class Admin extends Controller
 	  // [1] el usuario del sistema
     $user     = Auth::user();
     // [2] estudiantes
-    $students = User::where("type", "student")->with("student")->paginate($this->pageSize);
+    $students = Student::orderBy('nombre')->with("user")->paginate($this->pageSize);
 
     // [3] regresa el view
     return view('admin.students.students-list')->with([
