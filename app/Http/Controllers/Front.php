@@ -21,7 +21,7 @@ class Front extends Controller
   //
   //
   public function index(){
-  	$opds = User::where("type", "opd")->with("opd")->get();
+  	$opds = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
     return view("frontend.home")->with([
       "opds" => $opds
     ]);
