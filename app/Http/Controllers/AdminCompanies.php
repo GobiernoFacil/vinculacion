@@ -43,6 +43,7 @@ class AdminCompanies extends Controller
 
   public function save(SaveCompanyRequest $request){
 
+   if($request->email){
     // [1] crea el usuario
     $user = new User([
       'name'    => $request->name,
@@ -59,18 +60,25 @@ class AdminCompanies extends Controller
     // [2] envía el correo de suscripción
     $path = base_path();
     exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
-
     // [3] se crea el objeto empresa
-    $company = $user->company()->firstOrCreate([]);
-    $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
-    $company->contact()->firstOrCreate([]);
-    $company->contact->update([
+    $company = $user->company()->firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    $company->contact()->firstOrCreate([
       "name"  => $request->cname,
       "email" => $request->cemail,
       "phone" => $request->cphone,
     ]);
+  }else{
+    //[1] Crear empresa sin usuario
+    $company = new Company($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    $company->save();
+    $company->contact()->firstOrCreate([
+      "name"  => $request->cname,
+      "email" => $request->cemail,
+      "phone" => $request->cphone,
+    ]);
+  }
     // send to view
-    return redirect("dashboard/empresa/{$user->id}");
+    return redirect("dashboard/empresa/{$company->id}");
   }
 
   public function edit($id){
