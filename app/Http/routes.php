@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/estudiantes', 'Admin@students');
     Route::get('dashboard/empresas', 'Admin@companies');
     Route::get('dashboard/vacantes', 'Admin@vacancies');
+    Route::get('dashboard/convenios', 'Admin@contracts');
 
     // P E R F I L   D E L   A D M I N I S T R A D O R
     // ----------------------------------------------------------------
