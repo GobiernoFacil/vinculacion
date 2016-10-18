@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacant extends Model
 {
-//
-protected $fillable =['company_id','opd_id','academic_offer_id','vacant_name','vacant_location','vacant_schedule','vacant_salary','vacant_category','vacant_expiry_date','vacant_contract_type',
-                    'vacant_number','vacant_description','vacant_requirements','vacant_observations'];
+protected $fillable =['company_id','opd_id', 'job', 'tags', 'age_from', 'age_to', 'travel', 'location',
+                      'experience', 'salary', 'work_from', 'work_to', 'benefits', 'expenses', 'training', 
+                      'state', 'city', 'salary_min', 'salary_max', 'salary_type', 'salary_variable',
+                      'salary_extra', 'personality', 'contract_level', 'contract_type', 'speciality', 'status',
+                      'for_company', 'url'];
 
 
                     // modelos relacionados

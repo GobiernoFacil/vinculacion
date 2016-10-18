@@ -43,9 +43,11 @@ class CompanyVacancies extends Controller
                             'personality', 'contract_level', 'contract_type', 'speciality', 'url']);
 
     $data['company_id'] = $user->company->id;
-    $vacant = new Vacant($data);
+    $vacant = new Vacant();
     $vacant->save();
+    $vacant->update($data);
 
+    return redirect('tablero-empresa/vacantes');
   }
 
   public function edit($id){
