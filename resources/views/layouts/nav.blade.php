@@ -23,15 +23,15 @@
 			<!-- nav admin-->
 				@include('layouts.nav.nav_admin')
 			@endif
-			
+
 			@if ($user->type == 'opd')
 			<!-- nav universidades-->
 				@include('layouts.nav.nav_opd')
 			@endif
-						
+
 			@if($user->type == 'company')
 			<a href="{{url('tablero-empresa')}}" class="current"><i class="material-icons">home</i> Tablero</a>
-			<a href=""><i class="material-icons">business_center</i> Vacantes</a>
+			<a href="{{url('tablero-empresa/vacantes')}}"><i class="material-icons">business_center</i> Vacantes</a>
 			<a href="{{url('tablero-empresa/yo')}}"><i class="material-icons">domain</i> Perfil</a>
 			@endif
 

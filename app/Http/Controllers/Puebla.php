@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+use Hash;
+use App\Http\Requests\UpdatePueblaProfileRequest;
 class Puebla extends Controller
 {
   /*
@@ -21,15 +24,28 @@ class Puebla extends Controller
    * ----------------------------------------------------------------
    */
 
-  public function me(){
+   public function me(){
+     $user = Auth::user();
+     return view("puebla.me.me")->with([
+       "user" => $user,
+     ]);
+   }
 
-  }
+   public function changeMe(){
+     $user = Auth::user();
+     return view("puebla.me.me-update")->with([
+       "user" => $user,
+     ]);
+   }
 
-  public function changeMe(){
-
-  }
-
-  public function updateMe(){
-
-  }
+   public function updateMe(UpdatePueblaProfileRequest $request){
+     $user = Auth::user();
+     $user->name = $request->name;
+     $user->email = $request->email;
+     if(!empty($request->password)){
+       $user->password = Hash::make($request->password);
+     }
+     $user->save();
+     return redirect("tablero-secotrade/yo");
+   }
 }
