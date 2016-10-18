@@ -36,18 +36,16 @@
 		<!--vacantes-->
 		<div class="row">
 			<div class="col-sm-4">
-				<div class="box">
-					<h4>Tus Vacantes</h4>
-					<h5><span>{{$company->vacancies->count()}}</span></h5>
-				</div>
+				<a class="box" href="{{url('tablero-empresa/vacantes')}}">
+					<span>Tus Vacantes</span>
+					<span class="count">{{$company->vacancies->count()}}</span>
+				</a>
 			</div>
-
-			<!-- convenios -->
 			<div class="col-sm-4">
-				<div class="box">
-					<h4>Tus Convenios</h4>
-					<h5><span>{{$company->contracts->count()}}</span></h5>
-				</div>
+				<a class="box" href="{{url('tablero-empresa/convenios')}}">
+					<span>Tus Convenios</span>
+					<span class="count">{{$company->contracts->count()}}</span>
+				</a>
 			</div>
 		</div>
 	</div>
