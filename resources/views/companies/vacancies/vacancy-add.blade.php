@@ -21,30 +21,31 @@
       <fieldset>
         <h5>Datos de la vacante</h5>
         <!-- 
-| job             | varchar(255)     | YES  |     | NULL    |       x        |
-| tags            | text             | YES  |     | NULL    |       x        |
-| age_from        | int(11)          | YES  |     | NULL    |                |
-| age_to          | int(11)          | YES  |     | NULL    |                |
-| travel          | tinyint(1)       | YES  |     | NULL    |                |
-| location        | tinyint(1)       | YES  |     | NULL    |                |
-| experience      | text             | YES  |     | NULL    |                |
-| salary          | double(8,2)      | YES  |     | NULL    |       x        |
-| work_from       | varchar(255)     | YES  |     | NULL    |                |
-| work_to         | varchar(255)     | YES  |     | NULL    |                |
-| benefits        | varchar(255)     | YES  |     | NULL    |                |
-| expenses        | varchar(255)     | YES  |     | NULL    |                |
-| training        | varchar(255)     | YES  |     | NULL    |                |
-| state           | varchar(255)     | YES  |     | NULL    |                |
-| city            | varchar(255)     | YES  |     | NULL    |                |
-| salary_min      | double(8,2)      | YES  |     | NULL    |                |
-| salary_max      | double(8,2)      | YES  |     | NULL    |                |
-| salary_type     | varchar(255)     | YES  |     | NULL    |                |
-| salary_variable | int(11)          | YES  |     | NULL    |                |
-| salary_extra    | int(11)          | YES  |     | NULL    |                |
-| personality     | varchar(255)     | YES  |     | NULL    |                |
-| contract_level  | varchar(255)     | YES  |     | NULL    |                |
-| contract_type   | varchar(255)     | YES  |     | NULL    |                |
-| speciality      | varchar(255)     | YES  |     | NULL    |                |
+| job             | varchar(255)     | YES  | vacante    | NULL    |       x        |
+| tags            | text             | YES  |  carreras   | NULL    |       x        |
+| age_from        | int(11)          | YES  |  edad mínima   | NULL    |                |
+| age_to          | int(11)          | YES  |   edad máxima  | NULL    |                |
+| travel          | tinyint(1)       | YES  |  posibilidad de viajar   | NULL    |                |
+| location        | tinyint(1)       | YES  |  posibilidad de cambiar de domicilio   | NULL    |                |
+| experience      | text             | YES  |  experiencia   | NULL    |                |
+| salary          | double(8,2)      | YES  |   salario  | NULL    |       x        |
+| work_from       | varchar(255)     | YES  |   hora de entrada  | NULL    |                |
+| work_to         | varchar(255)     | YES  |  hora de salida   | NULL    |                |
+| benefits        | varchar(255)     | YES  |   prestaciones  | NULL    |                |
+| expenses        | varchar(255)     | YES  |  gastos pagados   | NULL    |                |
+| training        | varchar(255)     | YES  |  capacitación   | NULL    |                |
+| state           | varchar(255)     | YES  |  estado   | NULL    |                |
+| city            | varchar(255)     | YES  |   ciudad  | NULL    |                |
+| salary_min      | double(8,2)      | YES  |  sueldo mínimo   | NULL    |                |
+| salary_max      | double(8,2)      | YES  |  sueldo máximo   | NULL    |                |
+| salary_type     | varchar(255)     | YES  |  este no   | NULL    |                |
+| salary_variable | int(11)          | YES  |    este no | NULL    |                |
+| salary_extra    | int(11)          | YES  |  este no   | NULL    |                |
+| personality     | varchar(255)     | YES  |   personalidad  | NULL    |                |
+| contract_level  | varchar(255)     | YES  |   este no  | NULL    |                |
+| contract_type   | varchar(255)     | YES  |   este no  | NULL    |                |
+| speciality      | varchar(255)     | YES  |  especialidad   | NULL    |                |
+| url             | varchar(255)     | YES  |  link a la oferta   | NULL    |                |
         -->
         <p>
           <label>vacante</label>
@@ -69,7 +70,17 @@
           <strong>{{$errors->first('salary')}}</strong>
           @endif
         </p>
+
+        <p>
+          <label>url</label>
+          {{Form::text('url',null,["class" => "form-control"])}}
+          @if($errors->has('url'))
+          <strong>{{$errors->first('url')}}</strong>
+          @endif
+        </p>
       </fieldset>
+
+
 
       <p>{{Form::submit('Crear',["class" => "btn"])}}</p>
 
