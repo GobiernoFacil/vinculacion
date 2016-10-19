@@ -79,6 +79,10 @@ class OpdStudents extends Controller
     return redirect('tablero-opd/estudiantes');
   }
 
+  public function enableToggle($id){
+
+  }
+
   public function addMultiple(){
     $user = Auth::user();
     return view("opds.students.students-add-xlsx")->with(["user" => $user]);

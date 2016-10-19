@@ -70,6 +70,24 @@ class Opds extends Controller
     ]);
   }
 
+  // Los estudiantes
+  //
+  //
+  public function studentUsers(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $opd  = $user->opd;
+    // [2] estudiantes
+    $students_num = $opd->students()->has('user')->count();
+    $students     = $opd->students()->has('user')->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('opds.students.students-user-list')->with([
+      "user"     => $user,
+      "students" => $students
+    ]);
+  }
+
   // Las empresas
   //
   //
