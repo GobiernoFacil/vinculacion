@@ -12,7 +12,7 @@
 		<h1>Empresas</h1>
 	</div>
 
-	<div class="col-sm-3 ">
+	<div class="col-sm-3">
 			<form  role="form" method="GET" action="{{ url('dashboard/empresas') }}" id="search-input">
 		<input id = "search-company" type="search" name="searchBox" class="form-control" placeholder="Buscar " value="{{request('searchBox', '')}}">
 
@@ -20,7 +20,10 @@
 			</form>
 
 	</div>
-	<div class="col-sm-3 col-sm-offset-6">
+	<div class="col-sm-3 col-sm-offset-3">
+		<p><a href="{{url("dashboard/empresas/actualizar/xlsx")}}" class="btn add">+ Agregar varias empresas</a></p>
+	</div>
+	<div class="col-sm-3">
 		<p><a href="{{url("dashboard/empresa/crear")}}" class="btn add"> + Crear empresa</a></p>
 	</div>
 	<div class="col-sm-12">

@@ -23,6 +23,45 @@
 	        </span>
 	    @endif
 	</div>
+
+
+
+
+
+
+
+
+    <!--control-->
+    <div id="control_div" class="form-group {{ $errors->has('control') ? ' has-error' : '' }}">
+        <input id="control" type="control" class="form-control" name="control" value="{{ old('control') }}" autofocus placeholder="Número de control" required>
+        @if ($errors->has('control'))
+            <span class="help-block">
+                <strong>{{ $errors->first('control') }}</strong>
+            </span>
+        @endif
+    </div>
+
+    <!--opd-->
+    <div id="opd_div" class="form-group {{ $errors->has('opd') ? ' has-error' : '' }}">
+      <select id="opd" type="opd" class="form-control" name="opd">
+      @foreach($opds as $opd)
+        <option value="{{$opd->opd->id}}">{{$opd->opd->opd_name}}</option>
+      @endforeach
+      </select>
+        @if ($errors->has('opd'))
+            <span class="help-block">
+                <strong>{{ $errors->first('opd') }}</strong>
+            </span>
+        @endif
+    </div>
+
+
+
+
+
+
+
+
 	<!--password-->
 	<div class="row">
 		<div class="col-sm-5">
@@ -75,3 +114,39 @@
     <!--login-->
     <p class="center"> ¿Ya tienes cuenta? <a href="{{ url('login') }}">Accede a tu cuenta</a></p>
 </form>
+
+<script>
+var _user_select = document.getElementById("type"),
+    _control_div = document.getElementById("control"),
+    _opd_div     = document.getElementById("opd")
+    _control     = document.getElementById("control"),
+    _opd         = document.getElementById("opd");
+
+@if ($errors->has('control'))
+  _control_div.style.display = "block";
+  _opd_div.style.display     = "block";
+  _control.required = true;
+  _opd.required     = true;
+@else
+  _control_div.style.display = "none";
+  _opd_div.style.display     = "none";
+  _control.required = false;
+  _opd.required     = false;
+@endif
+
+_user_select.addEventListener("change", function(e){
+    var val = this.value;
+    if(val == "student"){
+        _control_div.style.display = "block";
+        _opd_div.style.display     = "block";
+        _control.required = true;
+        _opd.required     = true;
+    }
+    else{
+        _control_div.style.display = "none";
+        _opd_div.style.display     = "none";
+        _control.required = false;
+        _opd.required     = false;
+    }
+});
+</script>

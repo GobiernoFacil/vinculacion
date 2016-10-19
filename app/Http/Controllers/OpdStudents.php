@@ -94,6 +94,7 @@ class OpdStudents extends Controller
 
     exec("php {$path}/artisan update:students {$user->id} '{$file}' > /dev/null &");
 
+    
     return redirect("tablero-opd/estudiantes");
   }
 }

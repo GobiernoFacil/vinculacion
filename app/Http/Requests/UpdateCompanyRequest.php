@@ -10,6 +10,7 @@ use Auth;
 use App\Traits\MessagesTrait;
 class UpdateCompanyRequest extends Request
 {
+  use MessagesTrait;
   /**
   * Determine if the user is authorized to make this request.
   *
@@ -31,6 +32,7 @@ class UpdateCompanyRequest extends Request
       $company = Company::with('user')->find($this->route("id"));
     }else{
       $user = Auth::user();
+      $company = $user->company;
     }
 
     if($this->email){

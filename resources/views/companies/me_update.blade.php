@@ -1,18 +1,22 @@
 @extends('layouts.master-admin')
 @section('title', 'Actualizar perfil - Empleo Abierto')
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
+@section('bodyclass', 'company')
 @section('content')
 <div class="container">
   <!-- Formulario de company -->
   <div class="row">
     <div class="col-sm-12">
+      @if(!$user->enabled)
+        @include('companies.alert-message')
+      @endif
       <h1 class="separator">Editar Perfil</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       {!! Form::model($company->company, [
-        'url'   => "tablero-empresa/yo/editar", 
+        'url'   => "tablero-empresa/yo/editar",
         "class" => "form-horizontal",
         "files" => true
       ]) !!}
@@ -124,8 +128,6 @@
           <strong>{{$errors->first('logo')}}</strong>
           @endif
         </p>
-
-        Form::file($name, $attributes = array());
       </fieldset>
 
       <!-- cosas del contacto -->

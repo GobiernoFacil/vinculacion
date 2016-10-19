@@ -4,4 +4,7 @@
 @section('bodyclass', 'company me')
 
 @section('content')
+@if(!$user->enabled)
+ @include('companies.alert-message')
+@endif
 @endsection

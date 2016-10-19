@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/empresa/eliminar/{id}', 'AdminCompanies@delete');
     Route::get('dashboard/empresa/{id}', 'AdminCompanies@view');
     Route::post('dashboard/empresa/buscar', 'AdminCompanies@search');
+    Route::get("dashboard/empresas/actualizar/xlsx", "AdminCompanies@addMultiple");
+    Route::post("dashboard/empresas/actualizar/xlsx", "AdminCompanies@saveMultiple");
 
     Route::get('dashboard/empresa/habilitar/{id}', 'AdminCompanies@enableToogle');
 
@@ -264,11 +266,13 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:student' ], function(){
     Route::get("tablero-estudiante", "Students@index");
+    Route::get("tablero-estudiante/yo", "Students@me");
+    Route::get("tablero-estudiante/yo/editar", "Students@changeMe");
+    Route::post("tablero-estudiante/yo/editar", "Students@updateMe");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-estudiante' ], function(){
-
     });
   });
 
@@ -283,6 +287,9 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:chamber'], function(){
     Route::get("tablero-camara", "Chambers@index");
+    Route::get("tablero-camara/yo", "Chambers@me");
+    Route::get("tablero-camara/yo/editar", "Chambers@changeMe");
+    Route::post("tablero-camara/yo/editar", "Chambers@updateMe");
   });
 
 
@@ -295,6 +302,9 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:puebla'], function(){
     Route::get("tablero-secotrade", "Puebla@index");
+    Route::get("tablero-secotrade/yo", "Puebla@me");
+    Route::get("tablero-secotrade/yo/editar", "Puebla@changeMe");
+    Route::post("tablero-secotrade/yo/editar", "Puebla@updateMe");
   });
 
 });

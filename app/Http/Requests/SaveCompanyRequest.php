@@ -8,7 +8,7 @@ use App\Http\Requests\Request;
 use App\Traits\MessagesTrait;
 class SaveCompanyRequest extends Request
 {
-    use MessagesTrait;
+  use MessagesTrait;
   /**
   * Determine if the user is authorized to make this request.
   *
@@ -26,22 +26,38 @@ class SaveCompanyRequest extends Request
   */
   public function rules()
   {
-    return [
-      // user rules
-      'name'     => 'required',
-      'email'    => 'required|email|max:255|unique:users',
-      'password' => 'min:6',
 
-      // company rules
-      'rfc' => 'required',
-      'razon_social' => 'required|max:255',
-      'nombre_comercial' => 'required|max:255',
-      'zip'      => 'digits_between:3,6',
+    if($this->email){
+      return [
+        // user rules
+        'name'     => 'required',
+        'email'    => 'required|email|max:255|unique:users',
+        'password' => 'min:6',
 
-      // contact rules
-      'cname' => 'max:255',
-      'cphone' => 'max:255',
-      'cemail' => 'email|max:255'
-    ];
+        // company rules
+        'rfc' => 'required',
+        'razon_social' => 'required|max:255',
+        'nombre_comercial' => 'required|max:255',
+        'zip'      => 'digits_between:3,6',
+
+        // contact rules
+        'cname' => 'max:255',
+        'cphone' => 'max:255',
+        'cemail' => 'email|max:255'
+      ];
+    }else{
+      return [
+        // company rules
+        'rfc' => 'required',
+        'razon_social' => 'required|max:255',
+        'nombre_comercial' => 'required|max:255',
+        'zip'      => 'digits_between:3,6',
+
+        // contact rules
+        'cname' => 'max:255',
+        'cphone' => 'max:255',
+        'cemail' => 'email|max:255'
+      ];
+    }
   }
 }

@@ -9,6 +9,8 @@ trait MessagesTrait{
         'conditions.required' =>'Debes aceptar las condiciones de privacidad',
         'type.required'       =>'Debes seleccionar un tipo de usuario',
         'type.in'             => "Solo puedes registrar empresas o estudiantes",
+        'control.required_if' => "el número de control es requerido",
+        'opd.required_if'     => "debes seleccionar una universidad",
 
         // USER
         'name.required'  => 'El nombre es requerido',
@@ -49,7 +51,7 @@ trait MessagesTrait{
         'matricula.required'        =>   'La matrícula es requerida',
         'matricula.unique'          =>   'Esta matrícula ya existe',
         'curp.required'             =>   'El CURP es requerido',
-        'carrea.required'           =>   'La carrera es requerida',
+        'carrera.required'           =>   'La carrera es requerida',
 
         // companies
         'rfc.required'              =>   'El R.F.C. es requerido',

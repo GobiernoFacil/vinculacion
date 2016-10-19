@@ -7,9 +7,12 @@
 @section('content')
 <section>
   <div class="container">
-    
+
     <div class="row">
       <div class="col-sm-12">
+        @if(!$user->enabled)
+         @include('companies.alert-message') 
+        @endif
         <h1>Vacantes</h1>
       </div>
     </div>
@@ -17,7 +20,12 @@
     @if($vacancies->count())
     <ul>
       @foreach($vacancies as $vacancy)
-      <li>{{$vacancy->job}}</li>
+      <li>
+        {{$vacancy->job}} 
+        <a href="{{url('tablero-empresa/vacante/editar/' . $vacancy->id)}}">editar</a>
+        <a href="{{url('tablero-empresa/vacante/habilitar/' . $vacancy->id)}}">{{$vacancy->status ? "deshabilitar" : "publicar"}}</a>
+        <a href="{{url('tablero-empresa/vacante/eliminar/' . $vacancy->id)}}">eliminar</a>
+      </li>
       @endforeach
     </ul>
     @else
