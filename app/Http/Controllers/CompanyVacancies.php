@@ -38,7 +38,7 @@ class CompanyVacancies extends Controller
 
   public function save(SaveVacantRequest $request){
     $user = Auth::user();
-    $data = $request->only(['job', 'tags','age_from', 'travel', 'location', 'experience', 'salary',
+    $data = $request->only(['job', 'tags','age_from','age_to','travel', 'location', 'experience', 'salary',
                             'work_from', 'work_to', 'benefits', 'expenses', 'training', 'state',
                             'city', 'salary_min', 'salary_max', 'salary_type', 'salary_variable', 'salary_extra',
                             'personality', 'contract_level', 'contract_type', 'speciality', 'url']);
@@ -65,7 +65,7 @@ class CompanyVacancies extends Controller
 
   public function update(UpdateVacancyRequest $request, $id){
     $user = Auth::user();
-    $data = $request->only(['job', 'tags','age_from', 'travel', 'location', 'experience', 'salary',
+    $data = $request->only(['job', 'tags','age_from', 'age_to','travel', 'location', 'experience', 'salary',
                             'work_from', 'work_to', 'benefits', 'expenses', 'training', 'state',
                             'city', 'salary_min', 'salary_max', 'salary_type', 'salary_variable', 'salary_extra',
                             'personality', 'contract_level', 'contract_type', 'speciality', 'url']);
@@ -99,7 +99,7 @@ class CompanyVacancies extends Controller
 
   }
 
-  
+
   public function student($id){
 
   }
