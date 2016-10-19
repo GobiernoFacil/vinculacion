@@ -70,7 +70,7 @@ class AdminCompanies extends Controller
       "phone" => $request->cphone,
     ]);
     // send to view
-    return redirect("dashboard/empresa/{$user->id}");
+    return redirect("dashboard/empresa/{$company->id}");
   }
 
   public function edit($id){
