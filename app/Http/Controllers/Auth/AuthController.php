@@ -40,6 +40,13 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    public function showRegistrationForm(){
+        $opds = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
+        return view("auth.register")->with([
+            "opds" => $opds
+        ]);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
