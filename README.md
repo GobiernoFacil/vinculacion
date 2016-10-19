@@ -1,7 +1,7 @@
 # Guía de instalación de Empleo abierto
 
 ## Dependencias:
-* Apache
+* Apache >= 2.2.*
 * PHP >= 5.6
  * php56-mbstring
  * php56-gd
@@ -10,28 +10,30 @@
  * php56-tidy
  * php56-dbg
  * php56-cli
-* Mysql
-* Composer
-* Bower
+* Mysql >= 5.*
+* Composer >= 1.2.*
+* Bower >= 1.7.*
 
 
 ## Pasos para instalar el sistema
 1: copiar los archivos del siguiente repositorio:
 [https://github.com/GobiernoFacil/vinculacion] (https://github.com/hugovom/sectur.git)
 
-2: en la carpeta raíz, hay que correr el siguiente comando:
+2: dentro de la carpeta raíz (la carpeta que se descargó de github), hay que correr el siguiente comando:
 ```bash
 composer install
 ```
 
-3: en la carpeta raíz, hay que copiar el archivo .env.example a .env
+3: dentro de la carpeta raíz, hay que copiar el archivo .env.example a .env (el archivo .env.example ya viene en la carpeta)
 ```bash
 cp .env.example .env
 ```
 
-4: crear la base de datos que se va a ocupar
+4: crear la base de datos que se va a ocupar. Laravel soporta distintas bases de datos: MySQL, SQLite, PostgreSQL, etc. Se recomienda usar MySQL. La db que se debe crear puede tener cualquier nombre, solo hay que especificarlo en el archivo de configuración (.env) 
 
-5: editar el archivo .env, en el que se debe poner la información de conexión a la DB. También debe agregarse información del api de Correos. En el servidor de Gobierno fácil usamos Mailgun, pero hay otros disponibles.
+5: editar el archivo .env, en el que se debe poner la información de conexión a la DB. El usuario que accede a la DB depende del entorno, es decir, quien instala la DB decide con qué usuario se accederá a ella. 
+
+También debe agregarse información del api de Correos. En el servidor de Gobierno fácil usamos Mailgun, pero hay otros disponibles.
 ```bash
 MAIL_DRIVER=mailgun
 MAIL_HOST=smtp.mailgun.org
@@ -108,7 +110,7 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
-(Esto puede tardar unos minutos, dependiendo de la velocidad del equipo)
+Esto puede tardar unos minutos, dependiendo de la velocidad del equipo. Toda la información que se carga en el sistema de inicio, viene en un archivo excel. No hay necesidad de capturar nada.
 
 10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
 ```bash
@@ -116,6 +118,8 @@ bower update
 ```
 
 y eso es todo amigos!
+
+nota de Apache: el directorio que debe ser público, es "public", que se encuentra en el primer nivel de la carpeta raíz. El usuario Apache, o el usuario que esté a cargo de ejecutar el código de PHP, debe tener permisos para escrbirir en la carpeta de "storage", que también se encuentra en el primer nivel del directorio raíz.
 
 ## Guía para actualizar el sistema
 1: obtener los cambios del código con git
