@@ -31,6 +31,11 @@ class Student extends Model
     return $this->hasMany("App\models\Vacant");
   }
 
+  //modelosrelacionados
+  function cv(){
+    return $this->hasOne("App\models\Cv");
+  }
+
 
 
 }

@@ -269,6 +269,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-estudiante/yo", "Students@me");
     Route::get("tablero-estudiante/yo/editar", "Students@changeMe");
     Route::post("tablero-estudiante/yo/editar", "Students@updateMe");
+    Route::get("tablero-estudiante/cv", "StudentCv@view");
+    Route::get("tablero-estudiante/cv/editar", "StudentCv@edit");
+    Route::post("tablero-estudiante/cv/editar", "StudentCv@update");
+    Route::post("tablero-estudiante/cv/descargar", "StudentCv@update");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //

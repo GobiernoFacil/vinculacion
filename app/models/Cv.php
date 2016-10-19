@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cv extends Model
 {
-  protected $fillable = ['student_id', 'age', 'city', 'state', 'country', 'phone', 'mobile', 'email'];
+  protected $fillable = ['student_id', 'age', 'city', 'state', 'country', 'phone', 'mobile', 'email','gender'];
     //
 
+  public function cv(){
+    return $this->belongsTo('App\models\Student');
+  }
   public function academic_trainings(){
     return $this->hasMany('App\models\AcademicTraining');
   }
