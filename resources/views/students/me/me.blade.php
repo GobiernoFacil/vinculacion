@@ -8,6 +8,9 @@
 @section('content')
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
+		@if(!$user->enabled)
+			@include('students.alert-message')
+		@endif
 		<!-- Perfil -->
 		<h1>{{$student->user->name ? $student->user->name : 'Sin información' }}</h1>
 		<p><strong>Correo</strong>: {{$student->user->email ? $student->user->email : "Sin información"}}</p>

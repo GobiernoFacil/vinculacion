@@ -16,7 +16,21 @@ class Students extends Controller
   * ----------------------------------------------------------------
   */
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de estudiante!"]);
+    // [1] el usuario del sistema
+    $user = Auth::user();
+
+    // [2] contamos cuántos de cada uno
+    $student   = $user->student;
+    $vacancies = 0;//$student->vacants->count();
+    $interviews = $student->interviews->count();
+
+    // [3] regresa el view
+    return view('students.dashboard')->with([
+      "user"      => $user,
+      // students
+      "vacancies"  => $vacancies,
+      'interviews' => $interviews
+    ]);
   }
 
   /*

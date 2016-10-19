@@ -9,6 +9,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
+      @if(!$user->enabled)
+        @include('students.alert-message')
+      @endif
       <!-- Formulario de perfil -->
       <h1>Editar mi perfil</h1>
     </div>
