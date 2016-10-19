@@ -15,12 +15,12 @@
   <!-- La lista de maromas -->
   @if($opds->count())
   <ul class="list">
-  	<li class="titles row">
+  	<li class="titles clearfix">
   	  <span class="col-sm-8">Universidad</span>
   	  <span class="col-sm-4">Ubicación</span>
   	</li>
     @foreach($opds as $opd)
-    <li class="row">
+    <li class="clearfix">
     	<span class="col-sm-8"><a href="{{url('universidad/' . $opd->id)}}">{{$opd->opd_name}}</a></span>
     	<span class="col-sm-4">{{$opd->city}}</span>    	
     </li>
