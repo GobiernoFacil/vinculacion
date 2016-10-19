@@ -16,13 +16,16 @@
   <!-- La lista de maromas -->
   @if($companies->count())
   <ul class="list">
-	  <li class="titles row">
-	  	<span class="col-sm-8">Empresa</span>
-	  	<span class="col-sm-4">Vacantes</span>
+	  <li class="titles clearfix">
+	  	<span class="col-sm-6">Empresa</span>
+	  	<span class="col-sm-3">Ciudad</span>
+	  	<span class="col-sm-3">Vacantes</span>
 	  </li>
-    @foreach($companies as $company)
-    <li class="row">
-    	<span class="col-sm-8"><a href="{{url('empresa/' . $company->id)}}">{{$company->company_name}}</a></span>
+    @foreach($companies as $company) 
+    <li class="clearfix">
+    	<span class="col-sm-6"><a href="{{url('empresa/' . $company->id)}}">{{$company->nombre_comercial}}</a></span>
+    	<span class="col-sm-3">{{$company->zip}}</span>
+    	<span class="col-sm-3">0</span>
     </li>
     @endforeach
   </ul>
