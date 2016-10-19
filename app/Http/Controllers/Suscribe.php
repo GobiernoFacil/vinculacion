@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
+use App\models\Student;
 use Auth;
 use Hash;
 use Validator;
@@ -43,7 +44,9 @@ class Suscribe extends Controller
 
     // [3] se crea el objeto empresa o el objeto estudiante
     if($user->type == "student"){
-      $student = $user->student()->firstOrCreate([]);
+      $student = Student::where("opd_id", $request->opd)->where("matricula", $request->control)->first();
+      $student->user_id = $user->id;
+      $student->update();
     }
     else{
       $student = $user->company()->firstOrCreate([]);

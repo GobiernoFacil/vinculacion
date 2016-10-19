@@ -29,7 +29,7 @@ class UpdateVacancyRequest extends Request
         return true;
       }
 
-      // si es empresa, cámara de comercio o la sectotrade, se obtiene su id
+      // si es empresa, cámara de comercio o la secotrade, se obtiene su id
       elseif($user->type == "company"){
         $_id = $user->company->id;
       }

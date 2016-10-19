@@ -50,8 +50,7 @@ class UpdateStudents extends Command
       $file = $this->argument('file');
 
       Excel::load($file, function($reader) use($user, $opd){
-        $reader->each(function($rows) use($user, $opd){ 
-          $rows->each(function($row) use($user, $opd){
+        $reader->each(function($row) use($user, $opd){ 
             $student = $opd->students()->firstOrCreate([
               "matricula" => $row->matricula
             ]);
@@ -65,7 +64,6 @@ class UpdateStudents extends Command
             $student->nombre_completo  = $row->nombre_completo;
 
             $student->save();
-          }); 
         });
       })->first();
     }

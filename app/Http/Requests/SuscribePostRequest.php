@@ -32,7 +32,9 @@ class SuscribePostRequest extends Request
         'password'              => 'required|min:6|confirmed',
         'password_confirmation' => 'required|min:6|same:password',
         'conditions'            => 'required',
-        'type'                  => 'required|in:company,student'
+        'type'                  => 'required|in:company,student',
+        'control'               => 'required_if:type,student|exists:students,matricula,user_id,NULL,opd_id,' . $this->opd,
+        'opd'                   => 'required_if:type,student|exists:opds,id',
       ];
     }
 }
