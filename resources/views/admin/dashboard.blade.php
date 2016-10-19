@@ -12,63 +12,58 @@
 <div class="row">
 	<!-- Admins -->
 	<div class="col-sm-4">
-		<div class="box">
-			<h4>Usuarios Administradores</h4>
+		<a class="box" href="{{url('dashboard/administradores')}}">
+			<span><strong>Usuarios Administradores</strong></span>
 			@if($admins > 0 )
-			<h5><span>{{$admins}}</span></h5>
+			<span class="count">{{$admins}}</span>
 			@else
-			<h4>Eres el único administrador</h4>
+			<span>Eres el único administrador</span>
 			@endif
-		</div>
-		<p><a href="{{url("dashboard/administradores")}}">Administradores</a></p>
+		</a>
 	</div>
 	<!-- Universidades -->
 	<div class="col-sm-4">
-		<div class="box">
-			<h4>Universidades</h4>
+		<a class="box" href="{{url('dashboard/opds')}}">
+			<span><strong>Universidades</strong></span>
 			@if($opds > 0 )
-			<h5><span>{{$opds}}</span></h5>
+			<span class="count">{{$opds}}</span>
 			@else
-			<h4>No hay universidades</h4>
+			<span>No hay universidades</span>
 			@endif
-		</div>
-		<p><a href="{{url("dashboard/opds")}}">Universidades</a></p>
+		</a>
 	</div>
 	<!-- Estudiantes -->
 	<div class="col-sm-4">
-		<div class="box">
-			<h4>Estudiantes</h4>
+		<a class="box" href="{{url('dashboard/estudiantes')}}">
+			<span><strong>Estudiantes</strong></span>
 			@if($students > 0 )
-			<h5><span>{{$students}}</span></h5>
+			<span class="count">{{$students}}</span>
 			@else
-			<h4>No hay estudiantes</h4>
+			<span>No hay estudiantes</span>
 			@endif
-		</div>
-		<p><a href="{{url("dashboard/estudiantes")}}">Estudiantes</a></p>
+		</a>
 	</div>
 	<!-- Empresas -->
 	<div class="col-sm-4">
-		<div class="box">
-			<h4>Empresas</h4>
+		<a class="box" href="{{url('dashboard/empresas')}}">
+			<span><strong>Empresas</strong></span>
 			@if($companies > 0 )
-			<h5><span>{{$companies}}</span></h5>
+			<span class="count">{{$companies}}</span>
 			@else
-			<h4>No hay empresas</h4>
+			<span>No hay empresas registradas</span>
 			@endif
-		</div>
-		<p><a href="{{url("dashboard/empresas")}}">Empresas</a></p>
+		</a>
 	</div>
 	<!-- Chambers -->
 	<div class="col-sm-4">
-		<div class="box">
-			<h4>Cámaras</h4>
+		<a class="box" href="{{url('dashboard/camaras')}}">
+			<span><strong>Cámaras</strong></span>
 			@if($chambers > 0 )
-			<h5><span>{{$chambers }}</span></h5>
+			<span class="count">{{$chambers}}</span>
 			@else
-			<h4>No hay cámaras registradas</h4>
+			<span>No hay cámaras registradas</span>
 			@endif
-		</div>
-		<p><a href="{{url("dashboard/camaras")}}">Cámaras</a></p>
+		</a>
 	</div>
 </div>
 
