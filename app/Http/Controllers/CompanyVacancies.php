@@ -80,7 +80,15 @@ class CompanyVacancies extends Controller
   }
 
   public function enable($id){
+    $user    = Auth::user();
+    $vacancy = $user->company->vacancies->find($id);
 
+    if($vacancy){
+      $vacancy->status = ! $vacancy->status;
+      $vacancy->update();
+    }
+
+    return redirect('tablero-empresa/vacantes');
   }
 
   public function disable($id){

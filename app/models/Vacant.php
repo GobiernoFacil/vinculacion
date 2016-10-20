@@ -15,7 +15,11 @@ protected $fillable =['company_id','opd_id', 'job', 'tags', 'age_from', 'age_to'
 
                     // modelos relacionados
 function company(){
-    return $this->belongsTo("App\Company");
+    return $this->belongsTo("App\models\Company");
+}
+
+function applicants(){
+    return $this->hasMany("App\models\Applicant");
 }
 
 

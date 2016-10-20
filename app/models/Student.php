@@ -26,6 +26,10 @@ class Student extends Model
     return $this->hasMany("App\models\Interview");
   }
 
+  function applications(){
+    return $this->hasMany("App\models\Applicant");
+  }
+
   //modelosrelacionados
   function vacants(){
     return $this->hasMany("App\models\Vacant");

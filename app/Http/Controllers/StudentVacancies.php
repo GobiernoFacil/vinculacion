@@ -23,18 +23,28 @@ class StudentVacancies extends Controller
     $student   = $user->student;
     // [3] las vacantes
     $vacancies = Vacant::where('status', 1)->paginate($this->pageSize);
-    //User::where("type", "opd")->with("opd")->paginate($this->pageSize);
 
     // [4] regresa el view
-    return view('companies.vacancies')->with([
+    return view('students.vacancies')->with([
       "user"      => $user,
       "student"   => $student,
       "vacancies" => $vacancies
     ]);
   }
 
-  public function vacancy(){
+  public function vacancy($id){
+    $user   = Auth::user();
+    $vacancy = Vacant::find($id);
 
+    if($vacancy && $vacancy->status){
+      return view("students.vacancy")->with([
+        "user"    => $user,
+        "vacancy" => $vacancy
+      ]);
+    }
+    else{
+      return redirect('tablero-estudiante/vacantes');
+    }
   }
 
   public function apply($id){

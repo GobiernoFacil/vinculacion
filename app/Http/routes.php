@@ -186,8 +186,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('tablero-empresa/vacante/editar/{id}', 'CompanyVacancies@update');
     Route::get('tablero-empresa/vacante/eliminar/{id}', 'CompanyVacancies@delete');
     Route::get('tablero-empresa/vacante/{id}', 'CompanyVacancies@view');
-    Route::post('tablero-empresa/vacante/habilitar/{id}', 'CompanyVacancies@enable');
-    Route::post('tablero-empresa/vacante/deshabilitar/{id}', 'CompanyVacancies@disable');
+    Route::get('tablero-empresa/vacante/habilitar/{id}', 'CompanyVacancies@enable');
     // @CompaniesVacancies controller
     Route::get('tablero-empresa/vacante/{id}/estudiantes', 'CompanyVacancies@students');
     Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}', 'CompanyVacancies@student');
@@ -277,6 +276,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post("tablero-estudiante/cv/descargar", "StudentCv@update");
 
     Route::get("tablero-estudiante/vacantes", "StudentVacancies@vacancies");
+    Route::get("tablero-estudiante/vacante/{id}", "StudentVacancies@vacancy");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
