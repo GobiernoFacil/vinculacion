@@ -21,7 +21,7 @@ class Students extends Controller
 
     // [2] contamos cuántos de cada uno
     $student   = $user->student;
-    $vacancies = 0;//$student->vacants->count();
+    $vacancies = $student->applications()->count();
     $interviews = $student->interviews->count();
 
     // [3] regresa el view
