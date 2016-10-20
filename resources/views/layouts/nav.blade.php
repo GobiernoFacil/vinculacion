@@ -35,6 +35,11 @@
 			<a href="{{url('tablero-empresa/yo')}}"><i class="material-icons">domain</i> Perfil</a>
 			@endif
 
+			@if ($user->type == 'student')
+			<!-- nav estudiantes-->
+				@include('layouts.nav.nav_student')
+			@endif
+
 		</div>
 	</div>
 </nav>
