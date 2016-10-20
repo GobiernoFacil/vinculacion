@@ -186,19 +186,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('tablero-empresa/vacante/editar/{id}', 'CompanyVacancies@update');
     Route::get('tablero-empresa/vacante/eliminar/{id}', 'CompanyVacancies@delete');
     Route::get('tablero-empresa/vacante/{id}', 'CompanyVacancies@view');
-    Route::get('tablero-empresa/vacante/habilitar/{id}', 'CompanyVacancies@enable');
-    // @CompaniesVacancies controller
-    Route::get('tablero-empresa/vacante/{id}/estudiantes', 'CompanyVacancies@students');
-    Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}', 'CompanyVacancies@student');
-    Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}/calificar', 'CompanyVacancies@rateStudent');
-    Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
-    Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
 
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-empresa' ], function(){
-      // Aquí está por definir qué no puede hacer una empresa no registrada
+      // @CompaniesVacancies controller
+      Route::get('tablero-empresa/vacante/habilitar/{id}', 'CompanyVacancies@enable');
+      Route::get('tablero-empresa/vacante/{id}/estudiantes', 'CompanyVacancies@students');
+      Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}', 'CompanyVacancies@student');
+      Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}/calificar', 'CompanyVacancies@rateStudent');
+      Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
+      Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
     });
   });
 
@@ -281,6 +280,10 @@ Route::group(['middleware' => ['auth']], function () {
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-estudiante' ], function(){
+      Route::get("tablero-estudiante/vacante/aplicar/{id}", "StudentVacancies@apply");
+      Route::get("tablero-estudiante/vacante/declinar/{id}", "StudentVacancies@decline");
+      Route::get("tablero-estudiante/entrevistas", "StudentVacancies@interviews");
+      Route::get("tablero-estudiante/entrevista/{id}", "StudentVacancies@interview");
     });
   });
 

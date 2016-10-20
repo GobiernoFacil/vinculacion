@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Auth;
 
 use App\models\Vacant;
+use App\models\Applicant;
 class StudentVacancies extends Controller
 {
   public $pageSize = 10;
@@ -33,13 +34,17 @@ class StudentVacancies extends Controller
   }
 
   public function vacancy($id){
-    $user   = Auth::user();
+    $user    = Auth::user();
+    $student = $user->student;
     $vacancy = Vacant::find($id);
+    $applied = $student->applications()->where('vacant_id', $id)->count();
 
     if($vacancy && $vacancy->status){
       return view("students.vacancy")->with([
         "user"    => $user,
-        "vacancy" => $vacancy
+        "vacancy" => $vacancy,
+        "student" => $student,
+        "applied" => $applied
       ]);
     }
     else{
@@ -48,9 +53,39 @@ class StudentVacancies extends Controller
   }
 
   public function apply($id){
+    $user    = Auth::user();
+    $student = $user->student;
+    $vacancy = Vacant::where('status', 1)->find($id);
+
+    if($vacancy){
+      $application = Applicant::firstOrCreate([
+        "student_id" => $student->id,
+        "vacant_id"  => $vacancy->id
+      ]);
+
+      return redirect("tablero-estudiante/vacante/{$vacancy->id}");
+    }
+    else{
+      return redirect('tablero-estudiante/vacantes');
+    }
+  }
+
+  public function decline($id){
+    $user    = Auth::user();
+    $student = $user->student;
+    $vacancy = Vacant::where('status', 1)->find($id);
+    Applicant::where("student_id", $student->id)->where("vacant_id", $id)->delete();
+    return redirect("tablero-estudiante/vacante/{$vacancy->id}");
   }
 
   public function myVacancies($page = 1){
+
+  }
+
+  public function interviews(Request $request){
+  }
+
+  public function interview($id){
 
   }
 }

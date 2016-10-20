@@ -25,8 +25,22 @@
 
     <h3>Empresa</h3>
     <p>{{$vacancy->company->nombre_comercial}}</p>
-
-    <p><a href="{{url("tablero-estudiante/vacante/aplicar/{$vacancy->id}")}}">Aplicar</a></p>
+    
+    @if($user->enabled)
+      @if($applied)
+      <p><a href="{{url("tablero-estudiante/vacante/declinar/{$vacancy->id}")}}">Declinar aplicación</a></p>
+      @else
+      <p><a href="{{url("tablero-estudiante/vacante/aplicar/{$vacancy->id}")}}">Aplicar</a></p>
+      @endif
+    @else
+    <p>para poder aplicar a la vacante, debe habilitarte tu universidad.</p>
+    <p>
+      Esta es la información: <br>
+      contacto : {{$user->student->opd->contact->name}}<br>
+      teléfono : {{$user->student->opd->contact->phone}}<br>
+      correo   : {{$user->student->opd->contact->email}}
+    </p>
+    @endif
     
   </div>
 </section>
