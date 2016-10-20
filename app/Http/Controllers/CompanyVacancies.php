@@ -23,7 +23,21 @@ class CompanyVacancies extends Controller
    * ----------------------------------------------------------------
    */
   public function view($id){
+    // [1] el usuario del sistema
+    $user      = Auth::user();
+    
+    // [2] la empresa
+    $company   = $user->company;
+    
+    // [3] la vacante
+    $vacancy = $user->company->vacancies()->find($id);
 
+    // [4] regresa el view
+    return view('companies.vacancies.vacancy-view')->with([
+      "user"    => $user,
+      "company" => $company,
+      "vacancy" => $vacancy
+    ]);
   }
 
   public function add(){

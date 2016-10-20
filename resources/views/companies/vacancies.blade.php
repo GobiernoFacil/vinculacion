@@ -22,15 +22,15 @@
       <ul class="list">
         <li class="row titles">
           <span class="col-sm-3">Vacante</span>
-          <span class="col-sm-2">Creada</span>
-          <span class="col-sm-2">Actualizada</span>
+          <span class="col-sm-2">entrevistas</span>
+          <span class="col-sm-2">Aplicaron</span>
           <span class="col-sm-2">Acciones</span>
         </li>
         @foreach($vacancies as $vacancy)
         <li class="row">
           <span class="col-sm-3"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a></span>
-          <span class="col-sm-2">{{$vacancy->created_at}}</span>
-          <span class="col-sm-2">{{$vacancy->updated_at}}</span>
+          <span class="col-sm-2">0</span>
+          <span class="col-sm-2">{{$vacancy->applicants()->count()}}</span>
           <span class="col-sm-2">
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
             <a href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">Eliminar</a>
