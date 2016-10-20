@@ -44,13 +44,13 @@
 		<div class="row">
 
 			<div class="col-sm-4">
-				<a class="box" href="{{url('')}}">
-					<span>Tus Ofertas</span>
+				<a class="box" href="{{url('tablero-estudiante/vacantes')}}">
+					<span>Tus Vacantes</span>
 					<span class="count">{{$vacancies}}</span>
 				</a>
 			</div>
 			<div class="col-sm-4">
-				<a class="box" href="{{url('')}}">
+				<a class="box" href="{{url('tablero-estudiante/entrevistas')}}">
 					<span>Tus Entrevistas</span>
 					<span class="count">{{$interviews}}</span>
 				</a>

@@ -3,7 +3,7 @@
 		<div class="col-sm-12 breadcrumb">
 			<ul>
 				<li><a href="{{ url('dashboard')}}"><i class="material-icons">home</i> </a></li>
-				
+
 				@if ($__env->yieldContent('breadcrumb_a') == 'user')
 				<!-- users -->
 				<li>Usuarios Administradores</li>
@@ -64,10 +64,15 @@
 				</a></li>
 				<li>Editar Perfil</li>
 				@endif
-				
+
 				@if ($user->type == 'opd')
 					<!--opds-->
 					@include('layouts.breadcrumbs.bread-opd')
+				@endif
+
+				@if ($user->type == 'student')
+					<!--students-->
+					@include('layouts.breadcrumbs.bread-student')
 				@endif
 			</ul>
 		</div>
