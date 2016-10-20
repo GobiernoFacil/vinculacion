@@ -80,6 +80,15 @@ class OpdStudents extends Controller
   }
 
   public function enableToggle($id){
+    $user = Auth::user();
+    $student = $user->opd->students()->where('id', $id)->has('user')->first();
+
+    if($student){
+      $student->user->enabled = !$student->user->enabled;
+      $student->user->update();
+    }
+
+    return redirect('tablero-opd/estudiantes/usuarios');
 
   }
 
