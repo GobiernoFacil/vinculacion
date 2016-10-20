@@ -5,35 +5,45 @@
 
 
 @section('content')
-<section>
-  <div class="container">
-
-    <div class="row">
-      <div class="col-sm-12">
-        @if(!$user->enabled)
-         @include('companies.alert-message') 
-        @endif
-        <h1>Vacantes</h1>
-      </div>
-    </div>
-
-    @if($vacancies->count())
-    <ul>
-      @foreach($vacancies as $vacancy)
-      <li>
-        {{$vacancy->job}} 
-        <a href="{{url('tablero-empresa/vacante/editar/' . $vacancy->id)}}">editar</a>
-        <a href="{{url('tablero-empresa/vacante/habilitar/' . $vacancy->id)}}">{{$vacancy->status ? "deshabilitar" : "publicar"}}</a>
-        <a href="{{url('tablero-empresa/vacante/eliminar/' . $vacancy->id)}}">eliminar</a>
-      </li>
-      @endforeach
-    </ul>
-    @else
-      <p>No tienes ninguna vacante publicada</p>
+<div class="row">
+  <!-- Vacantes -->
+  <div class="col-sm-12">
+    @if(!$user->enabled)
+    @include('companies.alert-message')
     @endif
-
-    <p><a href="{{url('tablero-empresa/vacante/crear')}}">Crear una vacante</a></p>
-
+    <h1>Vacantes</h1>
   </div>
-</section>
+  <div class="col-sm-2 col-sm-offset-10">
+    <p><a href="{{url('tablero-empresa/vacante/crear')}}" class="btn add"> + Crear vacante</a></p>
+  </div>
+  <div class="col-sm-12">
+    <div>
+      @if($vacancies->count())
+      <ul class="list">
+        <li class="row titles">
+          <span class="col-sm-3">Vacante</span>
+          <span class="col-sm-2">Creada</span>
+          <span class="col-sm-2">Actualizada</span>
+          <span class="col-sm-2">Acciones</span>
+        </li>
+        @foreach($vacancies as $vacancy)
+        <li class="row">
+          <span class="col-sm-3"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a></span>
+          <span class="col-sm-2">{{$vacancy->created_at}}</span>
+          <span class="col-sm-2">{{$vacancy->updated_at}}</span>
+          <span class="col-sm-2">
+            <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
+            <a href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">Eliminar</a>
+          </span>
+        </li>
+        @endforeach
+      </ul>
+
+      @else
+      <p>No tienes ninguna vacante publicada</p>
+      @endif
+    </div>
+  </div>
+</div>
+
 @endsection
