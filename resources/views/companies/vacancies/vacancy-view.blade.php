@@ -27,7 +27,9 @@
         <ul>
         @foreach($vacancy->applicants as $applicant)
         <li>
-          {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}} 
+          <a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}"> 
+            {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}} 
+          </a>
           [ {{$applicant->student->carrera}} ] <br>
           {{$applicant->student->opd->opd_name}}
         </li>

@@ -19,4 +19,8 @@ class Interview extends Model
       return $this->belongsTo("App\models\Student");
     }
 
+    function vacancy(){
+      return $this->belongsTo("App\models\Vacant");
+    }
+
 }

@@ -198,6 +198,9 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}/calificar', 'CompanyVacancies@rateStudent');
       Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
       Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
+
+      Route::get('tablero-empresa/vacante/{id}/entrevista/crear/{student_id}', 'CompanyVacancies@interviewAdd');
+      Route::post('tablero-empresa/vacante/{id}/entrevista/crear/{student_id}', 'CompanyVacancies@interviewSave');
     });
   });
 

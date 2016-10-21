@@ -11,6 +11,7 @@ use Auth;
 use App\models\Contract;
 use App\models\AcademicOffer;
 use App\models\Vacant;
+use App\models\Applicant;
 
 // requests
 use App\Http\Requests\SaveVacantRequest;
@@ -122,8 +123,18 @@ class CompanyVacancies extends Controller
   }
 
 
-  public function student($id){
+  public function student($vacancy_id, $student_id){
+    $user      = Auth::user();
+    $vacancy   = $user->company->vacancies()->find($vacancy_id);
+    $applicant = $vacancy->applicants()->where("student_id", $student_id)->first();
+    $student   = $applicant->student;
 
+    return view("companies.vacancies.vacancy-applicant")->with([
+      "user"      => $user,
+      "vacancy"   => $vacancy,
+      "applicant" => $applicant,
+      "student"   => $student
+    ]);
   }
 
   public function rateStudent($id){
@@ -132,6 +143,20 @@ class CompanyVacancies extends Controller
 
   public function interviews($id, $page = 1){
 
+  }
+
+  public function interviewAdd($vacancy_id, $student_id){
+    $user      = Auth::user();
+    $vacancy   = $user->company->vacancies()->find($vacancy_id);
+    $applicant = $vacancy->applicants()->where("student_id", $student_id)->first();
+    $student   = $applicant->student;
+
+    return view("companies.vacancies.interview-add")->with([
+      "user"      => $user,
+      "vacancy"   => $vacancy,
+      "applicant" => $applicant,
+      "student"   => $student
+    ]);
   }
 
   public function interview($id){
