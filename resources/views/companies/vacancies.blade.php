@@ -1,8 +1,9 @@
 @extends('layouts.master-admin')
-@section('title', 'Empleo Abierto')
+@section('title', 'Vacantes en la plataforma Empleo Abierto')
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
-@section('bodyclass', 'company')
-
+@section('bodyclass', 'company vacantes')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_c', 'vacantes')
 
 @section('content')
 <div class="row">
