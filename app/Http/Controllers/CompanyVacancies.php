@@ -8,10 +8,11 @@ use App\Http\Requests;
 use Auth;
 
 // models
-use App\models\Contract;
 use App\models\AcademicOffer;
-use App\models\Vacant;
 use App\models\Applicant;
+use App\models\Contract;
+use App\models\Interview;
+use App\models\Vacant;
 
 // requests
 use App\Http\Requests\SaveVacantRequest;
@@ -159,7 +160,44 @@ class CompanyVacancies extends Controller
     ]);
   }
 
-  public function interview($id){
+  public function interviewSave(Request $request, $vacancy_id, $student_id){
+    $user      = Auth::user();
+    $vacancy   = $user->company->vacancies()->find($vacancy_id);
+    $applicant = $vacancy->applicants()->where("student_id", $student_id)->first();
+    $student   = $applicant->student;
 
+    $interview             = Interview::firstOrCreate([
+      "student_id" => $student->id,
+      "company_id" => $user->company->id,
+      "creator_id" => $user->id,
+      "vacant_id"  => $vacancy->id
+    ]);
+
+    $interview->student_id = $student->id;
+    $interview->company_id = $user->company->id;
+    $interview->creator_id = $user->id;
+    $interview->vacant_id  = $vacancy->id;
+    $interview->contact    = $request->contact;
+    $interview->email      = $request->email;
+    $interview->phone      = $request->phone;
+    $interview->address    = $request->contact;
+
+    $interview->update();
+
+    return redirect("tablero-empresa/vacante/{$vacancy->id}/entrevista/{$interview->id}");
+  }
+
+  public function interview($vacancy_id, $id){ 
+    $user      = Auth::user();
+    $vacancy   = $user->company->vacancies()->find($vacancy_id);
+    $interview = $vacancy->interviews()->find($id);
+    $student   = $interview->student;
+
+    return view("companies.vacancies.interview")->with([
+      "user"      => $user,
+      "vacancy"   => $vacancy,
+      "interview" => $interview,
+      "student"   => $student
+    ]);
   }
 }
