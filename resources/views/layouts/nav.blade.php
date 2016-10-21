@@ -30,9 +30,8 @@
 			@endif
 
 			@if($user->type == 'company')
-			<a href="{{url('tablero-empresa')}}" class="current"><i class="material-icons">home</i> Tablero</a>
-			<a href="{{url('tablero-empresa/vacantes')}}"><i class="material-icons">business_center</i> Vacantes</a>
-			<a href="{{url('tablero-empresa/yo')}}"><i class="material-icons">domain</i> Perfil</a>
+			<!-- nav empresas-->
+				@include('layouts.nav.nav_company')
 			@endif
 
 			@if ($user->type == 'student')

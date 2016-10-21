@@ -1,0 +1,4 @@
+<a href="{{url('tablero-empresa')}}" class="{{$__env->yieldContent('bodyclass') == 'company' ? 'current' : ''}} "><i class="material-icons">home</i> Tablero</a>
+<a href="{{url('tablero-empresa/vacantes')}}"  class="{{$__env->yieldContent('bodyclass') == 'company vacantes' ? 'current' : ''}} "><i class="material-icons">business_center</i> Vacantes</a>
+<a href="{{url('tablero-empresa/entrevistas')}}" class="{{$__env->yieldContent('bodyclass') == 'company entrevistas' ? 'current' : ''}} "><i class="material-icons">assignment</i> Entrevistas</a>
+<a href="{{url('tablero-empresa/yo')}}"  class="{{$__env->yieldContent('bodyclass') == 'company me' ? 'current' : ''}} "><i class="material-icons">person</i> Perfil</a>

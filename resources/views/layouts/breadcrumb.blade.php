@@ -69,7 +69,12 @@
 					<!--opds-->
 					@include('layouts.breadcrumbs.bread-opd')
 				@endif
-
+				
+				@if ($user->type == 'company')
+					<!--opds-->
+					@include('layouts.breadcrumbs.bread-company')
+				@endif
+				
 				@if ($user->type == 'student')
 					<!--students-->
 					@include('layouts.breadcrumbs.bread-student')
