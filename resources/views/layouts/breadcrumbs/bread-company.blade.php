@@ -9,6 +9,12 @@
 @if ($__env->yieldContent('breadcrumb_c') == 'vacante ver')
 <li>Ver Vacante</li>
 @endif
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante add')
+<li><a href="{{ url('tablero-empresa/vacantes')}}">Vacantes</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante add')
+<li>Agregar Vacante</li>
+@endif
 
 
 @if ($__env->yieldContent('breadcrumb_c') == 'entrevistas')
