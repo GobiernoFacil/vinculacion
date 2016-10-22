@@ -3,7 +3,7 @@
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'company vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_o', 'vacante add')
+@section('breadcrumb_c', 'vacante edit')
 
 @section('content')
 <div class="container">
