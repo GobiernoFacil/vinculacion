@@ -22,16 +22,22 @@
       @if($vacancies->count())
       <ul class="list">
         <li class="row titles">
-          <span class="col-sm-3">Vacante</span>
-          <span class="col-sm-2">entrevistas</span>
+          <span class="col-sm-4">Vacante</span>
+          <span class="col-sm-2">Sueldo</span>
           <span class="col-sm-2">Aplicaron</span>
+          <span class="col-sm-2">Entrevistas</span>
           <span class="col-sm-2">Acciones</span>
         </li>
         @foreach($vacancies as $vacancy)
         <li class="row">
-          <span class="col-sm-3"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a></span>
-          <span class="col-sm-2">0</span>
+          <span class="col-sm-4">
+          	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
+          	<br>
+          	<span class="note">Carrera: {{$vacancy->tags}}</span>
+          </span>
+          <span class="col-sm-2">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
           <span class="col-sm-2">{{$vacancy->applicants()->count()}}</span>
+          <span class="col-sm-2">0</span>
           <span class="col-sm-2">
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
             <a href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">Eliminar</a>
