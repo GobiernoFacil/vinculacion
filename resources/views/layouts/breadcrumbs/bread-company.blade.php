@@ -3,18 +3,19 @@
 <!-- vacancies -->
 <li>Vacantes</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver')
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver' || $__env->yieldContent('breadcrumb_c') == 'vacante add' || $__env->yieldContent('breadcrumb_c') == 'vacante edit')
 <li><a href="{{ url('tablero-empresa/vacantes')}}">Vacantes</a></li>
 @endif
 @if ($__env->yieldContent('breadcrumb_c') == 'vacante ver')
 <li>Ver Vacante</li>
 @endif
 @if ($__env->yieldContent('breadcrumb_c') == 'vacante add')
-<li><a href="{{ url('tablero-empresa/vacantes')}}">Vacantes</a></li>
-@endif
-@if ($__env->yieldContent('breadcrumb_c') == 'vacante add')
 <li>Agregar Vacante</li>
 @endif
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante edit')
+<li>Editar Vacante</li>
+@endif
+
 
 
 @if ($__env->yieldContent('breadcrumb_c') == 'entrevistas')
