@@ -1,0 +1,3 @@
+<a href="{{url('tablero-secotrade')}}" class="{{$__env->yieldContent('bodyclass') == 'dashboard' ? 'current' : ''}} "><i class="material-icons">home</i> Tablero</a>
+<a href="{{url('tablero-secotrade/vacantes')}}"  class="{{$__env->yieldContent('bodyclass') == 'vacantes' ? 'current' : ''}} "><i class="material-icons">school</i> Vacantes</a>
+<a href="{{url('tablero-secotrade/yo')}}"  class="{{$__env->yieldContent('bodyclass') == 'me' ? 'current' : ''}} "><i class="material-icons">person</i> Perfil</a>
