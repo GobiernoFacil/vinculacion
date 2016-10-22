@@ -4,7 +4,7 @@
 @endif
 
 @if ($__env->yieldContent('breadcrumb_p') == 'vacante ver' || $__env->yieldContent('breadcrumb_p') == 'vacante actualizar' || $__env->yieldContent('breadcrumb_p') == 'vacante add' || $__env->yieldContent('breadcrumb_p') == 'vacantes xls')
-<li><a href="{{ url('tablero-opd/vacantes')}}">vacantes</a></li>
+<li><a href="{{ url('tablero-secotrade/vacantes')}}">Vacantes</a></li>
 @endif
 @if ($__env->yieldContent('breadcrumb_p') == 'vacante ver')
 <li>Ver vacante</li>
