@@ -3,7 +3,7 @@
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
 @section('bodyclass', 'puebla vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_c', 'vacantes')
+@section('breadcrumb_p', 'vacantes')
 
 @section('content')
 <div class="row">
