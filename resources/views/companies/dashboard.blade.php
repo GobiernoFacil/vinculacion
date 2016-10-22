@@ -11,7 +11,7 @@
 				@if(!$user->enabled)
          @include('companies.alert-message')
 				@endif
-				<h1>Tablero de compradores</h1>
+				<h1>Tu Tablero</h1>
 			</div>
 		</div>
 
