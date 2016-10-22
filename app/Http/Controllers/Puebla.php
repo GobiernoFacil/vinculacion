@@ -16,7 +16,13 @@ class Puebla extends Controller
    * ----------------------------------------------------------------
    */
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de la dirección general del servicio estatal del empleo!"]);
+	// [1] el usuario del sistema
+    $user 		= Auth::user();
+    $vacancies  = $user->vacancies()->count();
+    return view("puebla.dashboard")->with([
+      "user"      => $user,
+      "vacancies" => $vacancies,
+    ]);
   }
 
   /*
