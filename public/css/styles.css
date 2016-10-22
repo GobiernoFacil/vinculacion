@@ -1689,6 +1689,17 @@ a.box:visited {
     a.box:visited:hover span {
       color: black; }
 
+.message {
+  padding: 15px 15px 15px 10px; }
+  .message.alert {
+    background: rgba(255, 0, 0, 0.03);
+    border: 1px solid red;
+    border-left-width: 12px; }
+  .message a,
+  .message a:visited {
+    color: black;
+    border-bottom: 1px solid black; }
+
 .lead {
   margin: 20px 0; }
 
