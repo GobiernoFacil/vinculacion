@@ -51,7 +51,6 @@ class PueblaVacancies extends Controller
     // [4] regresa el view
     return view('puebla.vacancies.vacancy-view')->with([
       "user"    => $user,
-      "company" => $company,
       "vacancy" => $vacancy
     ]);
   }
