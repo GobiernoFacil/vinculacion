@@ -70,8 +70,13 @@
 					@include('layouts.breadcrumbs.bread-opd')
 				@endif
 				
+				@if ($user->type == 'puebla')
+					<!--secotrade-->
+					@include('layouts.breadcrumbs.bread-secotrade')
+				@endif
+				
 				@if ($user->type == 'company')
-					<!--opds-->
+					<!--company-->
 					@include('layouts.breadcrumbs.bread-company')
 				@endif
 				
