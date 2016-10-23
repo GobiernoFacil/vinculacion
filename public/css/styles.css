@@ -1536,23 +1536,50 @@ a.btn:visited {
     background: #00add3;
     cursor: pointer; }
 
-.admin.opd header {
+.admin.opd header,
+.admin.puebla header {
   background: #0098b9; }
 
-.admin.opd .main_nav a:hover {
+.admin.opd .main_nav a:hover,
+.admin.puebla .main_nav a:hover {
   color: #0098b9; }
 
-.admin.opd .main_nav a.current {
+.admin.opd .main_nav a.current,
+.admin.puebla .main_nav a.current {
   color: #0098b9; }
 
-.admin.opd .btn.edit {
+.admin.opd .btn.edit,
+.admin.puebla .btn.edit {
   background: #0098b9;
   font-size: 14px;
   display: inline-block;
   padding: 0 15px;
   line-height: 30px; }
-  .admin.opd .btn.edit:hover {
+  .admin.opd .btn.edit:hover,
+  .admin.puebla .btn.edit:hover {
     background: #00add3;
+    cursor: pointer; }
+
+.admin.student header {
+  background: #ffc906; }
+  .admin.student header .abierto {
+    color: #133150; }
+
+.admin.student .main_nav a:hover {
+  color: #ffc906; }
+
+.admin.student .main_nav a.current {
+  color: #ebb800; }
+
+.admin.student .btn.edit {
+  background: #ffc906;
+  color: #133150;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 30px; }
+  .admin.student .btn.edit:hover {
+    background: #ffcf20;
     cursor: pointer; }
 
 .main_nav a {
