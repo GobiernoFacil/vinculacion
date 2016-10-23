@@ -28,6 +28,11 @@
 			<!-- nav universidades-->
 				@include('layouts.nav.nav_opd')
 			@endif
+			
+			@if ($user->type == 'puebla')
+			<!-- nav secotrade-->
+				@include('layouts.nav.nav_puebla')
+			@endif
 
 			@if($user->type == 'company')
 			<!-- nav empresas-->

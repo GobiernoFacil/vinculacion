@@ -3,14 +3,13 @@
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'puebla vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_c', 'vacante add')
+@section('breadcrumb_p', 'vacante add')
 
 @section('content')
-<div class="container">
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="separator">Agregar vacante</h1>
+      <h1>Agregar vacante</h1>
     </div>
   </div>
   <div class="row">
@@ -205,7 +204,6 @@
 
     </div>
   </div>
-</div>
 
 <!-- scripts for tag selector -->
 <script src="{{url('js/bower_components/jquery/dist/jquery.js')}}"></script>
