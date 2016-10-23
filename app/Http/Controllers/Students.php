@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\User;
 
 use Auth;
 use Hash;
 use App\Http\Requests\UpdateStudentProfileRequest;
+
 class Students extends Controller
 {
   /*
@@ -18,18 +20,21 @@ class Students extends Controller
   public function index(){
     // [1] el usuario del sistema
     $user = Auth::user();
-
+    $student   		= $user->student;
+    $cv 			= $student->cv()->firstOrCreate([]);
+	$opd       		= $student->opd;
     // [2] contamos cuántos de cada uno
-    $student   = $user->student;
-    $vacancies = $student->applications()->count();
-    $interviews = $student->interviews->count();
+    $vacancies 		= $student->applications()->count();
+    $interviews 	= $student->interviews->count();
 
     // [3] regresa el view
     return view('students.dashboard')->with([
-      "user"      => $user,
+      "user"      	=> $user,
       // students
-      "vacancies"  => $vacancies,
-      'interviews' => $interviews
+      "vacancies"  	=> $vacancies,
+      'interviews'  => $interviews,
+      'cv'			=> $cv,
+      'opd'			=> $opd,
     ]);
   }
 

@@ -1582,6 +1582,9 @@ a.btn:visited {
     background: #ffcf20;
     cursor: pointer; }
 
+.admin.student .box {
+  margin-bottom: 0; }
+
 .main_nav a {
   color: white;
   background: #133150;
@@ -1723,6 +1726,15 @@ a.box:visited {
     a.box:hover span,
     a.box:visited:hover span {
       color: black; }
+  a.box.cv,
+  a.box:visited.cv {
+    background: #ffc906; }
+    a.box.cv span,
+    a.box:visited.cv span {
+      color: #133150; }
+    a.box.cv:hover,
+    a.box:visited.cv:hover {
+      background: #ffda53; }
 
 .message {
   padding: 15px 15px 15px 10px; }
