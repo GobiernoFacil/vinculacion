@@ -11,19 +11,39 @@
         @if(!$user->enabled)
          @include('companies.alert-message')
         @endif
-        <h1>Vacantes</h1>    
-		@if($vacancies->count())
-    	<ul>
-    	  @foreach($vacancies as $vacancy)
-    	  <li>
-    	    <a href="{{url('tablero-estudiante/vacante/' . $vacancy->id)}}">{{$vacancy->job}}</a>
-    	  </li>
-    	  @endforeach
-    	</ul>
-    	@else
+        <h1>Vacantes: {{$vacancies->count()}} </h1>    
 
+      @if($vacancies->count())
+      <ul class="list">
+        <li class="row titles">
+          <span class="col-sm-4">Vacante</span>
+          <span class="col-sm-2">Sueldo</span>
+          <span class="col-sm-2">Empresa</span>
+          <span class="col-sm-2">Ubicación</span>
+          <span class="col-sm-2">Acciones</span>
+        </li>
+        @foreach($vacancies as $vacancy)
+        <li class="row">
+          <span class="col-sm-4">
+          	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
+          	<br>
+          	<span class="note">Carrera: {{$vacancy->tags}}</span>
+          </span>
+          <span class="col-sm-2">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
+          <span class="col-sm-2">{{$vacancy->company->nombre_comercial}}</span>
+          <span class="col-sm-2">{{$vacancy->city}}</span>
+          <span class="col-sm-2">
+            <a href="{{url("tablero-estudiante/vacante/{$vacancy->id}")}}" class="btn edit xs">Ver</a>
+            <a href="#" class="btn xs">Aplicar</a>
+          </span>
+        </li>
+        @endforeach
+      </ul>
+
+      @else
     	<p>No hay ninguna vacante publicada</p>
-    	@endif
+      @endif
+
     </div>
 </div>
 @endsection
