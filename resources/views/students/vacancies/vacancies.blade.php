@@ -25,7 +25,7 @@
         @foreach($vacancies as $vacancy)
         <li class="row">
           <span class="col-sm-4">
-          	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
+          	<a href="{{url("tablero-estudiante/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
           	<br>
           	<span class="note">Carrera: {{$vacancy->tags}}</span>
           </span>
