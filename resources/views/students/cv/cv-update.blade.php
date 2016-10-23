@@ -9,6 +9,9 @@
   <!-- Formulario de company -->
   <div class="row">
     <div class="col-sm-12">
+	    @if(!$user->enabled)
+			@include('students.alert-message')
+		@endif
       <h1>Actualizar Currículum vitae</h1>
     </div>
   </div>

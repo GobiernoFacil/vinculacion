@@ -9,6 +9,9 @@
 <!-- Perfil -->
 <div class="row">
 	<div class="col-sm-12">
+		@if(!$user->enabled)
+			@include('students.alert-message')
+		@endif
 		<h1>Currículum vitae</h1>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
