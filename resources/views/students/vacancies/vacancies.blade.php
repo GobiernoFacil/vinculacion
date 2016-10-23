@@ -34,7 +34,9 @@
           <span class="col-sm-2">{{$vacancy->city}}</span>
           <span class="col-sm-2">
             <a href="{{url("tablero-estudiante/vacante/{$vacancy->id}")}}" class="btn edit xs">Ver</a>
-            <a href="#" class="btn xs">Aplicar</a>
+            @if($user->enabled)
+				<a href="{{url("tablero-estudiante/vacante/aplicar/{$vacancy->id}")}}" class="btn xs">Aplicar</a>
+            @endif
           </span>
         </li>
         @endforeach
