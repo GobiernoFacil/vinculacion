@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 
+use App\models\Cv;
+use App\models\Language;
+use App\models\Software;
+use App\models\AcademicTraining;
+
 class StudentCv extends Controller
 {
   /*
@@ -29,7 +34,7 @@ class StudentCv extends Controller
       $cv = $user->student->cv()->firstOrCreate([]);
       return view("students.cv.cv-update")->with([
         "user"  => $user,
-        "cv" => $cv
+        "cv"    => $cv
       ]);
 
     }
@@ -39,5 +44,24 @@ class StudentCv extends Controller
       // update student
       $cv->update($request->except('_token'));
       return redirect("tablero-estudiante/cv");
+    }
+
+    public function addLanguage(Request $request){
+      $user = Auth::user();
+      $cv   = $user->student->cv;
+      $language = $cv->languages()->firstOrCreate([
+        'name'  => $request->name, 
+        'level' => $request->level
+      ]);
+
+      return response()->json($language);
+    }
+
+    public function removeLanguage($id){
+      $user = Auth::user();
+      $lang = $user->cv->languages()->find($id);
+      $r    = $lang->delete();
+
+      return response()->json($r);
     }
 }

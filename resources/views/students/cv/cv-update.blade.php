@@ -99,6 +99,45 @@
       <!-- se cierra el form -->
       {!! Form::close() !!}
 
+
+      <form id="extra-stuff">
+        <fieldset>
+          <h5>idiomas</h5>
+          <ul id="languages-list">
+          @foreach($cv->languages as $language)
+            <li data-id="{{$language->id}}">
+              {{$language->name}} : {{$language->level}}
+              <a href="#" class="remove-language">[ x ]</a>
+            </li>
+          @endforeach
+          </ul>
+
+          <p>
+            idioma: <input type="text" name="language" id="language"><br>
+            nivel: <input type="text" name="language_level" id="language_level"><br>
+            <a id="add-language" href="#">Agregar idioma</a>
+          </p>
+        </fieldset>
+      </form>
     </div>
   </div>
+  <script src="{{url("js/bower_components/jquery/dist/jquery.min.js")}}"></script>
+  <script>
+    var CVID = {{$cv->id}};
+    // Laravel.csrfToken
+    $(function(){
+      $("#add-language").on("click", function(e){
+        var name  = $("#language").val(),
+            level = $("#language_level").val(),
+            url   = "{{url("tablero-estudiante/idioma/agregar")}}";
+
+        $.post(url, {name : name, level:level, _token : Laravel.csrfToken}, function(d){
+          console.log(d);
+        }, "json");
+      });
+// LANGUAGE:  'cv_id', 'name', 'level'
+// SOFTWARE: 'cv_id', 'name', 'level'
+// academic_trainings: 'cv_id', 'name', 'from', 'to', 'institution', 'city'
+    });
+  </script>
 @endsection

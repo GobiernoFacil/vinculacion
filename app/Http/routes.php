@@ -279,6 +279,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get("tablero-estudiante/vacantes", "StudentVacancies@vacancies");
     Route::get("tablero-estudiante/vacante/{id}", "StudentVacancies@vacancy");
+
+    Route::post("tablero-estudiante/idioma/agregar", "StudentCv@addLanguage");
+    Route::post("tablero-estudiante/idioma/eliminar/{id}", "StudentCv@removeLanguage");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
