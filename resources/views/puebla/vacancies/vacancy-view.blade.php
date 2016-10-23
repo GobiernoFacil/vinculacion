@@ -10,6 +10,14 @@
   <div class="row">
     <div class="col-sm-8">
     	<h1>{{$vacancy->job}}</h1>
+      
+      <!-- 
+      Para secotrade y cámaras de comercio, le agregué el campo de for_company, que es el nombre
+      de la empresa que ofrece la vacante que publican
+      -->
+      <p>empresa: {{$vacancy->for_company}}</p>
+      <!-- -->
+
     	<div class="row">
 	    	<div class="col-sm-6">
 				<p>Creado: {{date('d-m-Y', strtotime($vacancy->created_at))}} / Actualizado: {{date('d-m-Y', strtotime($vacancy->updated_at))}}</p>

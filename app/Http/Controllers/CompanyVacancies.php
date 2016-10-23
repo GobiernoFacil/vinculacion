@@ -92,7 +92,12 @@ class CompanyVacancies extends Controller
   }
 
   public function delete($id){
-
+    $user    = Auth::user();
+    $vacancy = $user->company->vacancies->find($id);
+    $vacancy->applicants()->delete();
+    $vacancy->interviews()->delete();
+    $vacancy->delete();
+    return redirect('tablero-empresa/vacantes');
   }
 
   public function enable($id){

@@ -40,7 +40,9 @@
           <span class="col-sm-2">0</span>
           <span class="col-sm-2">
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
-            <a href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">Eliminar</a>
+            <a data-job="{{$vacancy->job}}" href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">
+              Eliminar
+            </a>
           </span>
         </li>
         @endforeach
@@ -53,4 +55,18 @@
   </div>
 </div>
 
+<script>
+  var dButtons = document.querySelectorAll(".danger");
+
+  if(dButtons.length){
+    for(var i =0; i < dButtons.length; i++){
+      dButtons[i].addEventListener("click", function(e){
+        var d = confirm("deseas eliminar la vacante " + this.getAttribute("data-job"));
+        if(!d){
+          e.preventDefault();
+        }
+      });
+    }
+  }
+</script>
 @endsection
