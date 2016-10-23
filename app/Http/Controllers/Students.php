@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
+use App\models\Vacant;
 
 use Auth;
 use Hash;
@@ -19,22 +19,23 @@ class Students extends Controller
   */
   public function index(){
     // [1] el usuario del sistema
-    $user = Auth::user();
+    $user 			= Auth::user();
     $student   		= $user->student;
     $cv 			= $student->cv()->firstOrCreate([]);
 	$opd       		= $student->opd;
     // [2] contamos cuántos de cada uno
-    $vacancies 		= $student->applications()->count();
+    $vacancies 		= Vacant::where('status', 1)->count();
     $interviews 	= $student->interviews->count();
-
+	$applications	= $student->applications()->count();
     // [3] regresa el view
     return view('students.dashboard')->with([
-      "user"      	=> $user,
-      // students
-      "vacancies"  	=> $vacancies,
-      'interviews'  => $interviews,
-      'cv'			=> $cv,
-      'opd'			=> $opd,
+      "user"      	 => $user,
+      // students	 
+      "applications" => $applications,
+      "vacancies"  	 => $vacancies,
+      'interviews'   => $interviews,
+      'cv'			 => $cv,
+      'opd'			 => $opd,
     ]);
   }
 
