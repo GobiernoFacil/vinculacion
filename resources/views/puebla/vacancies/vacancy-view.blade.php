@@ -15,6 +15,8 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+    <p>empresa: {{$vacancy->for_company}}</p>
+
     <p>vacante: {{$vacancy->job}}</p>
 
     <p><a href="{{url("tablero-secotrade/vacante/editar/{$vacancy->id}")}}">editar</a></p>
