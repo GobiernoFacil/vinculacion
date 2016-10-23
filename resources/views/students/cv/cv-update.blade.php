@@ -2,13 +2,14 @@
 @section('title', 'Actualizar CV')
 @section('description', 'Actualizar currículo en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'student cv')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_e', 'cv-update')
 
 @section('content')
-<div class="container">
   <!-- Formulario de company -->
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="separator">Actualizar Currículo</h1>
+      <h1>Actualizar Currículum vitae</h1>
     </div>
   </div>
   <div class="row">
@@ -97,6 +98,4 @@
 
     </div>
   </div>
-</div>
-
 @endsection

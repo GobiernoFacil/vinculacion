@@ -2,12 +2,14 @@
 @section('title', 'Ver CV')
 @section('description', 'Ver currículo en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'student cv')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_e', 'cv')
 
 @section('content')
 <!-- Perfil -->
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2">
-		<h1>Currículo</h1>
+	<div class="col-sm-12">
+		<h1>Currículum vitae</h1>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
 		<h2>{{$user->name}}</h2>

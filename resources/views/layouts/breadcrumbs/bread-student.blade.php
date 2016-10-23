@@ -22,6 +22,15 @@
 <li>Ver Entrevista</li>
 @endif
 
+@if ($__env->yieldContent('breadcrumb_e') == 'cv')
+<!-- cv -->
+<li>Mi CV</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_e') == 'cv-update')
+<li><a href="{{ url('tablero-estudiante/cv')}}">Mi CV</a></li>
+<li>Editar CV</li>
+@endif
+
 @if ($__env->yieldContent('breadcrumb_e') == 'me')
 <!-- me -->
 <li>Mi Perfil</li>
