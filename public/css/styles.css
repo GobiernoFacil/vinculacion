@@ -1569,7 +1569,7 @@ a.btn:visited {
   color: #ffc906; }
 
 .admin.student .main_nav a.current {
-  color: #ebb800; }
+  color: rgba(19, 49, 80, 0.7); }
 
 .admin.student .btn.edit {
   background: #ffc906;
