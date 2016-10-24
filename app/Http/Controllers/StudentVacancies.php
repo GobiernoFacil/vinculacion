@@ -26,7 +26,7 @@ class StudentVacancies extends Controller
     $vacancies = Vacant::where('status', 1)->paginate($this->pageSize);
 
     // [4] regresa el view
-    return view('students.vacancies')->with([
+    return view('students.vacancies.vacancies')->with([
       "user"      => $user,
       "student"   => $student,
       "vacancies" => $vacancies
@@ -40,7 +40,7 @@ class StudentVacancies extends Controller
     $applied = $student->applications()->where('vacant_id', $id)->count();
 
     if($vacancy && $vacancy->status){
-      return view("students.vacancy")->with([
+      return view("students.vacancies.vacancy")->with([
         "user"    => $user,
         "vacancy" => $vacancy,
         "student" => $student,

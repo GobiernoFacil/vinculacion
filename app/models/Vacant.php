@@ -22,5 +22,9 @@ function applicants(){
     return $this->hasMany("App\models\Applicant");
 }
 
+function interviews(){
+    return $this->hasMany("App\models\Interview");
+}
+
 
 }

@@ -197,7 +197,10 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}', 'CompanyVacancies@student');
       Route::get('tablero-empresa/vacante/{id}/estudiante/{student_id}/calificar', 'CompanyVacancies@rateStudent');
       Route::get('tablero-empresa/vacante/{id}/entrevistas', 'CompanyVacancies@interviews');
-      Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interviews');
+      Route::get('tablero-empresa/vacante/{id}/entrevista/{interview_id}', 'CompanyVacancies@interview');
+
+      Route::get('tablero-empresa/vacante/{id}/entrevista/crear/{student_id}', 'CompanyVacancies@interviewAdd');
+      Route::post('tablero-empresa/vacante/{id}/entrevista/crear/{student_id}', 'CompanyVacancies@interviewSave');
     });
   });
 
@@ -276,6 +279,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get("tablero-estudiante/vacantes", "StudentVacancies@vacancies");
     Route::get("tablero-estudiante/vacante/{id}", "StudentVacancies@vacancy");
+
+    // CRUDS PARA LOS ELEMENTOS DEL CV
+    Route::post("tablero-estudiante/idioma/agregar", "StudentCv@addLanguage");
+    Route::post("tablero-estudiante/idioma/eliminar/{id}", "StudentCv@removeLanguage");
+    Route::post("tablero-estudiante/programa/agregar", "StudentCv@addSoftware");
+    Route::post("tablero-estudiante/programa/eliminar/{id}", "StudentCv@removeSoftware");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
@@ -316,6 +325,25 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-secotrade/yo", "Puebla@me");
     Route::get("tablero-secotrade/yo/editar", "Puebla@changeMe");
     Route::post("tablero-secotrade/yo/editar", "Puebla@updateMe");
+
+    Route::get('tablero-secotrade/vacante/crear', 'PueblaVacancies@add');
+    Route::post('tablero-secotrade/vacante/crear', 'PueblaVacancies@save');
+    Route::get('tablero-secotrade/vacante/editar/{id}', 'PueblaVacancies@edit');
+    Route::post('tablero-secotrade/vacante/editar/{id}', 'PueblaVacancies@update');
+    Route::get('tablero-secotrade/vacante/eliminar/{id}', 'PueblaVacancies@delete');
+    Route::get('tablero-secotrade/vacante/{id}', 'PueblaVacancies@view');
+
+
+    Route::get("tablero-secotrade/vacantes", "PueblaVacancies@all");
+    Route::get('tablero-secotrade/vacante/habilitar/{id}', 'PueblaVacancies@enable');
+    Route::get('tablero-secotrade/vacante/{id}/estudiantes', 'PueblaVacancies@students');
+    Route::get('tablero-secotrade/vacante/{id}/estudiante/{student_id}', 'PueblaVacancies@student');
+    Route::get('tablero-secotrade/vacante/{id}/estudiante/{student_id}/calificar', 'PueblaVacancies@rateStudent');
+    Route::get('tablero-secotrade/vacante/{id}/entrevistas', 'PueblaVacancies@interviews');
+    Route::get('tablero-secotrade/vacante/{id}/entrevista/{interview_id}', 'PueblaVacancies@interview');
+
+    Route::get('tablero-secotrade/vacante/{id}/entrevista/crear/{student_id}', 'PueblaVacancies@interviewAdd');
+    Route::post('tablero-secotrade/vacante/{id}/entrevista/crear/{student_id}', 'PueblaVacancies@interviewSave');
   });
 
 });

@@ -43,4 +43,10 @@ class User extends Authenticatable
     function chamber(){
      return $this->hasOne("App\models\Chamber");
     }
+
+    //modelosrelacionados
+    // esto solo funciona para la secotrade y la cámara de comercio, no usar para otro!
+    function vacancies(){
+     return $this->hasMany("App\models\Vacant", "company_id");
+    }
 }

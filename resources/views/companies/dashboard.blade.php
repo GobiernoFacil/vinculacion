@@ -5,14 +5,13 @@
 
 
 @section('content')
-<section>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				@if(!$user->enabled)
          @include('companies.alert-message')
 				@endif
-				<h1>Tablero de compradores</h1>
+				<h1>Tu Tablero</h1>
 			</div>
 		</div>
 
@@ -49,5 +48,4 @@
 			</div>
 		</div>
 	</div>
-</section>
 @endsection

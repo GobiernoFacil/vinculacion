@@ -89,5 +89,8 @@ class AuthController extends Controller
           }else if($user->type==='student'){
               return redirect('tablero-estudiante');
           }
+          else if($user->type==='puebla'){
+              return redirect('tablero-secotrade');
+          }
     }
 }

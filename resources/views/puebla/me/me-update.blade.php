@@ -3,7 +3,7 @@
 @section('description', 'Editar mi perfil en la plataforma de vinculación del Gobierno del Estado de Puebla')
 @section('bodyclass', 'puebla me')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_o', 'me-update')
+@section('breadcrumb_p', 'me-update')
 
 @section('content')
 <div class="container">

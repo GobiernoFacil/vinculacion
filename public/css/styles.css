@@ -1536,24 +1536,54 @@ a.btn:visited {
     background: #00add3;
     cursor: pointer; }
 
-.admin.opd header {
+.admin.opd header,
+.admin.puebla header {
   background: #0098b9; }
 
-.admin.opd .main_nav a:hover {
+.admin.opd .main_nav a:hover,
+.admin.puebla .main_nav a:hover {
   color: #0098b9; }
 
-.admin.opd .main_nav a.current {
+.admin.opd .main_nav a.current,
+.admin.puebla .main_nav a.current {
   color: #0098b9; }
 
-.admin.opd .btn.edit {
+.admin.opd .btn.edit,
+.admin.puebla .btn.edit {
   background: #0098b9;
   font-size: 14px;
   display: inline-block;
   padding: 0 15px;
   line-height: 30px; }
-  .admin.opd .btn.edit:hover {
+  .admin.opd .btn.edit:hover,
+  .admin.puebla .btn.edit:hover {
     background: #00add3;
     cursor: pointer; }
+
+.admin.student header {
+  background: #ffc906; }
+  .admin.student header .abierto {
+    color: #133150; }
+
+.admin.student .main_nav a:hover {
+  color: #ffc906; }
+
+.admin.student .main_nav a.current {
+  color: rgba(19, 49, 80, 0.7); }
+
+.admin.student .btn.edit {
+  background: #ffc906;
+  color: #133150;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 30px; }
+  .admin.student .btn.edit:hover {
+    background: #ffcf20;
+    cursor: pointer; }
+
+.admin.student .box {
+  margin-bottom: 0; }
 
 .main_nav a {
   color: white;
@@ -1614,6 +1644,14 @@ a:visited.back {
     border-left: 5px solid red; }
   .list .enabled {
     border-left: 5px solid green; }
+
+.list_perks {
+  margin-left: 20px; }
+  .list_perks li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    list-style: none;
+    margin-bottom: 10px;
+    padding-bottom: 5px; }
 
 .list_data {
   border-top: 1px solid rgba(90, 90, 90, 0.1);
@@ -1688,6 +1726,26 @@ a.box:visited {
     a.box:hover span,
     a.box:visited:hover span {
       color: black; }
+  a.box.cv,
+  a.box:visited.cv {
+    background: #ffc906; }
+    a.box.cv span,
+    a.box:visited.cv span {
+      color: #133150; }
+    a.box.cv:hover,
+    a.box:visited.cv:hover {
+      background: #ffda53; }
+
+.message {
+  padding: 15px 15px 15px 10px; }
+  .message.alert {
+    background: rgba(255, 0, 0, 0.02);
+    border: 1px solid red;
+    border-left-width: 12px; }
+  .message a,
+  .message a:visited {
+    color: black;
+    border-bottom: 1px solid black; }
 
 .lead {
   margin: 20px 0; }

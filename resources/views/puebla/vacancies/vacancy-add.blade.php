@@ -1,28 +1,32 @@
 @extends('layouts.master-admin')
 @section('title', 'Agregar Vacante')
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'company vacantes')
+@section('bodyclass', 'puebla vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_c', 'vacante add')
+@section('breadcrumb_p', 'vacante add')
 
 @section('content')
-<div class="container">
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
-      @if(!$user->enabled)
-          @include('companies.alert-message')
-      @endif
-      <h1 class="separator">Agregar vacante</h1>
+      <h1>Agregar vacante</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::open(['url' => "tablero-empresa/vacante/crear", "class" => "form-horizontal"]) !!}
+      {!! Form::open(['url' => "tablero-secotrade/vacante/crear", "class" => "form-horizontal"]) !!}
 
       <!-- cosas de su objeto -->
       <fieldset>
         <h5>Datos de la vacante</h5>
+
+        <p>
+          <label>Empresa</label>
+          {{Form::text('for_company',null,["class" => "form-control"])}}
+          @if($errors->has('for_company'))
+          <strong>{{$errors->first('for_company')}}</strong>
+          @endif
+        </p>
 
         <p>
           <label>Vacante</label>
@@ -200,7 +204,6 @@
 
     </div>
   </div>
-</div>
 
 <!-- scripts for tag selector -->
 <script src="{{url('js/bower_components/jquery/dist/jquery.js')}}"></script>
