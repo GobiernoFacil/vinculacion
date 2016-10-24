@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
       Commands\AddCompaniesByFile::class,
       Commands\AddAdminCompaniesByFile::class,
       Commands\FindAcademicOffer::class,
+      Commands\UpdateAcademicOffer::class,
     ];
 
     /**
