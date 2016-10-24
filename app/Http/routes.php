@@ -280,8 +280,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-estudiante/vacantes", "StudentVacancies@vacancies");
     Route::get("tablero-estudiante/vacante/{id}", "StudentVacancies@vacancy");
 
+    // CRUDS PARA LOS ELEMENTOS DEL CV
     Route::post("tablero-estudiante/idioma/agregar", "StudentCv@addLanguage");
     Route::post("tablero-estudiante/idioma/eliminar/{id}", "StudentCv@removeLanguage");
+    Route::post("tablero-estudiante/programa/agregar", "StudentCv@addSoftware");
+    Route::post("tablero-estudiante/programa/eliminar/{id}", "StudentCv@removeSoftware");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //

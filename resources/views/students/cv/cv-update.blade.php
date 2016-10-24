@@ -101,6 +101,7 @@
 
 
       <form id="extra-stuff">
+        <!-- idiomas -->
         <fieldset>
           <h5>idiomas</h5>
           <ul id="languages-list">
@@ -114,8 +115,39 @@
 
           <p>
             idioma: <input type="text" name="language" id="language"><br>
-            nivel: <input type="text" name="language_level" id="language_level"><br>
+            nivel: 
+            <select name="language_level" id="language_level">
+              <option>básico</option>
+              <option>intermedio</option>
+              <option>avanzado</option>
+            </select>
+            <br>
             <a id="add-language" href="#">Agregar idioma</a>
+          </p>
+        </fieldset>
+
+        <!-- software -->
+        <fieldset>
+          <h5>Software</h5>
+          <ul id="softwares-list">
+          @foreach($cv->softwares as $software)
+            <li data-id="{{$software->id}}">
+              {{$software->name}} : {{$software->level}}
+              <a href="#" class="remove-software">[ x ]</a>
+            </li>
+          @endforeach
+          </ul>
+
+          <p>
+            programa: <input type="text" name="software" id="software"><br>
+            nivel: 
+            <select name="software_level" id="software_level">
+              <option>básico</option>
+              <option>intermedio</option>
+              <option>avanzado</option>
+            </select>
+            <br>
+            <a id="add-software" href="#">Agregar programa</a>
           </p>
         </fieldset>
       </form>
@@ -126,16 +158,73 @@
     var CVID = {{$cv->id}};
     // Laravel.csrfToken
     $(function(){
+
+      // PREVENT SUBMIT
+      $("#extra-stuff").on("submit", function(e){
+        return false;
+      });
+
+      // LANGUAGE "CRUD"
+      // ADD
       $("#add-language").on("click", function(e){
+        e.preventDefault();
         var name  = $("#language").val(),
             level = $("#language_level").val(),
             url   = "{{url("tablero-estudiante/idioma/agregar")}}";
 
         $.post(url, {name : name, level:level, _token : Laravel.csrfToken}, function(d){
           console.log(d);
+          var el  = "<li data-id='" + d.id + "'>" + 
+                    d.name + " : " + d.level + 
+                    " <a href='#' class='remove-language'>[ x ]</a></li>";
+          $("#languages-list").append(el);
         }, "json");
       });
-// LANGUAGE:  'cv_id', 'name', 'level'
+
+      // LANGUAGE "CRUD"
+      // REMOVE
+      $("#languages-list").on("click", ".remove-language", function(e){
+        e.preventDefault();
+        var li = $(e.currentTarget).parent(),
+            id = li.attr("data-id"),
+            url = "{{url("tablero-estudiante/idioma/eliminar")}}";
+        
+        $.post(url + "/" + id, {id : id, _token : Laravel.csrfToken}, function(d){
+          li.remove();
+        }, "json");
+      });
+
+      // SOFTWARE "CRUD"
+      // ADD
+      $("#add-software").on("click", function(e){
+        e.preventDefault();
+        var name  = $("#software").val(),
+            level = $("#software_level").val(),
+            url   = "{{url("tablero-estudiante/programa/agregar")}}";
+
+        $.post(url, {name : name, level:level, _token : Laravel.csrfToken}, function(d){
+          console.log(d);
+          var el  = "<li data-id='" + d.id + "'>" + 
+                    d.name + " : " + d.level + 
+                    " <a href='#' class='remove-software'>[ x ]</a></li>";
+          $("#softwares-list").append(el);
+        }, "json");
+      });
+
+      // SOFTWARE "CRUD"
+      // REMOVE
+      $("#softwares-list").on("click", ".remove-software", function(e){
+        e.preventDefault();
+        var li = $(e.currentTarget).parent(),
+            id = li.attr("data-id"),
+            url = "{{url("tablero-estudiante/programa/eliminar")}}";
+        
+        $.post(url + "/" + id, {id : id, _token : Laravel.csrfToken}, function(d){
+          li.remove();
+        }, "json");
+      });
+
+
 // SOFTWARE: 'cv_id', 'name', 'level'
 // academic_trainings: 'cv_id', 'name', 'from', 'to', 'institution', 'city'
     });

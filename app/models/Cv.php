@@ -29,6 +29,6 @@ class Cv extends Model
   }
 
   public function softwares(){
-    return $this->hasMany('App\models\Language');
+    return $this->hasMany('App\models\Software');
   }
 }

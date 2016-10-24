@@ -59,8 +59,27 @@ class StudentCv extends Controller
 
     public function removeLanguage($id){
       $user = Auth::user();
-      $lang = $user->cv->languages()->find($id);
+      $lang = $user->student->cv->languages()->find($id);
       $r    = $lang->delete();
+
+      return response()->json($r);
+    }
+
+    public function addSoftware(Request $request){
+      $user     = Auth::user();
+      $cv       = $user->student->cv;
+      $software = $cv->softwares()->firstOrCreate([
+        'name'  => $request->name, 
+        'level' => $request->level
+      ]);
+
+      return response()->json($software);
+    }
+
+    public function removeSoftware($id){
+      $user     = Auth::user();
+      $software = $user->student->cv->softwares()->find($id);
+      $r        = $software->delete();
 
       return response()->json($r);
     }
