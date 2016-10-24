@@ -10,6 +10,9 @@
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
+      @if(!$user->enabled)
+      @include('companies.alert-message')
+      @endif
       <h1 class="separator">Actualizar vacante</h1>
     </div>
   </div>
