@@ -100,10 +100,10 @@
       {!! Form::close() !!}
 
 
-      <form id="extra-stuff">
+      <form id="extra-stuff" class="form-horizontal">
         <!-- idiomas -->
         <fieldset>
-          <h5>idiomas</h5>
+          <h2>Idiomas</h2>
           <ul id="languages-list">
           @foreach($cv->languages as $language)
             <li data-id="{{$language->id}}">
@@ -113,22 +113,23 @@
           @endforeach
           </ul>
 
-          <p>
-            idioma: <input type="text" name="language" id="language"><br>
-            nivel: 
-            <select name="language_level" id="language_level">
+          <p><label>Idioma:</label> <input type="text" name="language" id="language" class="form-control"></p>
+          <p><label>Nivel:</label> 
+            <select name="language_level" id="language_level" class="form-control">
               <option>básico</option>
               <option>intermedio</option>
               <option>avanzado</option>
             </select>
-            <br>
-            <a id="add-language" href="#">Agregar idioma</a>
           </p>
+          <p>
+            <a id="add-language" href="#" class="btn edit">Agregar idioma</a>
+          </p>
+          <div class="separator"></div>
         </fieldset>
 
         <!-- software -->
         <fieldset>
-          <h5>Software</h5>
+          <h2>Software</h2>
           <ul id="softwares-list">
           @foreach($cv->softwares as $software)
             <li data-id="{{$software->id}}">
@@ -139,15 +140,18 @@
           </ul>
 
           <p>
-            programa: <input type="text" name="software" id="software"><br>
-            nivel: 
-            <select name="software_level" id="software_level">
+            <label>Programa:</label> 
+            <input type="text" name="software" id="software" class="form-control">
+          </p>
+          <p><label>Nivel:</label> 
+            <select name="software_level" id="software_level" class="form-control">
               <option>básico</option>
               <option>intermedio</option>
               <option>avanzado</option>
             </select>
-            <br>
-            <a id="add-software" href="#">Agregar programa</a>
+          </p>
+          <p>
+            <a id="add-software" href="#" class="btn edit">Agregar programa</a>
           </p>
         </fieldset>
       </form>
