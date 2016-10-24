@@ -156,6 +156,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');
     Route::get('dashboard/contrato/{id}/estudiantes', 'AdminContracts@students');
 
+    // O F E R T A   A C A D É M I C A
+    // ----------------------------------------------------------------
+    // @AdminAcademicOffer controller
+    Route::get('dashboard/oferta-academica', 'AdminAcademicOffer@all');
+    Route::get('dashboard/oferta-academica/crear', 'AdminAcademicOffer@add');
+    Route::post('dashboard/oferta-academica/crear', 'AdminAcademicOffer@save');
+    Route::get('dashboard/oferta-academica/editar/{id}', 'AdminAcademicOffer@edit');
+    Route::post('dashboard/oferta-academica/editar/{id}', 'AdminAcademicOffer@update');
+    Route::get('dashboard/oferta-academica/eliminar/{id}', 'AdminAcademicOffer@delete');
+    Route::get("dashboard/oferta-academica/actualizar/xlsx", "AdminAcademicOffer@addMultiple");
+    Route::post("dashboard/oferta-academica/actualizar/xlsx", "AdminAcademicOffer@saveMultiple");
+    Route::get('dashboard/oferta-academica/{id}', 'AdminAcademicOffer@view');
+
     // E S T A D Í S T I C A S
     // ----------------------------------------------------------------
     // @AdminStatistics controller

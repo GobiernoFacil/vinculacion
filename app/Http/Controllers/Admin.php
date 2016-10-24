@@ -10,6 +10,7 @@ use Hash;
 
 // models
 use App\User;
+use App\models\AcademicOffer;
 use App\models\Chamber;
 use App\models\Company;
 use App\models\Contract;
@@ -176,6 +177,13 @@ class Admin extends Controller
   //
   //
   public function contracts(Request $request){
+
+  }
+
+  // La oferta académica
+  //
+  //
+  public function offer(Request $request){
 
   }
 
