@@ -26,17 +26,31 @@
 			</div>
 			<!--tus entrevistas aplicadas-->
 			<div class="col-sm-6">
+				@if($applications > 0)
 				<a class="box" href="{{url('tablero-estudiante/vacantes')}}">
 					<span>Tus Vacantes Aplicadas</span>
 					<span class="count">{{$applications}}</span>
 				</a>
+				@else
+				<div class="box">
+					<h4>Tus Vacantes Aplicadas</h4>
+					<h5><span>{{$applications}}</span></h5>
+				</div>
+				@endif
 			</div>
 			<!--tus entrevistas-->
 			<div class="col-sm-6">
+				@if($interviews > 0)
 				<a class="box" href="{{url('tablero-estudiante/entrevistas')}}">
 					<span>Tus Entrevistas</span>
 					<span class="count">{{$interviews}}</span>
 				</a>
+				@else
+				<div class="box">
+					<h4>Tus Entrevistas</h4>
+					<h5><span>{{$interviews}}</span></h5>
+				</div>
+				@endif
 			</div>
 			<!--cv-->
 			<div class="col-sm-6">
