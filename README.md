@@ -14,10 +14,57 @@
 * Composer >= 1.2.*
 * Bower >= 1.7.*
 
+## Configuación del entorno de desarrollo
+nota: la guía de instalación es para Redhat Linux, y se suponque que se hace con un usuario que tiene privilegios de administrador
 
-## Pasos para instalar el sistema
-1: copiar los archivos del siguiente repositorio:
-[https://github.com/GobiernoFacil/vinculacion] (https://github.com/hugovom/sectur.git)
+## instalación de php y apache
+```bash
+sudo yum update -y
+sudo yum install -y httpd24 php56
+sudo service httpd start
+sudo chkconfig httpd on
+```
+
+## app necesarias
+```bash
+curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
+yum -y install nodejs
+npm install -g bower
+```
+
+( probar con: sudo yum install nodejs npm )
+
+## composer
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+mv composer.phar /usr/local/bin/composer
+```
+
+## carga los archivos del sitio 
+```bash
+cd /var/www
+rm -rf www
+git clone https://github.com/GobiernoFacil/vinculacion.git www
+```
+
+## permisos en caso de ser necesario
+```bash
+sudo groupadd www
+sudo usermod -a -G www user
+exit
+
+sudo chown -R root:www /var/www
+sudo chmod 2775 /var/www
+find /var/www -type d -exec sudo chmod 2775 {} \;
+find /var/www -type f -exec sudo chmod 0664 {} \;
+```
+
+## Pasos para instalar el código
+1: entrar a la carpeta /var/www
 
 2: dentro de la carpeta raíz (la carpeta que se descargó de github), hay que correr el siguiente comando:
 ```bash
