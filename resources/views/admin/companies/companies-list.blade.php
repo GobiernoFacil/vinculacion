@@ -30,7 +30,7 @@
 		<div id = "companies">
 	@if($companies->count())
 	  <ul class="list">
-	  	<li class="row titles">
+	  	<li class="clearfix titles">
 	  	  	<span class="col-sm-2">Empresa</span>
 	  	  	<span class="col-sm-2">Email</span>
 	  	<!--  	<span class="col-sm-2">Estado</span>-->
@@ -38,7 +38,7 @@
 	  	  	<span class="col-sm-2">Acciones</span>
 	  	</li>
 	  @foreach($companies as $company)
-	    <li class="row">
+	    <li class="clearfix">
 	    	<span class="col-sm-2"><a href="{{url("dashboard/empresa/{$company->id}")}}"> {{$company->nombre_comercial}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</span></span>
 					@if($company->user)

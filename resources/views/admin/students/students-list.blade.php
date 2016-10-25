@@ -14,23 +14,23 @@
 	<div class="col-sm-12">
 	@if($students->count())
 	  <ul class="list">
-	  	<li class="row titles">
-	  	  	<span class="col-sm-2">Matricula</span>
-	  	  	<span class="col-sm-4">Nombres</span>
-	  	  	<span class="col-sm-3">Email</span>
-	  	  	<span class="col-sm-3">Universidad</span>
+	  	<li class="clearfix titles">
+	  	  	<span class="col-sm-2 col-xs-3 ">Matricula</span>
+	  	  	<span class="col-sm-4 col-xs-6">Nombres</span>
+	  	  	<span class="col-sm-3 nomobile">Email</span>
+	  	  	<span class="col-sm-3 col-xs-3">Universidad</span>
 	  	</li>
 	  @foreach($students as $student)
-	    <li class="row">
-			<span class="col-sm-2">{{$student->matricula}}</span>
-	    	<span class="col-sm-4"><a href="{{url("dashboard/estudiante/{$student->id}")}}"> {{$student->nombre}}</a><br>
+	    <li class="clearfix">
+			<span class="col-sm-2 col-xs-3">{{$student->matricula}}</span>
+	    	<span class="col-sm-4 col-xs-6"><a href="{{url("dashboard/estudiante/{$student->id}")}}"> {{$student->nombre}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span></span>
 			@if(!empty($student->email))
-			<span class="col-sm-3">{{$student->email}}</span>
-      @else
-			<span class="col-sm-3">Sin correo</span>
+			<span class="col-sm-3 nomobile">{{$student->email}}</span>
+			@else
+			<span class="col-sm-3 nomobile">Sin correo</span>
 			@endif
-			<span class="col-sm-3">{{$student->opd_id}}</span>
+			<span class="col-sm-3 col-xs-3">{{$student->opd_id}}</span>
 	    </li>
 	  @endforeach
 	  </ul>
