@@ -1834,6 +1834,8 @@ footer {
 /* =Media queries
 -------------------------------------------------------------- */
 @media screen and (max-width: 480px) {
+  .nomobile {
+    display: none; }
   .sep {
     background-size: auto 35px;
     height: 40px;
@@ -1948,6 +1950,8 @@ footer {
     min-height: 40px; }
   .admin.dashboard section {
     padding: 40px 0 80px; }
+  .admin section {
+    padding: 35px 0 60px; }
   .logout {
     padding: 0 5px;
     font-size: 10px;
@@ -1973,6 +1977,16 @@ footer {
       width: 50%; }
   .main_nav.responsive a {
     display: block; }
+  .box {
+    margin: 20px 0;
+    min-height: 148px; }
+  a.btn.xs,
+  a.btn:visited.xs {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 2;
+    margin-bottom: 5px;
+    padding: 0 3px; }
   footer {
     padding-top: 40px; }
     footer p {
