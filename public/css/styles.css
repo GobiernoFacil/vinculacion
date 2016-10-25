@@ -1830,5 +1830,95 @@ footer {
 
 /* =Media queries
 -------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .sep {
+    background-size: auto 35px;
+    height: 40px;
+    margin: 25px auto 0;
+    width: 141px; }
+  .abierto {
+    margin-top: 10px;
+    font-size: 18px; }
+    .abierto i.logo {
+      background-size: auto 14px;
+      height: 14px; }
+  h2 {
+    font-size: 20px; }
+  p {
+    font-size: 13px; }
+  header ul a,
+  header ul a:visited {
+    font-size: 11px;
+    padding: 10px 0 0;
+    height: 70px; }
+    header ul a i,
+    header ul a:visited i {
+      font-size: 20px; }
+  .home .bgd {
+    height: 620px; }
+  .home .welcome {
+    min-height: 433px; }
+  .home h1 {
+    font-size: 30px;
+    padding: 35px 0 0; }
+  .home p.lead {
+    font-size: 13px; }
+  .home .signup {
+    min-height: 170px; }
+    .home .signup p {
+      font-size: 13px; }
+      .home .signup p strong {
+        font-size: 24px; }
+    .home .signup a {
+      font-size: 14px;
+      padding: 0 10px; }
+  section {
+    padding: 60px 0 90px; }
+  .img_company {
+    margin: 0 0 20px;
+    font-size: 12px;
+    padding: 0; }
+    .img_company img {
+      height: auto;
+      margin: 0 auto 5px;
+      max-height: 70px;
+      width: auto; }
+  section.opds ul {
+    margin: 0; }
+  .home section.opds li {
+    height: auto;
+    margin-bottom: 10px; }
+    .home section.opds li a,
+    .home section.opds li a:visited {
+      overflow: inherit; }
+      .home section.opds li a span,
+      .home section.opds li a:visited span {
+        display: block;
+        position: relative;
+        padding: 5px 10px; }
+    .home section.opds li figure,
+    .home section.opds li .location {
+      display: none; }
+  footer {
+    padding-top: 40px; }
+    footer p {
+      font-size: 11px; }
+    footer .author {
+      margin-top: 30px; }
+      footer .author p {
+        text-align: center; }
+      footer .author .gobiernofacil {
+        float: none; }
+  .sep_w {
+    background-size: auto 60px;
+    margin: 0 auto;
+    height: 61px;
+    width: 76px; }
+  .banco {
+    background-size: auto 35px;
+    margin: 30px auto 0;
+    float: none;
+    width: 174px; } }
+
 /* =Print
 ----------------------------------------------- */
