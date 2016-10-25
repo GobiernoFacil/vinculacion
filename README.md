@@ -1,6 +1,7 @@
 # Guía de instalación de Empleo abierto
 
 ## Dependencias:
+* git >= 2.8.*
 * Apache >= 2.2.*
 * PHP >= 5.6
  * php56-mbstring
