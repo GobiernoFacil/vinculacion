@@ -18,6 +18,11 @@
 ## Configuación del entorno de desarrollo
 nota: la guía de instalación es para Redhat Linux, y se suponque que se hace con un usuario que tiene privilegios de administrador
 
+## instalación de git
+```bash
+sudo yum install git-all
+```
+
 ## instalación de php y apache
 ```bash
 sudo yum update -y
