@@ -72,13 +72,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-4 col-sm-offset-2">
+		<div class="col-sm-4 col-xs-6 col-sm-offset-2">
 			<div class="signup">
 				<p><strong>1200</strong> vacantes, envía tu CV</p>
 				<a class="md-trigger"  data-modal="modal-1">Regístrate</a>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 col-xs-6">
 			<div class="signup company">
 				<p><strong>56</strong> sectores con talento</p>
 				<a class="md-trigger"  data-modal="modal-2">Publica vacante</a>
@@ -96,25 +96,25 @@
 		</div>
 		<!--logos-->
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/Bimbo_logo.png') }}">
 					195 vacantes
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/gamesa_logo.png') }}">
 					646 vacantes
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/SfMlMquK.jpg') }}">
 					18 vacantes
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/PLSc2CBX_400x400.jpeg') }}">
 					237 vacantes
