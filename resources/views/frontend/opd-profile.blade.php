@@ -25,13 +25,13 @@
 <div class="opd_location">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<p>{{$opd->city}}, {{$opd->state}}</p>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 col-xs-6">
 				<p class="center">{{$opd->address}}  {{$opd->zip ? 'C.P.' . $opd->zip : '' }}</p>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				@if(!empty($opd->url))
 				<p class="right"><a href="{{$opd->url}}">{{$opd->url}}</a></p>
 				@endif
@@ -48,23 +48,23 @@
 				<h2>Vacantes para estudiantes de esta universidad</h2>
 				<ul class="list">
 					<li class="clearfix titles">
-						<span class="col-sm-6">Título</span>
-						<span class="col-sm-4">Fecha</span>
+						<span class="col-sm-6 col-xs-6">Título</span>
+						<span class="col-sm-4 col-xs-6">Fecha</span>
 					</li>
 					<li class="clearfix">
-						<span class="col-sm-6">EJECUTIVO(A) DE VENTAS</span>
-						<span class="col-sm-4">18 de octubre, 2016</span>
-						<span class="col-sm-2"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
+						<span class="col-sm-6 col-xs-6">EJECUTIVO(A) DE VENTAS</span>
+						<span class="col-sm-4 col-xs-6">18 de octubre, 2016</span>
+						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
 					<li class="clearfix">
-						<span class="col-sm-6">Quality Engineer</span>
-						<span class="col-sm-4">18 de octubre, 2016</span>
-						<span class="col-sm-2"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
+						<span class="col-sm-6 col-xs-6">Quality Engineer</span>
+						<span class="col-sm-4 col-xs-6">18 de octubre, 2016</span>
+						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
 					<li class="clearfix">
-						<span class="col-sm-6">Administrador de Proyectos</span>
-						<span class="col-sm-4">17 de octubre, 2016</span>
-						<span class="col-sm-2"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
+						<span class="col-sm-6 col-xs-6">Administrador de Proyectos</span>
+						<span class="col-sm-4 col-xs-6">17 de octubre, 2016</span>
+						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
 				</ul>
 								<div class="separator"></div>
@@ -72,22 +72,22 @@
 				<h2>Convenios con empresas</h2>
 				<!--logos-->
 				<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/Bimbo_logo.png') }}">
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/gamesa_logo.png') }}">
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/SfMlMquK.jpg') }}">
 				</a>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-6">
 				<a href="" class="img_company">
 					<img src="{{ url('img/PLSc2CBX_400x400.jpeg') }}">
 				</a>

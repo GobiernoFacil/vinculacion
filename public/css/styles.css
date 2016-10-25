@@ -1836,12 +1836,16 @@ footer {
     height: 40px;
     margin: 25px auto 0;
     width: 141px; }
-  .abierto {
+  .abierto,
+  .abierto a {
     margin-top: 10px;
     font-size: 18px; }
-    .abierto i.logo {
+    .abierto i.logo,
+    .abierto a i.logo {
       background-size: auto 14px;
       height: 14px; }
+  h1 {
+    font-size: 2em; }
   h2 {
     font-size: 20px; }
   p {
@@ -1872,6 +1876,23 @@ footer {
     .home .signup a {
       font-size: 14px;
       padding: 0 10px; }
+  .md-modal {
+    max-width: 90%; }
+    .md-modal h3 {
+      font-size: 16px; }
+    .md-modal .form-group {
+      margin-bottom: 3px; }
+    .md-modal .form-control {
+      height: 40px;
+      font-size: 13px;
+      font-weight: 500; }
+    .md-modal .form-horizontal .form-group button {
+      font-size: 13px;
+      height: 40px; }
+    .md-modal .control-label {
+      font-size: 12px; }
+  .md-content .checkbox {
+    font-size: 12px; }
   section {
     padding: 60px 0 90px; }
   .img_company {
@@ -1899,6 +1920,23 @@ footer {
     .home section.opds li figure,
     .home section.opds li .location {
       display: none; }
+  .banner {
+    height: 260px; }
+    .banner figure.cover {
+      height: 260px; }
+      .banner figure.cover img {
+        margin-top: 0;
+        height: 100%;
+        width: auto;
+        max-width: 1400px; }
+    .banner .repo {
+      height: 260px; }
+  .opd_location p {
+    font-size: 11px; }
+  .list {
+    margin-top: 20px; }
+    .list li {
+      font-size: 12px; }
   footer {
     padding-top: 40px; }
     footer p {
@@ -1911,7 +1949,7 @@ footer {
         float: none; }
   .sep_w {
     background-size: auto 60px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     height: 61px;
     width: 76px; }
   .banco {
