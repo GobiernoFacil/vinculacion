@@ -1980,7 +1980,8 @@ footer {
   .box {
     margin: 20px 0;
     min-height: 148px; }
-  .breadcrumb li {
+  .breadcrumb li,
+  .message.alert {
     font-size: 11px; }
   a.btn.xs,
   a.btn:visited.xs {
