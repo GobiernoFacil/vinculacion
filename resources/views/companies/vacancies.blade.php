@@ -21,7 +21,7 @@
     <div>
       @if($vacancies->count())
       <ul class="list">
-        <li class="row titles">
+        <li class="clearfix titles">
           <span class="col-sm-4">Vacante</span>
           <span class="col-sm-2">Sueldo</span>
           <span class="col-sm-2">Aplicaron</span>
@@ -29,7 +29,7 @@
           <span class="col-sm-2">Acciones</span>
         </li>
         @foreach($vacancies as $vacancy)
-        <li class="row">
+        <li class="clearfix">
           <span class="col-sm-4">
           	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
           	<br>
