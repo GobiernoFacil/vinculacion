@@ -69,6 +69,24 @@ find /var/www -type d -exec sudo chmod 2775 {} \;
 find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
 
+## Configuración básica de MySQL
+```bash
+sudo service mysqld start
+sudo mysql_secure_installation
+Y
+Y
+Y
+Y
+```
+(elimina cuentas anónimas)
+(desactiva el login de root remoto)
+(elimina las tablas de prueba)
+(recarga las tablas de privilegios y la nueva configutación)
+```bash
+sudo chkconfig mysqld on
+```
+
+
 ## Pasos para instalar el código
 1: entrar a la carpeta /var/www
 
