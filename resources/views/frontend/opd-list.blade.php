@@ -16,13 +16,13 @@
   @if($opds->count())
   <ul class="list">
   	<li class="titles clearfix">
-  	  <span class="col-sm-8">Universidad</span>
-  	  <span class="col-sm-4">Ubicación</span>
+  	  <span class="col-sm-8 col-xs-8">Universidad</span>
+  	  <span class="col-sm-4 col-xs-4">Ubicación</span>
   	</li>
     @foreach($opds as $opd)
     <li class="clearfix">
-    	<span class="col-sm-8"><a href="{{url('universidad/' . $opd->id)}}">{{$opd->opd_name}}</a></span>
-    	<span class="col-sm-4">{{$opd->city}}</span>    	
+    	<span class="col-sm-8 col-xs-8"><a href="{{url('universidad/' . $opd->id)}}">{{$opd->opd_name}}</a></span>
+    	<span class="col-sm-4 col-xs-4">{{$opd->city}}</span>    	
     </li>
     @endforeach
   </ul>

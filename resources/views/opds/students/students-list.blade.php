@@ -23,24 +23,24 @@
   <div class="col-sm-12">
   @if($students->count())
     <ul class="list">
-      <li class="row titles">
-          <span class="col-sm-2">Matricula</span>
-          <span class="col-sm-4">Nombre</span>
-          <span class="col-sm-2">Carrera</span>
-          <span class="col-sm-2">Status</span>
-          <span class="col-sm-2">Acciones</span>
+      <li class="clearfix titles">
+          <span class="col-sm-2 col-xs-3">Matricula</span>
+          <span class="col-sm-4 col-xs-5">Nombre</span>
+          <span class="col-sm-2 col-xs-4">Carrera</span>
+          <span class="col-sm-2 nomobile">Status</span>
+          <span class="col-sm-2 nomobile">Acciones</span>
       </li>
     @foreach($students as $student)
-      <li class="row">
-      <span class="col-sm-2">{{$student->matricula}}</span>
-      <span class="col-sm-4"><a href="{{url("tablero-opd/estudiante/ver/{$student->id}")}}">
+      <li class="clearfix">
+      <span class="col-sm-2 col-xs-3">{{$student->matricula}}</span>
+      <span class="col-sm-4 col-xs-5"><a href="{{url("tablero-opd/estudiante/ver/{$student->id}")}}">
         {{empty($student->nombre) ? $student->nombre_completo : $student->nombre}}
         </a><br>
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span>
       </span>
-      <span class="col-sm-2">{{$student->carrera}}</span>
-      <span class="col-sm-2">{{$student->status}}</span>
-      <span class="col-sm-2">
+      <span class="col-sm-2 col-xs-4">{{$student->carrera}}</span>
+      <span class="col-sm-2 col-xs-6">{{$student->status}}</span>
+      <span class="col-sm-2 col-xs-6 right">
 				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn xs">Editar</a>
 				<a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>

@@ -53,5 +53,15 @@
     </section>
      <!--footer-->
 	@include('layouts.footer')
+	<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "main_nav") {
+        x.className += " responsive";
+    } else {
+        x.className = "main_nav";
+    }
+}
+</script>
 </body>
 </html>

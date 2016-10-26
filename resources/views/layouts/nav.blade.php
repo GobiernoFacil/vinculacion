@@ -1,10 +1,10 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 col-xs-7">
 				<h2 class="abierto"><i class="logo"></i>Empleo Abierto</h2>
 			</div>
-			<div class="col-sm-3 col-sm-offset-5 right">
+			<div class="col-sm-3 col-sm-offset-5 col-xs-5 right">
 				<!-- Authentication Links -->
                 	<button  class="logout" onclick="location.href='/../logout'">
                 	    Cerrar Sesión
@@ -16,9 +16,10 @@
 		</div>
 	</div>
 </header>
-<nav class="main_nav">
+<nav id="myTopnav" class="main_nav">
 	<div class="container">
 		<div class="col-sm-12">
+			<a href="javascript:void(0);" onclick="myFunction()" class="icon">&#9776;</a>
 			@if ($user->type == 'admin')
 			<!-- nav admin-->
 				@include('layouts.nav.nav_admin')
@@ -43,7 +44,6 @@
 			<!-- nav estudiantes-->
 				@include('layouts.nav.nav_student')
 			@endif
-
 		</div>
 	</div>
 </nav>
