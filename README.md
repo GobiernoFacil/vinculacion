@@ -1,6 +1,7 @@
 # Guía de instalación de Empleo abierto
 
 ## Dependencias:
+* git >= 2.8.*
 * Apache >= 2.2.*
 * PHP >= 5.6
  * php56-mbstring
@@ -16,6 +17,11 @@
 
 ## Configuación del entorno de desarrollo
 nota: la guía de instalación es para Redhat Linux, y se suponque que se hace con un usuario que tiene privilegios de administrador
+
+## instalación de git
+```bash
+sudo yum install git-all
+```
 
 ## instalación de php y apache
 ```bash
@@ -62,6 +68,24 @@ sudo chmod 2775 /var/www
 find /var/www -type d -exec sudo chmod 2775 {} \;
 find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
+
+## Configuración básica de MySQL
+```bash
+sudo service mysqld start
+sudo mysql_secure_installation
+Y
+Y
+Y
+Y
+```
+(elimina cuentas anónimas)
+(desactiva el login de root remoto)
+(elimina las tablas de prueba)
+(recarga las tablas de privilegios y la nueva configutación)
+```bash
+sudo chkconfig mysqld on
+```
+
 
 ## Pasos para instalar el código
 1: entrar a la carpeta /var/www
