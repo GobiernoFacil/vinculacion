@@ -33,8 +33,11 @@
 	    <div class="row opd_location">
 		  	 <div class="col-sm-6">
 			    <h3>Aplicaron</h3>
-			    <h2>{{$vacancy->applicants()->count()}}
-    			</h2>
+			    @if($vacancy->applicants()->count() > 0)
+			    <h2><a href="#applicants">{{$vacancy->applicants()->count()}}</a></h2>
+			    @else
+			    <h2>{{$vacancy->applicants()->count()}}</h2>
+			    @endif
     		</div>
     		 <div class="col-sm-6">
 			     <h3>Entrevistas</h3>
@@ -95,21 +98,26 @@
   <div class="row">
   	<div class="col-sm-12">
     @if($user->enabled)
-      <h2>Estudiantes que aplicaron a la vacante</h2>
+      <h2 id="applicants">Estudiantes que aplicaron a la vacante</h2>
       @if($vacancy->applicants()->count())
-        <ul>
+        <ul class="list">
+	        <li class="clearfix title">
+	        	<span class="col-sm-5">Nombre</span>
+	        	<span class="col-sm-3">Carrera</span>
+	        	<span class="col-sm-4">Universidad</span>
+	        </li>
         @foreach($vacancy->applicants as $applicant)
-        <li>
-          <a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
+        <li class="clearfix">
+        	<span class="col-sm-5"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
             {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}
-          </a>
-          [ {{$applicant->student->carrera}} ] <br>
-          {{$applicant->student->opd->opd_name}}
+          </a></span>
+          <span class="col-sm-3"> [ {{$applicant->student->carrera}} ] </span>
+          <span class="col-sm-4">{{$applicant->student->opd->opd_name}}</span>
         </li>
         @endforeach
         </ul>
       @else
-        <p>no aplicaron</p>
+        <p>No aplicaron</p>
       @endif
     @endif
 
