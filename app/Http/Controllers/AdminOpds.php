@@ -14,6 +14,7 @@ use App\models\Opd;
 
 // FormValidators
 use App\Http\Requests\UpdateOpdRequest;
+use App\Http\Requests\SaveOpdRequest;
 class AdminOpds extends Controller
 {
   /*
@@ -39,7 +40,7 @@ class AdminOpds extends Controller
     ]);
   }
 
-  public function save(Request $request){
+  public function save(SaveOpdRequest  $request){
 
        if($request->email){
         // [1] crea el usuario
@@ -76,7 +77,7 @@ class AdminOpds extends Controller
         ]);
       }
         // send to view
-        return redirect("dashboard/opd/{$opd->id}");
+        return redirect("dashboard/opd/{$opd->id}")->with('message','Universidad creada correctamente');
   }
 
   public function edit($id){
@@ -142,11 +143,15 @@ class AdminOpds extends Controller
     ]);
 
     // send to view
-    return redirect("dashboard/opd/{$id}");
+    return redirect("dashboard/opd/{$id}")->with('message','Universidad actualizada correctamente');
 
   }
 
   public function delete($id){
-
+    $opd  = Opd::find($id);
+    $opd->contact->delete();
+    $opd->user->delete();
+    $opd->delete();
+    return redirect('dashboard/opds')->with('message','Universidad eliminada correctamente');;
   }
 }

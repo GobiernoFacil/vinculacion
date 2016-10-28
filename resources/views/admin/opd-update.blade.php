@@ -23,7 +23,7 @@
         <h5>Datos de usuario</h5>
         <p>
           <label>Nombre</label>
-          {{Form::text('name', $opd->user->name,["class" => "form-control"])}}
+          {{Form::text('name', !empty($opd->user->name) ? $opd->user->name :"",["class" => "form-control"])}}
           @if($errors->has('name'))
           <strong>{{$errors->first('name')}}</strong>
           @endif
@@ -31,7 +31,7 @@
 
         <p>
           <label>Correo</label>
-          {{Form::text('email', $opd->user->email,["class" => "form-control"])}}
+          {{Form::text('email', !empty($opd->user->email) ? $opd->user->email :"",["class" => "form-control"])}}
           @if($errors->has('email'))
           <strong>{{$errors->first('email')}}</strong>
           @endif
