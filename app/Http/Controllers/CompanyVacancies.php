@@ -27,10 +27,10 @@ class CompanyVacancies extends Controller
   public function view($id){
     // [1] el usuario del sistema
     $user      = Auth::user();
-    
+
     // [2] la empresa
     $company   = $user->company;
-    
+
     // [3] la vacante
     $vacancy = $user->company->vacancies()->find($id);
 
@@ -64,7 +64,7 @@ class CompanyVacancies extends Controller
     $vacant->save();
     $vacant->update($data);
 
-    return redirect('tablero-empresa/vacantes');
+    return redirect('tablero-empresa/vacantes')->with("message",'Vacante creada correctamente');
   }
 
   public function edit($id){
@@ -88,7 +88,7 @@ class CompanyVacancies extends Controller
 
     $vacancy = $user->company->vacancies->find($id);
     $vacancy->update($data);
-    return redirect('tablero-empresa/vacantes');
+    return redirect('tablero-empresa/vacantes')->with("message",'Vacante actualizada correctamente');
   }
 
   public function delete($id){
@@ -97,7 +97,7 @@ class CompanyVacancies extends Controller
     $vacancy->applicants()->delete();
     $vacancy->interviews()->delete();
     $vacancy->delete();
-    return redirect('tablero-empresa/vacantes');
+    return redirect('tablero-empresa/vacantes')->with("message",'Vacante eliminada correctamente');
   }
 
   public function enable($id){
@@ -192,7 +192,7 @@ class CompanyVacancies extends Controller
     return redirect("tablero-empresa/vacante/{$vacancy->id}/entrevista/{$interview->id}");
   }
 
-  public function interview($vacancy_id, $id){ 
+  public function interview($vacancy_id, $id){
     $user      = Auth::user();
     $vacancy   = $user->company->vacancies()->find($vacancy_id);
     $interview = $vacancy->interviews()->find($id);

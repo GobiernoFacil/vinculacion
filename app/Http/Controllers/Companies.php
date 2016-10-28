@@ -95,7 +95,7 @@ class Companies extends Controller
     $user->save();
 
     // update company
-    $company_data = $request->only(['rfc', 'razon_social', 'nombre_comercial', 
+    $company_data = $request->only(['rfc', 'razon_social', 'nombre_comercial',
       'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']);
 
     if($request->hasFile('logo')) {
@@ -124,7 +124,7 @@ class Companies extends Controller
 
 
     // send to view
-    return redirect("tablero-empresa/yo");
+    return redirect("tablero-empresa/yo")->with("message",'Perfil actualizado correctamente');
 
   }
 

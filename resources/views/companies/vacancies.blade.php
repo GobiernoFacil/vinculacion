@@ -12,6 +12,11 @@
     @if(!$user->enabled)
     @include('companies.alert-message')
     @endif
+    @if(Session::has('message'))
+      <div class="col-sm-12 message success">
+          {{ Session::get('message') }}
+      </div>
+  @endif
     <h1>Vacantes</h1>
   </div>
   <div class="col-sm-2 col-sm-offset-10">
@@ -61,7 +66,7 @@
   if(dButtons.length){
     for(var i =0; i < dButtons.length; i++){
       dButtons[i].addEventListener("click", function(e){
-        var d = confirm("deseas eliminar la vacante " + this.getAttribute("data-job"));
+        var d = confirm("¿Deseas eliminar la vacante: " + this.getAttribute("data-job"));
         if(!d){
           e.preventDefault();
         }

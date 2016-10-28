@@ -11,6 +11,11 @@
 @endif
 <!-- Perfil -->
 <div class="row">
+  @if(Session::has('message'))
+    <div class="col-sm-12 message success">
+        {{ Session::get('message') }}
+    </div>
+@endif
 	<div class="col-sm-4 col-sm-offset-1">
 		<h3>Usuario</h3>
 		<h2>{{$user->name}}</h2>
@@ -18,7 +23,7 @@
 			<li>Email: {{$user->email}}</li>
 			<li>Creado: {{date('d-m-y',strtotime($user->created_at))}}</li>
 			<li>Actualizado: {{date('d-m-y',strtotime($user->updated_at))}}</li>
-		</ul>	
+		</ul>
 		<p><a href="{{url("tablero-empresa/yo/editar")}}" class="btn">Editar</a></p>
 	</div>
 	<div class="col-sm-5">
