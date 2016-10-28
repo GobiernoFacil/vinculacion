@@ -2,6 +2,9 @@
 @section('title', 'Actualizar perfil - Empleo Abierto')
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
 @section('bodyclass', 'company')
+@section('breadcrumb', 'layouts.breadcrumb')
+@section('breadcrumb_c', 'me-update')
+
 @section('content')
 <div class="container">
   <!-- Formulario de company -->
@@ -23,7 +26,7 @@
 
       <!-- cosas del user -->
       <fieldset>
-        <h5>Datos de usuario</h5>
+        <h2>Datos de usuario</h2>
         <p>
           <label>Nombre</label>
           {{Form::text('name', $company->name, ['class' => 'form-control'])}}
@@ -51,7 +54,8 @@
 
       <!-- cosas de su objeto -->
       <fieldset>
-        <h5>Datos de la empresa</h5>
+	      <div class="separator"></div>
+        <h2>Datos de la empresa</h2>
         <p>
           <label>R.F.C.</label>
           {{Form::text('rfc',$company->rfc, ['class' => 'form-control'])}}
@@ -132,7 +136,8 @@
 
       <!-- cosas del contacto -->
       <fieldset>
-        <h5>Datos del contacto</h5>
+	      <div class="separator"></div>
+        <h2>Datos del contacto</h2>
         <p>
           <label>Nombre</label>
           {{Form::text('cname', !empty($company->company->contact->name) ? $company->company->contact->name : "", ['class' => 'form-control'])}}
