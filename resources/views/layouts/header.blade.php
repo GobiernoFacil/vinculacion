@@ -6,7 +6,7 @@
 			</div>
 			<div class="col-sm-4">
 				<h2 class="abierto">
-					@if($__env->yieldContent('bodyclass') == 'home') 
+					@if($__env->yieldContent('bodyclass') == 'home')
 					<i class="logo"></i>Empleo Abierto</h2>
 					@else
 					<a href="{{ url('')}}"><i class="logo"></i>Empleo Abierto</a>
@@ -16,7 +16,7 @@
 			<div class="col-sm-4">
 				<ul>
 					<li>
-						@if($__env->yieldContent('bodyclass') == 'home') 
+						@if($__env->yieldContent('bodyclass') == 'home')
 						<a class="md-trigger register" data-modal="modal-1">
 						@else
 						<a class="md-trigger register" data-modal="modal-1"  href="{{ url('register')}}">

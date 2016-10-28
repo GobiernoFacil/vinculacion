@@ -320,7 +320,12 @@ class Admin extends Controller
   //
   //
   public function delete($id){
-
+     $user         = Auth::user();
+     if($user->id != $id){
+       $admin        = User::find($id);
+       $admin->delete();
+     }
+     return redirect("dashboard/administradores");
   }
 
 }
