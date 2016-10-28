@@ -146,11 +146,13 @@ Route::group(['middleware' => ['auth']], function () {
     // C O N T R A T O S
     // ----------------------------------------------------------------
     // @AdminContracts controller
-    Route::get('dashboard/contrato/crear', 'AdminContracts@add');
-    Route::post('dashboard/contrato/crear', 'AdminContracts@save');
-    Route::get('dashboard/contrato/editar/{id}', 'AdminContracts@edit');
-    Route::post('dashboard/contrato/editar/{id}', 'AdminContracts@update');
-    Route::get('dashboard/contrato/eliminar/{id}', 'AdminContracts@delete');
+    Route::get('dashboard/contratos/{id}', 'AdminContracts@index');
+    Route::get('dashboard/contrato/ver/{id}/{id_contract}', 'AdminContracts@view');
+    Route::get('dashboard/contrato/crear/{id}', 'AdminContracts@add');
+    Route::post('dashboard/contrato/crear/{id}', 'AdminContracts@save');
+    Route::get('dashboard/contrato/editar/{id}/{id_contract}', 'AdminContracts@edit');
+    Route::post('dashboard/contrato/editar/{id}/{id_contract}', 'AdminContracts@update');
+    Route::get('dashboard/contrato/eliminar/{id}/{id_contract}', 'AdminContracts@delete');
     Route::get('dashboard/contrato/{id}', 'AdminContracts@view');
     Route::post('dashboard/contrato/habilitar/{id}', 'AdminContracts@enable');
     Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');

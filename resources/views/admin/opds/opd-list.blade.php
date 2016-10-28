@@ -15,32 +15,33 @@
 	@if($opds->count())
 	  <ul class="list">
 	  	<li class="clearfix titles">
-	  	  	<span class="col-sm-4 col-xs-5">Universidad</span>
+	  	  	<span class="col-sm-3 col-xs-5">Universidad</span>
 	  	  	<span class="col-sm-3 nomobile">Ubicación</span>
 	  	  	<span class="col-sm-3 col-xs-4">Contacto</span>
-	  	  	<span class="col-sm-2 col-xs-3">Acciones</span>
+	  	  	<span class="col-sm-3 col-xs-2">Acciones</span>
 	  	</li>
 	  @foreach($opds as $opd)
 	    <li class="clearfix">
-	    	<span class="col-sm-4 col-xs-5"><a href="{{url("dashboard/opd/{$opd->id}")}}" class="link_view"> {{$opd->opd->opd_name}}</a><br>
+	    	<span class="col-sm-3 col-xs-5"><a href="{{url("dashboard/opd/{$opd->id}")}}" class="link_view"> {{$opd->opd->opd_name}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</span></span>
 			<span class="col-sm-3 nomobile">{{$opd->opd->city}}, {{$opd->opd->state}}</span>
-			<span class="col-sm-3 col-xs-4">{!!$opd->opd->has('contact') ? $opd->opd->contact->name  . '<br>' : '' !!} 
+			<span class="col-sm-3 col-xs-4">{!!$opd->opd->has('contact') ? $opd->opd->contact->name  . '<br>' : '' !!}
 			{!!$opd->opd->has('contact') ? $opd->opd->contact->email . '<br>' : ''!!}
 			{{ $opd->opd->has('contact') ? $opd->opd->contact->phone : '' }} </span>
-			<span class="col-sm-2 col-xs-3">
+			<span class="col-sm-3 col-xs-2">
 				<a href="{{url("dashboard/opd/editar/{$opd->id}")}}" class="btn xs">Editar</a>
-						<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs">Eliminar</a>
+				<a href="{{url("dashboard/contratos/{$opd->id}")}}" class="btn xs">Convenios</a>
+				<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>
 	    </li>
 	  @endforeach
 	  </ul>
-	
+
 	@else
 		<p>No hay universidades</p>
 	@endif
-	
-	
+
+
 	{{ $opds->links() }}
 	</div>
 </div>
