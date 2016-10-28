@@ -79,8 +79,7 @@ class Suscribe extends Controller
     }elseif($u->type==='puebla'){
       return redirect('tablero-secotrade');
     }else{
-      die("o________o");
-      return redirect("");
+      abort(403, 'Unauthorized action.');
     }
   }
 
