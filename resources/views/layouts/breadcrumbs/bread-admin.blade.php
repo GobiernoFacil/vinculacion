@@ -28,6 +28,18 @@
 <li>Ver Universidad</li>
 @endif
 
+@if ($__env->yieldContent('breadcrumb_a') == 'opd-add')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li>Agregar Universidad</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opd-update')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li>Actualizar Universidad</li>
+@endif
+
 @if ($__env->yieldContent('breadcrumb_a') == 'estudiantes')
 <!-- estudiantes -->
 <li>Estudiantes</li>

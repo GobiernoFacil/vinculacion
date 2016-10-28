@@ -1,5 +1,5 @@
 @extends('layouts.master-admin')
-@section('title', 'Universidad: ' . $opd->opd->name)
+@section('title', 'Universidad: ' . $opd->user->name)
 @section('description', 'Universidad')
 @section('bodyclass', 'opds')
 @section('breadcrumb', 'layouts.breadcrumb')
@@ -12,11 +12,11 @@
 		<h3>Universidad</h3>
 	</div>
 	<div class="col-sm-8 col-sm-offset-2">
-		<h2>{{$opd->opd->opd_name}}</h2>
-		<p>{{$opd->opd->city}}, {{$opd->opd->state}}</p>
-		<p>{{$opd->opd->url}}</p>
-		<p><strong>Email:</strong> {{$opd->email}}</p>
-		<p>{{$opd->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</p>
+		<h2>{{$opd->opd_name}}</h2>
+		<p>{{$opd->city}}, {{$opd->state}}</p>
+		<p>{{$opd->url}}</p>
+		<p><strong>Email:</strong> {{$opd->user->email}}</p>
+		<p>{{$opd->user->enabled == 0 ? "Deshabilitado" : "Habilitado"}}</p>
 		<p>Creado: {{date('d-m-Y', strtotime($opd->created_at))}}</p>
 		<p>Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</p>
 	</div>

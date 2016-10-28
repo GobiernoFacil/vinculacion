@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-use App\User;
+use App\models\Opd;
 
 // [ LOAD TRAITS ]
 use App\Traits\MessagesTrait;
@@ -29,12 +29,12 @@ class UpdateOpdRequest extends Request
      */
     public function rules()
     {
-        $user = User::find($this->route("id"));
-        
+        $opd = Opd::with('user')->find($this->route("id"));
+
         return [
           // user rules
           'name'     => 'required',
-          'email'    => 'required|email|max:255' . ($user->email != $this->email ? '|unique:users' : ''),
+          'email'    => 'required|email|max:255' . ($opd->user->email != $this->email ? '|unique:users' : ''),
           'password' => 'min:6',
 
           // opd rules
