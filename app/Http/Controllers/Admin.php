@@ -284,7 +284,7 @@ class Admin extends Controller
     $admin->password = Hash::make($request->password);
     $admin->save();
 
-    return redirect("dashboard/administradores");
+    return redirect("dashboard/administradores")->with('message','Usuario creado correctamente');
   }
 
   //
@@ -313,7 +313,7 @@ class Admin extends Controller
     }
     $admin->save();
 
-    return redirect("dashboard/administradores");
+    return redirect("dashboard/administrador/$id")->with("message",'Usuario actualizado correctamente');
   }
 
   //
@@ -325,7 +325,7 @@ class Admin extends Controller
        $admin        = User::find($id);
        $admin->delete();
      }
-     return redirect("dashboard/administradores");
+     return redirect("dashboard/administradores")->with("message",'Usuario eliminado correctamente');
   }
 
 }
