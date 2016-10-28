@@ -11,7 +11,19 @@
 	<div class="col-sm-12">
 		<h1>Universidades</h1>
 	</div>
+	<p>
+		<div class="col-sm-3 col-sm-offset-9">
+			<p><a href="{{url("dashboard/opd/crear")}}" class="btn add"> + Agregar universidad</a></p>
+		</div>
+
+	</p>
+
 	<div class="col-sm-12">
+		@if(Session::has('message'))
+	    <div class="col-sm-12 message success">
+	        {{ Session::get('message') }}
+	    </div>
+	@endif
 	@if($opds->count())
 	  <ul class="list">
 	  	<li class="clearfix titles">
@@ -29,9 +41,9 @@
 			{!!$opd->opd->has('contact') ? $opd->opd->contact->email . '<br>' : ''!!}
 			{{ $opd->opd->has('contact') ? $opd->opd->contact->phone : '' }} </span>
 			<span class="col-sm-3 col-xs-2">
-				<a href="{{url("dashboard/opd/editar/{$opd->id}")}}" class="btn xs">Editar</a>
-				<a href="{{url("dashboard/contratos/{$opd->id}")}}" class="btn xs">Convenios</a>
-				<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs">Eliminar</a>
+				<a href="{{url("dashboard/opd/editar/{$opd->opd->id}")}}" class="btn xs">Editar</a>
+				<a href="{{url("dashboard/contratos/{$opd->opd->id}")}}" class="btn xs">Convenios</a>
+				<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
 			</span>
 	    </li>
 	  @endforeach

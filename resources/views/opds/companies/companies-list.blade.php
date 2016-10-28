@@ -20,6 +20,11 @@
     </div>
 
   </p>
+  @if(Session::has('message'))
+    <div class="col-sm-12 message success">
+        {{ Session::get('message') }}
+    </div>
+@endif
   <div class="col-sm-12">
   @if($companies->count())
     <ul class="list">
@@ -40,7 +45,7 @@
       <span class="col-sm-2">{{$company->address}}</span>
       <span class="col-sm-2">
         <a href="{{url("tablero-opd/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
-        <a href="{{url("tablero-opd/empresa/eliminar/{$company->id}")}}" class="btn danger xs">Eliminar</a>
+        <a href="{{url("tablero-opd/empresa/eliminar/{$company->id}")}}" class="btn danger xs" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
       </span>
 
       </li>

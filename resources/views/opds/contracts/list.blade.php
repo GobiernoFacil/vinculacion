@@ -10,13 +10,18 @@
 <div class="col-sm-12">
 	<h1>Convenios</h1>
 </div>
+
+@if(Session::has('message'))
+	<div class="col-sm-12 message success">
+			{{ Session::get('message') }}
+	</div>
+@endif
 <p>
 	<div class="col-sm-3 col-sm-offset-9">
 		<p><a href="{{url("tablero-opd/convenio/crear")}}" class="btn add"> + Agregar convenio</a></p>
 	</div>
 
 </p>
-
 <div class="col-sm-12">
 @if($contracts->count())
 	<ul class="list">
@@ -41,7 +46,7 @@
 		</span>
 		<span class="col-sm-2">
 			<a href="{{url("tablero-opd/convenio/editar/{$contract->id}")}}" class="btn xs">Editar</a>
-			<a href="{{url("tablero-opd/convenio/eliminar/{$contract->id}")}}" class="btn danger xs">Eliminar</a>
+			<a href="{{url("tablero-opd/convenio/eliminar/{$contract->id}")}}" class="btn danger xs" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
 		</span>
 
 		</li>

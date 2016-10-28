@@ -181,7 +181,7 @@ class Opds extends Controller
      $opd->update($request->only(['address', 'zip', 'city', 'state', 'url']));
      $opd->opd_name = $request->name;
      $opd->save();
-     return redirect("tablero-opd/yo");
+     return redirect("tablero-opd/yo")->with('message','Perfil actualizado correctamente');
 
   }
 }

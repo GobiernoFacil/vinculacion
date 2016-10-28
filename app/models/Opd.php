@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Opd extends Model
 {
   //
-protected $fillable = ["name", "url", "city", "state", "address", "zip"];
+protected $fillable = ["opd_name", "url", "city", "state", "address", "zip"];
 
   //modelosrelacionados
   function user(){

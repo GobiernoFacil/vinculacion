@@ -11,6 +11,11 @@
   <div class="col-sm-12">
     <h1>Estudiantes</h1>
   </div>
+  @if(Session::has('message'))
+    <div class="col-sm-12 message success">
+        {{ Session::get('message') }}
+    </div>
+@endif
     <div class="col-sm-3 col-sm-offset-6">
       <p><a href="{{url("tablero-opd/estudiante/crear")}}" class="btn add"> + Agregar Estudiante</a></p>
     </div>
@@ -45,7 +50,7 @@
           {{$student->user->enabled ? "desactivar" : "habilitar"}}
         </a>
         <a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn xs">Editar</a>
-        <a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs">Eliminar</a>
+        <a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
       </span>
 
       </li>

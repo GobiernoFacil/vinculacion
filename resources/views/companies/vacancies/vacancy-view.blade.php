@@ -12,6 +12,11 @@
       @if(!$user->enabled)
           @include('companies.alert-message')
       @endif
+      @if(Session::has('message'))
+        <div class="col-sm-12 message success">
+            {{ Session::get('message') }}
+        </div>
+    @endif
     </div>
     <div class="col-sm-8">
     	<h1>{{$vacancy->job}}</h1>
@@ -52,7 +57,7 @@
 		<h3>Experiencia: {{$vacancy->experience}}</h3>
   	</div>
   </div>
-  
+
   <div class="row">
   	<div class="col-sm-6">
 	  <h3 class="separator">Requisitos</h3>
@@ -76,7 +81,7 @@
 	  	{!! $vacancy->salary_extra ? '<li>' . $vacancy->salary_extra . '</li>' : '' !!}
 	  	{!! $vacancy->salary_variable ? '<li>' . $vacancy->salary_variable . '</li>' : '' !!}
 	  	{!! $vacancy->contract_level ? '<li>' . $vacancy->contract_level . '</li>' : '' !!}
-	  	{!! $vacancy->contract_type ? '<li>' . $vacancy->contract_type . '</li>' : '' !!}	
+	  	{!! $vacancy->contract_type ? '<li>' . $vacancy->contract_type . '</li>' : '' !!}
 	  	<li><strong>Más información</strong>: {{$vacancy->url  		  }}</li>
 	  </ul>
   	</div>
@@ -95,8 +100,8 @@
         <ul>
         @foreach($vacancy->applicants as $applicant)
         <li>
-          <a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}"> 
-            {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}} 
+          <a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
+            {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}
           </a>
           [ {{$applicant->student->carrera}} ] <br>
           {{$applicant->student->opd->opd_name}}
