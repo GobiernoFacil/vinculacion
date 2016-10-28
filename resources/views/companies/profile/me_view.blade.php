@@ -19,6 +19,9 @@
 			<li>Creado: {{date('d-m-y',strtotime($user->created_at))}}</li>
 			<li>Actualizado: {{date('d-m-y',strtotime($user->updated_at))}}</li>
 		</ul>	
+		@if($user->enabled == 1)
+		<p><a href="{{url('empresa/'. $user->company->id)}}" class="btn edit">Ver perfil público de la empresa</a></p>
+		@endif
 		<p><a href="{{url("tablero-empresa/yo/editar")}}" class="btn">Editar</a></p>
 	</div>
 	<div class="col-sm-5">
@@ -43,9 +46,14 @@
 			<li><strong>Alcance</strong>: {{ $user->company->alcance ? $user->company->alcance : 'Sin alcance'}}</li>
 			<li><strong>Tipo</strong>: {{ $user->company->type ? $user->company->type : 'Sin tipo de empresa'}}</li>
 		</ul>
+		<h3>Contacto</h3>
+		<ul class="list_perks">
+			<li>{{$user->company->contact->name ? $user->company->contact->name : "Sin nombre de contacto"}}</li>
+			<li><strong>Email</strong>: {{$user->company->contact->email ? $user->company->contact->email : "Sin correo de contacto"}}</li>
+			<li><strong>Teléfono</strong>: {{$user->company->contact->phone ? $user->company->contact->phone : 'Sin teléfono'}}</li>
+		</ul>
 		<p><a href="{{url("tablero-empresa/yo/editar")}}" class="btn">Editar</a></p>
 	</div>
-	<div class="col-sm-3 col-sm-offset-2">
-	</div>
+
 </div>
 @endsection
