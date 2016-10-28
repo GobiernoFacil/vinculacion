@@ -41,7 +41,7 @@
           	<span class="note">Carrera: {{$vacancy->tags}}</span>
           </span>
           <span class="col-sm-2 col-xs-4">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
-          <span class="col-sm-2 col-xs-3">{{$vacancy->applicants()->count()}}</span>
+          <span class="col-sm-2 col-xs-3">{!! $vacancy->applicants()->count() > 0 ? '<a href="'. url('tablero-empresa/vacante/'. $vacancy->id). '#applicants">' . $vacancy->applicants()->count(). '</a>' : $vacancy->applicants()->count() !!}</span>
           <span class="col-sm-2 nomobile">0</span>
           <span class="col-sm-2 col-xs-12 right">
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
