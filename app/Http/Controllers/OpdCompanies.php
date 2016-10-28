@@ -52,12 +52,12 @@ class OpdCompanies extends Controller
         "email" => $request->cemail,
         "phone" => $request->cphone,
       ]);
-      return redirect("tablero-opd/empresa/ver/$company->id");
+      return redirect("tablero-opd/empresa/ver/$company->id")->with("message",'Empresa creada correctamente');
   }
 
   public function edit($id){
     $user     = Auth::user();
-    $company  = $user->opd->companies()->with('contact')->find($id);
+    $company  = $user->opd->companies->find($id);
     return view("opds.companies.company-update")->with([
       "user"  => $user,
       "company" => $company,
@@ -74,14 +74,14 @@ class OpdCompanies extends Controller
         "email" => $request->cemail,
         "phone" => $request->cphone,
       ]);
-  return redirect("tablero-opd/empresa/ver/$company->id");
+  return redirect("tablero-opd/empresa/ver/$company->id")->with("message",'Empresa actualizada correctamente');;
   }
 
   public function delete($id){
     $company = Auth::user()->opd->companies->find($id);
     $company->contact->delete();
     $company->delete();
-    return redirect("tablero-opd/empresas");
+    return redirect("tablero-opd/empresas")->with("message",'Empresa eliminada correctamente');;
   }
 
   public function addMultiple(){
@@ -103,6 +103,6 @@ class OpdCompanies extends Controller
     ]);
     //exec("php {$path}/artisan update:companies {$user->id} '{$file}' > /dev/null &");
 
-    return redirect("tablero-opd/empresas");
+    return redirect("tablero-opd/empresas")->with("message",'Empresas creadas correctamente');;
   }
 }

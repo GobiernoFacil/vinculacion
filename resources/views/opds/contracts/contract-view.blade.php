@@ -8,6 +8,12 @@
 @section('content')
 <!-- Perfil -->
 <div class="row">
+
+	@if(Session::has('message'))
+		<div class="col-sm-12 message success">
+				{{ Session::get('message') }}
+		</div>
+@endif
 	<div class="col-sm-8 col-sm-offset-2">
 		<h3>Convenio</h3>
 	</div>
@@ -23,7 +29,7 @@
 		<p><a href="{{url("tablero-opd/convenio/editar/{$contract->id}")}}" class="btn">Editar</a></p>
 	</div>
 	<div class="col-sm-3">
-		<p><a href="{{url("tablero-opd/convenio/eliminar/{$contract->id}")}}" class="btn danger">Eliminar</a></p>
+		<p><a href="{{url("tablero-opd/convenio/eliminar/{$contract->id}")}}" class="btn danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a></p>
 	</div>
 </div>
 @endsection

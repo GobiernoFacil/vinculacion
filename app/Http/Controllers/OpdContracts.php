@@ -43,7 +43,7 @@ class OpdContracts extends Controller
     $contract  = Contract::firstOrCreate($data);
     $contract->opd_id = $opd->id;
     $contract->save();
-    return redirect("tablero-opd/convenio/ver/$contract->id");
+    return redirect("tablero-opd/convenio/ver/$contract->id")->with("message","Convenio agregado correctamente");
 
   }
 
@@ -62,13 +62,13 @@ class OpdContracts extends Controller
     $contract     = $user->opd->contracts->find($id);
     $data = $request->except('_token');
     $contract->update($data);
-  return redirect("tablero-opd/convenio/ver/$contract->id");
+  return redirect("tablero-opd/convenio/ver/$contract->id")->with("message","Convenio actualizado correctamente");;
   }
 
   public function delete($id){
     $contract = Auth::user()->opd->contracts->find($id);
     $contract->delete();
-    return redirect("tablero-opd/convenios");
+    return redirect("tablero-opd/convenios")->with("message","Convenio eliminado correctamente");;
   }
 
   public function enable($id){
