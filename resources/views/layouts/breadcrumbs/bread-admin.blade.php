@@ -38,6 +38,39 @@
 <li>Ver Estudiante</li>
 @endif
 
+<!-- convenios -->
+
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li>Convenios</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opds add-contratos')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li><a href='{{ url("dashboard/contratos/{$opd_id}")}}'>Convenios
+</a></li>
+<li>Agrear Convenio</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opds update-contratos')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li><a href='{{ url("dashboard/contratos/{$opd->id}")}}'>Convenios
+</a></li>
+<li>Actualizar Convenio</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opds contrato')
+<li><a href="{{ url('dashboard/opds')}}">Universidades
+</a></li>
+<li><a href='{{ url("dashboard/contratos/{$opd->id}")}}'>Convenios
+</a></li>
+<li>Ver Convenio</li>
+@endif
+
 
 @if ($__env->yieldContent('breadcrumb_a') == 'empresas')
 <!-- empresas -->
