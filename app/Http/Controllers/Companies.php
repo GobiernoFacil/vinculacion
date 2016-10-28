@@ -68,7 +68,7 @@ class Companies extends Controller
   public function me(){
 	  // [1] el usuario del sistema
 	  $user = Auth::user();
-	  return view("companies.me_view")->with([
+	  return view("companies.profile.me_view")->with([
      	"user"   => $user
     ]);
   }
@@ -77,7 +77,7 @@ class Companies extends Controller
     // [1] el usuario del sistema
     $user = Auth::user();
     $company  = User::with("company.contact")->find($user->id);
-    return view("companies.me_update")->with([
+    return view("companies.profile.me_update")->with([
       "user"   => $user,
       "company" =>$company
     ]);

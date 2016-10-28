@@ -1655,6 +1655,14 @@ a:visited.back {
     list-style: none;
     margin-bottom: 10px;
     padding-bottom: 5px; }
+    .list_perks li.enabled {
+      border-left: 4px solid green;
+      color: green;
+      padding-left: 10px; }
+    .list_perks li.disabled {
+      border-left: 4px solid red;
+      color: red;
+      padding-left: 10px; }
 
 .list_data {
   border-top: 1px solid rgba(90, 90, 90, 0.1);
@@ -1834,6 +1842,184 @@ footer {
 /* =Media queries
 -------------------------------------------------------------- */
 @media screen and (max-width: 480px) {
+  .nomobile {
+    display: none; }
+  .sep {
+    background-size: auto 35px;
+    height: 40px;
+    margin: 25px auto 0;
+    width: 141px; }
+  .abierto,
+  .abierto a {
+    margin-top: 10px;
+    font-size: 18px; }
+    .abierto i.logo,
+    .abierto a i.logo {
+      background-size: auto 14px;
+      height: 14px; }
+  h1 {
+    font-size: 2em; }
+  h2 {
+    font-size: 20px; }
+  h3 {
+    font-size: 1.1em; }
+  p {
+    font-size: 13px; }
+  header ul a,
+  header ul a:visited {
+    font-size: 11px;
+    padding: 10px 0 0;
+    height: 70px; }
+    header ul a i,
+    header ul a:visited i {
+      font-size: 20px; }
+  .home .bgd {
+    height: 620px; }
+  .home .welcome {
+    min-height: 433px; }
+  .home h1 {
+    font-size: 30px;
+    padding: 35px 0 0; }
+  .home p.lead {
+    font-size: 13px; }
+  .home .signup {
+    min-height: 170px; }
+    .home .signup p {
+      font-size: 13px; }
+      .home .signup p strong {
+        font-size: 24px; }
+    .home .signup a {
+      font-size: 14px;
+      padding: 0 10px; }
+  .md-modal {
+    max-width: 90%; }
+    .md-modal h3 {
+      font-size: 16px; }
+    .md-modal .form-group {
+      margin-bottom: 3px; }
+    .md-modal .form-control {
+      height: 40px;
+      font-size: 13px;
+      font-weight: 500; }
+    .md-modal .form-horizontal .form-group button {
+      font-size: 13px;
+      height: 40px; }
+    .md-modal .control-label {
+      font-size: 12px; }
+  .md-content .checkbox {
+    font-size: 12px; }
+  section {
+    padding: 60px 0 90px; }
+  .img_company {
+    margin: 0 0 20px;
+    font-size: 12px;
+    padding: 0; }
+    .img_company img {
+      height: auto;
+      margin: 0 auto 5px;
+      max-height: 70px;
+      width: auto; }
+  section.opds ul {
+    margin: 0; }
+  .home section.opds li {
+    height: auto;
+    margin-bottom: 10px; }
+    .home section.opds li a,
+    .home section.opds li a:visited {
+      overflow: inherit; }
+      .home section.opds li a span,
+      .home section.opds li a:visited span {
+        display: block;
+        position: relative;
+        padding: 5px 10px; }
+    .home section.opds li figure,
+    .home section.opds li .location {
+      display: none; }
+  .banner {
+    height: 260px; }
+    .banner figure.cover {
+      height: 260px; }
+      .banner figure.cover img {
+        margin-top: 0;
+        height: 100%;
+        width: auto;
+        max-width: 1400px; }
+    .banner .repo {
+      height: 260px; }
+  .opd_location p {
+    font-size: 11px; }
+  .list {
+    margin-top: 20px; }
+    .list li {
+      font-size: 12px; }
+  .admin .abierto {
+    font-size: 16px; }
+  .admin nav {
+    min-height: 40px; }
+  .admin.dashboard section {
+    padding: 40px 0 80px; }
+  .admin section {
+    padding: 35px 0 60px; }
+  .logout {
+    padding: 0 5px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 29px; }
+  .main_nav a {
+    display: none;
+    border: 0;
+    border-top: 1px solid white;
+    text-align: center;
+    width: 100%;
+    font-size: 14px; }
+    .main_nav a.icon {
+      background: black;
+      text-align: right;
+      display: block;
+      font-size: 16px; }
+    .main_nav a:first-child {
+      border: 0;
+      float: right;
+      line-height: 40px;
+      padding: 0 20px;
+      width: 50%; }
+  .main_nav.responsive a {
+    display: block; }
+  .box {
+    margin: 20px 0;
+    min-height: 148px; }
+  .breadcrumb li,
+  .message.alert {
+    font-size: 11px; }
+  a.btn.xs,
+  a.btn:visited.xs {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 2;
+    margin-bottom: 5px;
+    padding: 0 3px; }
+  footer {
+    padding-top: 40px; }
+    footer p {
+      font-size: 11px; }
+    footer .author {
+      margin-top: 30px; }
+      footer .author p {
+        text-align: center; }
+      footer .author .gobiernofacil {
+        float: none; }
+  .sep_w {
+    background-size: auto 60px;
+    margin: 0 auto 20px;
+    height: 61px;
+    width: 76px; }
+  .banco {
+    background-size: auto 35px;
+    margin: 30px auto 0;
+    float: none;
+    width: 174px; } }
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
   .nomobile {
     display: none; }
   .sep {
