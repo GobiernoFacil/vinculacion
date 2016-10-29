@@ -50,6 +50,19 @@
 <li>Ver Estudiante</li>
 @endif
 
+@if ($__env->yieldContent('breadcrumb_a') == 'student-add')
+<li><a href="{{ url('dashboard/estudiantes')}}">Estudiantes
+</a></li>
+<li>Agregar Estudiante</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'student-update')
+<li><a href="{{ url('dashboard/estudiantes')}}">Estudiantes
+</a></li>
+<li>Actualizar Estudiante</li>
+@endif
+
+
 <!-- convenios -->
 
 

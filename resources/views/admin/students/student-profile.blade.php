@@ -11,6 +11,11 @@
 	<div class="col-sm-10 col-sm-offset-1">
 		<h2>{{$student->name}}</h2>
 	</div>
+	@if(Session::has('message'))
+		<div class="col-sm-12 message success">
+				{{ Session::get('message') }}
+		</div>
+@endif
 	<div class="col-sm-8 col-sm-offset-1">
 		<!--carrera-->
 		<h3><strong>Estudiante o egresado</strong> de Ingeniería en Mecatrónica</h3>
@@ -24,7 +29,7 @@
 	</div>
 	<div class="col-sm-2">
 		<p><a href="{{url("dashboard/estudiante/editar/{$student->id}")}}" class="btn">Editar</a></p>
-		<p><a href="{{url("dashboard/estudiante/eliminar/{$student->id}")}}" class="btn danger">Eliminar</a></p>
+		<p><a href="{{url("dashboard/estudiante/eliminar/{$student->id}")}}" class="btn danger" onclick ="return confirm('¿Estás seguro?')">Eliminar</a></p>
 	</div>
 </div>
 <div class="separator"></div>

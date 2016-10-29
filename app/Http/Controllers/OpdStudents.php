@@ -70,13 +70,13 @@ class OpdStudents extends Controller
     $student->update($request->only(['nombre', 'apellido_paterno', 'apellido_materno', 'curp', 'matricula', 'carrera','status']));
     $student->nombre_completo = $request->nombre." ".$request->apellido_paterno." ".$request->apellido_materno;
     $student->save();
-    return redirect("tablero-opd/estudiante/ver/$student->id")->with("message", 'Estudiante actualizado correctamente');;
+    return redirect("tablero-opd/estudiante/ver/$student->id")->with("message", 'Estudiante actualizado correctamente');
   }
 
   public function delete($id){
     $student = Auth::user()->opd->students->find($id);
     $student->delete();
-    return redirect('tablero-opd/estudiantes')->with("message", 'Estudiante eliminado correctamente');;
+    return redirect('tablero-opd/estudiantes')->with("message", 'Estudiante eliminado correctamente');
   }
 
   public function enableToggle($id){
