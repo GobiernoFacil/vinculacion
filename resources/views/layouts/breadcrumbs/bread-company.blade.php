@@ -3,7 +3,7 @@
 <!-- vacancies -->
 <li>Vacantes</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver' || $__env->yieldContent('breadcrumb_c') == 'vacante add' || $__env->yieldContent('breadcrumb_c') == 'vacante edit' || $__env->yieldContent('breadcrumb_c') == 'vacante aspirante' || $__env->yieldContent('breadcrumb_c') == 'vacante entrevista add')
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver' || $__env->yieldContent('breadcrumb_c') == 'vacante add' || $__env->yieldContent('breadcrumb_c') == 'vacante edit' || $__env->yieldContent('breadcrumb_c') == 'vacante aspirante' || $__env->yieldContent('breadcrumb_c') == 'vacante entrevista add' || $__env->yieldContent('breadcrumb_c') == 'vacante entrevista ver')
 <li><a href="{{ url('tablero-empresa/vacantes')}}">Vacantes</a></li>
 @endif
 @if ($__env->yieldContent('breadcrumb_c') == 'vacante ver')
@@ -25,6 +25,11 @@
 <li><a href="{{url('tablero-empresa/vacante/'. $vacancy->id)}}">{{$vacancy->job}}</a></li>
 <li><a href="{{url('tablero-empresa/vacante/'. $vacancy->id . '/estudiante/'. $student->id)}}">Aspirante</a></li>
 <li>Agregar entrevista</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante entrevista ver')
+<li><a href="{{url('tablero-empresa/vacante/'. $vacancy->id)}}">{{$vacancy->job}}</a></li>
+<li><a href="{{url('tablero-empresa/vacante/'. $vacancy->id . '/estudiante/'. $student->id)}}">Aspirante</a></li>
+<li>Ver entrevista</li>
 @endif
 
 
