@@ -1640,6 +1640,10 @@ a:visited.back {
   .list .note {
     font-size: 13px;
     color: #ccc; }
+    .list .note.disa {
+      color: red; }
+    .list .note.ena {
+      color: green; }
   .list .disabled,
   .list .enabled {
     font-size: 13px;

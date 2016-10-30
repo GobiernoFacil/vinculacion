@@ -36,15 +36,20 @@
         @foreach($vacancies as $vacancy)
         <li class="clearfix">
           <span class="col-sm-4 col-xs-5">
-          	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}"> {{$vacancy->job}}</a>
+          	<a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}" class="link_view"> {{$vacancy->job}}</a>
           	<br>
-          	<span class="note">Carrera: {{$vacancy->tags}}</span>
+          	<span class="note">Carrera: {{$vacancy->tags}}</span><br>
+          	<span class="note {{$vacancy->status == 1 ? 'ena' : 'disa' }}">{{$vacancy->status == 1 ? "Publicado" : "Sin Publicar" }}</span>
           </span>
           <span class="col-sm-2 col-xs-4">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
           <span class="col-sm-2 col-xs-3">{!! $vacancy->applicants()->count() > 0 ? '<a href="'. url('tablero-empresa/vacante/'. $vacancy->id). '#applicants">' . $vacancy->applicants()->count(). '</a>' : $vacancy->applicants()->count() !!}</span>
           <span class="col-sm-2 nomobile">0</span>
           <span class="col-sm-2 col-xs-12 right">
+            <a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}" class="btn add xs">Ver</a>
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
+			@if($user->enabled)
+          	<a href="{{url("tablero-empresa/vacante/habilitar/{$vacancy->id}")}}" class="btn add xs">{{$vacancy->status == 1 ? "Ocultar" : "Publicar" }}</a>
+            @endif            
             <a data-job="{{$vacancy->job}}" href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger xs">
               Eliminar
             </a>
