@@ -3,17 +3,16 @@
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'company vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_o', 'vacante add')
+@section('breadcrumb_c', 'vacante aspirante')
 
 @section('content')
-<div class="container">
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
       @if(!$user->enabled)
           @include('companies.alert-message')
       @endif
-      <h1 class="separator">Ver aspirante</h1>
+      <h1>Ver aspirante</h1>
     </div>
   </div>
   <div class="row">
@@ -26,5 +25,4 @@
       <p><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}")}}">Agendar una entrevista</a></p>
     </div>
   </div>
-</div>
 @endsection
