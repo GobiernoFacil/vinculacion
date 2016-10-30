@@ -13,25 +13,31 @@
     return '<input type="time">';
   });
 ?>
-
-<div class="container">
-  <!-- Formulario de vacante -->
+<!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="separator">Agregar entrevista</h1>
+      <h1>Agregar entrevista</h1>
     </div>
   </div>
-
+  <div class="row">
+  	<div class="col-sm-6">
+	  	<h3>Vacante: <a href="{{ url('tablero-empresa/vacante/'. $vacancy->id) }}">{{$vacancy->job}}</a></h3>
+  	</div>
+  	<div class="col-sm-6">
+		<h3>Aspirante: {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}</h3>
+  	</div>
+  </div>
+  <div class="separator"></div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <p>vacante: {{$vacancy->job}}</p>
-      <p>aspirante: {{$student->nombre}}</p>
+     
+      
 
-      {!! Form::open(["url" => "tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}"]) !!}
-      <p>contacto: {{Form::text("contact", $user->company->contact->name)}}</p>
-      <p>correo: {{Form::text("email", $user->company->contact->email)}}</p>
-      <p>teléfono:{{Form::text("phone",$user->company->contact->phone)}}</p>
-      <p>dirección: {{Form::text("address", $user->company->address)}}</p>
+      {!! Form::open(["url" => "tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}", "class"=>"form"]) !!}
+      <p><label>Contacto:</label> {{Form::text("contact", $user->company->contact->name, ["class" => "form-control"])}}</p>
+      <p>Correo: {{Form::text("email", $user->company->contact->email, ["class" => "form-control"])}}</p>
+      <p>Teléfono:{{Form::text("phone",$user->company->contact->phone, ["class" => "form-control"])}}</p>
+      <p>Dirección: {{Form::text("address", $user->company->address, ["class" => "form-control"])}}</p>
       <!--
       <p>ciudad: {{Form::text("city", $user->company->city)}}</p>
       <p>estado: {{Form::text("state", $user->company->state)}}</p>
@@ -39,10 +45,9 @@
       <p>hora: {{Form::time("time")}}</p>
       -->
 
-      <p><input type="submit" value="agendar"></p>
+      <p><input type="submit" value="Agendar entrevista" class="btn"></p>
 
       {!! Form::close() !!}
     </div>
   </div>
-</div>
 @endsection
