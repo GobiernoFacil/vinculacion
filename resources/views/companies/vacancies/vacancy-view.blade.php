@@ -98,7 +98,7 @@
   <div class="row">
   	<div class="col-sm-12">
     @if($user->enabled)
-      <h2 id="applicants">Estudiantes que aplicaron a la vacante</h2>
+      <h2 id="applicants">{{ $vacancy->applicants()->count() == 1 ? $vacancy->applicants()->count() . ' estudiante aplicó a la vacante' : $vacancy->applicants()->count() . ' estudiantes aplicaron a la vacante' }}</h2>
       @if($vacancy->applicants()->count())
         <ul class="list">
 	        <li class="clearfix title">
