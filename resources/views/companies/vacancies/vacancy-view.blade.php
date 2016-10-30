@@ -23,6 +23,7 @@
     	<div class="row">
 	    	<div class="col-sm-6">
 				<p>Creado: {{date('d-m-Y', strtotime($vacancy->created_at))}} - Actualizado: {{date('d-m-Y', strtotime($vacancy->updated_at))}}</p>
+				<h5 class="{{$vacancy->status == 1 ? 'ena' : 'disa' }}">{{$vacancy->status == 1 ? "Vacante Publicada" : "Vacante Sin Publicar" }}</h5>
 	    	</div>
 	    	<div class="col-sm-6">
 	    		<p class="right">Ubicación: {{$vacancy->city . ', ' . $vacancy->state}}</p>
@@ -90,8 +91,16 @@
   	</div>
   </div>
   <div class="row">
-  	<div class="col-sm-6 col-sm-offset-3">
+  	<div class="col-sm-4">
+	  	@if($user->enabled)
+    	<p><a href="{{url("tablero-empresa/vacante/habilitar/{$vacancy->id}")}}" class="btn add">{{$vacancy->status == 1 ? "Ocultar Vacante" : "Publicar Vacante" }}</a></p>
+    	@endif
+  	</div>
+  	<div class="col-sm-4">
     	<p><a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn">Editar Vacante</a></p>
+  	</div>
+  	<div class="col-sm-4">
+    	<p><a data-job="{{$vacancy->job}}" href="{{url("tablero-empresa/vacante/eliminar/{$vacancy->id}")}}" class="btn danger">Eliminar Vacante</a></p>
   	</div>
   </div>
   <div class="separator"></div>
@@ -123,4 +132,19 @@
 
     </div>
   </div>
+  
+  <script>
+  var dButtons = document.querySelectorAll(".danger");
+
+  if(dButtons.length){
+    for(var i =0; i < dButtons.length; i++){
+      dButtons[i].addEventListener("click", function(e){
+        var d = confirm("¿Deseas eliminar la vacante: " + this.getAttribute("data-job"));
+        if(!d){
+          e.preventDefault();
+        }
+      });
+    }
+  }
+</script>
 @endsection
