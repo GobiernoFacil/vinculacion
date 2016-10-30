@@ -7,7 +7,6 @@
 
 @section('content')
 
-<div class="container">
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
@@ -34,5 +33,4 @@
       -->
     </div>
   </div>
-</div>
 @endsection
