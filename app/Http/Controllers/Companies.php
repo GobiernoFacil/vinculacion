@@ -57,7 +57,12 @@ class Companies extends Controller
   //
   //
   public function contracts(){
-
+  	$user      = Auth::user();
+  	$company   = $user->company;
+  	return view('companies.contracts.contracts')->with([
+      "user"      => $user,
+      "company"   => $company,
+    ]);
   }
 
   /*
