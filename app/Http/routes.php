@@ -324,9 +324,15 @@ Route::group(['middleware' => ['auth']], function () {
    */
   Route::group(['middleware' => 'type:chamber'], function(){
     Route::get("tablero-camara", "Chambers@index");
+    //
+    // Chambers - profile
+    //
     Route::get("tablero-camara/yo", "Chambers@me");
     Route::get("tablero-camara/yo/editar", "Chambers@changeMe");
     Route::post("tablero-camara/yo/editar", "Chambers@updateMe");
+    //
+    // Chambers - companies
+    //
     Route::get("tablero-camara/empresas", "Chambers@companies");
     Route::get("tablero-camara/empresa/ver/{id}", "ChamberCompanies@view");
     Route::get("tablero-camara/empresa/crear", "ChamberCompanies@add");
@@ -334,6 +340,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-camara/empresa/editar/{id}", "ChamberCompanies@edit");
     Route::post("tablero-camara/empresa/editar/{id}", "ChamberCompanies@update");
     Route::get("tablero-camara/empresa/eliminar/{id}", "ChamberCompanies@delete");
+    //
+    // Chambers - vacancies
+    //
+    Route::get("tablero-camara/vacantes", "Chambers@vacancies");
+    Route::get("tablero-camara/vacantes/ver/{id}", "ChamberVacancies@view");
+    Route::get("tablero-camara/vacantes/crear", "ChamberVacancies@add");
+    Route::post("tablero-camara/vacantes/crear", "ChamberVacancies@save");
+    Route::get("tablero-camara/vacantes/editar/{id}", "ChamberVacancies@edit");
+    Route::post("tablero-camara/vacantes/editar/{id}", "ChamberVacancies@update");
+    Route::get("tablero-camara/vacantes/eliminar/{id}", "ChamberVacancies@delete");
+
   });
 
 
