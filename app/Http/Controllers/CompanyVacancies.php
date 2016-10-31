@@ -147,7 +147,16 @@ class CompanyVacancies extends Controller
 
   }
 
-  public function interviews($id, $page = 1){
+  public function interviews($page = 1){
+	$user      	  = Auth::user();
+    $company	  = $user->company;
+    $interviews   = $company->interviews()->get();
+	
+	return view("companies.interviews.interviews")->with([
+      "user"      	=> $user,
+      "company"		=> $company,
+      "interviews" 	=> $interviews,
+    ]);
 
   }
 

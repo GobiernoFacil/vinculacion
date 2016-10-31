@@ -203,7 +203,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('tablero-empresa/vacante/editar/{id}', 'CompanyVacancies@update');
     Route::get('tablero-empresa/vacante/eliminar/{id}', 'CompanyVacancies@delete');
     Route::get('tablero-empresa/vacante/{id}', 'CompanyVacancies@view');
-
+    Route::get("tablero-empresa/entrevistas", "CompanyVacancies@interviews");
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
