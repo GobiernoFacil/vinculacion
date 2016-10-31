@@ -156,12 +156,14 @@ class CompanyVacancies extends Controller
     $vacancy   = $user->company->vacancies()->find($vacancy_id);
     $applicant = $vacancy->applicants()->where("student_id", $student_id)->first();
     $student   = $applicant->student;
+    $interview = new Interview();
 
     return view("companies.vacancies.interview-add")->with([
       "user"      => $user,
       "vacancy"   => $vacancy,
       "applicant" => $applicant,
-      "student"   => $student
+      "student"   => $student,
+      "interview" => $interview
     ]);
   }
 
@@ -186,6 +188,8 @@ class CompanyVacancies extends Controller
     $interview->email      = $request->email;
     $interview->phone      = $request->phone;
     $interview->address    = $request->contact;
+    $interview->date       = $request->date;
+    $interview->time       = $request->time;
 
     $interview->update();
 

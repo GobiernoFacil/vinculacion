@@ -33,7 +33,7 @@
      
       
 
-      {!! Form::open(["url" => "tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}", "class"=>"form"]) !!}
+      {!! Form::model($interview, ["url" => "tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}", "class"=>"form"]) !!}
       <p><label>Contacto:</label> {{Form::text("contact", $user->company->contact->name, ["class" => "form-control"])}}</p>
       <p>Correo: {{Form::text("email", $user->company->contact->email, ["class" => "form-control"])}}</p>
       <p>Teléfono:{{Form::text("phone",$user->company->contact->phone, ["class" => "form-control"])}}</p>
@@ -41,9 +41,9 @@
       <!--
       <p>ciudad: {{Form::text("city", $user->company->city)}}</p>
       <p>estado: {{Form::text("state", $user->company->state)}}</p>
-      <p>día: {{Form::date("date")}}</p>
-      <p>hora: {{Form::time("time")}}</p>
       -->
+      <p>día: {{Form::text("date", null, ["class" => "form-control", "placeholder" => "aaaa-mm-dd"])}}</p>
+      <p>hora: {{Form::time("time", null, ["class" => "form-control"])}}</p>
 
       <p><input type="submit" value="Agendar entrevista" class="btn"></p>
 
