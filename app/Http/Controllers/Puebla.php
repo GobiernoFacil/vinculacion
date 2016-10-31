@@ -52,6 +52,6 @@ class Puebla extends Controller
        $user->password = Hash::make($request->password);
      }
      $user->save();
-     return redirect("tablero-secotrade/yo");
+     return redirect("tablero-secotrade/yo")->with("message",'Perfil actualizado correctamente');
    }
 }

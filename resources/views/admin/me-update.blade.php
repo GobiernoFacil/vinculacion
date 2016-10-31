@@ -25,7 +25,6 @@
 <div class="row">
 <div class="col-sm-6 col-sm-offset-3">
 {!! Form::model($user, ['url' => 'dashboard/yo/editar', "class" => "form-horizontal"]) !!}
-
 <p>
   <label>Nombre</label>
   {{Form::text('name', null, ["class" => "form-control"])}}
@@ -36,7 +35,7 @@
 
 <p>
   <label>Correo</label>
-  {{Form::text('email', null,["class" => "form-control", "disabled"])}}
+  {{Form::text('email', null,["class" => "form-control"])}}
   @if($errors->has('email'))
     <strong>{{$errors->first('email')}}</strong>
   @endif

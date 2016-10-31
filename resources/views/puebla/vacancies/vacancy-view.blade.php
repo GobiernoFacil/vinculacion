@@ -8,10 +8,15 @@
 @section('content')
 <div class="container">
   <div class="row">
+    @if(Session::has('message'))
+      <div class="col-sm-12 message success">
+          {{ Session::get('message') }}
+      </div>
+  @endif
     <div class="col-sm-8">
     	<h1>{{$vacancy->job}}</h1>
-      
-      <!-- 
+
+      <!--
       Para secotrade y cámaras de comercio, le agregué el campo de for_company, que es el nombre
       de la empresa que ofrece la vacante que publican
       -->
@@ -78,7 +83,7 @@
 	  	{!! $vacancy->salary_extra ? '<li>' . $vacancy->salary_extra . '</li>' : '' !!}
 	  	{!! $vacancy->salary_variable ? '<li>' . $vacancy->salary_variable . '</li>' : '' !!}
 	  	{!! $vacancy->contract_level ? '<li>' . $vacancy->contract_level . '</li>' : '' !!}
-	  	{!! $vacancy->contract_type ? '<li>' . $vacancy->contract_type . '</li>' : '' !!}	
+	  	{!! $vacancy->contract_type ? '<li>' . $vacancy->contract_type . '</li>' : '' !!}
 	  	<li><strong>Más información</strong>: {{$vacancy->url  		  }}</li>
 	  </ul>
   	</div>
@@ -89,19 +94,19 @@
     	<p><a href="{{url("tablero-secotrade/vacante/editar/{$vacancy->id}")}}" class="btn">Editar Vacante</a></p>
   	</div>
   </div>
-  <div class="separator"></div>  
-  
-  
+  <div class="separator"></div>
+
+
   <div class="row">
     <div class="col-sm-12">
-      
+
       <h2>Estudiantes que aplicaron a la vacante</h2>
       @if($vacancy->applicants()->count())
         <ul>
         @foreach($vacancy->applicants as $applicant)
         <li>
-          <a href="{{url("tablero-secotrade/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}"> 
-            {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}} 
+          <a href="{{url("tablero-secotrade/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
+            {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}
           </a>
           [ {{$applicant->student->carrera}} ] <br>
           {{$applicant->student->opd->opd_name}}

@@ -43,14 +43,14 @@ class StudentCv extends Controller
       $cv = Auth::user()->student->cv()->firstOrCreate([]);
       // update student
       $cv->update($request->except('_token'));
-      return redirect("tablero-estudiante/cv");
+      return redirect("tablero-estudiante/cv")->with("message",'CV actualizado correctamente');
     }
 
     public function addLanguage(Request $request){
       $user = Auth::user();
       $cv   = $user->student->cv;
       $language = $cv->languages()->firstOrCreate([
-        'name'  => $request->name, 
+        'name'  => $request->name,
         'level' => $request->level
       ]);
 
@@ -69,7 +69,7 @@ class StudentCv extends Controller
       $user     = Auth::user();
       $cv       = $user->student->cv;
       $software = $cv->softwares()->firstOrCreate([
-        'name'  => $request->name, 
+        'name'  => $request->name,
         'level' => $request->level
       ]);
 

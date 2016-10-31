@@ -7,11 +7,16 @@
 
 @section('content')
 <div class="row">
+  @if(Session::has('message'))
+    <div class="col-sm-12 message success">
+        {{ Session::get('message') }}
+    </div>
+@endif
     <div class="col-sm-12">
         @if(!$user->enabled)
          @include('companies.alert-message')
         @endif
-        <h1>Vacantes: {{$vacancies->count()}} </h1>    
+        <h1>Vacantes: {{$vacancies->count()}} </h1>
 
       @if($vacancies->count())
       <ul class="list">

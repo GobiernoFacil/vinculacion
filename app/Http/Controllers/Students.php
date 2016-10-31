@@ -30,7 +30,7 @@ class Students extends Controller
     // [3] regresa el view
     return view('students.dashboard')->with([
       "user"      	 => $user,
-      // students	 
+      // students
       "applications" => $applications,
       "vacancies"  	 => $vacancies,
       'interviews'   => $interviews,
@@ -68,7 +68,7 @@ class Students extends Controller
       $user->password = Hash::make($request->password);
     }
     $user->save();
-    return redirect("tablero-estudiante/yo");
+    return redirect("tablero-estudiante/yo")->with("message",'Perfil actualizado correctamente');
   }
 
   public function validateMe(){

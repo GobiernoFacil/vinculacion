@@ -243,7 +243,7 @@ class Admin extends Controller
     $user->save();
 
     // [3] lo manda de nuevo al perfil
-    return redirect("dashboard/yo");
+    return redirect("dashboard/yo")->with("message",'Perfil actualizado correctamente');;
   }
 
 

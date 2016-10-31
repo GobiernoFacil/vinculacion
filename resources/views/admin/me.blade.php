@@ -7,10 +7,15 @@
 
 @section('content')
 <div class="row">
+	@if(Session::has('message'))
+		<div class="col-sm-12 message success">
+				{{ Session::get('message') }}
+		</div>
+@endif
 	<div class="col-sm-10 col-sm-offset-1">
 		<!-- Perfil -->
 		<h1>{{$user->name}}</h1>
-		
+
 		<p>{{$user->email}}</p>
 	</div>
 	<div class="col-sm-4 col-sm-offset-1">
