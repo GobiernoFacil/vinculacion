@@ -32,7 +32,16 @@
 <li>Ver entrevista</li>
 @endif
 
-
+@if ($__env->yieldContent('breadcrumb_c') == 'convenios')
+<!-- interviews -->
+<li>Convenios</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_c') == 'convenio ver')
+<li><a href="{{ url('tablero-empresa/convenios')}}">Entrevistas</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_c') == 'convenio ver')
+<li>Ver Entrevista</li>
+@endif
 
 
 @if ($__env->yieldContent('breadcrumb_c') == 'entrevistas')
