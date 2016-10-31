@@ -43,7 +43,8 @@
           </span>
           <span class="col-sm-2 col-xs-4">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
           <span class="col-sm-2 col-xs-3">{!! $vacancy->applicants()->count() > 0 ? '<a href="'. url('tablero-empresa/vacante/'. $vacancy->id). '#applicants">' . $vacancy->applicants()->count(). '</a>' : $vacancy->applicants()->count() !!}</span>
-          <span class="col-sm-2 nomobile">{{$vacancy->interviews()->count()}}</span>
+          <span class="col-sm-2 nomobile">{!! $vacancy->interviews()->count() > 0 ? '<a href="'. url('tablero-empresa/vacante/'. $vacancy->id). '#interviews">' . $vacancy->interviews()->count(). '</a>' : $vacancy->interviews()->count() !!}
+          </span>
           <span class="col-sm-2 col-xs-12 right">
             <a href="{{url("tablero-empresa/vacante/{$vacancy->id}")}}" class="btn add xs">Ver</a>
             <a href="{{url("tablero-empresa/vacante/editar/{$vacancy->id}")}}" class="btn xs">Editar</a>
@@ -64,7 +65,6 @@
     </div>
   </div>
 </div>
-
 <script>
   var dButtons = document.querySelectorAll(".danger");
 
