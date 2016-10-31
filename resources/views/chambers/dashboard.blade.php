@@ -22,7 +22,7 @@
 					<div class="col-sm-8">
 						<h3>{{$chamber->chamber_comercial_name}}</h3>
 						<p>{{$user->email}}</p>
-						<p><a class="btn edit" href ="{{url('tablero-empresa/yo/editar')}}">Edita tu perfil</a></p>
+						<p><a class="btn edit" href ="{{url('tablero-camara/yo/editar')}}">Edita tu perfil</a></p>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -32,14 +32,14 @@
 		<!--vacantes-->
 		<div class="row">
 			<div class="col-sm-4">
-				<a class="box" href="{{url('tablero-empresa/vacantes')}}">
-					<span>Tus Vacantes</span>
-					<span class="count"></span>
+				<a class="box" href="{{url('tablero-camara/empresas')}}">
+					<span>Tus Empresas</span>
+					<span class="count">{{$c_num}}</span>
 				</a>
 			</div>
 			<div class="col-sm-4">
-				<a class="box" href="{{url('tablero-empresa/convenios')}}">
-					<span>Tus Convenios</span>
+				<a class="box" href="{{url('tablero-camara/vacantes')}}">
+					<span>Tus Vacantes</span>
 					<span class="count"></span>
 				</a>
 			</div>

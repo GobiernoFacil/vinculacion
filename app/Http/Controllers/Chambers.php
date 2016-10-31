@@ -20,9 +20,11 @@ class Chambers extends Controller
   public function index(){
     $user = Auth::user();
     $chamber = $user->chamber;
+    $companies_num = $chamber->chamberCompany->count();
     return view("chambers.dashboard")->with([
       "user" => $user,
-      "chamber"  =>$chamber
+      "chamber"  =>$chamber,
+      "c_num"     =>$companies_num
     ]);
   }
 
@@ -85,7 +87,8 @@ class Chambers extends Controller
     // [3] regresa el view
     return view('chambers.companies.companies-list')->with([
       "user"     => $user,
-      "companies" => $companies
+      "companies" => $companies,
+      "c_num"     =>$companies_num
     ]);
   }
 }
