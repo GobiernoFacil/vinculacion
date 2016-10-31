@@ -16,7 +16,7 @@ use App\models\Company;
 use App\models\Contract;
 use App\models\Opd;
 use App\models\Student;
-use App\models\Vacancy;
+use App\models\Vacant;
 
 // FormValidators
 use App\Http\Requests\UpdateMeRequest;
@@ -170,7 +170,13 @@ class Admin extends Controller
   //
   //
   public function vacancies(Request $request){
-
+    $user      = Auth::user();
+    $vacancies = Vacant::orderBy('updated_at', 'desc')->with('company');
+    $vacancies = $vacancies->paginate($this->pageSize);
+    return view('admin.vacancies.vacancy-list')->with([
+      "user"    => $user,
+      "vacancies" => $vacancies
+    ]);
   }
 
   // Los convenios
