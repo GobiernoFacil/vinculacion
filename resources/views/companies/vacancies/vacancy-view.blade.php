@@ -41,8 +41,12 @@
 			    @endif
     		</div>
     		 <div class="col-sm-6">
-			     <h3>Entrevistas</h3>
-    			<h2>{{$vacancy->interviews()->count()}}</h2>
+			    <h3>Entrevistas</h3>
+			    @if($vacancy->applicants()->count() > 0)
+    			<h2><a href="#interviews">{{$vacancy->interviews()->count()}}</a></h2>
+    			@else
+			    <h2>{{$vacancy->interviews()->count()}}</h2>
+			    @endif
     		</div>
 	    </div>
     </div>
@@ -129,6 +133,37 @@
         <p>No aplicaron</p>
       @endif
     @endif
+	
+	@if($vacancy->interviews->count() > 0)
+		<div class="separator"></div>
+		<h2 id="interviews">{{ $vacancy->interviews()->count() == 1 ? $vacancy->interviews()->count() . ' estudiante con entrevista' : $vacancy->interviews()->count() . ' estudiantes con entrevistas' }}</h2>
+	 <ul class="list">
+	        <li class="clearfix title">
+	        	<span class="col-sm-4">Nombre / Carrera / Universidad</span>
+	        	<span class="col-sm-3">Lugar / Fecha</span>
+	        	<span class="col-sm-3">Contacto</span>
+	        	<span class="col-sm-2"></span>
+	        </li>
+		@foreach ($vacancy->interviews as $interview)
+			<li class="clearfix">
+        		<span class="col-sm-4">
+        			<a href="{{url("tablero-empresa/vacante/{$vacancy->id}/entrevista/{$interview->id}")}}">
+					{{ucwords(strtolower($interview->student->nombre . ' ' . $interview->student->apellido_paterno))}}</a><br>
+					<span class="note">{{$interview->student->carrera}} </span><br>
+					<span class="note">{{$interview->student->opd->opd_name}} </span>
+				</span>
+        	  <span class="col-sm-3"> {{$interview->address}} <br>  {{$interview->date}},  {{$interview->time}}</span>
+        	  <span class="col-sm-3">{{$interview->contact}} <br>
+        	  {{$interview->email}}<br>
+        	  	{{$interview->phone}}
+        	  </span>
+        	  <span class="col-sm-2"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/entrevista/{$interview->id}")}}" class="btn xs">Ver</a></span>
+        	</li>
+		@endforeach
+	 </ul>
+	@endif
+
+
 
     </div>
   </div>
