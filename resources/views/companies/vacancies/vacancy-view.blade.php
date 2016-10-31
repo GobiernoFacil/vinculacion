@@ -42,7 +42,7 @@
     		</div>
     		 <div class="col-sm-6">
 			     <h3>Entrevistas</h3>
-    			<h2>0</h2>
+    			<h2>{{$vacancy->interviews()->count()}}</h2>
     		</div>
 	    </div>
     </div>
