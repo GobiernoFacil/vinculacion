@@ -114,9 +114,10 @@
 	        </li>
         @foreach($vacancy->applicants as $applicant)
         <li class="clearfix">
-        	<span class="col-sm-5"><a href="{{url("dashboard/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
+        <!--	<span class="col-sm-5"><a href="{{url("dashboard/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
             {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}
-          </a></span>
+          </a></span>-->
+          <span class="col-sm-5">{{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}</span>
           <span class="col-sm-3"> [ {{$applicant->student->carrera}} ] </span>
           <span class="col-sm-4">{{$applicant->student->opd->opd_name}}</span>
         </li>

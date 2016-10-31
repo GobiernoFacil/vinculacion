@@ -96,7 +96,15 @@ class AdminVacancies extends Controller
   }
 
   public function enable($id){
+    $user    = Auth::user();
+    $vacancy = Vacant::find($id);
 
+    if($vacancy){
+      $vacancy->status = ! $vacancy->status;
+      $vacancy->update();
+    }
+
+    return redirect('dashboard/vacantes')->with("message",'Vacante actualizada correctamente');
   }
 
   public function disable($id){

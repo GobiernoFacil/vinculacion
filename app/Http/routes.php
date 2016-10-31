@@ -136,6 +136,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/vacantes', 'Admin@vacancies');
     Route::get('dashboard/vacante/crear', 'AdminVacancies@add');
     Route::post('dashboard/vacante/crear', 'AdminVacancies@save');
+    Route::get('dashboard/vacante/habilitar/{id}', 'AdminVacancies@enable');
     Route::get('dashboard/vacante/editar/{id}', 'AdminVacancies@edit');
     Route::post('dashboard/vacante/editar/{id}', 'AdminVacancies@update');
     Route::get('dashboard/vacante/eliminar/{id}', 'AdminVacancies@delete');
