@@ -133,6 +133,7 @@ Route::group(['middleware' => ['auth']], function () {
     // V A C A N T E S
     // ----------------------------------------------------------------
     // @AdminVacancies controller
+    Route::get('dashboard/vacantes', 'Admin@vacancies');
     Route::get('dashboard/vacante/crear', 'AdminVacancies@add');
     Route::post('dashboard/vacante/crear', 'AdminVacancies@save');
     Route::get('dashboard/vacante/editar/{id}', 'AdminVacancies@edit');
