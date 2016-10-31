@@ -24,16 +24,17 @@
 	  <ul class="list_perks">
 		  <li><strong>Carrera</strong>: {{$applicant->student->carrera}}</li>
 		  <li><strong>Universidad</strong>: {{$applicant->student->opd->opd_name}}</li>
-		  <li><strong>CV</strong>: 
-        <ul>
+	  </ul>
+	  <h4>CV</h4>
+        <ul class="list_perks">
           <li>Sexo : {{$student->cv->gender}}</li>
           <li>Edad : {{$student->cv->age}}</li>
-          <li>ciudad : {{$student->cv->city}}</li>
-          <li>estado : {{$student->cv->state}}</li>
-          <li>país : {{$student->cv->country}}</li>
-          <li>teléfono : {{$student->cv->phone}}</li>
-          <li>celular : {{$student->cv->mobile}}</li>
-          <li>correo : {{$student->cv->email}}</li>
+          <li>Ciudad : {{$student->cv->city}}</li>
+          <li>Estado : {{$student->cv->state}}</li>
+          <li>País : {{$student->cv->country}}</li>
+          <li>Teléfono : {{$student->cv->phone}}</li>
+          <li>Celular : {{$student->cv->mobile}}</li>
+          <li>Correo : {{$student->cv->email}}</li>
           <li>
             <h5>idiomas</h5>
             <ul>
@@ -52,8 +53,6 @@
             </ul>
           </li>
         </ul>
-      </li>
-	  </ul>
 	  
       <p><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/entrevista/crear/{$student->id}")}}" class="btn">Agendar una entrevista</a></p>
     </div>
