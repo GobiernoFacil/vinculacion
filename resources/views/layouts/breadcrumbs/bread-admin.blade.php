@@ -116,3 +116,22 @@
 </a></li>
 <li>Editar Perfil</li>
 @endif
+<!-- vacancies -->
+@if ($__env->yieldContent('breadcrumb_a') == 'vacantes')
+<li>Vacantes</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'vacante ver')
+<li><a href='{{ url("dashboard/vacantes")}}'>Vacantes
+</a></li>
+<li>Ver Vacante</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'vacante add')
+<li><a href='{{ url("dashboard/vacantes")}}'>Vacantes
+</a></li>
+<li>Agregar Vacante</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'vacante edit')
+<li><a href='{{ url("dashboard/vacantes")}}'>Vacantes
+</a></li>
+<li>Actualizar Vacante</li>
+@endif
