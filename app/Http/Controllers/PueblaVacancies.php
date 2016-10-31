@@ -42,7 +42,7 @@ class PueblaVacancies extends Controller
   public function view($id){
     // [1] el usuario del sistema
     $user      = Auth::user();
-    
+
     // [3] la vacante
     // secotrade tiene el poder oculto de poder ver cualquier vacante en su dashboard
     // pero pues, está oculto
@@ -77,7 +77,7 @@ class PueblaVacancies extends Controller
     $vacant->save();
     $vacant->update($data);
 
-    return redirect('tablero-secotrade/vacantes');
+    return redirect('tablero-secotrade/vacantes')->with("message",'Vacante creada correctamente');
   }
 
   public function edit($id){
@@ -101,7 +101,7 @@ class PueblaVacancies extends Controller
 
     $vacancy = Vacant::find($id);
     $vacancy->update($data);
-    return redirect('tablero-secotrade/vacantes');
+    return redirect('tablero-secotrade/vacantes')->with("message",'Vacante actualizada correctamente');
   }
 
   public function delete($id){
@@ -109,7 +109,7 @@ class PueblaVacancies extends Controller
     $vacancy->applicants()->delete();
     $vacancy->interviews()->delete();
     $vacancy->delete();
-    return redirect('tablero-secotrade/vacantes');
+    return redirect('tablero-secotrade/vacantes')->with("message",'Vacante eliminada correctamente');;
   }
 
   public function enable($id){
@@ -121,7 +121,7 @@ class PueblaVacancies extends Controller
       $vacancy->update();
     }
 
-    return redirect('tablero-secotrade/vacantes');
+    return redirect('tablero-secotrade/vacantes')->with("message",'Vacante actualizada correctamente');;
   }
 
   public function disable($id){
@@ -140,7 +140,7 @@ class PueblaVacancies extends Controller
 
   }
 
-  
+
   public function student($id){
 
   }

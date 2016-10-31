@@ -11,6 +11,11 @@
   <div class="col-sm-12">
     <h1>Vacantes</h1>
   </div>
+  @if(Session::has('message'))
+    <div class="col-sm-12 message success">
+        {{ Session::get('message') }}
+    </div>
+@endif
   <div class="col-sm-2 col-sm-offset-10">
     <p><a href="{{url('tablero-secotrade/vacante/crear')}}" class="btn add"> + Crear vacante</a></p>
   </div>

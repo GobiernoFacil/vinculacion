@@ -7,6 +7,11 @@
 
 @section('content')
 <div class="row">
+	@if(Session::has('message'))
+		<div class="col-sm-12 message success">
+				{{ Session::get('message') }}
+		</div>
+@endif
 	<div class="col-sm-12">
 	@if(!$user->enabled)
 			@include('students.alert-message')

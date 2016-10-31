@@ -3,7 +3,7 @@
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
 @section('bodyclass', 'puebla vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_c', 'vacante edit')
+@section('breadcrumb_p', 'vacante actualizar')
 
 @section('content')
 <div class="container">
@@ -27,7 +27,7 @@
           <strong>{{$errors->first('for_company')}}</strong>
           @endif
         </p>
-        
+
         <p>
           <label>Vacante</label>
           {{Form::text('job',null,["class" => "form-control"])}}
