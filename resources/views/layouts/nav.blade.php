@@ -29,7 +29,7 @@
 			<!-- nav universidades-->
 				@include('layouts.nav.nav_opd')
 			@endif
-			
+
 			@if ($user->type == 'puebla')
 			<!-- nav secotrade-->
 				@include('layouts.nav.nav_puebla')
@@ -43,6 +43,10 @@
 			@if ($user->type == 'student')
 			<!-- nav estudiantes-->
 				@include('layouts.nav.nav_student')
+			@endif
+			@if ($user->type == 'chamber')
+			<!-- nav camaras-->
+				@include('layouts.nav.nav_chamber')
 			@endif
 		</div>
 	</div>

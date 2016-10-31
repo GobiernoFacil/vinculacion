@@ -15,7 +15,12 @@ class Chambers extends Controller
   * ----------------------------------------------------------------
   */
   public function index(){
-    return view("elcoruco-test")->with(["message" => "estás en el dashboard de cámaras!"]);
+    $user = Auth::user();
+    $chamber = $user->chamber;
+    return view("chambers.dashboard")->with([
+      "user" => $user,
+      "chamber"  =>$chamber
+    ]);
   }
 
   /*
@@ -62,6 +67,6 @@ class Chambers extends Controller
         "phone" => $request->cphone,
       ]);
     }
-    return redirect("tablero-camara/yo");
+    return redirect("tablero-camara/yo")->with('message','Perfil actualizado correctamente');
   }
 }
