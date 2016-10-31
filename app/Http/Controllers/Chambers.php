@@ -10,6 +10,9 @@ use Auth;
 use App\Http\Requests\UpdateChamberProfileRequest;
 class Chambers extends Controller
 {
+
+  // El tamaño de la paginación
+  public $pageSize = 10;
   /*
   * D A S H B O A R D
   * ----------------------------------------------------------------
@@ -68,5 +71,21 @@ class Chambers extends Controller
       ]);
     }
     return redirect("tablero-camara/yo")->with('message','Perfil actualizado correctamente');
+  }
+
+  public function companies(){
+    // [1] el usuario del sistema
+    $user     = Auth::user();
+    $chamber  = $user->chamber;
+
+    // [2] empresas
+    $companies_num = $chamber->chamberCompany->count();
+    $companies     = $chamber->chamberCompany()->with('company')->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('chambers.companies.companies-list')->with([
+      "user"     => $user,
+      "companies" => $companies
+    ]);
   }
 }

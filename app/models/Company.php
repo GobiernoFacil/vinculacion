@@ -44,4 +44,8 @@ class Company extends Model
     {
       return $this->morphOne('App\models\Contact', 'contact');
     }
+
+    public function company(){
+     return $this->belongsTo('App\models\ChamberCompany','company_id');
+   }
 }

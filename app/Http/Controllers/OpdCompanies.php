@@ -74,14 +74,14 @@ class OpdCompanies extends Controller
         "email" => $request->cemail,
         "phone" => $request->cphone,
       ]);
-  return redirect("tablero-opd/empresa/ver/$company->id")->with("message",'Empresa actualizada correctamente');;
+  return redirect("tablero-opd/empresa/ver/$company->id")->with("message",'Empresa actualizada correctamente');
   }
 
   public function delete($id){
     $company = Auth::user()->opd->companies->find($id);
     $company->contact->delete();
     $company->delete();
-    return redirect("tablero-opd/empresas")->with("message",'Empresa eliminada correctamente');;
+    return redirect("tablero-opd/empresas")->with("message",'Empresa eliminada correctamente');
   }
 
   public function addMultiple(){

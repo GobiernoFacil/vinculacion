@@ -327,6 +327,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-camara/yo", "Chambers@me");
     Route::get("tablero-camara/yo/editar", "Chambers@changeMe");
     Route::post("tablero-camara/yo/editar", "Chambers@updateMe");
+    Route::get("tablero-camara/empresas", "Chambers@companies");
+    Route::get("tablero-camara/empresa/ver/{id}", "ChamberCompanies@view");
+    Route::get("tablero-camara/empresa/crear", "ChamberCompanies@add");
+    Route::post("tablero-camara/empresa/crear", "ChamberCompanies@save");
+    Route::get("tablero-camara/empresa/editar/{id}", "ChamberCompanies@edit");
+    Route::post("tablero-camara/empresa/editar/{id}", "ChamberCompanies@update");
+    Route::get("tablero-camara/empresa/eliminar/{id}", "ChamberCompanies@delete");
   });
 
 

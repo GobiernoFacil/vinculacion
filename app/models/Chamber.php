@@ -28,4 +28,10 @@ class Chamber extends Model
     {
       return $this->morphOne('App\models\Contact', 'contact');
     }
+
+    public function chamberCompany()
+    {
+      return $this->hasMany('App\models\chamberCompany');
+    }
+
 }
