@@ -99,8 +99,6 @@ class ChamberCompanies extends Controller
       "user" => $user->id,
       "file" => $file
     ]);
-    //exec("php {$path}/artisan update:companies {$user->id} '{$file}' > /dev/null &");
-
-    return redirect("tablero-camara/empresas");
+    return redirect("tablero-camara/empresas")->with("message",'Empresas creadas correctamente');
   }
 }
