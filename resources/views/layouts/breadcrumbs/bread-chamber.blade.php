@@ -17,6 +17,30 @@
 @if ($__env->yieldContent('breadcrumb_c') == 'empresas xls')
 <li>Agregar Empresas</li>
 @endif
+<!-- vacancies -->
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver' || $__env->yieldContent('breadcrumb_c') == 'vacante edit' || $__env->yieldContent('breadcrumb_c') == 'vacante add' )
+<li><a href="{{ url('tablero-camara/vacantes')}}">Vacantes</a></li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante ver')
+<li>Ver Vacante</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante add')
+<li>Agregar Vacante</li>
+@endif
+
+
+@if ($__env->yieldContent('breadcrumb_c') == 'vacante edit')
+<li>Actualizar Vacante</li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_c') == 'vacantes')
+<li>Vacantes</li>
+@endif
+
+
+
 
 @if ($__env->yieldContent('breadcrumb_c') == 'me')
 <!-- me -->

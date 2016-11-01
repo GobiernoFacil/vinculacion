@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Agregar Vacante')
 @section('description', 'Agregar nueva vacante en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'chamber')
+@section('bodyclass', 'chamber vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_c', 'vacante add')
 
@@ -10,15 +10,12 @@
   <!-- Formulario de vacante -->
   <div class="row">
     <div class="col-sm-12">
-      @if(!$user->enabled)
-          @include('companies.alert-message')
-      @endif
       <h1 class="separator">Agregar vacante</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::open(['url' => "dashboard/vacante/crear", "class" => "form-horizontal"]) !!}
+      {!! Form::open(['url' => "tablero-camara/vacante/crear", "class" => "form-horizontal"]) !!}
 
       <!-- cosas de su objeto -->
       <fieldset>

@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', 'Actualizar Vacante')
 @section('description', 'Actualizar nueva vacante en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'chamber')
+@section('bodyclass', 'chamber vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_c', 'vacante edit')
 
@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($vacancy, ['url' => "dashboard/vacante/editar/{$vacancy->id}", "class" => "form-horizontal"]) !!}
+      {!! Form::model($vacancy, ['url' => "tablero-camara/vacante/editar/{$vacancy->company->id}/{$vacancy->id}", "class" => "form-horizontal"]) !!}
       <!-- cosas de su objeto -->
       <fieldset>
         <h5>Datos de la vacante</h5>

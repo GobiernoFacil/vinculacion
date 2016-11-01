@@ -346,12 +346,13 @@ Route::group(['middleware' => ['auth']], function () {
     // Chambers - vacancies
     //
     Route::get("tablero-camara/vacantes", "Chambers@vacancies");
-    Route::get("tablero-camara/vacantes/ver/{id}", "ChamberVacancies@view");
-    Route::get("tablero-camara/vacantes/crear", "ChamberVacancies@add");
-    Route::post("tablero-camara/vacantes/crear", "ChamberVacancies@save");
-    Route::get("tablero-camara/vacantes/editar/{id}", "ChamberVacancies@edit");
-    Route::post("tablero-camara/vacantes/editar/{id}", "ChamberVacancies@update");
-    Route::get("tablero-camara/vacantes/eliminar/{id}", "ChamberVacancies@delete");
+    Route::get("tablero-camara/vacante/ver/{id}/{id_vacant}", "ChamberVacancies@view");
+    Route::get("tablero-camara/vacante/crear", "ChamberVacancies@add");
+    Route::post("tablero-camara/vacante/crear", "ChamberVacancies@save");
+    Route::get("tablero-camara/vacante/editar/{id}/{id_vacant}", "ChamberVacancies@edit");
+    Route::post("tablero-camara/vacante/editar/{id}/{id_vacant}", "ChamberVacancies@update");
+    Route::get("tablero-camara/vacante/eliminar/{id}/{id_vacant}", "ChamberVacancies@delete");
+    Route::get("tablero-camara/vacante/habilitar/{id}/{id_vacant}", "ChamberVacancies@enable");
 
   });
 
