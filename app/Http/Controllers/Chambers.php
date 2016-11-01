@@ -91,4 +91,21 @@ class Chambers extends Controller
       "c_num"     =>$companies_num
     ]);
   }
+
+  public function vacancies(){
+    // [1] el usuario del sistema
+    $user     = Auth::user();
+    $chamber  = $user->chamber;
+
+    // [2] empresas
+    $companies_num = $chamber->chamberCompany->count();
+    $companies     = $chamber->chamberCompany()->with('company')->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('chambers.companies.companies-list')->with([
+      "user"     => $user,
+      "companies" => $companies,
+      "c_num"     =>$companies_num
+    ]);
+  }
 }

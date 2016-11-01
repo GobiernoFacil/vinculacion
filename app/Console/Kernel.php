@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
       Commands\Inspire::class,
       Commands\AddCompaniesByFile::class,
       Commands\AddAdminCompaniesByFile::class,
+      Commands\ChamberCompaniesByFile::class,
       Commands\FindAcademicOffer::class,
       Commands\UpdateAcademicOffer::class,
     ];

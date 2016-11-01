@@ -340,6 +340,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-camara/empresa/editar/{id}", "ChamberCompanies@edit");
     Route::post("tablero-camara/empresa/editar/{id}", "ChamberCompanies@update");
     Route::get("tablero-camara/empresa/eliminar/{id}", "ChamberCompanies@delete");
+    Route::get("tablero-camara/empresas/actualizar/xlsx", "ChamberCompanies@loadGroup");
+    Route::post("tablero-camara/empresas/actualizar/xlsx", "ChamberCompanies@saveGroup");
     //
     // Chambers - vacancies
     //
