@@ -219,6 +219,11 @@ Esto puede tardar unos minutos, dependiendo de la velocidad del equipo. Toda la 
 bower update
 ```
 
+10.5 es posible que bower no se encuentre disponible aun después de instalado. Para corregir este error en ubuntu, hay que ejecutar el siguiente comando:
+```bash
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
 
 --------------------------------------------------------------------------------
 VIEJA GUÍA DE INSTALACIÓN
@@ -398,11 +403,6 @@ Si el proceso no termina después de 10 minutos, es necesario terminar el proces
 10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
 ```bash
 bower update
-```
-
-10.5 es posible que bower no se encuentre disponible aun después de instalado. Para corregir este error en ubuntu, hay que ejecutar el siguiente comando:
-```bash
-sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
 
