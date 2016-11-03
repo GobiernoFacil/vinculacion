@@ -16,7 +16,216 @@
 * Bower >= 1.7.*
 
 ## Configuación del entorno de desarrollo
-nota: la guía de instalación es para Redhat Linux, y se suponque que se hace con un usuario que tiene privilegios de administrador
+nota 1: después de la prueba de instalación, se decidió que el sistema operativo será Ubuntu 14.04.5 LTS
+
+## actualización del sistem
+```bash
+sudo apt-get update
+```
+## instalación de git
+hay que revisar si git está disponible:
+```bash
+which git
+```
+
+si no lo está, hay que instalarlo
+```bash
+sudo apt-get install git-all
+```
+
+## Instalación de Apache, mysql, PHP
+Hay que revisar si Apache, php y mysql están instalados.
+```bash
+which apache2
+which php
+which mysql
+```
+
+Dependiendo de la disponibilidad de cada uno, hay que agregarlos/quitarlos de esta lista:
+```bash
+sudo apt-get install apache2 mysql-server php5 php5-mysql php5-gd php5-mcrypt php5-tidy php5-dbg php5-cli
+```
+durante esta instalación, es posible que se pregunte por la contraseña del usuario de mysql. Hay que seleccionar una y guardarla para continuar con la instalación
+
+## instalación de nodejs y npm
+Hay que revisar si existe node
+```bash
+which nodejs
+```
+
+si no existe, hay que instalarlo
+```bash
+sudo apt-get install nodejs
+sudo apt-get install npm
+```
+
+## instalación de bower
+hay que revisar si existe bower
+```bash
+which bower
+```
+
+si no, hay que instalarlo
+```bash
+npm install -g bower
+```
+
+## instalación de composer
+hay que revisar si existe composer
+```bash
+which composer
+```
+
+en caso de que no, hay que instalarlo, y crear una referencia global
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+mv composer.phar /usr/local/bin/composer
+```
+
+## carga los archivos del sitio 
+hay que localizar la carpeta en la que se quiere instalar el sitio, y decidir el nombre de la carpeta del proyecto.
+En las pruebas, la caerpeta era /www/sitios y el nombre de la carpeta del proyecto fue empleosabiertos
+
+```bash
+cd /www/sitios
+git clone https://github.com/GobiernoFacil/vinculacion.git empleosabiertos
+```
+
+## Configuración básica de MySQL
+Hay que responder de manera afirmativa a todas las opciones del configurador de mysql, excepto tal vez, a la de cambiar la contraseña del admin (que se creo en un paso anterior de la instalación)
+```bash
+sudo mysql_secure_installation
+Remove anonymous users? Y
+Disallow root login remotely? Y
+Remove test database and access to it? Y
+Reload privilege tables now? Y 
+```
+
+## Pasos para instalar el código
+1: entrar a la carpeta /www/sitios/empleosabiertos
+
+2: dentro de la carpeta, hay que correr el siguiente comando:
+```bash
+composer install
+```
+
+3: en la misma, hay que copiar el archivo .env.example a .env
+```bash
+cp .env.example .env
+```
+
+4: crear la base de datos que se va a ocupar.
+```bash
+mysql -uroot -p
+create database empleosabiertos;
+exit
+```
+
+5: editar el archivo .env para configurar la conexión a la db
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=empleosabiertos
+DB_USERNAME=root
+DB_PASSWORD=secret_root_password!
+```
+
+6: hay que configurar el api de correos [este paso es opcional, y requiere de claves que serán provistas en otro momento del proyecto ]
+```bash
+MAIL_DRIVER=mailgun
+MAIL_HOST=smtp.mailgun.org
+MAIL_PORT=587
+MAIL_USERNAME=postmaster@xxxxxxxxxx.mailgun.org
+MAIL_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MAIL_ENCRYPTION=null
+MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
+MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+7: dentro de este mismo archivo de .env se debe definir el usuario para el primer admin del sistema, y para el usuario perteneciente a la SECOTRADE de la siguiente manera:
+```bash
+ADMIN_EMAIL=howdy@gobiernofacil.com
+ADMIN_NAME="arturo c."
+ADMIN_PASSWORD=secret_pass_1
+
+ADMIN_PUEBLA_NAME="secotrade"
+ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
+ADMIN_PUEBLA_PASSWORD=secret_pass_2
+```
+
+El archivo .env debe verse más o menos así:
+```bash
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=some_key
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gape
+DB_USERNAME=db_user
+DB_PASSWORD=secret_pass_0
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=mailgun
+MAIL_HOST=smtp.mailgun.org
+MAIL_PORT=587
+MAIL_USERNAME=postmaster@xxxxxxxxxx.mailgun.org
+MAIL_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MAIL_ENCRYPTION=null
+MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
+MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
+
+ADMIN_EMAIL=howdy@gobiernofacil.com
+ADMIN_NAME="arturo c."
+ADMIN_PASSWORD=secret_pass_1
+
+ADMIN_PUEBLA_NAME="secotrade"
+ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
+ADMIN_PUEBLA_PASSWORD=secret_pass_2
+```
+
+7: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
+```bash
+php artisan key:generate
+```
+
+8: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
+```bash
+php artisan migrate
+```
+
+9: Ya con las tablas disponibles, hay que copiar la información inicial: universidades, usuarios, códigos postales, etc., mediante el siguiente comando:
+```bash
+php artisan db:seed
+```
+Esto puede tardar unos minutos, dependiendo de la velocidad del equipo. Toda la información que se carga en el sistema de inicio, viene en un archivo excel. No hay necesidad de capturar nada.
+
+10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
+```bash
+bower update
+```
+
+
+--------------------------------------------------------------------------------
+VIEJA GUÍA DE INSTALACIÓN
+
+## Configuación del entorno de desarrollo
+nota 1: después de la instalación de prueba, 
+nota 0: la guía de instalación es para Redhat Linux, y se suponque que se hace con un usuario que tiene privilegios de administrador
 
 ## instalación de git
 ```bash
@@ -183,10 +392,19 @@ php artisan db:seed
 ```
 Esto puede tardar unos minutos, dependiendo de la velocidad del equipo. Toda la información que se carga en el sistema de inicio, viene en un archivo excel. No hay necesidad de capturar nada.
 
+Si el proceso no termina después de 10 minutos, es necesario terminar el proceso (durante las pruebas, el error apareció dos veces, pero el sí se copió la información a la DB)
+
+
 10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
 ```bash
 bower update
 ```
+
+10.5 es posible que bower no se encuentre disponible aun después de instalado. Para corregir este error en ubuntu, hay que ejecutar el siguiente comando:
+```bash
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
 
 y eso es todo amigos!
 
