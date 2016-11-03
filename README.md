@@ -225,6 +225,39 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
 
+## configuración de APACHE
+Apache utiliza /var/www/html para organizar los sitios que ejecuta. Como aquí la ruta es distinta, hay que configurarlo para que busque en el lugar correcto.
+
+Primero, hay que editar el archivo /etc/apache2/sites-enabled/000-default.conf 
+```bash
+DocumentRoot /www/sitios/empleosabiertos/public
+```
+
+después, hay que dar acceso a los archivos del sitio en /etc/apache2/apache2.conf
+```bash
+<Directory /www/sitios/empleosabiertos/public>
+        Options Indexes FollowSymLinks
+        AllowOverride all
+        Require all granted
+</Directory>
+```
+
+por último, hay que darle la propiedad de los archivos y carpetas al usuario de apache, que para ubuntu es: www-data
+```bash
+sudo chown -R www-data:www-data /www/sitios
+sudo chmod 2775 /www/sitios
+find /www/sitios -type d -exec sudo chmod 2775 {} \;
+find /www/sitios -type f -exec sudo chmod 0664 {} \;
+```
+
+Con esto, el sitio debería funcionar de manera correcta, en Ubuntu/Azure (que es donde se realizó la prueba de instalación)
+
+
+
+
+
+
+
 --------------------------------------------------------------------------------
 VIEJA GUÍA DE INSTALACIÓN
 
