@@ -259,7 +259,7 @@ Con esto, el sitio debería funcionar de manera correcta, en Ubuntu/Azure (que e
 
 
 --------------------------------------------------------------------------------
-VIEJA GUÍA DE INSTALACIÓN
+VIEJA GUÍA DE INSTALACIÓN (Esta guía ya no aplica para producción)
 
 ## Configuación del entorno de desarrollo
 nota 1: después de la instalación de prueba, 
