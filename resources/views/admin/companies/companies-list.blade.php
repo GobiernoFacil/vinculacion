@@ -31,28 +31,32 @@
 	@if($companies->count())
 	  <ul class="list">
 	  	<li class="clearfix titles">
-	  	  	<span class="col-sm-2">Empresa</span>
-	  	  	<span class="col-sm-2">Email</span>
+	  	  	<span class="col-sm-3">Empresa</span>
+	  	  	<span class="col-sm-3">Email</span>
 	  	<!--  	<span class="col-sm-2">Estado</span>-->
 	  	  	<span class="col-sm-3">Contacto</span>
-	  	  	<span class="col-sm-2">Acciones</span>
+	  	  	<span class="col-sm-3">Acciones</span>
 	  	</li>
 	  @foreach($companies as $company)
 	    <li class="clearfix">
-	    	<span class="col-sm-2"><a href="{{url("dashboard/empresa/{$company->id}")}}"> {{$company->nombre_comercial}}</a><br>
+	    	<span class="col-sm-3"><a href="{{url("dashboard/empresa/{$company->id}")}}"> {{$company->nombre_comercial}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($company->updated_at))}}</span></span>
 					@if($company->user)
-			<span class="col-sm-2">{{$company->user->email}}</span>
+			<span class="col-sm-3">{{$company->user->email}}</span>
 				@else
-				<span class="col-sm-2">Sin correo</span>
+				<span class="col-sm-3">Sin correo</span>
 					@endif
 			<span class="col-sm-3">
-				{!!$company->has('contact') ? $company->contact->name  . '<br>' : '' !!}
-				{!!$company->has('contact') ? $company->contact->email . '<br>' : ''!!}
-				{{ $company->has('contact') ? $company->contact->phone : '' }} </span>
+				{!! $company->contact["name"]  ? $company->contact["name"]  . '<br>' : '' !!}
+				{!! $company->contact["email"]  ? $company->contact["email"] . '<br>' : ''!!}
+				{{  $company->contact["phone"]  ? $company->contact["phone"] : '' }} 
 			</span>
-			<span class="col-sm-2">
-				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn xs">Editar</a>
+			</span>
+			<span class="col-sm-3">
+				<a href="{{url("dashboard/empresa/editar/{$company->id}")}}" class="btn add xs">Editar</a>
+				@if($company->user)
+				<a href="{{url("dashboard/empresa/habilitar/{$company->id}")}}" class="btn xs">{{ $company->user->enabled == 1 ? "Deshabilitar" : "Habilitar"}}</a>
+				@endif
 			  <a href="{{url("dashboard/empresa/eliminar/{$company->id}")}}" class="btn danger xs">Eliminar</a>
 			</span>
 	    </li>
