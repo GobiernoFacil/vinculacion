@@ -3,7 +3,7 @@
 @section('description', 'Lista de Estudiantes del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opd estudiantes')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_o', 'estudiantes')
+@section('breadcrumb_o', 'estudiantes usuarios')
 
 @section('content')
 <div class="row">
