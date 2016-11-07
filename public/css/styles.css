@@ -1754,6 +1754,13 @@ a.box:visited {
     background: rgba(255, 0, 0, 0.02);
     border: 1px solid red;
     border-left-width: 12px; }
+  .message.success {
+    color: green;
+    background: rgba(0, 128, 0, 0.02);
+    border: 1px solid green;
+    border-left-width: 12px;
+    font: 500 14px "Oxygen", Helvetica, Arial, sans-serif;
+    margin-bottom: 20px; }
   .message a,
   .message a:visited {
     color: black;
