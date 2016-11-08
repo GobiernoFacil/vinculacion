@@ -14,8 +14,10 @@
 		<p>Para las finalidades señaladas se pueden recabar datos personales de distintas formas: cuando Usted los proporciona directamente, a través de un sitio de Internet o servicios en línea o a través de otras fuentes que están permitidas por la Ley.</p>
 		<p>Usted tiene derecho a: <strong>acceder</strong> a sus datos personales y a los detalles de su uso; <strong>rectificarlos</strong> cuando son inexactos o incompletos; <strong>cancelarlos</strong> (eliminarlos) cuando considere que no se requieren para las finalidades señaladas en el presente Aviso o Usted no haya consentido su uso; y <strong>oponerse</strong> al tratamiento de los mismos para fines específicos.</p>
 		<p>Para ejercer estos derechos Usted puede realizar una solicitud ante la Institución Educativa a la que pertenece.</p>
+		<div class="box">
 		<h3>Fundamento legal:</h3>
 		<p>Este Aviso de Protección de Datos Personales se realiza en cumplimiento a lo dispuesto en los artículos 1, 7 fracción VI, 11, 15, 20, 37 y demás aplicables de la Ley de Protección de Datos Personales en Posesión de los Sujetos Obligados del Estado de Puebla y 3 fracción IV de las Políticas y Lineamientos de Observancia General para el Manejo, Tratamiento, Seguridad y Protección de Datos Personales del Estado.</p>
+		</div>
  	</div>
 </div>
 </section>
