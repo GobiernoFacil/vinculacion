@@ -46,7 +46,7 @@ class Admin extends Controller
     $chambers  = User::where("type", "chamber")->with("chamber")->count();
     $students  = User::where("type", "student")->with("student")->count();
     $companies = User::where("type", "company")->with("company")->count();
-
+    $vacancies = Vacant::with('company')->count();
     // [3] regresa el view
     return view('admin.dashboard')->with([
       "user" => $user,
@@ -57,6 +57,8 @@ class Admin extends Controller
       "chambers"  => $chambers,
       "students"  => $students,
       "companies" => $companies,
+	  //vacancies
+      "vacancies" => $vacancies,
     ]);
   }
 
