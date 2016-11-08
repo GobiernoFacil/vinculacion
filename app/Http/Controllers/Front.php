@@ -87,6 +87,6 @@ class Front extends Controller
   }
 
   public function privacy(){
-    
+    return view('frontend.privacy');
   }
 }
