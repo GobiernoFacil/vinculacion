@@ -121,10 +121,17 @@
 <!-- chambers -->
 <li>Cámaras</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_a') == 'chamber-update')
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-update' || $__env->yieldContent('breadcrumb_a') == 'chamber-add')
 <li><a href="{{ url('dashboard/camaras')}}">Cámaras</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-add')
+<li>Crear Cámara</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-update')
 <li>Editar Cámara</li>
 @endif
+
+
 
 @if ($__env->yieldContent('breadcrumb_a') == 'vacantes')
 <!-- vacancies -->
