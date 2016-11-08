@@ -22,8 +22,31 @@
 	<div class="col-sm-12">
 		@if($chambers->count())
 		<ul class="list">
+			<li class="clearfix titles">
+				<span class="col-sm-3 col-xs-4">Cámara</span>
+				<span class="col-sm-3 col-xs-3">Correo</span>
+				<span class="col-sm-3 col-xs-3">Estado</span>
+				<span class="col-sm-3 nomobile">Acciones</span>
+			</li>
 			@foreach($chambers as $chamber)
-			<li><a href="{{url("dashboard/camara/{$chamber->id}")}}"> {{$chamber->chamber->chamber_comercial_name}}</a></li>
+			<li class="clearfix">
+				<span class="col-sm-3 col-xs-4">
+					<a href="{{url("dashboard/camara/{$chamber->id}")}}" class="link_view"> {{$chamber->chamber->chamber_comercial_name}}</a>
+				</span>
+				<span class="col-sm-3 col-xs-3">
+					 {{$chamber->email}}
+				</span>
+				<span class="col-sm-3 col-xs-3">
+					{!! $chamber->enabled > 0 ? '<span class="enabled">Habilitado</span>' : '<span class="disabled">Deshabilitado</span>' !!}
+				</span>
+				<span class="col-sm-3 col-xs-12">
+					<a href="{{url("dashboard/camara/{$chamber->id}")}}" class="link_view">Ver</a>
+					<a href="{{url("dashboard/camara/editar/{$chamber->id}")}}" class="btn xs add">Editar</a>
+					<a href="{{url("dashboard/camara/{$chamber->id}")}}" class="btn xs">{{ $chamber->enabled > 0 ?  "Deshabilitar" : "Habilitar" }}</a>
+					<a  data-chamber="{{$chamber->chamber->chamber_comercial_name}}" href="{{url("dashboard/camara/eliminar/{$chamber->id}")}}" class="btn xs danger">Eliminar</a>
+					
+				</span>
+			</li>
 			@endforeach
 		</ul>
 		
@@ -34,4 +57,19 @@
 		{{ $chambers->links() }}
 	</div>
 </div>
+
+<script>
+  var dButtons = document.querySelectorAll(".danger");
+
+  if(dButtons.length){
+    for(var i =0; i < dButtons.length; i++){
+      dButtons[i].addEventListener("click", function(e){
+        var d = confirm("¿Deseas eliminar la cámara: " + this.getAttribute("data-chamber") + "?");
+        if(!d){
+          e.preventDefault();
+        }
+      });
+    }
+  }
+</script>
 @endsection
