@@ -110,7 +110,7 @@ class Admin extends Controller
     $chambers = User::where("type", "chamber")->with("chamber")->paginate($this->pageSize);
 
     // [3] regresa el view
-    return view('admin.chamber-list')->with([
+    return view('admin.chambers.chamber-list')->with([
       "user"     => $user,
       "chambers" => $chambers
     ]);

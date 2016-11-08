@@ -29,7 +29,7 @@ class AdminChambers extends Controller
     // [2] el usuario a editar
     $chamber = User::find($id);
     // [3] el view del perfil
-    return view("admin.chamber-profile")->with([
+    return view("admin.chambers.chamber-profile")->with([
       "user"    => $user,
       "chamber" => $chamber
     ]);
@@ -39,7 +39,7 @@ class AdminChambers extends Controller
     // [1] el usuario del sistema
     $user = Auth::user();
     // [3] el formulario de crear cámara
-    return view("admin.chamber-create")->with([
+    return view("admin.chambers.chamber-create")->with([
       "user" => $user
     ]);
   }
@@ -64,7 +64,7 @@ class AdminChambers extends Controller
     // [2] el usuario a editar
     $chamber = User::with("chamber")->find($id);
     // [3] el view para editar
-    return view("admin.chamber-update")->with([
+    return view("admin.chambers.chamber-update")->with([
       "user"    => $user,
       "chamber" => $chamber
     ]);
