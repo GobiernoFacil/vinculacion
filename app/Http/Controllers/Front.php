@@ -24,7 +24,7 @@ class Front extends Controller
   public function index(){
   	$vacancies_count = Vacant::where('status', 1)->count();
   	
-  	$companies		 = User::where("type", "company")->with("company")->take(4)->get();
+  	$companies		 = User::where(["type"=>"company", "enabled" =>1])->with("company")->take(4)->get();
   	$opds 			 = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
     
     return view("frontend.home")->with([
