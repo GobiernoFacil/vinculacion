@@ -8,9 +8,11 @@
 @endsection
 
 @section('content')
-
+<?php 
+  $is_reg  = !empty(old('type'));
+?>
 <!--modal login -->
-<div class="md-modal md-effect-5" id="modal-3">
+<div class="md-modal md-effect-5 {{$errors->count()  && !$is_reg ? "md-show" : ""}}" id="modal-3">
 	<div class="md-content">
 		<div class="row">
 			<div class="col-sm-3 col-sm-offset-9 right">
@@ -28,7 +30,7 @@
 </div>
 
 <!--modal registrar estudiantes-->
-<div class="md-modal md-effect-5 {{$errors->count() ? "md-show" : ""}}" id="modal-1">
+<div class="md-modal md-effect-5 {{$errors->count()  && $is_reg ? "md-show" : ""}}" id="modal-1">
 	<div class="md-content">
 		<div class="row">
 			<div class="col-sm-3 col-sm-offset-9 right">
