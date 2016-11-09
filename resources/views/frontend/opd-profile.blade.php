@@ -46,6 +46,8 @@
 		<div class="row">
 			<div class="col-sm-9">
 				<h2>Vacantes para estudiantes de esta universidad</h2>
+				<h3>Por el momento no hay vacantes para el perfil de los estudiantes de esta universidad.</h3>
+				<!--
 				<ul class="list">
 					<li class="clearfix titles">
 						<span class="col-sm-6 col-xs-6">Título</span>
@@ -67,32 +69,25 @@
 						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
 				</ul>
-								<div class="separator"></div>
+				-->
+				
+				<div class="separator"></div>
 
 				<h2>Convenios con empresas</h2>
-				<!--logos-->
+				@if($opd->contracts->count())
+				<!--convenios-->
 				<div class="row">
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/Bimbo_logo.png') }}">
-				</a>
-			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/gamesa_logo.png') }}">
-				</a>
-			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/SfMlMquK.jpg') }}">
-				</a>
-			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/PLSc2CBX_400x400.jpeg') }}">
-				</a>
-			</div>
-		</div>
+					@foreach($opd->contracts as $contract)
+					<div class="col-sm-3 col-xs-6">
+						<a href="{{url('empresa/'.$contract->company->id)}}" class="img_company">
+							<img src="{{ url('img/Bimbo_logo.png') }}">
+						</a>
+					</div>
+					@endforeach					
+				</div>
+				@else
+				<h3>No cuenta con convenios con empresas.</h3>
+				@endif
 			</div>
 			<div class="col-sm-3">
 				<div class="sidebar">
