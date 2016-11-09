@@ -29,7 +29,10 @@ class Front extends Controller
   }
 
   public function offers($page = 1){
-
+    $vacancies = Vacant::where('status', 1)->paginate($this->pageSize);
+    return view('frontend.vacancies-list')->with([
+      "vacancies" => $vacancies
+    ]);
   }
 
   public function offer($id){
