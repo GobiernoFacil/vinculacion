@@ -24,7 +24,7 @@
 			</div>
 			<div class="col-sm-2  col-xs-6">
 			  <h3>Vacantes</h3>
-			  <h2>0</h2>
+			  <h2>{{$company->vacancies->count()}}</h2>
 			</div>
 			<div class="col-sm-3  col-xs-6 right">
 			  <h3>Tamaño</h3>
@@ -55,58 +55,39 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h2>Vacantes de {{$company->nombre_comercial}} </h2>
+				<h2>Vacantes de {{$company->nombre_comercial}} ({{$company->vacancies->count()}})</h2>
 				<ul class="list">
 					<li class="clearfix titles">
 						<span class="col-sm-6 col-xs-6">Título</span>
 						<span class="col-sm-4 col-xs-6">Fecha</span>
 					</li>
+					@foreach($company->vacancies as $vacant)
 					<li class="clearfix">
-						<span class="col-sm-6 col-xs-6">EJECUTIVO(A) DE VENTAS</span>
-						<span class="col-sm-4 col-xs-6">18 de octubre, 2016</span>
+						<span class="col-sm-6 col-xs-6">{{$vacant->job}}</span>
+						<span class="col-sm-4 col-xs-6">{{date('d-m-Y', strtotime($vacant->updated_at))}}</span>
 						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
-					<li class="clearfix">
-						<span class="col-sm-6 col-xs-6">Quality Engineer</span>
-						<span class="col-sm-4 col-xs-6">18 de octubre, 2016</span>
-						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
-					</li>
-					<li class="clearfix">
-						<span class="col-sm-6 col-xs-6">Administrador de Proyectos</span>
-						<span class="col-sm-4 col-xs-6">17 de octubre, 2016</span>
-						<span class="col-sm-2 col-xs-12 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
-					</li>
+					@endforeach
 				</ul>
 				<div class="separator"></div>
 
 				<h2>Convenios con universidades</h2>
-				<!--logos-->
+				@if($company->contracts->count())
+				<!--convenios-->
 				<div class="row">
+					@foreach($company->contracts as $contract)
 					<div class="col-sm-3 col-xs-6 ">
-						<a href="" class="img_company">
+						<a href="{{url('universidad/'. $contract->opd->opd_id)}}" class="img_company">
 							<img src="{{ url('img/logos/default.png') }}">
-							Universidad
+							{{$contract->opd->opd_name}}
 						</a>
 					</div>
-					<div class="col-sm-3 col-xs-6">
-						<a href="" class="img_company">
-							<img src="{{ url('img/logos/default.png') }}">
-							Universidad
-						</a>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<a href="" class="img_company">
-							<img src="{{ url('img/logos/default.png') }}">
-							Universidad
-						</a>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<a href="" class="img_company">
-							<img src="{{ url('img/logos/default.png') }}">
-							Universidad
-						</a>
-					</div>
+					@endforeach
+					
 				</div>
+				@else
+				<h3>No cuenta con convenios.</h3>
+				@endif
 			</div>
 		</div>
 	</div>
