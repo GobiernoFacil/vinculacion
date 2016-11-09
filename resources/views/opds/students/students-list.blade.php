@@ -11,11 +11,14 @@
   <div class="col-sm-12">
     <h1>Estudiantes</h1>
   </div>
-    <div class="col-sm-3 col-sm-offset-6">
-  		<p><a href="{{url("tablero-opd/estudiante/crear")}}" class="btn add"> + Agregar Estudiante</a></p>
+    <div class="col-sm-5">
+  		<p><a href="{{url('tablero-opd/estudiantes/usuarios')}}" class="btn">Ver Estudiantes usuarios de la plataforma</a></p>
+  	</div>
+    <div class="col-sm-3 col-sm-offset-1">
+  		<p><a href="{{url('tablero-opd/estudiante/crear')}}" class="btn add"> + Agregar Estudiante</a></p>
   	</div>
     <div class="col-sm-3">
-  		<p><a href="{{url("tablero-opd/estudiantes/actualizar/xlsx")}}" class="btn add">+ Agregar varios estudiantes</a></p>
+  		<p><a href="{{url('tablero-opd/estudiantes/actualizar/xlsx')}}" class="btn add">+ Agregar varios estudiantes</a></p>
   	</div>
   	<div class="col-sm-12">
   		<p>Esta lista de estudiantes corresponde a los registrados en la Universidad, para ver los estudiantes usuarios de la plataforma de clic <a href="{{ url('tablero-opd/estudiantes/usuarios') }}">aquí</a>.</p>
@@ -44,9 +47,11 @@
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span>
       </span>
       <span class="col-sm-2 col-xs-4">{{$student->carrera}}</span>
-      <span class="col-sm-2 col-xs-6">{{$student->status}}</span>
+      <span class="col-sm-2 col-xs-6">{!! $student->user->enabled == 1 ? '<span class="enabled">Habilitado</span>' : '<span class="disabled">Deshabilitado</span>' !!}
+      </span>
       <span class="col-sm-2 col-xs-6 right">
-				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn xs">Editar</a>
+				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn add xs">Editar</a>      
+				<a href="{{url("tablero-opd/estudiante/activar/{$student->id}")}}" class="btn xs"> {{ $student->user->enabled == 1 ? "Deshabilitar" : "Habilitar"}}</a>
 				<a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
 			</span>
 

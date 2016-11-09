@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Auth;
 use App\Http\Requests\UpdateChamberProfileRequest;
+use App\models\ChamberCompany;
+use App\models\Vacant;
 class Chambers extends Controller
 {
 
@@ -97,14 +99,15 @@ class Chambers extends Controller
     $user     = Auth::user();
     $chamber  = $user->chamber;
 
-    // [2] empresas
-    $companies_num = $chamber->chamberCompany->count();
-    $companies     = $chamber->chamberCompany()->with('company')->paginate($this->pageSize);
+    // [2] vacantes
+    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
+    $companies_num = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->count();
+    $vacancies     = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->paginate($this->pageSize);
 
     // [3] regresa el view
-    return view('chambers.companies.companies-list')->with([
+    return view('chambers.vacancies.vacancy-list')->with([
       "user"     => $user,
-      "companies" => $companies,
+      "vacancies" => $vacancies,
       "c_num"     =>$companies_num
     ]);
   }

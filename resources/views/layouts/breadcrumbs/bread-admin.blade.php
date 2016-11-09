@@ -116,8 +116,27 @@
 </a></li>
 <li>Editar Perfil</li>
 @endif
-<!-- vacancies -->
+
+@if ($__env->yieldContent('breadcrumb_a') == 'chambers')
+<!-- chambers -->
+<li>Cámaras</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-update' || $__env->yieldContent('breadcrumb_a') == 'chamber-add' || $__env->yieldContent('breadcrumb_a') == 'chamber-view')
+<li><a href="{{ url('dashboard/camaras')}}">Cámaras</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-add')
+<li>Crear Cámara</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-update')
+<li>Editar Cámara</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'chamber-view')
+<li>Ver Cámara</li>
+@endif
+
+
 @if ($__env->yieldContent('breadcrumb_a') == 'vacantes')
+<!-- vacancies -->
 <li>Vacantes</li>
 @endif
 @if ($__env->yieldContent('breadcrumb_a') == 'vacante ver')

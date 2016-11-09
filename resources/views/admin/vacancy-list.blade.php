@@ -14,10 +14,10 @@
 	<div class="col-sm-12">
 	@if($vacancies->count())
 	  <ul class="list">
-	  	<li class="row titles">
+	  	<li class="clearfix titles">
 	  	</li>
 	  @foreach($vacancies as $vacancy)
-	    <li class="row">
+	    <li class="clearfix">
 	    	{{$vacancy}}
 	    </li>
 	  @endforeach

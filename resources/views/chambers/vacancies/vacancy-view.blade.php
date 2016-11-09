@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 @section('title', $vacancy->job)
 @section('description', 'Ver vacante en plataforma de Gobierno del Estado de Puebla')
-@section('bodyclass', 'chamber')
+@section('bodyclass', 'chamber vacantes')
 @section('breadcrumb', 'layouts.breadcrumb')
 @section('breadcrumb_c', 'vacante ver')
 
@@ -89,15 +89,13 @@
   </div>
   <div class="row">
   	<div class="col-sm-4">
-	  	@if($user->enabled)
-    	<p><a href="{{url("dashboard/vacante/habilitar/{$vacancy->id}")}}" class="btn add">{{$vacancy->status == 1 ? "Ocultar Vacante" : "Publicar Vacante" }}</a></p>
-    	@endif
+    	<p><a href="{{url("tablero-camara/vacante/habilitar/{$vacancy->company['id']}/{$vacancy->id}")}}" class="btn add">{{$vacancy->status == 1 ? "Ocultar Vacante" : "Publicar Vacante" }}</a></p>
   	</div>
   	<div class="col-sm-4">
-    	<p><a href="{{url("dashboard/vacante/editar/{$vacancy->id}")}}" class="btn">Editar Vacante</a></p>
+    	<p><a href="{{url("tablero-camara/vacante/editar/{$vacancy->company['id']}/{$vacancy->id}")}}" class="btn">Editar Vacante</a></p>
   	</div>
   	<div class="col-sm-4">
-    	<p><a data-job="{{$vacancy->job}}" href="{{url("dashboard/vacante/eliminar/{$vacancy->id}")}}" class="btn danger">Eliminar Vacante</a></p>
+    	<p><a data-job="{{$vacancy->job}}" href="{{url("tablero-camara/vacante/eliminar/{$vacancy->company['id']}/{$vacancy->id}")}}" class="btn danger">Eliminar Vacante</a></p>
   	</div>
   </div>
   <div class="separator"></div>

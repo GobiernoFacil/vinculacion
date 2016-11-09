@@ -49,7 +49,7 @@
             <span class="note">Correo: {{$vacancy->company['email']}}</span><br>
             <span class="note">{{$vacancy->company['phone']}}</span>
           </span>
-          <span class="col-sm-1 col-xs-2">{!! $vacancy->applicants()->count() > 0 ? '<a href="'. url('tablero-empresa/vacante/'. $vacancy->id). '#applicants">' . $vacancy->applicants()->count(). '</a>' : $vacancy->applicants()->count() !!}</span>
+          <span class="col-sm-1 col-xs-2">{!! $vacancy->applicants()->count() > 0 ? '<a href="'. url('dashboard/vacante/'. $vacancy->id). '#applicants">' . $vacancy->applicants()->count(). '</a>' : $vacancy->applicants()->count() !!}</span>
           <span class="col-sm-1 nomobile">{{$vacancy->interviews()->count()}}</span>
           <span class="col-sm-3 col-xs-12 right">
             <a href="{{url("dashboard/vacante/{$vacancy->id}")}}" class="btn add xs">Ver</a>

@@ -191,9 +191,9 @@ class AdminCompanies extends Controller
   }
 
   public function enableToogle($id){
-    $company = User::find($id);
-    $company->enabled = ! $company->enabled;
-    $company->save();
+    $company = Company::find($id);
+    $company->user->enabled = ! $company->user->enabled;
+    $company->user->update();
 
     return redirect("dashboard/empresa/{$id}");
   }

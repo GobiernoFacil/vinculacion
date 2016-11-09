@@ -43,6 +43,17 @@
 			@endif
 		</a>
 	</div>
+	<!-- Vacantes -->
+	<div class="col-sm-4">
+		<a class="box" href="{{url('dashboard/vacantes')}}">
+			<span><strong>Vacantes</strong></span>
+			@if($vacancies > 0 )
+			<span class="count">{{$vacancies}}</span>
+			@else
+			<span>No hay vacantes</span>
+			@endif
+		</a>
+	</div>
 	<!-- Empresas -->
 	<div class="col-sm-4">
 		<a class="box" href="{{url('dashboard/empresas')}}">
