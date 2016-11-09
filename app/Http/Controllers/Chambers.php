@@ -22,11 +22,14 @@ class Chambers extends Controller
   public function index(){
     $user = Auth::user();
     $chamber = $user->chamber;
+    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
     $companies_num = $chamber->chamberCompany->count();
+    $vacancies_num    = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->count();
     return view("chambers.dashboard")->with([
       "user" => $user,
       "chamber"  =>$chamber,
-      "c_num"     =>$companies_num
+      "c_num"     =>$companies_num,
+      "v_num" => $vacancies_num
     ]);
   }
 

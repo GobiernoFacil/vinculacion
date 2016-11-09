@@ -22,7 +22,7 @@
 			<div class="col-sm-4">
 				<a class="box" href="{{url('tablero-camara/vacantes')}}">
 					<span>Tus Vacantes</span>
-					<span class="count"></span>
+					<span class="count">{{$v_num}}</span>
 				</a>
 			</div>
 			<div class="col-sm-4">
@@ -40,11 +40,11 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			
+
 		</div>
 
 		<!--vacantes-->
 		<div class="row">
-			
+
 		</div>
 @endsection
