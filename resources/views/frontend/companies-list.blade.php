@@ -23,9 +23,9 @@
 	  </li>
     @foreach($companies as $company) 
     <li class="clearfix">
-    	<span class="col-sm-6 col-xs-5""><a href="{{url('empresa/' . $company->id)}}">{{$company->nombre_comercial}}</a></span>
-    	<span class="col-sm-3 col-xs-4">{{$company->zip}}</span>
-    	<span class="col-sm-3 col-xs-3">0</span>
+    	<span class="col-sm-6 col-xs-5""><a href="{{url('empresa/' . $company->company->id)}}" class="link_view"">{{$company->company->nombre_comercial}}</a></span>
+    	<span class="col-sm-3 col-xs-4">{{$company->company->zip}}</span>
+    	<span class="col-sm-3 col-xs-3">{{$company->company->vacancies->count()}}</span>
     </li>
     @endforeach
   </ul>

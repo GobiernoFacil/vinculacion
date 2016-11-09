@@ -78,16 +78,18 @@ class Front extends Controller
     ]);
   }
 
+  ///// companies list
   public function companies(Request $request){
     //$query
-    $companies = Company::orderBy('nombre_comercial', 'asc');
+    $companies = User::where(["type"=>"company", "enabled" =>1])->with("company")->orderBy('id', 'asc');
+    
     if($request->input('query')){
       $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('query')}%");
     }
     $companies = $companies->paginate($this->pageSize);
 
     // [3] regresa el view
-    return view('frontend.company-list')->with([
+    return view('frontend.companies-list')->with([
       "companies" => $companies
     ]);
   }
