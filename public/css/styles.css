@@ -1249,6 +1249,12 @@ header {
     .home .signup p strong {
       display: block;
       font-size: 50px; }
+  .home .signup p a {
+    background: transparent;
+    display: inline-block;
+    padding: 0;
+    line-height: 46px;
+    font-size: 24px; }
   .home .signup a {
     background: #0098b9;
     font: 700 20px "Oxygen", Helvetica, Arial, sans-serif;
