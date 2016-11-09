@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\User;
 use App\models\Company;
 use App\models\Opd;
+use App\models\OpenData;
 use App\models\Vacant;
 
 class Front extends Controller
@@ -83,7 +84,8 @@ class Front extends Controller
   }
 
   public function openData(){
-
+    $opendata = OpenData::all();
+    return view("frontend.open-data")->with(["openData" => $opendata]);
   }
 
   public function privacy(){

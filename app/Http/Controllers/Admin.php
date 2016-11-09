@@ -14,6 +14,7 @@ use App\models\AcademicOffer;
 use App\models\Chamber;
 use App\models\Company;
 use App\models\Contract;
+use App\models\OpenData;
 use App\models\Opd;
 use App\models\Student;
 use App\models\Vacant;
@@ -332,6 +333,13 @@ class Admin extends Controller
        $admin->delete();
      }
      return redirect("dashboard/administradores")->with("message",'Usuario eliminado correctamente');
+  }
+
+  //
+  //
+  //
+  public function make_open_data(){
+
   }
 
 }
