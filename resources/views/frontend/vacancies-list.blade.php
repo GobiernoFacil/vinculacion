@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Empleo Abierto')
+@section('title', 'Vacantes disponibles en Empleo Abierto')
 @section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
 @section('bodyclass', 'vacancies')
 

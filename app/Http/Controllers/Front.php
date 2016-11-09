@@ -36,7 +36,15 @@ class Front extends Controller
   }
 
   public function offer($id){
-
+    $vacancy = Vacant::find($id);
+    if($vacancy && $vacancy->status){
+      return view("frontend.vacancy-info")->with([
+        "vacancy" => $vacancy,
+      ]);
+    }
+    else{
+      return redirect('oferta-laboral');
+    }
   }
 
   // Las opds
