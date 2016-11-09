@@ -22,14 +22,20 @@ class Front extends Controller
   //
   //
   public function index(){
-  	$opds = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
+  	$vacancies_count = Vacant::where('status', 1)->count();
+  	
+  	$companies		 = User::where("type", "company")->with("company")->take(4)->get();
+  	$opds 			 = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
+    
     return view("frontend.home")->with([
-      "opds" => $opds
+      "opds" 			=> $opds,
+      "vacancies_count"	=> $vacancies_count,
+      "companies"		=> $companies
     ]);
   }
 
   public function offers($page = 1){
-    $vacancies = Vacant::where('status', 1)->paginate($this->pageSize);
+    $vacancies = Vacant::where('status', 1)->orderBy('updated_at', 'desc')->paginate($this->pageSize);
     return view('frontend.vacancies-list')->with([
       "vacancies" => $vacancies
     ]);

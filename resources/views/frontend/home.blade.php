@@ -76,7 +76,7 @@
 	<div class="row">
 		<div class="col-sm-4 col-xs-6 col-sm-offset-2">
 			<div class="signup">
-				<p><strong>1200</strong> vacantes, envía tu CV</p>
+				<p><a href="{{url('oferta-laboral')}}"><strong>{{$vacancies_count}}</strong> vacantes</a>, envía tu CV</p>
 				<a class="md-trigger"  data-modal="modal-1">Regístrate</a>
 			</div>
 		</div>
@@ -96,37 +96,29 @@
 				<p>Si estudias o eres egresado de alguna Universidad Politécnica del Estado de Puebla, agrega tu CV.</p>
 			</div>
 		</div>
+		
+			
+		
 		<!--logos-->
 		<div class="row">
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/Bimbo_logo.png') }}">
-					195 vacantes
+			@foreach($companies as $company)
+			<div class="col-sm-3 col-xs-6">				
+				<a href="{{url('empresa/'.$company->company->id)}}" class="img_company">
+					{{ $company->company->nombre_comercial}}
+					<img src="
+					{{ url(empty($company->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $company->company->logo) }}">
+					{{ $company->company->vacancies->count() == 1 ?  $company->company->vacancies->count() . " vacante" :  $company->company->vacancies->count() . " vacantes"}} 
 				</a>
 			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/gamesa_logo.png') }}">
-					646 vacantes
-				</a>
-			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/SfMlMquK.jpg') }}">
-					18 vacantes
-				</a>
-			</div>
-			<div class="col-sm-3 col-xs-6">
-				<a href="" class="img_company">
-					<img src="{{ url('img/PLSc2CBX_400x400.jpeg') }}">
-					237 vacantes
-				</a>
-			</div>
+			@endforeach
 		</div>
 		<!--btn all-->
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-4">
+			<div class="col-sm-3 col-sm-offset-3">
 				<a href="{{url('empresas')}}" class="btn">Ver todas las empresas</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="{{url('oferta-laboral')}}" class="btn add">Ver todas las vacantes</a>
 			</div>
 		</div>
 	</section>
