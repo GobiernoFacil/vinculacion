@@ -3,8 +3,11 @@
 <!-- vacancies -->
 <li>Vacantes</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_e') == 'vacante ver')
+@if ($__env->yieldContent('breadcrumb_e') == 'vacante ver' || $__env->yieldContent('breadcrumb_e') == 'vacantes aplicadas')
 <li><a href="{{ url('tablero-estudiante/vacantes')}}">Vacantes</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_e') == 'vacantes aplicadas')
+<li>Vacantes Aplicadas</li>
 @endif
 @if ($__env->yieldContent('breadcrumb_e') == 'vacante ver')
 <li>Ver Vacante</li>
