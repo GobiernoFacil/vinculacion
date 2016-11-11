@@ -32,6 +32,21 @@ class StudentVacancies extends Controller
       "vacancies" => $vacancies
     ]);
   }
+  
+  public function vacanciesApplied(Request $request){
+    // [1] el usuario del sistema
+    $user      = Auth::user();
+    // [2] la empresa
+    $student   = $user->student;
+    // [3] las vacantes
+	$applications	= $student->applications()->get();
+    // [4] regresa el view
+    return view('students.vacancies.vacancies_applied')->with([
+      "user"      => $user,
+      "student"   => $student,
+      "applications" => $applications
+    ]);
+  }
 
   public function vacancy($id){
     $user    = Auth::user();
