@@ -306,6 +306,7 @@ Route::group(['middleware' => ['auth']], function () {
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
     Route::group(['middleware' => 'verify:tablero-estudiante' ], function(){
+      Route::get("tablero-estudiante/vacantes-aplicadas", "StudentVacancies@vacanciesApplied");
       Route::get("tablero-estudiante/vacante/aplicar/{id}", "StudentVacancies@apply");
       Route::get("tablero-estudiante/vacante/declinar/{id}", "StudentVacancies@decline");
       Route::get("tablero-estudiante/entrevistas", "StudentVacancies@interviews");
