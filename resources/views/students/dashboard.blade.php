@@ -27,7 +27,7 @@
 			<!--tus entrevistas aplicadas-->
 			<div class="col-sm-6">
 				@if($applications > 0)
-				<a class="box" href="{{url('tablero-estudiante/vacantes')}}">
+				<a class="box" href="{{url('tablero-estudiante/vacantes-aplicadas')}}">
 					<span>Tus Vacantes Aplicadas</span>
 					<span class="count">{{$applications}}</span>
 				</a>
