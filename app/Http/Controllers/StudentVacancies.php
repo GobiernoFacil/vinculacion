@@ -9,6 +9,7 @@ use Auth;
 
 use App\models\Vacant;
 use App\models\Applicant;
+use App\models\Interview;
 class StudentVacancies extends Controller
 {
   public $pageSize = 10;
@@ -98,9 +99,27 @@ class StudentVacancies extends Controller
   }
 
   public function interviews(Request $request){
-  }
+	$user    = Auth::user();
+    $student = $user->student;
+    $interviews = $student->interviews;
+    
+    return view('students.interviews.interviews')->with([
+      "user"      => $user,
+      "student"   => $student,
+      "interviews" => $interviews
+	]);  
+   }
 
   public function interview($id){
-
+  	$user    	= Auth::user();
+    $student 	= $user->student;
+    $interview  = Interview::where('id', $id)->where("student_id", $student->id)->get();
+    
+    return view('students.interviews.interview')->with([
+      "user"      => $user,
+      "student"   => $student,
+      "interview" => $interview
+	]);
+    
   }
 }
