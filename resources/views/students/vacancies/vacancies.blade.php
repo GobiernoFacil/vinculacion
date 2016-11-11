@@ -44,7 +44,14 @@
           <span class="col-sm-2  col-xs-12 right">
             <a href="{{url("tablero-estudiante/vacante/{$vacancy->id}")}}" class="btn edit xs">Ver</a>
             @if($user->enabled)
-				<a href="{{url("tablero-estudiante/vacante/aplicar/{$vacancy->id}")}}" class="btn xs">Aplicar</a>
+            	@foreach($student->applications as $application)
+            	@if($application->vacant_id == $vacancy->id)
+            		<br><span class="enabled">Aplicada</span>
+					<a href="{{url("tablero-estudiante/vacante/declinar/{$vacancy->id}")}}" class="btn xs danger">Cancelar</a> 
+				@else
+				
+				@endif 
+				@endforeach
             @endif
           </span>
         </li>
