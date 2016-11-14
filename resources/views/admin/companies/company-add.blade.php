@@ -12,7 +12,7 @@
 </div>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-{!! Form::model("",['url' => "dashboard/empresa/crear", "class" => "form-horizontal"]) !!}
+{!! Form::model("",['url' => "dashboard/empresa/crear", "class" => "form-horizontal",'files'=>true]) !!}
 
 <!-- cosas del user -->
 <fieldset>
@@ -140,6 +140,14 @@
       <strong>{{$errors->first('cemail')}}</strong>
     @endif
   </p>
+</fieldset>
+
+<!-- logo -->
+<fieldset>
+  <h5>Logo</h5>
+  <p>
+  {{Form::file('logo', ['class' => ''])}}
+</p>
 </fieldset>
 
 <p>{{Form::submit('Crear',["class" => "btn"])}}</p>

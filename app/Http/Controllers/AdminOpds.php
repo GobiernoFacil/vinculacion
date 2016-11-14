@@ -15,6 +15,7 @@ use App\models\Opd;
 // FormValidators
 use App\Http\Requests\UpdateOpdRequest;
 use App\Http\Requests\SaveOpdRequest;
+use File;
 class AdminOpds extends Controller
 {
   // En esta carpeta se guardan las imágenes de los logos
@@ -156,6 +157,10 @@ class AdminOpds extends Controller
     $path  = public_path(self::UPLOADS);
     // [ SAVE THE IMAGE ]
     if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($opd->logo){
+        File::delete(self::UPLOADS.'/'.$opd->logo);
+      }
       $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
       $request->file('logo')->move($path, $name);
       $opd->logo = $name;

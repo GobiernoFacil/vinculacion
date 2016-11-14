@@ -130,6 +130,7 @@
         {{Form::file('logo', ['class' => ''])}}
       </p>
       </fieldset>
+
       <p>{{Form::submit('Crear',["class" => "btn"])}}</p>
 
       <!-- se cierra el form -->
