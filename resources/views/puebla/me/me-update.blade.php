@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($user, ['url' => 'tablero-secotrade/yo/editar', "class" => "form-horizontal"]) !!}
+      {!! Form::model($user, ['url' => 'tablero-secotrade/yo/editar', "class" => "form-horizontal",'files'=>true]) !!}
 
       <!-- cosas del user -->
       <fieldset>

@@ -131,6 +131,13 @@
         {{Form::file('logo', ['class' => ''])}}
       </p>
       </fieldset>
+      <!-- banner -->
+      <fieldset>
+        <h5>Banner</h5>
+        <p>
+        {{Form::file('banner', ['class' => ''])}}
+      </p>
+      </fieldset>
       <p>{{Form::submit('Actualizar',["class" => "btn"])}}</p>
 
       <!-- se cierra el form -->

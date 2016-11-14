@@ -20,6 +20,7 @@ class AdminOpds extends Controller
 {
   // En esta carpeta se guardan las imágenes de los logos
   const UPLOADS = "img/logos";
+  const BANNERS = "img/banners";
   /*
    * O P D S
    * ----------------------------------------------------------------
@@ -72,6 +73,15 @@ class AdminOpds extends Controller
           $opd->logo = $name;
           $opd->save();
         }
+        //banner
+        $path  = public_path(self::BANNERS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('banner') && $request->file('banner')->isValid()){
+          $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          $request->file('banner')->move($path, $name);
+          $opd->banner = $name;
+          $opd->save();
+        }
         $opd->contact()->firstOrCreate([
           "name"  => $request->cname,
           "email" => $request->cemail,
@@ -88,6 +98,15 @@ class AdminOpds extends Controller
           $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
           $request->file('logo')->move($path, $name);
           $opd->logo = $name;
+          $opd->save();
+        }
+        //banner
+        $path  = public_path(self::BANNERS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('banner') && $request->file('banner')->isValid()){
+          $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          $request->file('banner')->move($path, $name);
+          $opd->banner = $name;
           $opd->save();
         }
         $opd->contact()->firstOrCreate([
@@ -164,6 +183,19 @@ class AdminOpds extends Controller
       $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
       $request->file('logo')->move($path, $name);
       $opd->logo = $name;
+      $opd->save();
+    }
+    //logo
+    $path  = public_path(self::BANNERS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('banner') && $request->file('banner')->isValid()){
+      //[erase image]
+      if($opd->banner){
+        File::delete(self::BANNERS.'/'.$opd->banner);
+      }
+      $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+      $request->file('banner')->move($path, $name);
+      $opd->banner = $name;
       $opd->save();
     }
 
