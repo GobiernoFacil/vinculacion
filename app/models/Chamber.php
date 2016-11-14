@@ -11,7 +11,7 @@ class Chamber extends Model
                            'chamber_activity_sector','chamber_sector','chamber_description','chamber_ceo','chamber_street',
                            'chamber_ext_number','chamber_int_number','chamber_zip','chamber_colony','chamber_state','chamber_city',
                            'chamber_web','chamber_contact_name','chamber_contact_position','chamber_contact_email',
-                           'chamber_contact_phone','chamber_contact_mobile'];
+                           'chamber_contact_phone','chamber_contact_mobile','chamber_logo'];
 
     // modelos relacionados
     function companies(){
