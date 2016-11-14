@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
+use File;
 // models
 use App\User;
 
@@ -14,6 +15,8 @@ class Opds extends Controller
 {
   // el tamaño de la paginación
   public $pageSize = 10;
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
 
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
@@ -181,6 +184,19 @@ class Opds extends Controller
      $opd->update($request->only(['address', 'zip', 'city', 'state', 'url']));
      $opd->opd_name = $request->name;
      $opd->save();
+     //logo
+     $path  = public_path(self::UPLOADS);
+     // [ SAVE THE IMAGE ]
+     if($request->hasFile('logo') && $request->file('logo')->isValid()){
+       //[erase image]
+       if($opd->logo){
+         File::delete(self::UPLOADS.'/'.$opd->logo);
+       }
+       $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+       $request->file('logo')->move($path, $name);
+       $opd->logo = $name;
+       $opd->save();
+     }
      return redirect("tablero-opd/yo")->with('message','Perfil actualizado correctamente');
 
   }

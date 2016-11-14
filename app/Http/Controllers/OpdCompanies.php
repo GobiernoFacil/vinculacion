@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use Auth;
 use Artisan;
-
+use File;
 // models
 use App\User;
 use App\models\Company;
@@ -20,6 +20,9 @@ use App\Http\Requests\OpdUpdateCompaniesRequest;
 
 class OpdCompanies extends Controller
 {
+
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
   /*
    * E M P R E S A S
    * ----------------------------------------------------------------
@@ -47,6 +50,15 @@ class OpdCompanies extends Controller
     $company  = Company::firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
     $company->creator_id = $user->opd->id;
     $company->save();
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
     $company->contact()->firstOrCreate(
       ["name"  => $request->cname,
         "email" => $request->cemail,
@@ -69,6 +81,19 @@ class OpdCompanies extends Controller
     $user        = Auth::user();
     $company     = $user->opd->companies->find($id);
     $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($company->logo){
+        File::delete(self::UPLOADS.'/'.$company->logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
     $company->contact->update(
       ["name"  => $request->cname,
         "email" => $request->cemail,

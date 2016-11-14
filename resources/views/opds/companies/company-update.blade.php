@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($company->company, ['url' => "tablero-opd/empresa/editar/{$company->id}", "class" => "form-horizontal"]) !!}
+      {!! Form::model($company->company, ['url' => "tablero-opd/empresa/editar/{$company->id}", "class" => "form-horizontal",'files'=>true]) !!}
 
       <!-- cosas de su objeto -->
       <fieldset>
@@ -124,6 +124,13 @@
         </p>
       </fieldset>
 
+      <!-- logo -->
+      <fieldset>
+        <h5>Logo</h5>
+        <p>
+        {{Form::file('logo', ['class' => ''])}}
+      </p>
+      </fieldset>
       <p>{{Form::submit('Actualizar',['class' => 'btn'])}}</p>
 
       <!-- se cierra el form -->
