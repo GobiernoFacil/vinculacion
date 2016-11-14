@@ -15,8 +15,12 @@ use App\models\Opd;
 // FormValidators
 use App\Http\Requests\UpdateOpdRequest;
 use App\Http\Requests\SaveOpdRequest;
+use File;
 class AdminOpds extends Controller
 {
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
+  const BANNERS = "img/banners";
   /*
    * O P D S
    * ----------------------------------------------------------------
@@ -61,6 +65,23 @@ class AdminOpds extends Controller
         exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
         // [3] se crea el objeto universidad
         $opd = $user->opd()->firstOrCreate($request->only(['opd_name', 'url', 'city', 'state', 'address', 'zip']));
+        $path  = public_path(self::UPLOADS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('logo') && $request->file('logo')->isValid()){
+          $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+          $request->file('logo')->move($path, $name);
+          $opd->logo = $name;
+          $opd->save();
+        }
+        //banner
+        $path  = public_path(self::BANNERS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('banner') && $request->file('banner')->isValid()){
+          $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          $request->file('banner')->move($path, $name);
+          $opd->banner = $name;
+          $opd->save();
+        }
         $opd->contact()->firstOrCreate([
           "name"  => $request->cname,
           "email" => $request->cemail,
@@ -70,6 +91,24 @@ class AdminOpds extends Controller
         //[1] Crear universidad sin usuario
         $opd = new Opd($request->only(['opd_name', 'url', 'city', 'state', 'address', 'zip']));
         $opd->save();
+        //logo
+        $path  = public_path(self::UPLOADS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('logo') && $request->file('logo')->isValid()){
+          $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+          $request->file('logo')->move($path, $name);
+          $opd->logo = $name;
+          $opd->save();
+        }
+        //banner
+        $path  = public_path(self::BANNERS);
+        // [ SAVE THE IMAGE ]
+        if($request->hasFile('banner') && $request->file('banner')->isValid()){
+          $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          $request->file('banner')->move($path, $name);
+          $opd->banner = $name;
+          $opd->save();
+        }
         $opd->contact()->firstOrCreate([
           "name"  => $request->cname,
           "email" => $request->cemail,
@@ -133,7 +172,32 @@ class AdminOpds extends Controller
 
     // update university
     $opd->update($request->only(['opd_name', 'url', 'city', 'state', 'address', 'zip']));
-
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($opd->logo){
+        File::delete(self::UPLOADS.'/'.$opd->logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $opd->logo = $name;
+      $opd->save();
+    }
+    //logo
+    $path  = public_path(self::BANNERS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('banner') && $request->file('banner')->isValid()){
+      //[erase image]
+      if($opd->banner){
+        File::delete(self::BANNERS.'/'.$opd->banner);
+      }
+      $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+      $request->file('banner')->move($path, $name);
+      $opd->banner = $name;
+      $opd->save();
+    }
 
     // update university contact
     $opd->contact->update([

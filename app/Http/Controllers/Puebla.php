@@ -8,9 +8,13 @@ use App\Http\Requests;
 
 use Auth;
 use Hash;
+use File;
 use App\Http\Requests\UpdatePueblaProfileRequest;
 class Puebla extends Controller
 {
+
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
   /*
    * D A S H B O A R D
    * ----------------------------------------------------------------

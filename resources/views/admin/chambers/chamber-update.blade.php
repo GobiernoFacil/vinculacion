@@ -11,8 +11,8 @@
 		<!-- Formulario de cámara -->
 		<h1>Editar Cámara</h1>
 	</div>
-    <div class="col-sm-6 col-sm-offset-3">	
-		{!! Form::model($chamber, ['url' => "dashboard/camara/editar/{$chamber->id}", "class" => "form-horizontal"]) !!}
+    <div class="col-sm-6 col-sm-offset-3">
+		{!! Form::model($chamber, ['url' => "dashboard/camara/editar/{$chamber->id}", "class" => "form-horizontal",'files'=>true]) !!}
 
 			<!-- cosas del user -->
 			<fieldset>
@@ -23,7 +23,7 @@
 			    <strong>{{$errors->first('name')}}</strong>
 			  @endif
 			</p>
-			
+
 			<p>
 			  <label>Correo</label>
 			  {{Form::text('email', null, ["class" => "form-control"])}}
@@ -31,7 +31,7 @@
 			    <strong>{{$errors->first('email')}}</strong>
 			  @endif
 			</p>
-			
+
 			<p>
 			  <label>Contraseña</label>
 			  {{Form::password('password', ["class" => "form-control"])}}
@@ -40,7 +40,7 @@
 			  @endif
 			</p>
 			</fieldset>
-			
+
 			<!-- cosas de su objeto -->
 			<fieldset>
 			  <p>
@@ -58,9 +58,17 @@
 			  @endif
 			</p>
 			</fieldset>
-			
+
+			<!-- logo -->
+			<fieldset>
+				<h5>Logo</h5>
+				<p>
+				{{Form::file('logo', ['class' => ''])}}
+			</p>
+			</fieldset>
+
 			<p>{{Form::submit('Actualizar',["class" => "btn"])}}</p>
-			
+
 		<!-- se cierra el form -->
 		{!! Form::close() !!}
 	</div>

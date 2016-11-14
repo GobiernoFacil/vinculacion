@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($chamber, ['url' => 'tablero-camara/yo/editar', "class" => "form-horizontal"]) !!}
+      {!! Form::model($chamber, ['url' => 'tablero-camara/yo/editar', "class" => "form-horizontal",'files'=> true]) !!}
       <!-- cosas del user -->
       <fieldset>
         <p>
@@ -106,7 +106,13 @@
         </p>
       </fieldset>
 
-
+      <!-- logo -->
+      <fieldset>
+        <h5>Logo</h5>
+        <p>
+        {{Form::file('logo', ['class' => ''])}}
+      </p>
+      </fieldset>
 
       <p>{{Form::submit('Actualizar', ['class' => "btn"])}}</p>
 

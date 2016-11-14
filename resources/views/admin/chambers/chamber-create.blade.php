@@ -12,7 +12,7 @@
 		<h1>Crear Cámara</h1>
 	</div>
     <div class="col-sm-6 col-sm-offset-3">
-		{!! Form::open(['url' => "dashboard/camara/crear", "class" => "form-horizontal"]) !!}
+		{!! Form::open(['url' => "dashboard/camara/crear", "class" => "form-horizontal",'files'=>true]) !!}
 
 		<!-- cosas del user -->
 		<fieldset>
@@ -23,7 +23,7 @@
 			    <strong>{{$errors->first('name')}}</strong>
 			  @endif
 			</p>
-			
+
 			<p>
 			  <label>Correo</label>
 			  {{Form::text('email',null, ["class" => "form-control"])}}
@@ -31,7 +31,7 @@
 			    <strong>{{$errors->first('email')}}</strong>
 			  @endif
 			</p>
-			
+
 			<p>
 			  <label>Contraseña</label>
 			  {{Form::password('password', ["class" => "form-control"])}}
@@ -50,7 +50,7 @@
 			    <strong>{{$errors->first('chamber_comercial_name')}}</strong>
 			  @endif
 			</p>
-			
+
 			<p>
 			  <label>RFC</label>
 			  {{Form::text('chamber_rfc',null, ["class" => "form-control"])}}
@@ -60,6 +60,14 @@
 			</p>
 		</fieldset>
 
+
+		<!-- logo -->
+		<fieldset>
+			<h5>Logo</h5>
+			<p>
+			{{Form::file('logo', ['class' => ''])}}
+		</p>
+		</fieldset>
 		<p>{{Form::submit('Crear',["class" => "btn"])}}</p>
 
 		<!-- se cierra el form -->

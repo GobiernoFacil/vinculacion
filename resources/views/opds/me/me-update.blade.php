@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model($user, ['url' => 'tablero-opd/yo/editar', "class" => "form-horizontal"]) !!}
+      {!! Form::model($user, ['url' => 'tablero-opd/yo/editar', "class" => "form-horizontal",'files'=>true]) !!}
 
       <p>
         <label>Nombre</label>
@@ -79,7 +79,13 @@
         @endif
       </p>
 
-
+      <!-- logo -->
+      <fieldset>
+        <h5>Logo</h5>
+        <p>
+        {{Form::file('logo', ['class' => ''])}}
+      </p>
+      </fieldset>
 
 
 

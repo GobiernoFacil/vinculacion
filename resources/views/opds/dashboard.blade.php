@@ -18,7 +18,11 @@
 				<div class="box">
 					<div class="col-sm-4">
 						<div class="figure">
+							@if($user->opd->logo)
+							<img src='{{url("img/logos/{$user->opd->logo}")}}'>
+							@else
 							<i class="material-icons">location_city</i>
+							@endif
 						</div>
 					</div>
 					<div class="col-sm-8">

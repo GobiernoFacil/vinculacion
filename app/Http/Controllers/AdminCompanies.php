@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Auth;
 use Artisan;
 use Hash;
+use File;
 // models
 use App\User;
 use App\models\Company;
@@ -19,6 +20,9 @@ use App\Http\Requests\SaveCompanyRequest;
 use App\Http\Requests\AddCompaniesByFile;
 class AdminCompanies extends Controller
 {
+
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
   /*
   * E M P R E S A S
   * ----------------------------------------------------------------
@@ -64,6 +68,16 @@ class AdminCompanies extends Controller
     exec("php {$path}/artisan email:send suscribe {$user->id} > /dev/null &");
     // [3] se crea el objeto empresa
     $company = $user->company()->firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
+
     $company->contact()->firstOrCreate([
       "name"  => $request->cname,
       "email" => $request->cemail,
@@ -73,6 +87,16 @@ class AdminCompanies extends Controller
     //[1] Crear empresa sin usuario
     $company = new Company($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','size']));
     $company->save();
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
+
     $company->contact()->firstOrCreate([
       "name"  => $request->cname,
       "email" => $request->cemail,
@@ -138,7 +162,19 @@ class AdminCompanies extends Controller
     // update company
     $company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
 
-
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($company->logo){
+        File::delete(self::UPLOADS.'/'.$company->logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
     // update company contact
     $company->contact->update([
       "name"  => $request->cname,
