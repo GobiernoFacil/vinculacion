@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
-
+use File;
 use Artisan;
 use App\models\Company;
 use App\models\ChamberCompany;
 
 class ChamberCompanies extends Controller
 {
+
+    // En esta carpeta se guardan las imágenes de los logos
+    const UPLOADS = "img/logos";
   /*
    * E M P R E S A S
    * ----------------------------------------------------------------
@@ -39,12 +42,23 @@ class ChamberCompanies extends Controller
     $user     = Auth::user();
     $chamber  = $user->chamber;
     $company  = Company::firstOrCreate($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $company->logo = $name;
+      $company->save();
+    }
+
     $company->contact()->firstOrCreate(
       ["name"  => $request->cname,
         "email" => $request->cemail,
         "phone" => $request->cphone,
       ]);
     $chamberCompany = ChamberCompany::firstOrCreate(['chamber_id'=>$chamber->id,'company_id'=>$company->id]);
+
     return redirect("tablero-camara/empresa/ver/$company->id")->with("message",'Empresa creada correctamente');
   }
 
@@ -63,6 +77,19 @@ class ChamberCompanies extends Controller
     $chamber     = $user->chamber;
     $element     = ChamberCompany::where('chamber_id',$chamber->id)->where('company_id',$id)->with('company')->firstOrCreate([]);
     $element->company->update($request->only(['rfc', 'razon_social', 'nombre_comercial', 'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']));
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($element->company->logo){
+        File::delete(self::UPLOADS.'/'.$element->company->logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $element->company->logo = $name;
+      $element->company->save();
+    }
     $element->company->contact->update(
       ["name"  => $request->cname,
         "email" => $request->cemail,

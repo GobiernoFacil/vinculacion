@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use File;
 use Auth;
 use App\Http\Requests\UpdateChamberProfileRequest;
 use App\models\ChamberCompany;
@@ -13,6 +13,8 @@ use App\models\Vacant;
 class Chambers extends Controller
 {
 
+    // En esta carpeta se guardan las imágenes de los logos
+    const UPLOADS = "img/logos";
   // El tamaño de la paginación
   public $pageSize = 10;
   /*
@@ -61,6 +63,20 @@ class Chambers extends Controller
     $chamber = $user->chamber;
     // update company
     $chamber->update($request->only(['chamber_rfc', 'chamber_comercial_name', 'chamber_street', 'chamber_zip','chamber_web','chamber_city','chamber_state']));
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($chamber->chamber_logo){
+        File::delete(self::UPLOADS.'/'.$chamber->chamber_logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $chamber->chamber_logo = $name;
+      $chamber->save();
+    }
+
     if(!$chamber->contact){
       $chamber = $chamber->contact()->firstOrCreate([]);
       // update company contact

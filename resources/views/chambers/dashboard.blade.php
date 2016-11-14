@@ -30,7 +30,7 @@
 					<h3><i class="material-icons">person</i> Tu Perfil</h3>
 					<div class="separator"></div>
 					<div class="col-sm-4">
-						<img src="{{ url(empty($chamber->logo) ? 'img/logos/default.png' : 'img/logos/' . $chamber->logo) }}">
+						<img src="{{ url(empty($chamber->chamber_logo) ? 'img/logos/default.png' : 'img/logos/' . $chamber->chamber_logo) }}">
 					</div>
 					<div class="col-sm-8">
 						<h3>{{$chamber->chamber_comercial_name}}</h3>
