@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use Hash;
-
+use File;
 // models
 use App\User;
 use App\models\Vacant;
@@ -18,6 +18,8 @@ use App\models\Contract;
 use App\Http\Requests\UpdateCompanyRequest;
 class Companies extends Controller
 {
+  // En esta carpeta se guardan las imágenes de los logos
+  const UPLOADS = "img/logos";
   public $pageSize = 10;
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
@@ -102,14 +104,28 @@ class Companies extends Controller
     // update company
     $company_data = $request->only(['rfc', 'razon_social', 'nombre_comercial',
       'address', 'zip', 'phone','email','giro_comercial','alcance','type','size']);
-
+/*
     if($request->hasFile('logo')) {
       $name = str_random(40);
       $request->file('logo')->move(public_path('img/logos'), $name);
       $company_data['logo'] = $name;
-    }
+    }*/
 
     $user->company->update($company_data);
+    //logo
+    $path  = public_path(self::UPLOADS);
+    // [ SAVE THE IMAGE ]
+    if($request->hasFile('logo') && $request->file('logo')->isValid()){
+      //[erase image]
+      if($user->company->logo){
+        File::delete(self::UPLOADS.'/'.$user->company->logo);
+      }
+      $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+      $request->file('logo')->move($path, $name);
+      $user->company->update(['logo'=>$name]);
+    }
+
+
      if(!$user->company->contact){
       $user =  $user->company->contact()->firstOrCreate([]);
       // update company contact
