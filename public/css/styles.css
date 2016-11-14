@@ -1174,6 +1174,7 @@ header {
       display: inline-block;
       width: 32%; }
     header ul a,
+    header ul a:link,
     header ul a:visited {
       background: #005291;
       color: white;
@@ -1183,21 +1184,27 @@ header {
       height: 117px;
       text-align: center; }
       header ul a span,
+      header ul a:link span,
       header ul a:visited span {
         display: block; }
       header ul a:hover,
+      header ul a:link:hover,
       header ul a:visited:hover {
         background: #004477; }
       header ul a.register,
+      header ul a:link.register,
       header ul a:visited.register {
         background: #0098b9; }
         header ul a.register:hover,
+        header ul a:link.register:hover,
         header ul a:visited.register:hover {
           background: #00add3; }
       header ul a.vacancies,
+      header ul a:link.vacancies,
       header ul a:visited.vacancies {
         background: #eb7c23; }
         header ul a.vacancies:hover,
+        header ul a:link.vacancies:hover,
         header ul a:visited.vacancies:hover {
           background: #e06f14; }
 
