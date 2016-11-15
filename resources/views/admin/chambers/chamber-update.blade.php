@@ -64,6 +64,9 @@
 				<h5>Logo</h5>
 				<p>
 				{{Form::file('logo', ['class' => ''])}}
+				@if($chamber->chamber->chamber_logo)
+			</br><strong>Ya cuenta con un logo, puedes seleccionar otro y eliminar el actual.</strong>
+				@endif
 			</p>
 			</fieldset>
 
