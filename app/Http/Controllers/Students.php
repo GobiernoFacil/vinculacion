@@ -75,18 +75,20 @@ class Students extends Controller
   }
 
   /*
-  * C V
+  * O P D
   * ----------------------------------------------------------------
   */
-  public function viewCV($id){
-
+  public function opd(){
+  	$user 	 = Auth::user();
+    $student = $user->student;
+    $opd	 = $student->opd;
+    return view("students.me.my-opd")->with([
+      "user" 	=> $user,
+      "student" => $student,
+      "opd"		=> $opd,
+    ]);
+    
   }
 
-  public function editCV($id){
-
-  }
-
-  public function updateCV(Request $request, $id){
-
-  }
+  
 }

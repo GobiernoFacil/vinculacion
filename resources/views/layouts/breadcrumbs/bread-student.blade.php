@@ -42,3 +42,7 @@
 <li><a href="{{ url('tablero-estudiante/yo')}}">Mi Perfil</a></li>
 <li>Editar Perfil</li>
 @endif
+@if ($__env->yieldContent('breadcrumb_e') == 'me opd')
+<li><a href="{{ url('tablero-estudiante/yo')}}">Mi Perfil</a></li>
+<li>Mi Universidad</li>
+@endif

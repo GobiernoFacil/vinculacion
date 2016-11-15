@@ -293,6 +293,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("tablero-estudiante/cv/editar", "StudentCv@edit");
     Route::post("tablero-estudiante/cv/editar", "StudentCv@update");
     Route::post("tablero-estudiante/cv/descargar", "StudentCv@update");
+    Route::get("tablero-estudiante/universidad", "Students@opd");
 
     Route::get("tablero-estudiante/vacantes", "StudentVacancies@vacancies");
     Route::get("tablero-estudiante/vacante/{id}", "StudentVacancies@vacancy");
