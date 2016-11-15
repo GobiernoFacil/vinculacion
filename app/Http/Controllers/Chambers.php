@@ -24,7 +24,7 @@ class Chambers extends Controller
   public function index(){
     $user = Auth::user();
     $chamber = $user->chamber;
-    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
+    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('company_id');
     $companies_num = $chamber->chamberCompany->count();
     $vacancies_num    = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->count();
     return view("chambers.dashboard")->with([
@@ -119,7 +119,7 @@ class Chambers extends Controller
     $chamber  = $user->chamber;
 
     // [2] vacantes
-    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
+    $companies_id  = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('company_id');
     $companies_num = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->count();
     $vacancies     = Vacant::WhereNotNull('job')->whereIn('company_id', $companies_id)->paginate($this->pageSize);
 

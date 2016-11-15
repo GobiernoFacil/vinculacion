@@ -10,6 +10,8 @@ use App\models\Vacant;
 use App\models\Company;
 use App\models\ChamberCompany;
 use App\models\AcademicOffer;
+use App\Http\Requests\SaveVacantChamber;
+use App\Http\Requests\UpdateVacantChamber;
 class ChamberVacancies extends Controller
 {
   /*
@@ -36,7 +38,7 @@ class ChamberVacancies extends Controller
     $user    = Auth::user();
     $offer   = AcademicOffer::WhereNotNull('academic_name')->pluck('academic_name');
     $chamber       = $user->chamber;
-    $companies_id     = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
+    $companies_id     = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('company_id');
     $companies     = Company::WhereNotNull('nombre_comercial')->whereIn('id', $companies_id)->pluck('nombre_comercial');
     $all           = Company::WhereNotNull('nombre_comercial')->whereIn('id', $companies_id)->pluck('id','nombre_comercial');
 
@@ -48,7 +50,7 @@ class ChamberVacancies extends Controller
     ]);
   }
 
-  public function save(Request $request){
+  public function save(SaveVacantChamber $request){
     $user = Auth::user();
     $data = $request->only(['job', 'tags','age_from','age_to','travel', 'location', 'experience', 'salary',
                             'work_from', 'work_to', 'benefits', 'expenses', 'training', 'state',
@@ -66,7 +68,7 @@ class ChamberVacancies extends Controller
     $user    = Auth::user();
     $offer   = AcademicOffer::WhereNotNull('academic_name')->pluck('academic_name');
     $chamber       = $user->chamber;
-    $companies_id     = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('id');
+    $companies_id     = ChamberCompany::where('chamber_id',$chamber->id)->with('company')->get()->pluck('company_id');
     $companies     = Company::WhereNotNull('nombre_comercial')->whereIn('id', $companies_id)->pluck('nombre_comercial');
     $all           = Company::WhereNotNull('nombre_comercial')->whereIn('id', $companies_id)->pluck('id','nombre_comercial');
     $element       = ChamberCompany::where('chamber_id',$chamber->id)->where('company_id',$id_company)->with('company')->firstOrCreate([]);
@@ -80,7 +82,7 @@ class ChamberVacancies extends Controller
     ]);
   }
 
-  public function update(Request $request, $id_company,$id_vacant){
+  public function update(UpdateVacantChamber $request, $id_company,$id_vacant){
     $user = Auth::user();
     $chamber       = $user->chamber;
     $data = $request->only(['job', 'tags','age_from', 'age_to','travel', 'location', 'experience', 'salary',

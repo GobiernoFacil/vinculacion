@@ -23,6 +23,9 @@
         <p>
           <label>Empresa</label>
           {{Form::text('company',$vacancy->company->nombre_comercial,["class" => "form-control", "id" => "company"])}}
+          @if($errors->has('company_id') && !$errors->has('company') )
+          <strong>La empresa no pertenece a tu cámara</strong>
+          @endif
           @if($errors->has('company'))
           <strong>{{$errors->first('company')}}</strong>
           @endif
