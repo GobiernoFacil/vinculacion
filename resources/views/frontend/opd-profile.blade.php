@@ -91,7 +91,7 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="sidebar">
-			   		<img src="{{ url(empty($opd->logo) ? 'img/logos/default.png' : 'img/logos/' . $opd->logo) }}">
+			   		<img src="{{ url(empty($opd->logo) ? 'img/logos/default_u.png' : 'img/logos/' . $opd->logo) }}">
 					<h3>Contacto</h3>
 					<p>{{$opd->contact->name}}</p>
 					<p>{{$opd->contact->phone}}</p>

@@ -21,7 +21,7 @@
 							@if($user->opd->logo)
 							<img src='{{url("img/logos/{$user->opd->logo}")}}'>
 							@else
-							<i class="material-icons">location_city</i>
+							<img src="{{ url('img/logos/default_u.png') }}">
 							@endif
 						</div>
 					</div>
