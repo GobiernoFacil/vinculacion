@@ -129,6 +129,9 @@
         <h5>Logo</h5>
         <p>
         {{Form::file('logo', ['class' => ''])}}
+        @if($company->logo)
+      </br><strong>Ya cuenta con un logo, puedes seleccionar otro y eliminar el actual.</strong>
+        @endif
       </p>
       </fieldset>
       <p>{{Form::submit('Actualizar',['class' => 'btn'])}}</p>
