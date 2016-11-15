@@ -25,7 +25,7 @@
 		<h2><i class="material-icons">person</i> {{$student->user->name ? $student->user->name : 'Sin información' }} {{$student->user->name == '(ಠ_ಠ) mi nombre es...' ? 'Agrega tu nombre' : ''}}</h2>
 		<ul class="list_perks">
 			<li><strong>Carrera</strong>: {{$student->carrera ? $student->carrera : "Sin información"}}</li>
-			<li><strong>Universidad</strong>: {{$student->opd->opd_name}}</li>
+			<li><strong>Universidad</strong>: <a href="{{ url('tablero-estudiante/universidad') }}">{{$student->opd->opd_name}}</a></li>
 			<li><strong>Correo</strong>: {{$student->user->email ? $student->user->email : "Sin información"}}</li>
 			<li><strong>CURP</strong>: {{$student->curp ? $student->curp : "Sin información"}}</li>
 		</ul>

@@ -75,7 +75,7 @@
 			<p><strong>Nombre</strong>: {{$user->name}}</p>
 			<ul class="list_perks">
 				<li><strong>Carrera</strong>: {{$user->student->carrera}}</li>
-				<li>{{$opd->opd_name}}</li>
+				<li><a href="{{ url('tablero-estudiante/universidad') }}">{{$opd->opd_name}}</a></li>
 				<li><strong>Matrícula</strong>: {{$user->student->matricula}}</li>
 			</ul>
 			<p><a class="btn edit" href ="{{url('tablero-estudiante/yo/editar')}}">Edita tu perfil</a></p>
