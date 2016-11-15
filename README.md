@@ -33,21 +33,55 @@ si no lo está, hay que instalarlo
 sudo apt-get install git-all
 ```
 
-## Instalación de Apache, mysql, PHP
-Hay que revisar si Apache, php y mysql están instalados.
+para revisar que está instalado
+```bash
+git --version
+```
+
+## Instalación de Apache
+Hay que revisar si Apache está instalado. En caso de que el siguiente comando muestre la dirección a un archivo, está instalado.
 ```bash
 which apache2
+```
+
+## Instalación de PHP
+Hay que revisar si php está instalado. En caso de que el siguiente comando muestre la dirección a un archivo, está instalado.
+```bash
 which php
+```
+
+## Instalación de MySQL
+Hay que revisar si mysql están instalado. En caso de que el siguiente comando muestre la dirección a un archivo, está instalado.
+```bash
 which mysql
 ```
 
-Dependiendo de la disponibilidad de cada uno, hay que agregarlos/quitarlos de esta lista:
+Dependiendo de la disponibilidad de cada uno, hay que agregarlos/quitarlos de esta lista. (es un solo comando)
+para Apache: apache2
+para MySQL: mysql-server
+Para php: php5 php5-mysql php5-gd php5-mcrypt php5-tidy php5-dbg php5-cli
 ```bash
 sudo apt-get install apache2 mysql-server php5 php5-mysql php5-gd php5-mcrypt php5-tidy php5-dbg php5-cli
 ```
+
 durante esta instalación, es posible que se pregunte por la contraseña del usuario de mysql. Hay que seleccionar una y guardarla para continuar con la instalación
 
-## instalación de nodejs y npm
+para revisar que está instalado Apache
+```bash
+apache2 -v
+```
+
+para revisar que está instalado MySQL
+```bash
+ mysql --version
+```
+
+para revisar que está instalado PHP
+```bash
+php -v
+```
+
+## instalación de nodejs
 Hay que revisar si existe node
 ```bash
 which nodejs
@@ -56,7 +90,27 @@ which nodejs
 si no existe, hay que instalarlo
 ```bash
 sudo apt-get install nodejs
+```
+
+para revisar que está instalado nodejs
+```bash
+node -v
+```
+
+## instalación de npm
+Hay que revisar si existe node. Esto debe hacerse después de instalar/revisar nodejs
+```bash
+which npm
+```
+
+si no existe, hay que instalarlo
+```bash
 sudo apt-get install npm
+```
+
+para revisar que está instalado npm
+```bash
+npm version
 ```
 
 ## instalación de bower
@@ -70,13 +124,18 @@ si no, hay que instalarlo
 npm install -g bower
 ```
 
+para revisar que está instalado bower
+```bash
+bower -v
+```
+
 ## instalación de composer
 hay que revisar si existe composer
 ```bash
 which composer
 ```
 
-en caso de que no, hay que instalarlo, y crear una referencia global
+en caso de que no, hay que instalarlo, y crear una referencia global, con los siguientes pasos (se copia aquí por practicidad todo el proceso):
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -84,6 +143,36 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
 mv composer.phar /usr/local/bin/composer
+```
+
+- 1 se descarga composer 
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+```
+
+- 2 se comprueba su cifrado 
+```bash
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+```
+
+- 3 se configura composer
+```bash
+php composer-setup.php
+```
+
+- 4 se elimina el archivo de configuración
+```bash
+php -r "unlink('composer-setup.php');"
+```
+
+- 5 se crea una referencia global
+```bash
+mv composer.phar /usr/local/bin/composer
+```
+
+para revisar que está instalado composer
+```bash
+composer -V
 ```
 
 ## carga los archivos del sitio 
@@ -96,7 +185,7 @@ git clone https://github.com/GobiernoFacil/vinculacion.git empleosabiertos
 ```
 
 ## Configuración básica de MySQL
-Hay que responder de manera afirmativa a todas las opciones del configurador de mysql, excepto tal vez, a la de cambiar la contraseña del admin (que se creo en un paso anterior de la instalación)
+Hay que responder de manera afirmativa a todas las opciones del configurador de mysql, excepto tal vez, a la de cambiar la contraseña del admin (que se creo en un paso anterior de la instalación) Este es un wizard, y se ejecuta un solo comando
 ```bash
 sudo mysql_secure_installation
 Remove anonymous users? Y
@@ -147,15 +236,20 @@ MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
 MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-7: dentro de este mismo archivo de .env se debe definir el usuario para el primer admin del sistema, y para el usuario perteneciente a la SECOTRADE de la siguiente manera:
+7: dentro de este mismo archivo de .env se debe definir el usuario para el primer admin del sistema, y para el usuario perteneciente a la SECOTRADE:
+
+para configurar el usuario para secotrade en el archivo /www/sitios/empleosabiertos/.env
+```bash
+ADMIN_PUEBLA_NAME="secotrade"
+ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
+ADMIN_PUEBLA_PASSWORD=secret_pass_2
+```
+
+para configurar el usuario para la SEP en el archivo /www/sitios/empleosabiertos/.env
 ```bash
 ADMIN_EMAIL=howdy@gobiernofacil.com
 ADMIN_NAME="arturo c."
 ADMIN_PASSWORD=secret_pass_1
-
-ADMIN_PUEBLA_NAME="secotrade"
-ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
-ADMIN_PUEBLA_PASSWORD=secret_pass_2
 ```
 
 El archivo .env debe verse más o menos así:
@@ -202,11 +296,13 @@ ADMIN_PUEBLA_PASSWORD=secret_pass_2
 ```bash
 php artisan key:generate
 ```
+Debe arrojar el estatus de sistema después de este comando (decir que se generó la llave)
 
 8: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
 ```bash
 php artisan migrate
 ```
+Conforme se van creando, aparecven los mensajes de confirmación
 
 9: Ya con las tablas disponibles, hay que copiar la información inicial: universidades, usuarios, códigos postales, etc., mediante el siguiente comando:
 ```bash
@@ -242,13 +338,34 @@ después, hay que dar acceso a los archivos del sitio en /etc/apache2/apache2.co
 </Directory>
 ```
 
-por último, hay que darle la propiedad de los archivos y carpetas al usuario de apache, que para ubuntu es: www-data
+por último, hay que darle la propiedad de los archivos y carpetas al usuario de apache, que para ubuntu es: www-data. El proceso completo se especifica aquí, y enseguida los pasos específicos:
 ```bash
 sudo chown -R www-data:www-data /www/sitios
 sudo chmod 2775 /www/sitios
 find /www/sitios -type d -exec sudo chmod 2775 {} \;
 find /www/sitios -type f -exec sudo chmod 0664 {} \;
 ```
+
+Se asigna la propiedad del proyecto al usuario de Apache
+```bash
+sudo chown -R www-data:www-data /www/sitios
+```
+
+Se asigna el permiso para la carpeta que contiene los proyectos
+```bash
+sudo chmod 2775 /www/sitios
+```
+
+Se ajustan los permisos a las carpetas del proyecto
+```bash
+find /www/sitios -type d -exec sudo chmod 2775 {} \;
+```
+
+Se ajustan los permisos a los archivos del proyecto
+```bash
+find /www/sitios -type f -exec sudo chmod 0664 {} \;
+```
+
 
 Con esto, el sitio debería funcionar de manera correcta, en Ubuntu/Azure (que es donde se realizó la prueba de instalación)
 
