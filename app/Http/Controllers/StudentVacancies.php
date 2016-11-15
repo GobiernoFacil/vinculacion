@@ -113,12 +113,14 @@ class StudentVacancies extends Controller
   public function interview($id){
   	$user    	= Auth::user();
     $student 	= $user->student;
-    $interview  = Interview::where('id', $id)->where("student_id", $student->id)->get();
-    
+    $interview  = Interview::where('id', $id)->where("student_id", $student->id)->first();
+    $vacancy	= Vacant::where('status', 1)->find($interview->vacant_id);
+
     return view('students.interviews.interview')->with([
       "user"      => $user,
       "student"   => $student,
-      "interview" => $interview
+      "interview" => $interview,
+      "vacancy"	  => $vacancy
 	]);
     
   }

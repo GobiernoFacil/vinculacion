@@ -13,18 +13,27 @@
     	@include('companies.alert-message')
     @endif
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-12">
 	    <!--title-->
-    	<h1></h1>
+    	<h1>Entrevista con {{ $vacancy->company->nombre_comercial }}</h1>
+	    	
+	    <h2><strong>Vacante:</strong>  <a href="{{ url('tablero-estudiante/vacante/' . $vacancy->id) }}">{{$vacancy->job}}</a></h2>
     	
+    </div>
+    <div class="col-sm-8 col-sm-offset-1">
 	    <!--info-->
-	    {{$interview}}
+	    <ul class="list_perks">
+	    	<li><strong>Fecha</strong>: {{$interview->date ? $interview->date : "No hay fecha"}}</li>
+	    	<li><strong>Hora</strong>: {{$interview->time ? $interview->time : "No hay hora"}}</li>
+	    	<li><strong>Lugar</strong>: {{$interview->address ? $interview->address : "No hay dirección"}}<br>
+	    	{{$interview->city ? $interview->city . ', ': ""}} {{$interview->state ? $interview->state : ""}}
+	    	</li>
+	    	<li><strong>Contacto</strong>: {{$interview->contact ? $interview->contact : "No hay contacto"}}</li>
+	    	<li><strong>Email</strong>: {{$interview->email ? $interview->email : "No hay email"}}</li>
+	    	<li><strong>Teléfono</strong>: {{$interview->phone ? $interview->phone : "No hay teléfono"}}</li>
+	    </ul>
     </div>
     <!--aplicar-->
 </div>
-
-<div class="separator"></div>
-
-
 
 @endsection
