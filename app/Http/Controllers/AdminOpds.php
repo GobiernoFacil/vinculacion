@@ -185,7 +185,7 @@ class AdminOpds extends Controller
       $opd->logo = $name;
       $opd->save();
     }
-    //logo
+    //banner
     $path  = public_path(self::BANNERS);
     // [ SAVE THE IMAGE ]
     if($request->hasFile('banner') && $request->file('banner')->isValid()){

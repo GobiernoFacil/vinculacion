@@ -27,7 +27,7 @@
 
       <p>
         <label>Correo</label>
-        {{Form::text('email', $user->email,["class" => "form-control", "disabled"])}}
+        {{Form::text('email', $user->email,["class" => "form-control"])}}
         @if($errors->has('email'))
         <strong>{{$errors->first('email')}}</strong>
         @endif
@@ -87,7 +87,13 @@
       </p>
       </fieldset>
 
-
+      <!-- banner -->
+      <fieldset>
+        <h5>Banner</h5>
+        <p>
+        {{Form::file('banner', ['class' => ''])}}
+      </p>
+      </fieldset>
 
       <p>{{Form::submit('Actualizar', ['class' => "btn"])}}</p>
 

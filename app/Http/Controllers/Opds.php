@@ -18,6 +18,8 @@ class Opds extends Controller
   // En esta carpeta se guardan las imágenes de los logos
   const UPLOADS = "img/logos";
 
+  const BANNERS = "img/banners";
+
   /*
    * D A S H B O A R D   Y   L I S T A   D E   O B J E T O S
    * ----------------------------------------------------------------
@@ -175,7 +177,7 @@ class Opds extends Controller
   public function updateMe(Request $request){
       $user = Auth::user();
       $user->name = $request->name;
-        $user->email = $request->email;
+      $user->email = $request->email;
         if(!empty($request->password)){
           $user->password = Hash::make($request->password);
         }
@@ -195,6 +197,19 @@ class Opds extends Controller
        $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
        $request->file('logo')->move($path, $name);
        $opd->logo = $name;
+       $opd->save();
+     }
+     //banner
+     $path  = public_path(self::BANNERS);
+     // [ SAVE THE IMAGE ]
+     if($request->hasFile('banner') && $request->file('banner')->isValid()){
+       //[erase image]
+       if($opd->banner){
+         File::delete(self::BANNERS.'/'.$opd->banner);
+       }
+       $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+       $request->file('banner')->move($path, $name);
+       $opd->banner = $name;
        $opd->save();
      }
      return redirect("tablero-opd/yo")->with('message','Perfil actualizado correctamente');
