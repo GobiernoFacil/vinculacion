@@ -225,7 +225,6 @@ $( function() {
   var availableTags      = <?php echo json_encode($offer); ?>;
   var availableCompanies = <?php echo json_encode($companies); ?>;
   var all                = <?php echo json_encode($all); ?>;
-console.log(availableCompanies);
   function split( val ) {
     return val.split( /,\s*/ );
   }
