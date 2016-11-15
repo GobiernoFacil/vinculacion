@@ -16,7 +16,7 @@
 	<div class="col-sm-10 col-sm-offset-1">
 		<div class="banner">
 			<figure class="cover">
-				<img src="{{ url(empty($opd->banner) ? 'img/banners/banner_default_g.jpg' : 'img/banners/' . $opd->logo) }}">
+				<img src="{{ url(empty($opd->banner) ? 'img/banners/banner_default_g.jpg' : 'img/banners/' . $opd->banner) }}">
 			</figure>
 			<div class="row">
 				<div class="col-sm-12">

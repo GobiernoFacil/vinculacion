@@ -6,7 +6,7 @@
 @section('content')
 <div class="banner">
 	<figure class="cover">
-		<img src="{{ url(empty($opd->banner) ? 'img/banners/banner_default_g.jpg' : 'img/banners/' . $opd->logo) }}">
+		<img src="{{ url(empty($opd->banner) ? 'img/banners/banner_default_g.jpg' : 'img/banners/' . $opd->banner) }}">
 	</figure>
 	<div class="container">
 		<div class="row">
