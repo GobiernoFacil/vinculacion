@@ -7,7 +7,7 @@
     <title>{{  $title }}</title>
     @else
     	@if ($__env->yieldContent('title'))
-		<title>@yield('title') | Vinculación</title>
+		<title>@yield('title') | Empleo Joven</title>
     	@else
     	<title></title>
     	@endif
