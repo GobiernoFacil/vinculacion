@@ -14,6 +14,7 @@
     </div>
   </div>
   <div class="row">
+  @if($companies)
     <div class="col-sm-6 col-sm-offset-3">
       {!! Form::open(['url' => "tablero-camara/vacante/crear", "class" => "form-horizontal"]) !!}
 
@@ -205,6 +206,11 @@
     </div>
   </div>
 </div>
+  @else
+  <div class="col-sm-12">
+<p class="message alert">Para que puedas publicar una vacante, primero debes contar con empresas.  <strong><a href = "{{url('tablero-camara/empresa/crear')}}">Agrega una empresa aqui</a></strong>.</p>
+</div>
+  @endif
 
 <!-- scripts for tag selector -->
 <script src="{{url('js/bower_components/jquery/dist/jquery.js')}}"></script>
@@ -219,7 +225,7 @@ $( function() {
   var availableTags      = <?php echo json_encode($offer); ?>;
   var availableCompanies = <?php echo json_encode($companies); ?>;
   var all                = <?php echo json_encode($all); ?>;
-
+console.log(availableCompanies);
   function split( val ) {
     return val.split( /,\s*/ );
   }
