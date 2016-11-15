@@ -129,6 +129,9 @@
         <h5>Logo</h5>
         <p>
         {{Form::file('logo', ['class' => ''])}}
+        @if($opd->logo)
+        </br><strong>Ya cuenta con un logo, puedes seleccionar otro y eliminar el actual.</strong>
+        @endif
       </p>
       </fieldset>
       <!-- banner -->
@@ -136,6 +139,9 @@
         <h5>Banner</h5>
         <p>
         {{Form::file('banner', ['class' => ''])}}
+        @if($opd->banner)
+      </br><strong>Ya cuenta con un banner, puedes seleccionar otro y eliminar el actual.</strong>
+        @endif
       </p>
       </fieldset>
       <p>{{Form::submit('Actualizar',["class" => "btn"])}}</p>
