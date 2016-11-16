@@ -53,9 +53,9 @@
 		</ul>
 		<h3>Contacto</h3>
 		<ul class="list_perks">
-			<li>{{$user->company->contact->name ? $user->company->contact->name : "Sin nombre de contacto"}}</li>
-			<li><strong>Email</strong>: {{$user->company->contact->email ? $user->company->contact->email : "Sin correo de contacto"}}</li>
-			<li><strong>Teléfono</strong>: {{$user->company->contact->phone ? $user->company->contact->phone : 'Sin teléfono'}}</li>
+			<li>{{!empty($user->company->contact->name) ? $user->company->contact->name : "Sin nombre de contacto"}}</li>
+			<li><strong>Email</strong>: {{!empty($user->company->contact->email) ? $user->company->contact->email : "Sin correo de contacto"}}</li>
+			<li><strong>Teléfono</strong>: {{!empty($user->company->contact->phone) ? $user->company->contact->phone : 'Sin teléfono'}}</li>
 		</ul>
 		<p><a href="{{url("tablero-empresa/yo/editar")}}" class="btn">Editar</a></p>
 	</div>
