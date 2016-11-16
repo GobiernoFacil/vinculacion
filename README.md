@@ -366,6 +366,15 @@ Se ajustan los permisos a los archivos del proyecto
 find /www/sitios -type f -exec sudo chmod 0664 {} \;
 ```
 
+Es posible que sea necesario activar el módulo de mod_rewrite para Apache
+```bash
+a2enmod rewrite
+```
+
+Si se activa, es necesario reiniciar Apache
+```bash
+service apache2 restart
+```
 
 Con esto, el sitio debería funcionar de manera correcta, en Ubuntu/Azure (que es donde se realizó la prueba de instalación)
 
