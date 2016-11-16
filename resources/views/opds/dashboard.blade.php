@@ -15,7 +15,39 @@
 		<!--perfil-->
 		<div class="row">
 			<div class="col-sm-8">
+			<div class="row">
+
+				<div class="col-sm-6">
+					<a class="box" href="{{url('tablero-opd/estudiantes')}}">
+						<span>Tus Estudiantes</span>
+						<span class="count">{{$students}}</span>
+					</a>
+				</div>
+				<div class="col-sm-6">
+					<a class="box" href="{{url('tablero-opd/convenios')}}">
+						<span>Tus Convenios</span>
+						<span class="count">{{$contracts}}</span>
+					</a>
+				</div>
+				<div class="col-sm-6">
+					<div class="box">
+						<h4>Tus Estadísticas</h4>
+						<h5><span>0</span></h5>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<a class="box" href="{{url('tablero-opd/empresas')}}">
+						<span>Empresas</span>
+						<span class="count">{{$companies}}</span>
+					</a>
+				</div>
+
+		</div>
+			</div>
+			<div class="col-sm-4">
 				<div class="box">
+					<h3>Tu Perfil</h3>
+					<div class="separator"></div>
 					<div class="col-sm-4">
 						<div class="figure">
 							@if($user->opd->logo)
@@ -39,37 +71,12 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
+
 			</div>
 		</div>
 		<!--vacantes-->
+		
 		<div class="row">
-
-			<div class="col-sm-4">
-				<a class="box" href="{{url('tablero-opd/estudiantes')}}">
-					<span>Tus Estudiantes</span>
-					<span class="count">{{$students}}</span>
-				</a>
-			</div>
-			<div class="col-sm-4">
-				<a class="box" href="{{url('tablero-opd/convenios')}}">
-					<span>Tus Convenios</span>
-					<span class="count">{{$contracts}}</span>
-				</a>
-			</div>
-			<div class="col-sm-4">
-				<div class="box">
-					<h4>Tus Estadísticas</h4>
-					<h5><span>0</span></h5>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<a class="box" href="{{url('tablero-opd/empresas')}}">
-					<span>Empresas</span>
-					<span class="count">{{$companies}}</span>
-				</a>
-			</div>
 		</div>
 	</div>
 </section>
