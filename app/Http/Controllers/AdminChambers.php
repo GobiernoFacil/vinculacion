@@ -124,4 +124,15 @@ class AdminChambers extends Controller
     // [4] redirecciona a la lista de cámaras
     return redirect("dashboard/camaras");
   }
+
+  public function toggle($id){
+    // [1] el usuario a eliminar
+    $user = User::find($id);
+    // [2] se elimina el usuario
+    $user->enabled = ! $user->enabled;
+    $user->update();
+
+    // [4] redirecciona a la lista de cámaras
+    return redirect("dashboard/camaras");
+  }
 }

@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/camara/editar/{id}', 'AdminChambers@edit');
     Route::post('dashboard/camara/editar/{id}', 'AdminChambers@update');
     Route::get('dashboard/camara/eliminar/{id}', 'AdminChambers@delete');
+    Route::get('dashboard/camara/cambiar/{id}', 'AdminChambers@toggle');
     Route::get('dashboard/camara/{id}', 'AdminChambers@view');
 
     // E M P R E S A S

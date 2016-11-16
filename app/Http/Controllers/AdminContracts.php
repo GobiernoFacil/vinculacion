@@ -47,10 +47,11 @@ class AdminContracts extends Controller
   }
 
   public function add($id){
-    $user    = Auth::user();
+    $user = Auth::user();
+    $opds = Opd::all();
     return view("admin.contracts.contracts-add")->with([
       "user"  => $user,
-      "opd_id" =>$id
+      "opd_id" =>$id,
     ]);
   }
 
