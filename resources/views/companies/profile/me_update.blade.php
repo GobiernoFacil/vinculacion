@@ -127,10 +127,15 @@
 
         <p>
           <label>Logo</label>
-          {{Form::file('logo', ['class' => 'form-control'])}}
+          <p>
+          {{Form::file('logo', ['class' => ''])}}
+          @if($company->company->logo)
+        </br><strong>Ya cuentas con un logo, puedes seleccionar otro y eliminar el actual.</strong>
+          @endif
           @if($errors->has('logo'))
           <strong>{{$errors->first('logo')}}</strong>
           @endif
+        </p>
         </p>
       </fieldset>
 

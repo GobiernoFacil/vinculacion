@@ -47,11 +47,18 @@
         <span class="note">Actualizado: {{date('d-m-Y', strtotime($student->updated_at))}}</span>
       </span>
       <span class="col-sm-2 col-xs-4">{{$student->carrera}}</span>
+      @if(!empty($student->user))
       <span class="col-sm-2 col-xs-6">{!! $student->user->enabled == 1 ? '<span class="enabled">Habilitado</span>' : '<span class="disabled">Deshabilitado</span>' !!}
       </span>
+      @else
+      <span class="disabled">Deshabilitado</span>
+      @endif
       <span class="col-sm-2 col-xs-6 right">
-				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn add xs">Editar</a>      
+				<a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn add xs">Editar</a>
+        @if(!empty($student->user))
 				<a href="{{url("tablero-opd/estudiante/activar/{$student->id}")}}" class="btn xs"> {{ $student->user->enabled == 1 ? "Deshabilitar" : "Habilitar"}}</a>
+        @else
+        @endif
 				<a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
 			</span>
 

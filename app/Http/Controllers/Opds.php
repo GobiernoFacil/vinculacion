@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use Auth;
 use File;
+use Image;
 // models
 use App\User;
 
@@ -203,13 +204,21 @@ class Opds extends Controller
      $path  = public_path(self::BANNERS);
      // [ SAVE THE IMAGE ]
      if($request->hasFile('banner') && $request->file('banner')->isValid()){
-       //[erase image]
+       //[erase images]
        if($opd->banner){
          File::delete(self::BANNERS.'/'.$opd->banner);
+       }
+       if($opd->small_banner){
+         File::delete(self::BANNERS.'/'.$opd->small_banner);
        }
        $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
        $request->file('banner')->move($path, $name);
        $opd->banner = $name;
+       $opd->save();
+       //small banner
+       $small_name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+       Image::make(self::BANNERS.'/'.$name)->resize(265,200)->save(self::BANNERS.'/'.$small_name);
+       $opd->small_banner = $small_name;
        $opd->save();
      }
      return redirect("tablero-opd/yo")->with('message','Perfil actualizado correctamente');

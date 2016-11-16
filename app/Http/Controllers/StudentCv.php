@@ -83,4 +83,30 @@ class StudentCv extends Controller
 
       return response()->json($r);
     }
+
+    public function addExperience(Request $request){
+      $user     = Auth::user();
+      $cv       = $user->student->cv;
+      $experience = $cv->experiences()->firstOrCreate([
+        'name'  => $request->name,
+        'company' => $request->company,
+        'sector' => $request->sector,
+        'from' => $request->from,
+        'to' => $request->to,
+        'city' => $request->city,
+        'state' => $request->state,
+        'description' => $request->description
+
+      ]);
+
+      return response()->json($experience);
+    }
+
+    public function removeExperience($id){
+      $user     = Auth::user();
+      $experience = $user->student->cv->experiences()->find($id);
+      $r        = $experience->delete();
+
+      return response()->json($r);
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use Hash;
+use Image;
 
 // models
 use App\User;
@@ -81,6 +82,11 @@ class AdminOpds extends Controller
           $request->file('banner')->move($path, $name);
           $opd->banner = $name;
           $opd->save();
+          //small banner
+          $small_name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          Image::make(self::BANNERS.'/'.$name)->resize(265,200)->save(self::BANNERS.'/'.$small_name);
+          $opd->small_banner = $small_name;
+          $opd->save();
         }
         $opd->contact()->firstOrCreate([
           "name"  => $request->cname,
@@ -107,6 +113,11 @@ class AdminOpds extends Controller
           $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
           $request->file('banner')->move($path, $name);
           $opd->banner = $name;
+          $opd->save();
+          //small banner
+          $small_name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+          Image::make(self::BANNERS.'/'.$name)->resize(265,200)->save(self::BANNERS.'/'.$small_name);
+          $opd->small_banner = $small_name;
           $opd->save();
         }
         $opd->contact()->firstOrCreate([
@@ -176,14 +187,18 @@ class AdminOpds extends Controller
     $path  = public_path(self::UPLOADS);
     // [ SAVE THE IMAGE ]
     if($request->hasFile('logo') && $request->file('logo')->isValid()){
-      //[erase image]
+      //[erase images]
       if($opd->logo){
         File::delete(self::UPLOADS.'/'.$opd->logo);
+      }
+      if($opd->small_banner){
+        File::delete(self::BANNERS.'/'.$opd->small_banner);
       }
       $name = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
       $request->file('logo')->move($path, $name);
       $opd->logo = $name;
       $opd->save();
+
     }
     //banner
     $path  = public_path(self::BANNERS);
@@ -196,6 +211,11 @@ class AdminOpds extends Controller
       $name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
       $request->file('banner')->move($path, $name);
       $opd->banner = $name;
+      $opd->save();
+      //small banner
+      $small_name = uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+      Image::make(self::BANNERS.'/'.$name)->resize(265,200)->save(self::BANNERS.'/'.$small_name);
+      $opd->small_banner = $small_name;
       $opd->save();
     }
 

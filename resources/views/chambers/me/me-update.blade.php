@@ -64,7 +64,7 @@
         </p>
         <p>
           <label>Estado</label>
-          {{Form::text('chamber_state', !empty($chamber->emachamber_stateil) ? $chamber->chamber_state : '' ,["class" => "form-control"])}}
+          {{Form::text('chamber_state', !empty($chamber->chamber_state) ? $chamber->chamber_state : '' ,["class" => "form-control"])}}
           @if($errors->has('chamber_state'))
           <strong>{{$errors->first('chamber_state')}}</strong>
           @endif
@@ -111,6 +111,9 @@
         <h5>Logo</h5>
         <p>
         {{Form::file('logo', ['class' => ''])}}
+        @if($chamber->chamber_logo)
+        </br><strong>Ya cuenta con un logo, puedes seleccionar otro y eliminar el actual.</strong>
+        @endif
       </p>
       </fieldset>
 

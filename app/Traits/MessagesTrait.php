@@ -66,6 +66,10 @@ trait MessagesTrait{
         'contract_description.required'       =>   'La descripción es requerida',
         'contract_responsable_name.required'  =>   'El nombre del responsable es requerido',
         'contract_responsable_email.required' =>   'El correo del responsable es requerido',
+        //vacantes
+        'job.required' => 'La vacante es requerida',
+        'company_id.required'   => 'La empresa es requerida',
+        'company.required'     => 'La compañia es requerida'
       ];
     }
 }
