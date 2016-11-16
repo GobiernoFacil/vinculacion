@@ -15,6 +15,12 @@
 			</div>
 			<div class="col-sm-4">
 				<ul>
+					@if (Auth::check())
+					<li>
+						<a href="{{ url('dashboard') }}" class="register"><i class="material-icons">dashboard</i><span>Tablero</span></a>
+					</li>
+					<li><a href="{{ url('logout') }}" class="vacancies"><i class="material-icons">power_settings_new</i><span>Cerrar Sesión</span></a></li>
+					@else
 					<li>
 						@if($__env->yieldContent('bodyclass') == 'home')
 						<a class="md-trigger register" data-modal="modal-1">
@@ -41,6 +47,7 @@
 							<i class="material-icons">business_center</i> <span>Publica Vacantes</span>
 						</a>
 					</li>
+					@endif
 				</ul>
 			</div>
 		</div>

@@ -77,13 +77,19 @@
 		<div class="col-sm-4 col-xs-6 col-sm-offset-2">
 			<div class="signup">
 				<p><a href="{{url('oferta-laboral')}}"><strong>{{$vacancies_count}}</strong> vacantes</a>, envía tu CV</p>
+				@if (Auth::check())
+				@else
 				<a class="md-trigger"  data-modal="modal-1">Regístrate</a>
+				@endif
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
 			<div class="signup company">
 				<p><strong>56</strong> sectores con talento</p>
+				@if (Auth::check())
+				@else
 				<a class="md-trigger"  data-modal="modal-2">Publica vacante</a>
+				@endif
 			</div>
 		</div>
 	</div>
