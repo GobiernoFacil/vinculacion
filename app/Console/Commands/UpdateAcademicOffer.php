@@ -8,6 +8,7 @@ use Excel;
 
 // models
 use App\models\AcademicOffer;
+use App\models\Opd;
 
 class UpdateAcademicOffer extends Command
 {
@@ -44,13 +45,16 @@ class UpdateAcademicOffer extends Command
     {
       $file = $this->argument('file');
       Excel::load($file, function($reader){
-        $reader->each(function($row){ 
+        $reader->each(function($row){
+            $opd = Opd::where("opd_name", "like", "%{$row->universidad}%")->first();
+            $opd_id = empty($opd) ? 0 : $opd->id; 
             $offer = AcademicOffer::firstOrCreate([
               "academic_name" => $row->oferta,
-              "opd"           => $row->universidad
+              "opd"           => $row->universidad,
+              "opd_id"        => $opd_id
             ]);
 
-            $offer->city = $row->ubicacion;
+            $offer->city = empty($opd) ? $row->ubicacion : $opd->city;
 
             $offer->save();
         });

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AcademicOffer extends Model
 {
-  protected $fillable = ['academic_name', 'opd', 'city'];
+  protected $fillable = ['academic_name', 'opd', 'city', 'opd_id'];
     //
     //modelosrelacionados
     function opd(){

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use PDF;
 
 use App\models\Cv;
 use App\models\Language;
@@ -44,6 +45,14 @@ class StudentCv extends Controller
       // update student
       $cv->update($request->except('_token'));
       return redirect("tablero-estudiante/cv")->with("message",'CV actualizado correctamente');
+    }
+
+    public function download(){
+      $student = Auth::user()->student;
+      $cv      = $student->cv;
+
+      $pdf = PDF::loadView('students.cv.cv-print', ["student" => $student, "cv" => $cv]);
+      return $pdf->download('cv.pdf');
     }
 
     public function addLanguage(Request $request){

@@ -12,7 +12,8 @@
         "laravelcollective/html": "^5.2.0",
         "maatwebsite/excel": "^2.1",
         "intervention/image": "^2.3",
-        "league/csv": "^8.1"
+        "league/csv": "^8.1",
+        "barryvdh/laravel-dompdf": "^0.7.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
