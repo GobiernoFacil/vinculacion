@@ -38,7 +38,7 @@ class Interview extends Model
     }
 
     function vacancy(){
-      return $this->belongsTo("App\models\Vacant");
+      return $this->belongsTo("App\models\Vacant", "vacant_id");
     }
 
 }

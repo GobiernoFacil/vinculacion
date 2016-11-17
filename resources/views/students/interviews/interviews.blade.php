@@ -31,7 +31,7 @@
         @foreach($interviews as $interview)
         <li class="clearfix">
           <span class="col-sm-4 col-xs-4">
-          	<a href="{{url("tablero-estudiante/vacante/{$interview->id}")}}"> {{$interview->vacancy}}</a>
+          	<a href="{{url("tablero-estudiante/vacante/{$interview->id}")}}"> {{$interview->vacancy->job}}</a>
           </span>
           <span class="col-sm-2 col-xs-4">{{$interview->company->nombre_comercial}}</span>
           <span class="col-sm-3 col-xs-4">{{$interview->date}}</span>
