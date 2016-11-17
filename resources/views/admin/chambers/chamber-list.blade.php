@@ -42,7 +42,7 @@
 				<span class="col-sm-3 col-xs-12">
 					<a href="{{url("dashboard/camara/{$chamber->id}")}}" class="link_view">Ver</a>
 					<a href="{{url("dashboard/camara/editar/{$chamber->id}")}}" class="btn xs add">Editar</a>
-					<a href="{{url("dashboard/camara/{$chamber->id}")}}" class="btn xs">{{ $chamber->enabled > 0 ?  "Deshabilitar" : "Habilitar" }}</a>
+					<a href="{{url("dashboard/camara/cambiar/{$chamber->id}")}}" class="btn xs">{{ $chamber->enabled > 0 ?  "Deshabilitar" : "Habilitar" }}</a>
 					<a  data-chamber="{{$chamber->chamber->chamber_comercial_name}}" href="{{url("dashboard/camara/eliminar/{$chamber->id}")}}" class="btn xs danger">Eliminar</a>
 					
 				</span>

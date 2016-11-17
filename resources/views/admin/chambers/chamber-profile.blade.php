@@ -25,8 +25,11 @@
 			@endif
 		</ul>
 	</div>
-	<div class="col-sm-3 col-sm-offset-2">
-		<p><a href="{{url("dashboard/camara/editar/{$chamber->id}")}}" class="btn">Editar</a></p>
+	<div class="col-sm-3 col-sm-offset-1">
+		<p><a href="{{url("dashboard/camara/editar/{$chamber->id}")}}" class="btn add">Editar</a></p>
+	</div>
+	<div class="col-sm-3">
+		<p><a href="{{url("dashboard/camara/cambiar/{$chamber->id}")}}" class="btn">{{ $chamber->enabled > 0 ?  "Deshabilitar" : "Habilitar" }}</a></p>
 	</div>
 	<div class="col-sm-3">
 		<p><a href="{{url("dashboard/camara/eliminar/{$chamber->id}")}}" class="btn danger">Eliminar</a></p>
