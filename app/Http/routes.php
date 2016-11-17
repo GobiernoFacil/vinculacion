@@ -262,6 +262,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post("tablero-opd/empresa/crear", "OpdCompanies@save");
     Route::get("tablero-opd/empresas/actualizar/xlsx", "OpdCompanies@addMultiple");
     Route::post("tablero-opd/empresas/actualizar/xlsx", "OpdCompanies@saveMultiple");
+    Route::get("tablero-opd/empresas/activar/{id}", "OpdCompanies@enableToggle");
 
     // stats
     Route::get("tablero-opd/estadisticas", "Opds@stats");

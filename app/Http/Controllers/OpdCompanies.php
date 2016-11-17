@@ -109,6 +109,20 @@ class OpdCompanies extends Controller
     return redirect("tablero-opd/empresas")->with("message",'Empresa eliminada correctamente');
   }
 
+  public function enableToggle($id){
+    $user = Auth::user();
+    $company = User::find($id);
+
+    if($company){
+      $company->enabled = !$company->enabled;
+      $company->update();
+    }
+
+    return redirect('tablero-opd/empresas');
+
+  }
+
+
   public function addMultiple(){
     $user = Auth::user();
     return view("opds.companies.companies-add-xlsx")->with(["user" => $user]);
