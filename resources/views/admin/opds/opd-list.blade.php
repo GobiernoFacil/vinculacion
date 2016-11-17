@@ -34,7 +34,7 @@
 	  	</li>
 	  @foreach($opds as $opd)
 	    <li class="clearfix">
-	    	<span class="col-sm-3 col-xs-5"><a href="{{url("dashboard/opd/{$opd->id}")}}" class="link_view"> {{$opd->opd->opd_name}}</a><br>
+	    	<span class="col-sm-3 col-xs-5"><a href="{{url("dashboard/opd/{$opd->opd->id}")}}" class="link_view"> {{$opd->opd->opd_name}}</a><br>
 	    	<span class="note">Actualizado: {{date('d-m-Y', strtotime($opd->updated_at))}}</span></span>
 			<span class="col-sm-3 nomobile">{{$opd->opd->city}}, {{$opd->opd->state}}</span>
 			<span class="col-sm-3 col-xs-4">{!!$opd->opd->has('contact') ? $opd->opd->contact->name  . '<br>' : '' !!}
