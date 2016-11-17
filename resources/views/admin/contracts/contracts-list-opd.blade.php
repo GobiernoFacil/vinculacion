@@ -3,16 +3,16 @@
 @section('description', 'Lista de Convenios por Universidad del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opds')
 @section('breadcrumb', 'layouts.breadcrumb')
-@section('breadcrumb_a', 'opds contratos')
+@section('breadcrumb_a', 'opds contratos uni')
 
 @section('content')
 <div class ="row">
 <div class="col-sm-12">
-	<h1>Convenios</h1>
+	<h1>Convenios de {{$opd->opd_name}}</h1>
 </div>
 <p>
 	<div class="col-sm-3 col-sm-offset-9">
-		<p><a href="{{url("dashboard/contrato/crear/{$opd_id}")}}" class="btn add"> + Agregar convenio</a></p>
+		<p><a href="{{url("dashboard/convenio/crear/{$opd->id}")}}" class="btn add"> + Agregar convenio</a></p>
 	</div>
 
 </p>
@@ -35,7 +35,7 @@
 		</li>
 	@foreach($contracts as $contract)
 		<li class="row">
-		<span class="col-sm-2"><a href="{{url("dashboard/contrato/ver/{$opd_id}/{$contract->id}")}}">
+		<span class="col-sm-2"><a href="{{url("dashboard/convenio/ver/{$opd_id}/{$contract->id}")}}">
 			{{$contract->contract_name}}
 			</a><br>
 			<span class="note">Actualizado: {{date('d-m-Y', strtotime($contract->updated_at))}}</span>
@@ -46,8 +46,8 @@
 			<span class="note">Correo: {{$contract->contract_responsable_email}}</span>
 		</span>
 		<span class="col-sm-2">
-			<a href="{{url("dashboard/contrato/editar/{$opd_id}/{$contract->id}")}}" class="btn xs">Editar</a>
-			<a href="{{url("dashboard/contrato/eliminar/{$opd_id}/{$contract->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
+			<a href="{{url("dashboard/convenio/editar/{$opd_id}/{$contract->id}")}}" class="btn xs">Editar</a>
+			<a href="{{url("dashboard/convenio/eliminar/{$opd_id}/{$contract->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
 		</span>
 
 		</li>
@@ -55,7 +55,7 @@
 	</ul>
 
 @else
-	<p>No hay convenios registrados</p>
+	<p>No hay convenios registrados para <a href="{{ url('dashboard/opd/'. $opd->id) }}">{{$opd->opd_name}}</a></p>
 @endif
 
 
