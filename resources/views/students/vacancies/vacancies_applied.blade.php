@@ -36,11 +36,11 @@
           <span class="col-sm-4 col-xs-4">
           	<a href="{{url("tablero-estudiante/vacante/{$application->vacant_id}")}}">{{$application->vacancy->job}}</a>
           	<br>
-          	<span class="note">Carrera: {{$application->tags}}</span>
+          	<span class="note">Carrera: {{$application->vacancy->tags}}</span>
           </span>
-          <span class="col-sm-2 col-xs-4">{{$application->salary ? '$' .  number_format($application->salary,2, '.', ',') : ''}}</span>
-          <span class="col-sm-2 col-xs-4">{{$application->company}}</span>
-          <span class="col-sm-2 nomobile">{{$application->city}}</span>
+          <span class="col-sm-2 col-xs-4">{{$application->vacancy->salary ? '$' .  number_format($application->vacancy->salary,2, '.', ',') : ''}}</span>
+          <span class="col-sm-2 col-xs-4">{{$application->vacancy->company->nombre_comercial}}</span>
+          <span class="col-sm-2 nomobile">{{$application->vacancy->city}}</span>
           <span class="col-sm-2  col-xs-12 right">
             <a href="{{url("tablero-estudiante/vacante/{$application->vacant_id}")}}" class="btn edit xs">Ver</a>
             @if($user->enabled)
