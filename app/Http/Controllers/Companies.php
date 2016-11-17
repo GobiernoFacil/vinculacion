@@ -127,9 +127,7 @@ class Companies extends Controller
 
 
      if(!$user->company->contact){
-      $user =  $user->company->contact()->firstOrCreate([]);
-      // update company contact
-      $user->contact->update([
+      $user =  $user->company->contact()->firstOrCreate([
         "name"  => $request->cname,
         "email" => $request->cemail,
         "phone" => $request->cphone,
