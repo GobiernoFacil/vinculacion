@@ -149,17 +149,17 @@ Route::group(['middleware' => ['auth']], function () {
     // C O N T R A T O S
     // ----------------------------------------------------------------
     // @AdminContracts controller
-    Route::get('dashboard/contratos/{id}', 'AdminContracts@index');
-    Route::get('dashboard/contrato/ver/{id}/{id_contract}', 'AdminContracts@view');
-    Route::get('dashboard/contrato/crear/{id}', 'AdminContracts@add');
-    Route::post('dashboard/contrato/crear/{id}', 'AdminContracts@save');
-    Route::get('dashboard/contrato/editar/{id}/{id_contract}', 'AdminContracts@edit');
-    Route::post('dashboard/contrato/editar/{id}/{id_contract}', 'AdminContracts@update');
-    Route::get('dashboard/contrato/eliminar/{id}/{id_contract}', 'AdminContracts@delete');
-    Route::get('dashboard/contrato/{id}', 'AdminContracts@view');
-    Route::post('dashboard/contrato/habilitar/{id}', 'AdminContracts@enable');
-    Route::post('dashboard/contrato/deshabilitar/{id}', 'AdminContracts@disable');
-    Route::get('dashboard/contrato/{id}/estudiantes', 'AdminContracts@students');
+    Route::get('dashboard/convenios/{id}', 'AdminContracts@index');
+    Route::get('dashboard/convenio/ver/{id}/{id_contract}', 'AdminContracts@view');
+    Route::get('dashboard/convenio/crear/{id}', 'AdminContracts@add');
+    Route::post('dashboard/convenio/crear/{id}', 'AdminContracts@save');
+    Route::get('dashboard/convenio/editar/{id}/{id_contract}', 'AdminContracts@edit');
+    Route::post('dashboard/convenio/editar/{id}/{id_contract}', 'AdminContracts@update');
+    Route::get('dashboard/convenio/eliminar/{id}/{id_contract}', 'AdminContracts@delete');
+    Route::get('dashboard/convenio/{id}', 'AdminContracts@view');
+    Route::post('dashboard/convenio/habilitar/{id}', 'AdminContracts@enable');
+    Route::post('dashboard/convenio/deshabilitar/{id}', 'AdminContracts@disable');
+    Route::get('dashboard/convenio/{id}/estudiantes', 'AdminContracts@students');
 
     // O F E R T A   A C A D É M I C A
     // ----------------------------------------------------------------

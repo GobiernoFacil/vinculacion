@@ -42,7 +42,7 @@
 			{{ $opd->opd->has('contact') ? $opd->opd->contact->phone : '' }} </span>
 			<span class="col-sm-3 col-xs-2">
 				<a href="{{url("dashboard/opd/editar/{$opd->opd->id}")}}" class="btn xs">Editar</a>
-				<a href="{{url("dashboard/contratos/{$opd->opd->id}")}}" class="btn xs">Convenios</a>
+				<a href="{{url("dashboard/convenios/{$opd->opd->id}")}}" class="btn  add xs">Convenios</a>
 				<a href="{{url("dashboard/opd/eliminar/{$opd->id}")}}" class="btn danger xs" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
 			</span>
 	    </li>

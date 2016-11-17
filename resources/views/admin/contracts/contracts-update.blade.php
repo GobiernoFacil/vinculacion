@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model("",['url' => "dashboard/contrato/editar/$opd->id/$contract->id", "class" => "form-horizontal"]) !!}
+      {!! Form::model("",['url' => "dashboard/convenio/editar/$opd->id/$contract->id", "class" => "form-horizontal"]) !!}
 
       <!-- cosas de su objeto -->
       <fieldset>

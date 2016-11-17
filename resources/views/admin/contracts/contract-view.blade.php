@@ -20,10 +20,10 @@
 		<p>Actualizado: {{date('d-m-Y', strtotime($contract->updated_at))}}</p>
 	</div>
 	<div class="col-sm-3 col-sm-offset-2">
-		<p><a href="{{url("dashboard/contrato/editar/{$opd->id}/{$contract->id}")}}" class="btn">Editar</a></p>
+		<p><a href="{{url("dashboard/convenio/editar/{$opd->id}/{$contract->id}")}}" class="btn">Editar</a></p>
 	</div>
 	<div class="col-sm-3">
-		<p><a href="{{url("dashboard/contrato/eliminar/{$opd->id}/{$contract->id}")}}" class="btn danger" onclick = "return confirm('¿Estás seguro?')">Eliminar</a></p>
+		<p><a href="{{url("dashboard/convenio/eliminar/{$opd->id}/{$contract->id}")}}" class="btn danger" onclick = "return confirm('¿Estás seguro?')">Eliminar</a></p>
 	</div>
 </div>
 @endsection
