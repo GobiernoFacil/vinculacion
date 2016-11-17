@@ -32,10 +32,9 @@
           <span class="col-sm-2 nomobile">Acciones</span>
         </li>
         @foreach($applications as $application)
-        {{$application}}
         <li class="clearfix">
           <span class="col-sm-4 col-xs-4">
-          	<a href="{{url("tablero-estudiante/vacante/{$application->vacant_id}")}}"> {{$application->vacancy['job']}}</a>
+          	<a href="{{url("tablero-estudiante/vacante/{$application->vacant_id}")}}">{{$application->vacancy->job}}</a>
           	<br>
           	<span class="note">Carrera: {{$application->tags}}</span>
           </span>
