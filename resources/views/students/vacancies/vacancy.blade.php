@@ -67,7 +67,7 @@
 				<img src="{{!empty($vacancy->company->logo) ? url('img/logos/'. $vacancy->company->logo) : url('img/logos/default.png') }}">
 			</div>
 			<div class="col-sm-9">
-				<h3>{{$vacancy->company->nombre_comercial}}</h3>
+				<h3>{{!empty($vacancy->company->nombre_comercial) ? $vacancy->company->nombre_comercial : 'Sin nombre de empresa'}}</h3>
 			</div>
 		</div>
 	</div>

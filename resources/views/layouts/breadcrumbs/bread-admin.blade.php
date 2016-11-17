@@ -64,11 +64,9 @@
 
 
 <!-- convenios -->
-
-
-@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos')
-<li><a href="{{ url('dashboard/opds')}}">Universidades
-</a></li>
+@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos uni')
+<li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
+<li><a href="{{ url('dashboard/opd/'. $opd->id)}}">{{ $opd->opd_name}}</a></li>
 <li>Convenios</li>
 @endif
 

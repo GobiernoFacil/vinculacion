@@ -21,15 +21,15 @@ class AdminContracts extends Controller
   */
 
   public function index($id_opd){
-    $user = Auth::user();
-    $opd = Opd::find($id_opd);
-    $contracts_num = $opd->contracts->count();
-    $contracts     = $opd->contracts()->paginate($this->pageSize);
+    $user 			= Auth::user();
+    $opd 			= Opd::find($id_opd);
+    $contracts_num  = $opd->contracts->count();
+    $contracts      = $opd->contracts()->paginate($this->pageSize);
 
-    return view("admin.contracts.list")->with([
-      "user" => $user,
-      "contracts"  =>$contracts,
-      "opd_id"  =>$opd->id
+    return view("admin.contracts.contracts-list-opd")->with([
+      "user" 		=> $user,
+      "contracts"   =>$contracts,
+      "opd"  	    =>$opd
     ]);
 
 

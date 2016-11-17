@@ -21,7 +21,8 @@
 
     <!-- cosas de su objeto -->
     <fieldset>
-      <h5>Datos del Currículo</h5>
+      <h3>Datos Generales</h3>
+      <div class="separator"></div>
       <p>
         <label>Género</label>
         {{Form::select('gender',['1'=>'Femenino','0'=>'Masculino'],null,["class" => "form-control"])}}
@@ -99,7 +100,7 @@
     <!-- se cierra el form -->
     {!! Form::close() !!}
 
-
+      <div class="separator"></div>
     <form id="extra-stuff" class="form-horizontal">
       <!-- experiencies -->
       <fieldset>
@@ -115,7 +116,7 @@
         </ul>
 
         <p>
-          <label>Nombre de la vacante:</label>
+          <label>Empleo:</label>
           <input type="text" name="experience" id="experience" class="form-control">
         </p>
         <p><label>Empresa:</label>
@@ -147,6 +148,7 @@
       </fieldset>
       <!-- idiomas -->
       <fieldset>
+      <div class="separator"></div>
         <h2>Idiomas</h2>
         <ul id="languages-list">
           @foreach($cv->languages as $language)

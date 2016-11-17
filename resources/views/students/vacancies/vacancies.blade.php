@@ -39,7 +39,7 @@
           	<span class="note">Carrera: {{$vacancy->tags}}</span>
           </span>
           <span class="col-sm-2 col-xs-4">{{$vacancy->salary ? '$' .  number_format($vacancy->salary,2, '.', ',') : ''}}</span>
-          <span class="col-sm-2 col-xs-4">{{$vacancy->company->nombre_comercial}}</span>
+          <span class="col-sm-2 col-xs-4">{{!empty($vacancy->company->nombre_comercial) ? $vacancy->company->nombre_comercial : 'Sin nombre'}}</span>
           <span class="col-sm-2 nomobile">{{$vacancy->city}}</span>
           <span class="col-sm-2  col-xs-12 right">
             <a href="{{url("tablero-estudiante/vacante/{$vacancy->id}")}}" class="btn edit xs">Ver</a>
