@@ -115,17 +115,18 @@
       @if($vacancy->applicants()->count())
         <ul class="list">
 	        <li class="clearfix title">
-	        	<span class="col-sm-5">Nombre</span>
+	        	<span class="col-sm-4">Nombre</span>
 	        	<span class="col-sm-3">Carrera</span>
-	        	<span class="col-sm-4">Universidad</span>
+	        	<span class="col-sm-3">Universidad</span>
 	        </li>
         @foreach($vacancy->applicants as $applicant)
         <li class="clearfix">
-        	<span class="col-sm-5"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
+        	<span class="col-sm-4"><a href="{{url("tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}")}}">
             {{ucwords(strtolower($applicant->student->nombre . ' ' . $applicant->student->apellido_paterno))}}
           </a></span>
           <span class="col-sm-3"> [ {{$applicant->student->carrera}} ] </span>
-          <span class="col-sm-4">{{$applicant->student->opd->opd_name}}</span>
+          <span class="col-sm-3">{{$applicant->student->opd->opd_name}}</span>
+          <span class="col-sm-2"><a href="{{url('tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}')}}" class="btn xs">Ver candidato</a></span>
         </li>
         @endforeach
         </ul>
