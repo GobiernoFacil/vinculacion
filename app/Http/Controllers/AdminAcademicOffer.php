@@ -27,12 +27,13 @@ class AdminAcademicOffer extends Controller
     $user   = Auth::user();
     
     // [2] la oferta académica
-    $offers = AcademicOffer::paginate($this->pageSize);
-
+    $offers 	  = AcademicOffer::orderBy("academic_name", "asc")->paginate($this->pageSize);
+	$offers_total = AcademicOffer::all()->count();
     // [3] regresa el view
     return view('admin.academic_offer.list')->with([
-      "user"   => $user,
-      "offers" => $offers
+      "user"   			=> $user,
+      "offers" 			=> $offers,
+      "offers_total"	=> $offers_total
     ]);
   }
 
