@@ -31,8 +31,8 @@ class OpdContracts extends Controller
 
   public function add(){
     $user    = Auth::user();
-    $companies = Company::WhereNotNull('nombre_comercial')->where('creator_id',$user->opd->id)->pluck('nombre_comercial');
-    $all     = Company::WhereNotNull('nombre_comercial')->where('creator_id',$user->opd->id)->pluck('id','nombre_comercial');
+    $companies = Company::WhereNotNull('nombre_comercial')->pluck('nombre_comercial');
+    $all     = Company::WhereNotNull('nombre_comercial')->pluck('id','nombre_comercial');
     return view("opds.contracts.contracts-add")->with([
       "user"  => $user,
       "companies"=>$companies,
@@ -55,8 +55,8 @@ class OpdContracts extends Controller
   public function edit($id){
     $user     = Auth::user();
     $contract  = $user->opd->contracts->find($id);
-    $companies = Company::WhereNotNull('nombre_comercial')->where('creator_id',$user->opd->id)->pluck('nombre_comercial');
-    $all     = Company::WhereNotNull('nombre_comercial')->where('creator_id',$user->opd->id)->pluck('id','nombre_comercial');
+    $companies = Company::WhereNotNull('nombre_comercial')->pluck('nombre_comercial');
+    $all     = Company::WhereNotNull('nombre_comercial')->pluck('id','nombre_comercial');
     return view("opds.contracts.contracts-update")->with([
       "user"  => $user,
       "contract" => $contract,
