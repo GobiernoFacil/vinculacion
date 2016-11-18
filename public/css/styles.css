@@ -1784,6 +1784,15 @@ a.box:visited {
     color: black;
     border-bottom: 1px solid black; }
 
+.help-block strong {
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid red;
+  color: red;
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 0;
+  padding: 10px; }
+
 .lead {
   margin: 20px 0; }
 
