@@ -79,8 +79,8 @@
 				<div class="row">
 					@foreach($opd->contracts as $contract)
 					<div class="col-sm-3 col-xs-6">
-						<a href="{{url('empresa/'.$contract->company->id)}}" class="img_company">
-							<img src="{{ url('img/Bimbo_logo.png') }}">
+						<a href="{{url('empresa/'.$contract->company_id)}}" class="img_company">
+							<img src="{{ url(empty($contract->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $contract->company->logo) }}">
 						</a>
 					</div>
 					@endforeach					
