@@ -12,6 +12,7 @@ use Image;
 // models
 use App\User;
 use App\models\Opd;
+use App\models\AcademicOffer;
 
 // FormValidators
 use App\Http\Requests\UpdateOpdRequest;
@@ -28,12 +29,13 @@ class AdminOpds extends Controller
    */
 
   public function view($id){
-  	$user  = Auth::user();
-    $opd =   Opd::with('user')->find($id);
-
+  	$user  	= Auth::user();
+    $opd 	= Opd::with('user')->find($id);
+    $offers = AcademicOffer::where('opd_id', $id)->orderBy("academic_name", "asc")->get();
     return view("admin.opds.opd-profile")->with([
       "user"  => $user,
-      "opd" => $opd
+      "opd" => $opd,
+      "offers" => $offers
     ]);
   }
 

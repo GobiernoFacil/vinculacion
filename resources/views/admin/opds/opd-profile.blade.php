@@ -47,9 +47,7 @@
 		<div class="clearfix"></div>
 		<section>
 			<div class="row">
-				<div class="col-sm-4">
-					<img src="{{ url(empty($opd->logo) ? 'img/logos/default_u.png' : 'img/logos/' . $opd->logo) }}">					
-  				</div>
+				
   				<div class="col-sm-4">
 	  				<h3>Información de Universidad</h3>
 					<ul class="list">
@@ -70,8 +68,31 @@
 						<li><strong>Email</strong>: {{$opd->contact->email ? $opd->contact->email : "Sin información"}}</li>
 					</ul>
   				</div>
+  				<div class="col-sm-4">
+					<img src="{{ url(empty($opd->logo) ? 'img/logos/default_u.png' : 'img/logos/' . $opd->logo) }}">					
+  				</div>
 			</div>
 			<div class="row">
+				<div class="col-sm-8">
+				<h2>Oferta Académica</h2>
+					@if($offers->count())
+						<ul class="list">
+							<li class="titles clearfix">
+								<span class="col-sm-10">Carrera</span>
+								<span class="col-sm-2">Acciones</span>
+							</li>
+						@foreach($offers as $offer)
+							<li class="clearfix">
+								<span class="col-sm-10">{{$offer->academic_name}}</span>
+								<span class="col-sm-2"><a href="{{ url('dashboard/oferta-academica/editar/'.$offer->id)}}" class="btn xs">Editar</a></span>
+							</li>
+						@endforeach
+						</ul>
+					@else
+					<p>No cuenta con oferta académica</p>
+					@endif
+				</div>
+			
 				<div class="col-sm-4">
   					<p><a href="{{url("dashboard/opd/editar/{$opd->id}")}}" class="btn">Editar Universidad</a></p>
   				</div>
