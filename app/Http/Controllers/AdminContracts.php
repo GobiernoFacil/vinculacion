@@ -49,6 +49,7 @@ class AdminContracts extends Controller
 
   public function add($id){
     $user = Auth::user();
+    $opd  = Opd::with('user')->find($id);
     $opds = Opd::all();
     $companies = Company::WhereNotNull('nombre_comercial')->pluck('nombre_comercial');
     $all     = Company::WhereNotNull('nombre_comercial')->pluck('id','nombre_comercial');
@@ -56,7 +57,8 @@ class AdminContracts extends Controller
       "user"  => $user,
       "opd_id" =>$id,
       "companies"=>$companies,
-      "all" =>$all
+      "all" =>$all,
+      "opd"	=> $opd
     ]);
   }
 
