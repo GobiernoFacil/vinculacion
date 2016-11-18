@@ -88,6 +88,23 @@
 				@else
 				<h3>No cuenta con convenios con empresas.</h3>
 				@endif
+				
+				<div class="separator"></div>
+				<h2>Oferta Académica</h2>
+				@if($offers->count())
+					<ul class="list">
+						<li class="titles clearfix">
+							<span class="col-sm-12">Carrera</span>
+						</li>
+					@foreach($offers as $offer)
+						<li class="clearfix">
+							<span class="col-sm-12">{{$offer->academic_name}}</span>
+						</li>
+					@endforeach
+					</ul>
+				@else
+				<h3>No cuenta con oferta académica</h3>
+				@endif
 			</div>
 			<div class="col-sm-3">
 				<div class="sidebar">

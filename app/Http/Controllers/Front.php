@@ -73,10 +73,11 @@ class Front extends Controller
   }
 
   public function opd($id){
-    $opd = Opd::find($id);
-
+    $opd 	= Opd::find($id);
+    $offers = AcademicOffer::where('opd_id', $id)->orderBy("academic_name", "asc")->get();
     return view("frontend.opd-profile")->with([
-      "opd"  => $opd
+      "opd"  	=> $opd,
+      "offers"	=> $offers
     ]);
   }
 
