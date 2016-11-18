@@ -85,7 +85,7 @@
 		</div>
 		<div class="col-sm-4 col-xs-6">
 			<div class="signup company">
-				<p><strong>56</strong> sectores con talento</p>
+				<p><strong>{{$offer_count}}</strong> sectores con talento</p>
 				@if (Auth::check())
 				@else
 				<a class="md-trigger"  data-modal="modal-2">Publica vacante</a>

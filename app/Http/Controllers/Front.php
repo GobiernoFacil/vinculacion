@@ -11,6 +11,7 @@ use App\models\Company;
 use App\models\Opd;
 use App\models\OpenData;
 use App\models\Vacant;
+use App\models\AcademicOffer;
 
 class Front extends Controller
 {
@@ -23,14 +24,15 @@ class Front extends Controller
   //
   public function index(){
   	$vacancies_count = Vacant::where('status', 1)->count();
-  	
+  	$offer_count	 = AcademicOffer::all()->count();
   	$companies		 = User::where(["type"=>"company", "enabled" =>1])->with("company")->take(4)->get();
   	$opds 			 = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
     
     return view("frontend.home")->with([
       "opds" 			=> $opds,
       "vacancies_count"	=> $vacancies_count,
-      "companies"		=> $companies
+      "companies"		=> $companies,
+      "offer_count"		=> $offer_count
     ]);
   }
 
