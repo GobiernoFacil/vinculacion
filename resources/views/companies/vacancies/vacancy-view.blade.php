@@ -126,7 +126,7 @@
           </a></span>
           <span class="col-sm-3"> [ {{$applicant->student->carrera}} ] </span>
           <span class="col-sm-3">{{$applicant->student->opd->opd_name}}</span>
-          <span class="col-sm-2"><a href="{{url('tablero-empresa/vacante/{$vacancy->id}/estudiante/{$applicant->student->id}')}}" class="btn xs">Ver candidato</a></span>
+          <span class="col-sm-2"><a href="{{url('tablero-empresa/vacante/'. $vacancy->id . '/estudiante/' .  $applicant->student->id)}}" class="btn xs">Ver candidato</a></span>
         </li>
         @endforeach
         </ul>
