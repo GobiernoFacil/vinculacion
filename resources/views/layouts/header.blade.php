@@ -7,9 +7,9 @@
 			<div class="col-sm-4">
 				<h2 class="abierto">
 					@if($__env->yieldContent('bodyclass') == 'home')
-					<i class="logo"></i>Empleo Joven</h2>
+					<i class="logo"></i>Empleo Universitario</h2>
 					@else
-					<a href="{{ url('')}}"><i class="logo"></i>Empleo Joven</a>
+					<a href="{{ url('')}}"><i class="logo"></i>Empleo Universitario</a>
 					@endif
 				</h2>
 			</div>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Empleo Abierto')
-@section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
+@section('description', 'Empleo Universitario del Gobierno del Estado de Puebla')
 @section('bodyclass', 'home')
 @section('js-scripts')
 <script src="{{ url('js/home/classie.js') }}"></script>

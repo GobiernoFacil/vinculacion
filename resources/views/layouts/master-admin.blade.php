@@ -5,16 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
     @if ($__env->yieldContent('title'))
-	<title>@yield('title') | Empleo Joven</title>
+	<title>@yield('title') | Empleo Universitario</title>
     @else
-    <title>Empleo Joven del Estado de Puebla</title>
+    <title>Empleo Universitario del Estado de Puebla</title>
     @endif
 
     
     @if ($__env->yieldContent('description'))
 	<meta name="description" content="@yield('description')">
     @else
-	<meta name="description" content="Empleo Joven del Estado de Puebla">
+	<meta name="description" content="Empleo Universitario del Estado de Puebla">
     @endif
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- css -->

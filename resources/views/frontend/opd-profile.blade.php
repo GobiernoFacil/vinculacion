@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', $opd->opd_name)
-@section('description', $opd->opd_name . ' en Empleo Abierto del Gobierno del Estado de Puebla')
+@section('description', $opd->opd_name . ' en Empleo Universitario del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opds profile')
 
 @section('content')
