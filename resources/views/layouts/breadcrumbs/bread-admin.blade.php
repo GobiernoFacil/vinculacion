@@ -90,6 +90,15 @@
 <li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
 <li>Oferta Académica</li>
 @endif
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer edit')
+<!-- editar oferta-->
+<li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
+<li><a href="{{ url('dashboard/oferta-academica') }}">Oferta Académica</a></li>
+<li>Editar Oferta Académica</li>
+@endif
+
+
+
 
 @if ($__env->yieldContent('breadcrumb_a') == 'empresas')
 <!-- empresas -->
