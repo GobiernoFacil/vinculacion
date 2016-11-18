@@ -8,8 +8,21 @@
 @section('content')
 <div class="row">
 	<div class="col-sm-12">
+		@if(Session::has('message'))
+		<div class="message success">
+          {{ Session::get('message') }}
+      	</div>
+	  	@endif
+		
 		<h1>Oferta académica: {{$offers_total}} carreras</h1>
-			
+	</div>
+	<div class="col-sm-4 col-sm-offset-4">
+    	<p><a href="{{url('dashboard/oferta-academica/actualizar/xlsx')}}" class="btn"> + Actualizar Oferta académica vía xls</a></p>
+  	</div>
+	<div class="col-sm-4">
+    	<p><a href="{{url('dashboard/oferta-academica/crear')}}" class="btn add"> + Crear Oferta académica</a></p>
+  	</div>
+	<div class="col-sm-12">
 		@if($offers)
 		<ul class="list">
 			<li class="titles clearfix">
