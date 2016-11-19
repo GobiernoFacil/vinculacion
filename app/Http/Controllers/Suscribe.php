@@ -47,6 +47,10 @@ class Suscribe extends Controller
       $student = Student::where("opd_id", $request->opd)->where("matricula", $request->control)->first();
       $student->user_id = $user->id;
       $student->update();
+
+      $name = empty($student->nombre_completo) ? "{$student->nombre} {$student->apellido_paterno} {$student->apellido_materno}" : $student->nombre_completo;
+      $user->name = $name;
+      $user->update();
     }
     else{
       $student = $user->company()->firstOrCreate([]);

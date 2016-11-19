@@ -8,7 +8,7 @@ class Student extends Model
 {
     //
   protected $fillable = ['user_id','opd_id','creator_id','nombre','matricula','apellido_paterno',
-                           'apellido_materno','curp','carrera','status','nombre_completo'];
+                           'apellido_materno','curp','carrera','status','nombre_completo', 'semester'];
 
 
   //modelosrelacionados

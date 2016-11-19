@@ -78,7 +78,7 @@
 
         <p>
           <label>Status</label>
-          {{Form::text('status','',["class" => "form-control"])}}
+          {{Form::select('status', ["ESTUDIANTE" => "estudiante", "EGRESADO" => "egresado"], null,["class" => "form-control"])}}
           @if($errors->has('status'))
             <strong>{{$errors->first('status')}}</strong>
           @endif
