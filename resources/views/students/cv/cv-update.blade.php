@@ -57,7 +57,11 @@
         <div class = "col-sm-6">
           <p>
             <label>Estado</label>
-            {{Form::text('state',null,["class" => "form-control"])}}
+            <!-- 
+            "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila de Zaragoza", "Colima", Chiapas, Chihuahua, Distrito Federal, Durango, Guanajuato, Guerrero, Hidalgo, Jalisco, México, Michoacán de Ocampo, Morelos, Nayarit, Nuevo León, Oaxaca, Puebla, Querétaro, Quintana Roo, San Luis Potosí, Sinaloa, Sonora, "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz de Ignacio de la Llave", "Yucatán", "Zacatecas"
+            -->
+            {{Form::select('state', $states, null, ["class" => "form-control"])}}
+            <?php //{{Form::text('state',null,["class" => "form-control"])}} ?>
             @if($errors->has('state'))
             <strong>{{$errors->first('state')}}</strong>
             @endif
