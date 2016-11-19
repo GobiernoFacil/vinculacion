@@ -31,8 +31,9 @@ class AdminStudents extends Controller
   }
 
   public function add(){
-    $user    = Auth::user();
-    $opds    = Opd::all()->pluck('opd_name','id');
+    $user  = Auth::user();
+    $opds  = Opd::all()->pluck('opd_name','id');
+    $offer =  
     return view("admin.students.students-add")->with([
       "user"  => $user,
       "opds"  =>$opds,

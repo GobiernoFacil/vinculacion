@@ -33,9 +33,9 @@ class StudentCv extends Controller
 
     public function edit(){
       $user    = Auth::user();
-      $cv = $user->student->cv()->firstOrCreate([]);
+      $cv      = $user->student->cv()->firstOrCreate([]);
       $_states = City::select("state")->groupBy("state")->pluck("state");
-      $states = [];
+      $states  = [];
       foreach ($_states as $val) {
         $states[$val] = $val;
       }
@@ -49,9 +49,13 @@ class StudentCv extends Controller
     }
 
     public function update(Request $request){
+      $user = Auth::user();
+      $student = $user->student;
+
       $cv = Auth::user()->student->cv()->firstOrCreate([]);
-      // update student
-      $cv->update($request->except('_token'));
+      $cv->update($request->except('_token', 'semester', 'status'));
+
+      $student->update($request->only('semester', 'status'));
       return redirect("tablero-estudiante/cv")->with("message",'CV actualizado correctamente');
     }
 

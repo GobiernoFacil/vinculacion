@@ -43,7 +43,6 @@ class UpdateStudents extends Command
      */
     public function handle()
     {
-      //  MATRÍCULA NOMBRE  APELLIDO PATERNO  APELLIDO MATERNO  CURP  CARRERA STATUS
       $id   = $this->argument('user');
       $user = User::find($id);
       $opd  = $user->opd;

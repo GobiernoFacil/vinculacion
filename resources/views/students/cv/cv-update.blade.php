@@ -57,11 +57,7 @@
         <div class = "col-sm-6">
           <p>
             <label>Estado</label>
-            <!-- 
-            "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila de Zaragoza", "Colima", Chiapas, Chihuahua, Distrito Federal, Durango, Guanajuato, Guerrero, Hidalgo, Jalisco, México, Michoacán de Ocampo, Morelos, Nayarit, Nuevo León, Oaxaca, Puebla, Querétaro, Quintana Roo, San Luis Potosí, Sinaloa, Sonora, "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz de Ignacio de la Llave", "Yucatán", "Zacatecas"
-            -->
             {{Form::select('state', $states, null, ["class" => "form-control"])}}
-            <?php //{{Form::text('state',null,["class" => "form-control"])}} ?>
             @if($errors->has('state'))
             <strong>{{$errors->first('state')}}</strong>
             @endif
@@ -96,6 +92,29 @@
 
         </div>
       </div>
+
+      <div class ="row">
+        <div class = "col-sm-6">
+          <p>
+            <label>Semestre</label>
+            {{Form::number('semester',$user->student->semester,["class" => "form-control"])}}
+            @if($errors->has('semester'))
+            <strong>{{$errors->first('semester')}}</strong>
+            @endif
+          </p>
+        </div>
+        <div class = "col-sm-6">
+          <p>
+            <label>Estatus</label>
+            {{Form::select('status',["ESTUDIANTE" => "ESTUDIANTE", "EGRESADO" => "EGRESADO"],$user->student->status,["class" => "form-control"])}}
+            @if($errors->has('status'))
+            <strong>{{$errors->first('status')}}</strong>
+            @endif
+          </p>
+
+        </div>
+      </div>
+
 
     </fieldset>
 
