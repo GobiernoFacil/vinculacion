@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b5210a40067b4ac1c7ca70b5e30ff6c",
-    "content-hash": "bf6023e349e8e95936b2e963b840d2cc",
+    "hash": "b58eeecd2d061ff6d8a558359e6b4a6f",
+    "content-hash": "a4bfe98e366a899df093cc4d5f4fedc8",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -671,6 +671,44 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2016-05-11 00:36:29"
+        },
+        {
+            "name": "genealabs/laravel-caffeine",
+            "version": "0.3.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-caffeine.git",
+                "reference": "166e2ca08af7cc62a59360f33e03d1cb8478df6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-caffeine/zipball/166e2ca08af7cc62a59360f33e03d1cb8478df6a",
+                "reference": "166e2ca08af7cc62a59360f33e03d1cb8478df6a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelCaffeine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com"
+                }
+            ],
+            "description": "Keeping Your Laravel Forms Awake",
+            "time": "2016-09-25 01:24:03"
         },
         {
             "name": "guzzlehttp/guzzle",

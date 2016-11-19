@@ -148,6 +148,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        // caffeine
+        GeneaLabs\LaravelCaffeine\LaravelCaffeineServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
