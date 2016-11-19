@@ -35,7 +35,7 @@
 		</li>
 	@foreach($contracts as $contract)
 		<li class="row">
-		<span class="col-sm-2"><a href="{{url("dashboard/convenio/ver/{$opd_id}/{$contract->id}")}}">
+		<span class="col-sm-2"><a href="{{url("dashboard/convenio/ver/{$opd->id}/{$contract->id}")}}">
 			{{$contract->contract_name}}
 			</a><br>
 			<span class="note">Actualizado: {{date('d-m-Y', strtotime($contract->updated_at))}}</span>
@@ -46,8 +46,8 @@
 			<span class="note">Correo: {{$contract->contract_responsable_email}}</span>
 		</span>
 		<span class="col-sm-2">
-			<a href="{{url("dashboard/convenio/editar/{$opd_id}/{$contract->id}")}}" class="btn xs">Editar</a>
-			<a href="{{url("dashboard/convenio/eliminar/{$opd_id}/{$contract->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
+			<a href="{{url("dashboard/convenio/editar/{$opd->id}/{$contract->id}")}}" class="btn xs">Editar</a>
+			<a href="{{url("dashboard/convenio/eliminar/{$opd->id}/{$contract->id}")}}" class="btn danger xs" onclick = "return confirm('¿Estás seguro?')">Eliminar</a>
 		</span>
 
 		</li>

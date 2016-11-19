@@ -1399,7 +1399,8 @@ section {
       position: absolute;
       top: 0; }
     .banner figure.cover img {
-      margin-top: -50px; }
+      margin-top: -50px;
+      min-width: 100%; }
   .banner .repo {
     height: 450px; }
   .banner .header {
@@ -1502,6 +1503,14 @@ a.btn:visited {
     line-height: 30px;
     margin-bottom: 3px;
     padding: 0 10px; }
+
+a.link_view {
+  border-bottom: 1px solid #005291;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 10px; }
+  a.link_view:hover {
+    color: #005291; }
 
 /* =ADMIN
 -------------------------------------------------------------- */
@@ -1649,13 +1658,6 @@ a:visited.back {
     background: rgba(242, 242, 242, 0.3); }
     .list li:nth-child(odd) {
       background: rgba(242, 242, 242, 0.1); }
-    .list li a.link_view {
-      border-bottom: 1px solid #005291;
-      display: inline-block;
-      font-weight: 700;
-      margin-bottom: 10px; }
-      .list li a.link_view:hover {
-        color: #005291; }
   .list .note {
     font-size: 13px;
     color: #ccc; }
@@ -1783,6 +1785,15 @@ a.box:visited {
   .message a:visited {
     color: black;
     border-bottom: 1px solid black; }
+
+.help-block strong {
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid red;
+  color: red;
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 0;
+  padding: 10px; }
 
 .lead {
   margin: 20px 0; }

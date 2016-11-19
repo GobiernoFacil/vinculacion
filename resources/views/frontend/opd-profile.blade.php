@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', $opd->opd_name)
-@section('description', $opd->opd_name . ' en Empleo Abierto del Gobierno del Estado de Puebla')
+@section('description', $opd->opd_name . ' en Empleo Universitario del Gobierno del Estado de Puebla')
 @section('bodyclass', 'opds profile')
 
 @section('content')
@@ -79,14 +79,31 @@
 				<div class="row">
 					@foreach($opd->contracts as $contract)
 					<div class="col-sm-3 col-xs-6">
-						<a href="{{url('empresa/'.$contract->company->id)}}" class="img_company">
-							<img src="{{ url('img/Bimbo_logo.png') }}">
+						<a href="{{url('empresa/'.$contract->company_id)}}" class="img_company">
+							<img src="{{ url(empty($contract->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $contract->company->logo) }}">
 						</a>
 					</div>
 					@endforeach					
 				</div>
 				@else
 				<h3>No cuenta con convenios con empresas.</h3>
+				@endif
+				
+				<div class="separator"></div>
+				<h2>Oferta Académica</h2>
+				@if($offers->count())
+					<ul class="list">
+						<li class="titles clearfix">
+							<span class="col-sm-12">Carrera</span>
+						</li>
+					@foreach($offers as $offer)
+						<li class="clearfix">
+							<span class="col-sm-12">{{$offer->academic_name}}</span>
+						</li>
+					@endforeach
+					</ul>
+				@else
+				<h3>No cuenta con oferta académica</h3>
 				@endif
 			</div>
 			<div class="col-sm-3">

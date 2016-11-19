@@ -64,35 +64,52 @@
 
 
 <!-- convenios -->
-@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos uni')
+@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos uni' || $__env->yieldContent('breadcrumb_a') == 'opds add-contratos' || $__env->yieldContent('breadcrumb_a') == 'opds update-contratos' || $__env->yieldContent('breadcrumb_a') == 'opds contrato')
 <li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
 <li><a href="{{ url('dashboard/opd/'. $opd->id)}}">{{ $opd->opd_name}}</a></li>
+@endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opds contratos uni')
 <li>Convenios</li>
 @endif
 
 @if ($__env->yieldContent('breadcrumb_a') == 'opds add-contratos')
-<li><a href="{{ url('dashboard/opds')}}">Universidades
-</a></li>
-<li><a href='{{ url("dashboard/contratos/{$opd_id}")}}'>Convenios
-</a></li>
+<li><a href='{{ url("dashboard/convenios/{$opd_id}")}}'>Convenios</a></li>
 <li>Agrear Convenio</li>
 @endif
 
 @if ($__env->yieldContent('breadcrumb_a') == 'opds update-contratos')
-<li><a href="{{ url('dashboard/opds')}}">Universidades
-</a></li>
-<li><a href='{{ url("dashboard/contratos/{$opd->id}")}}'>Convenios
-</a></li>
+<li><a href='{{ url("dashboard/convenios/{$opd->id}")}}'>Convenios</a></li>
 <li>Actualizar Convenio</li>
 @endif
 
 @if ($__env->yieldContent('breadcrumb_a') == 'opds contrato')
-<li><a href="{{ url('dashboard/opds')}}">Universidades
-</a></li>
-<li><a href='{{ url("dashboard/contratos/{$opd->id}")}}'>Convenios
-</a></li>
+<li><a href='{{ url("dashboard/convenios/{$opd->id}")}}'>Convenios</a></li>
 <li>Ver Convenio</li>
 @endif
+
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer')
+<!-- oferta-->
+<li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
+<li>Oferta Académica</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer edit' || $__env->yieldContent('breadcrumb_a') == 'opd offer add' || $__env->yieldContent('breadcrumb_a') == 'opd offer view')
+<li><a href="{{ url('dashboard/opds')}}">Universidades</a></li>
+<li><a href="{{ url('dashboard/oferta-academica') }}">Oferta Académica</a></li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer edit')
+<!-- editar oferta-->
+<li>Editar Oferta Académica</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer add')
+<!-- agregar oferta-->
+<li>Agregar Oferta Académica</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'opd offer view')
+<!-- ver oferta-->
+<li>Ver Oferta Académica</li>
+@endif
+
 
 
 @if ($__env->yieldContent('breadcrumb_a') == 'empresas')

@@ -9,8 +9,9 @@ use Auth;
 use PDF;
 
 use App\models\Cv;
+use App\models\City;
 use App\models\Language;
-use App\models\Software;
+use App\odels\Software;
 use App\models\AcademicTraining;
 
 class StudentCv extends Controller
@@ -33,9 +34,16 @@ class StudentCv extends Controller
     public function edit(){
       $user    = Auth::user();
       $cv = $user->student->cv()->firstOrCreate([]);
+      $_states = City::select("state")->groupBy("state")->pluck("state");
+      $states = [];
+      foreach ($_states as $val) {
+        $states[$val] = $val;
+      }
+
       return view("students.cv.cv-update")->with([
         "user"  => $user,
-        "cv"    => $cv
+        "cv"    => $cv,
+        "states" => $states
       ]);
 
     }

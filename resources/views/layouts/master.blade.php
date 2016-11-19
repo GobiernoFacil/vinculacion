@@ -7,7 +7,7 @@
     <title>{{  $title }}</title>
     @else
     	@if ($__env->yieldContent('title'))
-		<title>@yield('title') | Empleo Joven</title>
+		<title>@yield('title') | Empleo Universitario</title>
     	@else
     	<title></title>
     	@endif
@@ -18,7 +18,7 @@
     	@if ($__env->yieldContent('description'))
 		<meta name="description" content="@yield('description')">
     	@else
-		<meta name="description" content="Plataforma Vinculación">
+		<meta name="description" content="Empleo Universitario">
     	@endif
     @endif
 	<meta name="viewport" content="width=device-width, initial-scale=1">

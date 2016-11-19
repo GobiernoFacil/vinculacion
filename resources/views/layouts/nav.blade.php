@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-xs-7">
-				<h2 class="abierto"><i class="logo"></i>Empleo Joven</h2>
+				<h2 class="abierto"><i class="logo"></i>Empleo Universitario</h2>
 			</div>
 			<div class="col-sm-3 col-sm-offset-5 col-xs-5 right">
 				<!-- Authentication Links -->

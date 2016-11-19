@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Empleo Abierto')
-@section('description', 'Empleo Abierto del Gobierno del Estado de Puebla')
+@section('description', 'Empleo Universitario del Gobierno del Estado de Puebla')
 @section('bodyclass', 'home')
 @section('js-scripts')
 <script src="{{ url('js/home/classie.js') }}"></script>
@@ -85,7 +85,7 @@
 		</div>
 		<div class="col-sm-4 col-xs-6">
 			<div class="signup company">
-				<p><strong>56</strong> sectores con talento</p>
+				<p><strong>{{$offer_count}}</strong> sectores con talento</p>
 				@if (Auth::check())
 				@else
 				<a class="md-trigger"  data-modal="modal-2">Publica vacante</a>

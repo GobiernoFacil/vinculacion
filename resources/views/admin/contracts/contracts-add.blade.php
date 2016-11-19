@@ -21,10 +21,14 @@
       <fieldset>
         <h5>Datos del convenio</h5>
         <p>
-          <label>Organismo Público Descentralizado</label>
-          {{Form::text('contract_opd','',["class" => "form-control"])}}
-          @if($errors->has('contract_opd'))
-          <strong>{{$errors->first('contract_opd')}}</strong>
+          <label>Empresa</label>
+          {{Form::hidden('company_id','',["id"=>'company_id',"class" => "form-control"])}}
+          {{Form::text('company','',["id"=>'company',"class" => "form-control"])}}
+          @if($errors->has('company_id') && !$errors->has('company') )
+          <strong>La empresa no se encuentra en el sistema</strong>
+          @endif
+          @if($errors->has('company'))
+          <strong>{{$errors->first('company')}}</strong>
           @endif
         </p>
 
@@ -159,5 +163,63 @@
     </div>
   </div>
 </div>
+
+
+<!-- scripts for tag selector -->
+<script src="{{url('js/bower_components/jquery/dist/jquery.js')}}"></script>
+<script src="{{url('js/bower_components/jquery-ui/jquery-ui.js')}}"></script>
+<script>
+
+$( function() {
+  /*
+  * este código es copy-paste de la página de jquery-ui
+  *
+  */
+  var availableCompanies = <?php echo json_encode($companies); ?>;
+  var all                = <?php echo json_encode($all); ?>;
+
+  function split( val ) {
+    return val.split( /,\s*/ );
+  }
+  function extractLast( term ) {
+    return split( term ).pop();
+  }
+
+      $( "#company" )
+      // don't navigate away from the field on tab when selecting an item
+      .on( "keydown", function( event ) {
+        $("#company_id").val("");
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+          $( this ).autocomplete( "instance" ).menu.active ) {
+            event.preventDefault();
+          }
+        })
+        .autocomplete({
+          minLength: 0,
+          source: function( request, response ) {
+            // delegate back to autocomplete, but extract the last term
+            response( $.ui.autocomplete.filter(
+              availableCompanies, extractLast( request.term ) ) );
+            },
+            focus: function() {
+              // prevent value inserted on focus
+              return false;
+            },
+            select: function( event, ui ) {
+              var terms = split( this.value );
+              // remove the current input
+              terms.pop();
+              // add the selected item
+              terms.push( ui.item.value );
+              // add placeholder to get the comma-and-space at the end
+              terms.push( "" );
+              this.value = terms.join( "" );
+              //adds company id to form
+              $("#company_id").val(all[this.value]);
+              return false;
+            }
+          });
+    } );
+    </script>
 
 @endsection

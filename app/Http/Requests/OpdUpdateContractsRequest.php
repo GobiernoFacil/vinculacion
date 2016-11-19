@@ -32,7 +32,8 @@ class OpdUpdateContractsRequest extends Request
           'contract_name' => 'required',
           'contract_objective' => 'required|max:255',
           'contract_description' => 'required|max:255',
-          'contract_opd'      => 'required',
+          'company'      => 'required',
+          'company_id'      => 'required',
           'contract_responsable_name'      => 'required',
           'contract_responsable_email'      => 'required|email',
       ];
