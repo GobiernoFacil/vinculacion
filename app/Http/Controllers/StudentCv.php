@@ -53,9 +53,9 @@ class StudentCv extends Controller
       $student = $user->student;
 
       $cv = Auth::user()->student->cv()->firstOrCreate([]);
-      $cv->update($request->except('_token', 'semester', 'status'));
+      $cv->update($request->except('_token', 'semester', 'status', 'curp'));
 
-      $student->update($request->only('semester', 'status'));
+      $student->update($request->only('semester', 'status', 'curp'));
       return redirect("tablero-estudiante/cv")->with("message",'CV actualizado correctamente');
     }
 

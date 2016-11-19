@@ -24,6 +24,14 @@
       <h3>Datos Generales</h3>
       <div class="separator"></div>
       <p>
+        <label>Curp </label>
+        {{Form::text('curp',$user->student->curp,["class" => "form-control"])}}
+        @if($errors->has('curp'))
+        <strong>{{$errors->first('curp')}}</strong>
+        @endif
+      </p>
+
+      <p>
         <label>Género</label>
         {{Form::select('gender',['1'=>'Femenino','0'=>'Masculino'],null,["class" => "form-control"])}}
         @if($errors->has('gender'))
