@@ -130,4 +130,26 @@ class StudentCv extends Controller
 
       return response()->json($r);
     }
+
+    public function addStudy(Request $request){
+      $user  = Auth::user();
+      $cv    = $user->student->cv;
+      $study = $cv->academic_trainings()->firstOrCreate([
+        'name'        => $request->name,
+        'institution' => $request->institution,
+        'from'        => $request->from,
+        'to'          => $request->to,
+        'city'        => $request->city,
+      ]);
+
+      return response()->json($study);
+    }
+
+    public function removeStudy($id){
+      $user  = Auth::user();
+      $study = $user->student->cv->academic_trainings()->find($id);
+      $r     = $study->delete();
+
+      return response()->json($r);
+    }
 }

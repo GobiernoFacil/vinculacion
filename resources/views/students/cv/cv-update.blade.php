@@ -133,6 +133,44 @@
 
       <div class="separator"></div>
     <form id="extra-stuff" class="form-horizontal">
+
+    <!-- studies -->
+      <fieldset>
+        <h2>Experiencia académica</h2>
+        <ul id="studies-list">
+          @foreach($cv->academic_trainings as $study)
+          <li data-id="{{$study->id}}">
+            {{$study->name}} : {{$study->institution}} <br>
+            {{ date('m/Y', strtotime($study->from)) }} - {{ date('m/Y', strtotime($study->to)) }}
+            <a href="#" class="remove-study">[ x ]</a>
+          </li>
+          @endforeach
+        </ul>
+
+        <p>
+          <label>Carrera / curso:</label>
+          <input type="text" name="study" id="study" class="form-control">
+        </p>
+        <p><label>Universidad:</label>
+          <input type="text" name="institution" id="institution" class="form-control">
+        </p>
+        <p><label>Fecha de ingreso:</label>
+          <input type="date" name="s_from" id="s_from" class="form-control">
+        </p>
+        <p>
+          <label>Fecha de término:</label>
+          <input type="date" name="s_to" id="s_to" class="form-control">
+        </p>
+        <p><label>Ciudad:</label>
+          <input type="text" name="study_city" id="study_city" class="form-control">
+        </p>
+
+        <p>
+          <a id="add-study" href="#" class="btn edit">Agregar experiencia académica</a>
+        </p>
+      </fieldset>
+
+
       <!-- experiencies -->
       <fieldset>
         <h2>Experiencia laboral</h2>
@@ -309,18 +347,17 @@ $(function(){
 // ADD
 $("#add-experience").on("click", function(e){
   e.preventDefault();
-  var name    = $("#experience").val(),
-      company = $("#company").val(),
-      sector  = $("#sector").val(),
-      from    = $("#from").val(),
-      to      = $("#tod").val(),
-      city     = $("#experience_city").val(),
-      state      = $("#experience_state").val(),
-      description      = $("#experience_description").val(),
-      url   = "{{url("tablero-estudiante/experiencia/agregar")}}";
+  var name        = $("#experience").val(),
+      company     = $("#company").val(),
+      sector      = $("#sector").val(),
+      from        = $("#from").val(),
+      to          = $("#tod").val(),
+      city        = $("#experience_city").val(),
+      state       = $("#experience_state").val(),
+      description = $("#experience_description").val(),
+      url         = "{{url("tablero-estudiante/experiencia/agregar")}}";
 
   $.post(url, {name : name, company:company,sector:sector,from:from,to:to,city:city,state:state,description:description, _token : Laravel.csrfToken}, function(d){
-    console.log(d);
     var el  = "<li data-id='" + d.id + "'>" +
     d.name + " : " + d.company + "<br>" + d.description
     " <a href='#' class='remove-experience'>[ x ]</a></li>";
@@ -340,8 +377,40 @@ $("#experiencies-list").on("click", ".remove-experience", function(e){
     li.remove();
   }, "json");
 });
-  // SOFTWARE: 'cv_id', 'name', 'level'
-  // academic_trainings: 'cv_id', 'name', 'from', 'to', 'institution', 'city'
+
+// Studies "CRUD"
+// ADD
+$("#add-study").on("click", function(e){
+  e.preventDefault();
+  var name        = $("#study").val(),
+      institution = $("#institution").val(),
+      from        = $("#s_from").val(),
+      to          = $("#s_to").val(),
+      city        = $("#study_city").val(),
+      url         = "{{url("tablero-estudiante/estudios/agregar")}}";
+
+  $.post(url, {name : name, institution:institution,from:from,to:to,city:city, _token : Laravel.csrfToken}, function(d){
+    var from = d.from.split("-"),
+        to   = d.to.split("-"),
+        el  = "<li data-id='" + d.id + "'>" +
+    d.name + " : " + d.institution + "<br>" + from[1] + "/" + from[0] + " - " + to[1] + "/" + to[0] + 
+    " <a href='#' class='remove-study'>[ x ]</a></li>";
+    $("#studies-list").append(el);
+  }, "json");
+});
+
+// experience "CRUD"
+// REMOVE
+$("#studies-list").on("click", ".remove-study", function(e){
+  e.preventDefault();
+  var li = $(e.currentTarget).parent(),
+  id = li.attr("data-id"),
+  url = "{{url("tablero-estudiante/estudios/eliminar")}}";
+
+  $.post(url + "/" + id, {id : id, _token : Laravel.csrfToken}, function(d){
+    li.remove();
+  }, "json");
+});
 });
 </script>
 @endsection

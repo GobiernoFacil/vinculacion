@@ -307,6 +307,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post("tablero-estudiante/programa/eliminar/{id}", "StudentCv@removeSoftware");
     Route::post("tablero-estudiante/experiencia/agregar", "StudentCv@addExperience");
     Route::post("tablero-estudiante/experiencia/eliminar/{id}", "StudentCv@removeExperience");
+
+    Route::post("tablero-estudiante/estudios/agregar", "StudentCv@addStudy");
+    Route::post("tablero-estudiante/estudios/eliminar/{id}", "StudentCv@removeStudy");
+
     //
     // AQUÍ LAS RUTAS PARA USUARIO VERIFICADO
     //
