@@ -11,6 +11,7 @@ use File;
 use Image;
 // models
 use App\User;
+use App\models\AcademicOffer;
 
 class Opds extends Controller
 {
@@ -225,11 +226,13 @@ class Opds extends Controller
    */
 
   public function me(){
-    $user = Auth::user();
-    $opd = $user->opd;
+    $user 	= Auth::user();
+    $opd 	= $user->opd;
+    $offers = AcademicOffer::where('opd_id',$opd->id)->orderBy('academic_name', 'asc')->get();
     return view("opds.me.me")->with([
-      "user" => $user,
-      "opd"  =>$opd
+      "user" 	=> $user,
+      "opd"  	=>$opd,
+      "offers"	=> $offers
     ]);
   }
 
