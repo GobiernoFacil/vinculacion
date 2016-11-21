@@ -86,5 +86,8 @@
 	<div class="col-sm-4 col-sm-offset-2">
 		<p><a href="{{url("tablero-estudiante/cv/editar")}}" class="btn">Editar</a></p>
 	</div>
+	<div class="col-sm-4">
+		<p><a href="{{url("tablero-estudiante/cv/descargar")}}" class="btn add">Descargar CV</a></p>
+	</div>
 </div>
 @endsection
