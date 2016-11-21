@@ -58,6 +58,14 @@
 					</a>					
 					@endif
 				@endif
+				@if($companies_h > 0)
+					
+					<a href="{{ url('tablero-opd/empresas/lista-habilitar') }}" class="box cv">
+						<span>Empresas por habilitar</span>
+						<span class="count">{{$companies_h}}</span>
+					</a>					
+					
+				@endif
 				<!--perfil-->
 				<div class="box">
 					<h3>Tu Perfil</h3>

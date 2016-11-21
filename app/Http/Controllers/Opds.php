@@ -41,16 +41,19 @@ class Opds extends Controller
     
     $students_h = $opd->students()->has('user')->get();
     
+    $companies_h = User::where(["type"=> "company", "enabled"=>0] )->with("company")->count();
+    
     // [3] regresa el view
     return view('opds.dashboard')->with([
-      "user"      => $user,
+      "user"      	=> $user,
       // students
-      "students"  => $students,
+      "students"  	=> $students,
       "students_h"  => $students_h,
       // companies
-      "companies" => $companies,
+      "companies"	=> $companies,
+      "companies_h" => $companies_h,     
       // contracts
-      "contracts" => $contracts
+      "contracts" 	=> $contracts
       
     ]);
   }
