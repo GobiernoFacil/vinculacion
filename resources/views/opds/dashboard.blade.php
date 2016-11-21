@@ -12,39 +12,53 @@
 				<h1>Tu Tablero</h1>
 			</div>
 		</div>
-		<!--perfil-->
 		<div class="row">
 			<div class="col-sm-8">
-			<div class="row">
-
-				<div class="col-sm-6">
-					<a class="box" href="{{url('tablero-opd/estudiantes')}}">
-						<span>Tus Estudiantes</span>
-						<span class="count">{{$students}}</span>
-					</a>
-				</div>
-				<div class="col-sm-6">
-					<a class="box" href="{{url('tablero-opd/convenios')}}">
-						<span>Tus Convenios</span>
-						<span class="count">{{$contracts}}</span>
-					</a>
-				</div>
-				<div class="col-sm-6">
-					<div class="box">
-						<h4>Tus Estadísticas</h4>
-						<h5><span>0</span></h5>
+				<div class="row">
+					<div class="col-sm-6">
+						<a class="box" href="{{url('tablero-opd/estudiantes')}}">
+							<span>Tus Estudiantes</span>
+							<span class="count">{{$students}}</span>
+						</a>
+					</div>
+					<div class="col-sm-6">
+						<a class="box" href="{{url('tablero-opd/convenios')}}">
+							<span>Tus Convenios</span>
+							<span class="count">{{$contracts}}</span>
+						</a>
+					</div>
+					<div class="col-sm-6">
+						<div class="box">
+							<h4>Tus Estadísticas</h4>
+							<h5><span>0</span></h5>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<a class="box" href="{{url('tablero-opd/empresas')}}">
+							<span>Empresas</span>
+							<span class="count">{{$companies}}</span>
+						</a>
 					</div>
 				</div>
-				<div class="col-sm-6">
-					<a class="box" href="{{url('tablero-opd/empresas')}}">
-						<span>Empresas</span>
-						<span class="count">{{$companies}}</span>
-					</a>
-				</div>
-
-		</div>
 			</div>
+			
+			
 			<div class="col-sm-4">
+				@if($students_h->count() > 0)
+					<?php $s_e = 0;?>
+					@foreach($students_h as $s)
+						@if ($s->user->enabled == 0 )
+						<?php $s_e = $s_e+1;?>
+						@endif
+					@endforeach
+					@if ($s_e > 0)
+					<a href="{{ url('tablero-opd/estudiantes/lista-habilitar') }}" class="box cv">
+						<span>Estudiantes por habilitar</span>
+						<span class="count">{{$s_e}}</span>
+					</a>					
+					@endif
+				@endif
+				<!--perfil-->
 				<div class="box">
 					<h3>Tu Perfil</h3>
 					<div class="separator"></div>
