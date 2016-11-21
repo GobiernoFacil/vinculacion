@@ -38,16 +38,20 @@ class Opds extends Controller
     $students  = $opd->students->count();
     $companies = $opd->companies->count();
     $contracts = $opd->contracts->count();
-
+    
+    $students_h = $opd->students()->has('user')->get();
+    
     // [3] regresa el view
     return view('opds.dashboard')->with([
       "user"      => $user,
       // students
       "students"  => $students,
+      "students_h"  => $students_h,
       // companies
       "companies" => $companies,
       // contracts
       "contracts" => $contracts
+      
     ]);
   }
 
@@ -94,6 +98,24 @@ class Opds extends Controller
     ]);
   }
 
+  // Los estudiantes deshabilitados
+  //
+  //
+  public function studentUsersDisabled(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $opd  = $user->opd;
+    // [2] estudiantes
+    $students_num = $opd->students()->has('user')->count();
+    $students     = $opd->students()->has('user')->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('opds.students.students-user-disabled')->with([
+      "user"     => $user,
+      "students" => $students
+    ]);
+  }
+  
   // Las empresas
   //
   //
