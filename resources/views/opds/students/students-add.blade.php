@@ -62,7 +62,7 @@
 
         <p>
           <label>Carrera</label>
-          {{Form::text('carrera','',["class" => "form-control"])}}
+          {{Form::select('carrera',$offer,'',["class" => "form-control"])}}
           @if($errors->has('carrera'))
             <strong>{{$errors->first('carrera')}}</strong>
           @endif
@@ -70,7 +70,7 @@
 
         <p>
           <label>Status</label>
-          {{Form::text('status','',["class" => "form-control"])}}
+          {{Form::select('status',["ESTUDIANTE", "EGRESADO"],'',["class" => "form-control"])}}
           @if($errors->has('status'))
             <strong>{{$errors->first('status')}}</strong>
           @endif

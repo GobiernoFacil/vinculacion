@@ -12,6 +12,7 @@ use Artisan;
 // models
 use App\User;
 use App\models\Student;
+use App\models\AcademicOffer;
 
 // FormValidators
 use App\Http\Requests\AddStudentsByFile;
@@ -35,9 +36,18 @@ class OpdStudents extends Controller
   }
 
   public function add(){
-    $user    = Auth::user();
+    $user   = Auth::user();
+    $opd    = $user->opd;
+    $_offer = AcademicOffer::select("academic_name")->where("opd", $opd->opd_name)->get();
+    $offer  = [];
+
+    foreach($_offer as $of){
+      $offer[$of->academic_name] = $of->academic_name;
+    } 
+
     return view("opds.students.students-add")->with([
       "user"  => $user,
+      "offer" => $offer
     ]);
 
   }
