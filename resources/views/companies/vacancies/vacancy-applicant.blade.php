@@ -56,6 +56,22 @@
 			</ul>
 		
 		<div class="separator"></div>
+		<h2>Experiencia académica</h2>
+		<ul>
+          @foreach($student->cv->academic_trainings as $study)
+			<li>
+			
+				<h3>{{$study->institution}}</h3>
+				<span class="note">{{$study->from}} a {{$study->to}}</span>
+				<h4>{{$study->name}}</h4>
+				<ul class="list_perks">
+					<li><strong>Ubicación</strong>: {{$study->city ? $study->city . '. ' : ''}} {{$study->state}}</li>
+				</ul>
+			</li>
+			@endforeach
+		</ul>
+		
+		<div class="separator"></div>
         <h2>Idiomas</h2>
 		<ul class="list_perks">
 			@foreach($student->cv->languages as $language)

@@ -148,10 +148,10 @@
         </ul>
 
         <p>
-          <label>Carrera / curso:</label>
+          <label>Carrera / curso / Grado:</label>
           <input type="text" name="study" id="study" class="form-control">
         </p>
-        <p><label>Universidad:</label>
+        <p><label>Universidad / Instituto / Escuela:</label>
           <input type="text" name="institution" id="institution" class="form-control">
         </p>
         <p><label>Fecha de ingreso:</label>
