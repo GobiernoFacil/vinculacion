@@ -2,7 +2,7 @@
 <!-- estudiantes -->
 <li>Estudiantes</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_o') == 'estudiante ver' || $__env->yieldContent('breadcrumb_o') == 'estudiante actualizar' || $__env->yieldContent('breadcrumb_o') == 'estudiante add' || $__env->yieldContent('breadcrumb_o') == 'estudiantes xls' || $__env->yieldContent('breadcrumb_o') == 'estudiantes usuarios')
+@if ($__env->yieldContent('breadcrumb_o') == 'estudiante ver' || $__env->yieldContent('breadcrumb_o') == 'estudiante actualizar' || $__env->yieldContent('breadcrumb_o') == 'estudiante add' || $__env->yieldContent('breadcrumb_o') == 'estudiantes xls' || $__env->yieldContent('breadcrumb_o') == 'estudiantes usuarios' || $__env->yieldContent('breadcrumb_o') == 'estudiantes usuarios disabled')
 <li><a href="{{ url('tablero-opd/estudiantes')}}">Estudiantes</a></li>
 @endif
 @if ($__env->yieldContent('breadcrumb_o') == 'estudiante ver')
@@ -19,6 +19,9 @@
 @endif
 @if ($__env->yieldContent('breadcrumb_o') == 'estudiantes usuarios')
 <li>Estudiantes usuarios</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'estudiantes usuarios disabled')
+<li>Estudiantes por habilitar</li>
 @endif
 
 
