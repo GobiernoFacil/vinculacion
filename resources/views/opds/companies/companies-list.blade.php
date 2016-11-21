@@ -9,23 +9,25 @@
 <div class="row">
 <!-- empresas -->
   <div class="col-sm-12">
-    <h1>Empresas</h1>
+    <h1>Empresas agregadas por tu universidad ({{$companies_num}}) </h1>
   </div>
-  <p>
-    <div class="col-sm-3 col-sm-offset-6">
+    <div class="col-sm-4">
+	    <a href="{{url('tablero-opd/empresas/todas')}}" class="btn">Ver empresas en la plataforma &gt;</a>
+    </div>
+    <div class="col-sm-3 col-sm-offset-2">
       <p><a href="{{url("tablero-opd/empresa/crear")}}" class="btn add"> + Agregar empresa</a></p>
     </div>
     <div class="col-sm-3">
       <p><a href="{{url("tablero-opd/empresas/actualizar/xlsx")}}" class="btn add">+ Agregar varias empresas</a></p>
     </div>
 
-  </p>
   @if(Session::has('message'))
     <div class="col-sm-12 message success">
         {{ Session::get('message') }}
     </div>
 @endif
   <div class="col-sm-12">
+	  <p>Esta lista muestra las empresas agregadas por tu universidad, para ver las empresas en la plataforma da <a href="{{url('tablero-opd/empresas/todas')}}">click aquí</a></p>
   @if($companies->count())
     <ul class="list">
       <li class="row titles">

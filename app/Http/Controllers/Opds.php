@@ -133,11 +133,32 @@ class Opds extends Controller
 
     // [3] regresa el view
     return view('opds.companies.companies-list')->with([
-      "user"     => $user,
-      "companies" => $companies
+      "user"    		=> $user,
+      "companies" 		=> $companies,
+      "companies_num"	=> $companies_num
     ]);
   }
   
+  
+  // Todas las empresas habilitadas en la paltaforma
+  //
+  //
+  public function companiesAll(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $opd  = $user->opd;
+
+    // [2] empresas
+    $companies_num = User::where(["type"=> "company", "enabled"=>1] )->with("company")->count();
+    $companies 	   = User::where(["type"=> "company", "enabled"=>1] )->with("company")->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('opds.companies.companies-list-all')->with([
+      "user"     		=> $user,
+      "companies" 		=> $companies,
+      "companies_num" 	=> $companies_num
+    ]);
+  }
   
   // Las empresas por habilitar
   //
