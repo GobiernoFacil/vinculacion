@@ -149,6 +149,7 @@ Route::group(['middleware' => ['auth']], function () {
     // C O N T R A T O S
     // ----------------------------------------------------------------
     // @AdminContracts controller
+    Route::get('dashboard/opds/convenios', 'Admin@contracts');
     Route::get('dashboard/convenios/{id}', 'AdminContracts@index');
     Route::get('dashboard/convenio/ver/{id}/{id_contract}', 'AdminContracts@view');
     Route::get('dashboard/convenio/crear/{id}', 'AdminContracts@add');

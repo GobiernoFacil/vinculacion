@@ -48,6 +48,8 @@ class Admin extends Controller
     $students  = User::where("type", "student")->with("student")->count();
     $companies = User::where("type", "company")->with("company")->count();
     $vacancies = Vacant::with('company')->count();
+    $contracts = Contract::all()->count();
+
     // [3] regresa el view
     return view('admin.dashboard')->with([
       "user" => $user,
@@ -60,6 +62,8 @@ class Admin extends Controller
       "companies" => $companies,
 	  //vacancies
       "vacancies" => $vacancies,
+      //contracts
+      "contracts" => $contracts
     ]);
   }
 
@@ -186,7 +190,13 @@ class Admin extends Controller
   //
   //
   public function contracts(Request $request){
-
+    $user      = Auth::user();
+    $contracts = Contract::orderBy('updated_at', 'desc');
+    $contracts = $contracts->paginate($this->pageSize);
+    return view('admin.contracts.contracts-list')->with([
+      "user"    => $user,
+      "contracts" => $contracts
+    ]);
   }
 
   // La oferta académica
