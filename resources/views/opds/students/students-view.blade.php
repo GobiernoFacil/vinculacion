@@ -28,35 +28,54 @@
 		  	<li><strong>Actualizado</strong>: {{date('d-m-Y', strtotime($student->updated_at))}}</li>
 		</ul>
 		@if($student->user->enabled == 1)
-		<h4>CV</h4>
-        <ul class="list_perks">
-          <li>Sexo : {{$student->cv->gender}}</li>
-          <li>Edad : {{$student->cv->age}}</li>
-          <li>Ciudad : {{$student->cv->city}}</li>
-          <li>Estado : {{$student->cv->state}}</li>
-          <li>País : {{$student->cv->country}}</li>
-          <li>Teléfono : {{$student->cv->phone}}</li>
-          <li>Celular : {{$student->cv->mobile}}</li>
-          <li>Correo : {{$student->cv->email}}</li>
-          <li>
-            <h5>idiomas</h5>
-            <ul>
-            @foreach($student->cv->languages as $language)
-              <li>{{$language->name}} : {{$language->level}}</li>
-            @endforeach
-            </ul>
-          </li>
-
-          <li>
-            <h5>software</h5>
-            <ul>
-            @foreach($student->cv->softwares as $software)
-              <li>{{$software->name}} : {{$software->level}}</li>
-            @endforeach
-            </ul>
-          </li>
+		<h2>CV</h2>
+	  <h3>Datos Generales</h3>
+		<ul class="list_perks">
+			<li><strong>Género</strong>: {{$student->cv->gender == 0 ? "Masculino" : "Femenino"}}</li>
+			<li><strong>Email</strong>: {{$student->cv->email  ? $student->cv->email : "Sin información de correo"}}</li>
+			<li><strong>Edad</strong>: {{$student->cv->age ? $student->cv->age . " años" : "Sin información de edad"}}</li>
+			<li><strong>Teléfono</strong>: {{$student->cv->phone ? $student->cv->phone : "Sin información "}}</li>
+			<li><strong>Celular</strong>: {{$student->cv->mobile ? $student->cv->mobile : "Sin información "}}</li>
+			<li><strong>Lugar de residencia</strong>: {{$student->cv->city ? $student->cv->city . '. ': ""}} {{$student->cv->state ? $student->cv->state . '. ' : ""}} {{$student->cv->country ? $student->cv->country . '. ' : ""}}</li>
+			<li><strong>Creado</strong>: {{date('d-m-Y', strtotime($student->cv->created_at))}}</li>
+			<li><strong>Actualizado</strong>: {{date('d-m-Y', strtotime($student->cv->updated_at))}}</li>
+		</ul>
+		
+		<div class="separator"></div>
+		<h2>Experiencia laboral</h2>
+			<ul>
+			@foreach($student->cv->experiences as $experience)
+			<li>
+				<h3>{{$experience->company}}</h3>
+				<span class="note">{{$experience->from}} a {{$experience->to}}</span>
+				<h4>{{$experience->name}}</h4>
+				<ul class="list_perks">
+					<li><strong>Sector</strong>: {{$experience->sector}}</li>
+					<li><strong>Descripción del puesto</strong>: {{$experience->description}}</li>
+					<li><strong>Ubicación</strong>: {{$experience->city ? $experience->city . '. ' : ''}} {{$experience->state}}</li>
+				</ul>
+			</li>
+			@endforeach
+			</ul>
+		
+		<div class="separator"></div>
+        <h2>Idiomas</h2>
+		<ul class="list_perks">
+			@foreach($student->cv->languages as $language)
+			<li><strong>{{$language->name}}</strong>: {{$language->level}}</li>
+			@endforeach
+		</ul>
+		<div class="separator"></div>
+        
+        <h2>Software</h2>
+		<ul class="list_perks">
+          @foreach($student->cv->softwares as $software)
+          <li><strong>{{$software->name}}</strong> : {{$software->level}}</li>
+          @endforeach
         </ul>
-        @endif
+		<div class="separator"></div>
+		
+		@endif
 	</div>
 	
 	<div class="col-sm-3 col-sm-offset-2">
