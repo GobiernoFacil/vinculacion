@@ -241,6 +241,7 @@ Route::group(['middleware' => ['auth']], function () {
     // students
     Route::get("tablero-opd/estudiantes", "Opds@students");
     Route::get("tablero-opd/estudiantes/usuarios", "Opds@studentUsers");
+    Route::get("tablero-opd/estudiantes/lista-habilitar", "Opds@studentUsersDisabled");
     Route::get("tablero-opd/estudiante/crear", "OpdStudents@add");
     Route::post("tablero-opd/estudiante/crear", "OpdStudents@save");
     Route::get("tablero-opd/estudiante/ver/{id}", "OpdStudents@view");
