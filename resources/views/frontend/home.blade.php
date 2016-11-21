@@ -111,8 +111,7 @@
 			<div class="col-sm-3 col-xs-6">				
 				<a href="{{url('empresa/'.$company->company->id)}}" class="img_company">
 					{{ $company->company->nombre_comercial}}
-					<img src="
-					{{ url(empty($company->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $company->company->logo) }}">
+					<img src="{{ url(empty($company->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $company->company->logo) }}">
 					{{ $company->company->vacancies->count() == 1 ?  $company->company->vacancies->count() . " vacante" :  $company->company->vacancies->count() . " vacantes"}} 
 				</a>
 			</div>
@@ -142,7 +141,7 @@
 					<li class="col-sm-3">
 						<a href="{{url('universidad/' . $opd->opd->id)}}">
 						<figure>
-							<img src="{{ url('img/banners/banner_default_sm.png') }}">
+							<img src="{{ url(empty($opd->opd->small_banner) ? 'img/banners/banner_default_sm.png' : 'img/banners/' . $opd->opd->small_banner) }}">
 						</figure>
 						<span>{{$opd->name}}</span>
 						<span class="location">{{$opd->opd->city}}</span>
