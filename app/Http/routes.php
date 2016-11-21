@@ -255,6 +255,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //companies
     Route::get("tablero-opd/empresas", "Opds@companies");
+    Route::get("tablero-opd/empresas/lista-habilitar", "Opds@companiesDisabled");
     Route::get("tablero-opd/empresa/ver/{id}", "OpdCompanies@view");
     Route::get("tablero-opd/empresa/crear", "OpdCompanies@add");
     Route::get("tablero-opd/empresa/editar/{id}", "OpdCompanies@edit");

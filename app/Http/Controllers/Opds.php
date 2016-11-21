@@ -137,6 +137,27 @@ class Opds extends Controller
       "companies" => $companies
     ]);
   }
+  
+  
+  // Las empresas por habilitar
+  //
+  //
+  public function companiesDisabled(){
+    // [1] el usuario del sistema
+    $user = Auth::user();
+    $opd  = $user->opd;
+
+    // [2] empresas
+    $companies_num = User::where(["type"=> "company", "enabled"=>0] )->with("company")->count();
+    $companies 	   = User::where(["type"=> "company", "enabled"=>0] )->with("company")->paginate($this->pageSize);
+
+    // [3] regresa el view
+    return view('opds.companies.companies-list-disabled')->with([
+      "user"     => $user,
+      "companies" => $companies
+    ]);
+  }
+
 
   // Las vacantes
   //

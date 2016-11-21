@@ -29,7 +29,7 @@
 <!-- empresas -->
 <li>Empresas</li>
 @endif
-@if ($__env->yieldContent('breadcrumb_o') == 'empresa ver' || $__env->yieldContent('breadcrumb_o') == 'empresa actualizar' || $__env->yieldContent('breadcrumb_o') == 'empresa add' || $__env->yieldContent('breadcrumb_o') == 'empresas xls')
+@if ($__env->yieldContent('breadcrumb_o') == 'empresa ver' || $__env->yieldContent('breadcrumb_o') == 'empresa actualizar' || $__env->yieldContent('breadcrumb_o') == 'empresa add' || $__env->yieldContent('breadcrumb_o') == 'empresas xls' || $__env->yieldContent('breadcrumb_o') == 'empresas disabled')
 <li><a href="{{ url('tablero-opd/empresas')}}">Empresas</a></li>
 @endif
 @if ($__env->yieldContent('breadcrumb_o') == 'empresa ver')
@@ -43,6 +43,9 @@
 @endif
 @if ($__env->yieldContent('breadcrumb_o') == 'empresas xls')
 <li>Agregar Empresas</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_o') == 'empresas disabled')
+<li>Empresas por habilitar</li>
 @endif
 
 @if ($__env->yieldContent('breadcrumb_o') == 'stats')
