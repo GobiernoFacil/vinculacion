@@ -76,6 +76,17 @@
 			@endif
 		</a>
 	</div>
+	<!-- Convenios -->
+	<div class="col-sm-4">
+		<a class="box" href="{{url('dashboard/opds/convenios')}}">
+			<span><strong>Convenios</strong></span>
+			@if($contracts > 0 )
+			<span class="count">{{$contracts}}</span>
+			@else
+			<span>No hay convenios registrados</span>
+			@endif
+		</a>
+	</div>
 </div>
 
 @endsection
