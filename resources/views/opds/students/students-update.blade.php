@@ -15,14 +15,14 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      {!! Form::model("",['url' => "tablero-opd/estudiante/editar/$student->id", "class" => "form-horizontal"]) !!}
+      {!! Form::model($student,['url' => "tablero-opd/estudiante/editar/$student->id", "class" => "form-horizontal"]) !!}
 
       <!-- cosas de su objeto -->
       <fieldset>
       <h5>Datos del estudiante</h5>
         <p>
           <label>Matrícula</label>
-          {{Form::text('matricula',$student->matricula,["class" => "form-control"])}}
+          {{Form::text('matricula',null,["class" => "form-control"])}}
           @if($errors->has('matricula'))
             <strong>{{$errors->first('matricula')}}</strong>
           @endif
@@ -30,7 +30,7 @@
 
         <p>
           <label>Nombre </label>
-          {{Form::text('nombre',$student->nombre,["class" => "form-control"])}}
+          {{Form::text('nombre',null,["class" => "form-control"])}}
           @if($errors->has('nombre'))
             <strong>{{$errors->first('nombre')}}</strong>
           @endif
@@ -62,7 +62,7 @@
 
         <p>
           <label>Carrera</label>
-          {{Form::text('carrera',$student->carrera,["class" => "form-control"])}}
+          {{Form::select('carrera',$offer,null,["class" => "form-control"])}}
           @if($errors->has('carrera'))
             <strong>{{$errors->first('carrera')}}</strong>
           @endif
@@ -70,7 +70,7 @@
 
         <p>
           <label>Status</label>
-          {{Form::text('status',$student->status,["class" => "form-control"])}}
+          {{Form::select('status',["ESTUDIANTE", "EGRESADO"],null,["class" => "form-control"])}}
           @if($errors->has('status'))
             <strong>{{$errors->first('status')}}</strong>
           @endif

@@ -23,11 +23,15 @@
 		  	<li><strong>Carrera</strong>: {{$student->carrera}}</li>
 		  	<li><strong>Matricula</strong>: {{$student->matricula}}</li>
 		  	<li><strong>CURP</strong>: {{$student->curp}}</li>
-		  	<li>{!! $student->user->enabled == 1 ? '<span class="enabled">Habilitado</span>' : '<span class="disabled">Deshabilitado</span>' !!}</li>
+		  	@if($student->user_id)
+		  	  <li>{!! $student->user->enabled == 1 ? '<span class="enabled">Habilitado</span>' : '<span class="disabled">Deshabilitado</span>' !!}</li>
+		  	@else
+		  	  <li><span class="disabled">El estudiante no tiene usuario</span></li>
+		  	@endif
 		  	<li><strong>Creado</strong>: {{date('d-m-Y', strtotime($student->created_at))}}</li>
 		  	<li><strong>Actualizado</strong>: {{date('d-m-Y', strtotime($student->updated_at))}}</li>
 		</ul>
-		@if($student->user->enabled == 1)
+		@if(!empty($student->user->enabled))
 		<h2>CV</h2>
 	  <h3>Datos Generales</h3>
 		<ul class="list_perks">
@@ -97,11 +101,16 @@
 	<div class="col-sm-3 col-sm-offset-2">
 		<p><a href="{{url("tablero-opd/estudiante/editar/{$student->id}")}}" class="btn add">Editar</a></p>
 	</div>
-	<div class="col-sm-3">
-		<p> <a href="{{url("tablero-opd/estudiante/activar/{$student->id}")}}" class="btn">
+
+	@if($student->user_id)
+	  <div class="col-sm-3">
+		  <p>
+		    <a href="{{url("tablero-opd/estudiante/activar/{$student->id}")}}" class="btn">
           {{$student->user->enabled ? "Deshabilitar" : "Habilitar"}}
-        </a></p>
-	</div>
+        </a>
+      </p>
+	  </div>
+	@endif
 	<div class="col-sm-3">
 		<p><a href="{{url("tablero-opd/estudiante/eliminar/{$student->id}")}}" class="btn danger" onclick = "return confirm('¿Estás seguro?')">Eliminar</a></p>
 	</div>

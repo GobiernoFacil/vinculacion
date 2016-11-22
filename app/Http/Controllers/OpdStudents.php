@@ -28,6 +28,7 @@ class OpdStudents extends Controller
   public function view($id){
     $user    = Auth::user();
     $student = $user->opd->students->find($id);
+
     return view("opds.students.students-view")->with([
       "user"  => $user,
       "student" => $student
@@ -38,7 +39,9 @@ class OpdStudents extends Controller
   public function add(){
     $user   = Auth::user();
     $opd    = $user->opd;
-    $_offer = AcademicOffer::select("academic_name")->where("opd", $opd->opd_name)->get();
+    $_offer = AcademicOffer::select("academic_name")
+              ->where("opd", $opd->opd_name)
+              ->orderBy("academic_name", "asc")->get();
     $offer  = [];
 
     foreach($_offer as $of){
@@ -56,20 +59,32 @@ class OpdStudents extends Controller
       $user    = Auth::user();
       $opd     = $user->opd;
       $data    = $request->except('_token');
-      $student = Student::firstOrCreate($data);
+      $student = Student::firstOrCreate(["matricula" => $request->matricula]);
+      $student->update($data);
       $student->nombre_completo = $data['nombre']." ".$data['apellido_paterno']." ".$data['apellido_materno'];
-      $student->opd_id = $opd->id;
+      $student->opd_id     = $opd->id;
       $student->creator_id = $opd->id;
-      $student->save();
-      return redirect("tablero-opd/estudiante/ver/$student->id")->with("message", 'Estudiante creado correctamente');
+      $student->update();
+      return redirect("tablero-opd/estudiante/ver/{$student->id}")->with("message", 'Estudiante creado correctamente');
   }
 
   public function edit($id){
     $user    = Auth::user();
     $student = $user->opd->students->find($id);
+    $opd     = $student->opd;
+    $_offer  = AcademicOffer::select("academic_name")
+              ->where("opd", $opd->opd_name)
+              ->orderBy("academic_name", "asc")->get();
+    $offer   = [];
+
+    foreach($_offer as $of){
+      $offer[$of->academic_name] = $of->academic_name;
+    } 
+    
     return view("opds.students.students-update")->with([
       "user"  => $user,
-      "student" => $student
+      "student" => $student,
+      "offer" => $offer
     ]);
 
   }
