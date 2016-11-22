@@ -44,7 +44,7 @@ class CompanyVacancies extends Controller
 
   public function add(){
     $user  = Auth::user();
-    $offer = AcademicOffer::WhereNotNull('academic_name')->pluck('academic_name');
+    $offer = AcademicOffer::WhereNotNull('academic_name')->groupBy("academic_name")->pluck('academic_name');
 
     return view("companies.vacancies.vacancy-add")->with([
       "user"  => $user,
@@ -57,7 +57,7 @@ class CompanyVacancies extends Controller
     $data = $request->only(['job', 'tags','age_from','age_to','travel', 'location', 'experience', 'salary',
                             'work_from', 'work_to', 'benefits', 'expenses', 'training', 'state',
                             'city', 'salary_min', 'salary_max', 'salary_type', 'salary_variable', 'salary_extra',
-                            'personality', 'contract_level', 'contract_type', 'speciality', 'url']);
+                            'personality', 'contract_level', 'contract_type', 'speciality', 'url', 'type']);
 
     $data['company_id'] = $user->company->id;
     $vacant = new Vacant();

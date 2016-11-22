@@ -74,6 +74,15 @@
             </p>
           </div>
         </div>
+
+        <p>
+          <label>Estatus</label>
+          {{Form::select('type',['ESTUDIANTE'=>'estudiante','EGRESADO'=>'egresado'],null,["class" => "form-control"])}}
+          @if($errors->has('type'))
+          <strong>{{$errors->first('type')}}</strong>
+          @endif
+        </p>
+        
         <p>
           <label>Disponibilidad para viajar</label>
           {{Form::select('travel',['1'=>'Sí','0'=>'No'],null,["class" => "form-control"])}}
