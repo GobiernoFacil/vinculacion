@@ -27,7 +27,7 @@ class Front extends Controller
   	$offer_count	 = AcademicOffer::all()->count();
   	$companies		 = User::where(["type"=>"company", "enabled" =>1])->with("company")->take(4)->get();
   	$opds 			 = User::where("type", "opd")->with("opd")->orderBy('name', 'asc')->get();
-    
+
     return view("frontend.home")->with([
       "opds" 			=> $opds,
       "vacancies_count"	=> $vacancies_count,
@@ -75,17 +75,20 @@ class Front extends Controller
   public function opd($id){
     $opd 	= Opd::find($id);
     $offers = AcademicOffer::where('opd_id', $id)->orderBy("academic_name", "asc")->get();
+    $offers_tags = AcademicOffer::where('opd_id', $id)->pluck('academic_name');
+    $vacancies = Vacant::whereIn('tags', $offers_tags->toArray())->orderBy("job", "desc")->get();
     return view("frontend.opd-profile")->with([
       "opd"  	=> $opd,
-      "offers"	=> $offers
-    ]);
+      "offers"	=> $offers,
+      "vacancies" => $vacancies
+      ]);
   }
 
   ///// companies list
   public function companies(Request $request){
     //$query
     $companies = User::where(["type"=>"company", "enabled" =>1])->with("company")->orderBy('id', 'asc');
-    
+
     if($request->input('query')){
       $companies = $companies->where('nombre_comercial', 'like', "%{$request->input('query')}%");
     }

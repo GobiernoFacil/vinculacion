@@ -39,14 +39,31 @@
 		</div>
 	</div>
 </div>
-	
+
 <section>
 	<!-- convenios y ofertas-->
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-9">
 				<h2>Vacantes para estudiantes de esta universidad</h2>
+				@if($vacancies->count()>0)
+				<ul class ="list">
+					<li class="clearfix titles">
+						<span class="col-sm-5 col-xs-3">Título</span>
+						<span class="col-sm-3 col-xs-2">Fecha</span>
+						<span class="col-sm-4 col-xs-4">Carrera</span>
+					</li>
+					@foreach($vacancies as $vacant)
+					<li class="clearfix">
+						<span class="col-sm-5 col-xs-3">{{$vacant->job}}</span>
+						<span class="col-sm-3 col-xs-2">{{$vacant->created_at}}</span>
+						<span class="col-sm-4 col-xs-4">{{$vacant->tags}} </span>
+					</li>
+					@endforeach
+				</ul>
+				@else
 				<h3>Por el momento no hay vacantes para el perfil de los estudiantes de esta universidad.</h3>
+				@endif
 				<!--
 				<ul class="list">
 					<li class="clearfix titles">
@@ -70,7 +87,7 @@
 					</li>
 				</ul>
 				-->
-				
+
 				<div class="separator"></div>
 
 				<h2>Convenios con empresas</h2>
@@ -83,12 +100,12 @@
 							<img src="{{ url(empty($contract->company->logo) ? 'img/logos/default.png' : 'img/logos/' . $contract->company->logo) }}">
 						</a>
 					</div>
-					@endforeach					
+					@endforeach
 				</div>
 				@else
 				<h3>No cuenta con convenios con empresas.</h3>
 				@endif
-				
+
 				<div class="separator"></div>
 				<h2>Oferta Académica</h2>
 				@if($offers->count())
