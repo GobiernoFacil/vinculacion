@@ -198,6 +198,7 @@ Route::group(['middleware' => ['auth']], function () {
     // @Companies controller
     Route::get("tablero-empresa/vacantes", "Companies@vacancies");
     Route::get("tablero-empresa/convenios", "Companies@contracts");
+    Route::get("tablero-empresa/convenio/ver/{id}", "Companies@viewContracts");
     // @CompaniesVacancies controller
     Route::get('tablero-empresa/vacante/crear', 'CompanyVacancies@add');
     Route::post('tablero-empresa/vacante/crear', 'CompanyVacancies@save');
