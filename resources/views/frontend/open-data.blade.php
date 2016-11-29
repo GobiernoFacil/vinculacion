@@ -12,5 +12,21 @@
 		</div>
 	</div>
 </div>
+
+@if($openData->count())
+<ul>
+  @foreach($openData as $op)
+  <li>
+    @if($op->resource == "opds")
+      <a href="{{url('csv/universidades.xlsx')}}">Universidades</a>
+    @else
+      <a href="{{url('csv/vacantes.xlsx')}}">Vacantes</a>
+    @endif
+  </li>
+  @endforeach
+</ul>
+@else
+<p>No se han publicado datos abiertos</p>
+@endif
 </section>
 @endsection
