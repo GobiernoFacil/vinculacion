@@ -46,18 +46,19 @@
 		<div class="row">
 			<div class="col-sm-9">
 				<h2>Vacantes para estudiantes de esta universidad</h2>
-				@if($vacancies->count()>0)
+				@if(sizeof($vacancies) >0)
 				<ul class ="list">
 					<li class="clearfix titles">
 						<span class="col-sm-5 col-xs-3">Título</span>
-						<span class="col-sm-3 col-xs-2">Fecha</span>
-						<span class="col-sm-4 col-xs-4">Carrera</span>
+						<span class="col-sm-2 col-xs-2">Fecha</span>
+						<span class="col-sm-5 col-xs-5">Carreras</span>
 					</li>
 					@foreach($vacancies as $vacant)
 					<li class="clearfix">
-						<span class="col-sm-5 col-xs-3">{{$vacant->job}}</span>
-						<span class="col-sm-3 col-xs-2">{{$vacant->created_at}}</span>
+						<span class="col-sm-4 col-xs-4">{{$vacant->job}}</span>
+						<span class="col-sm-2 col-xs-2">{{date('d-m-Y', strtotime($vacant->created_at))}}</span>
 						<span class="col-sm-4 col-xs-4">{{$vacant->tags}} </span>
+						<span class="col-sm-2 col-xs-4 right"><a href="{{url('login')}}" class="btn default xs">Aplicar</a></span>
 					</li>
 					@endforeach
 				</ul>

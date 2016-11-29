@@ -69,7 +69,8 @@ trait MessagesTrait{
         //vacantes
         'job.required' => 'La vacante es requerida',
         'company_id.required'   => 'La empresa es requerida',
-        'company.required'     => 'La compañia es requerida'
+        'company.required'      => 'La compañia es requerida',
+        'tags.required'         => 'La carrera es requerida'
       ];
     }
 }
