@@ -89,4 +89,18 @@
 	</div>
 </div>
 
+<!-- datos abiertos -->
+<div class="row">
+@if($busy)
+  <p>Se están generando los datos abiertos. En unos minutos estarán disponibles. 
+  (puedes recargar la página para revisar si están listos)</p>
+@elseif(!$openData->count())
+  <p><a href="{{url('dashboard/datos-abiertos/generar')}}">generar datos abiertos</p>
+@else
+  <p><a href="{{url('dashboard/datos-abiertos/actualizar')}}">actualizar datos abiertos</p>
+@endif
+  
+  
+</div>
+
 @endsection

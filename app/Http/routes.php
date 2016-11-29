@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/vacantes', 'Admin@vacancies');
     Route::get('dashboard/convenios', 'Admin@contracts');
 
+    Route::get('dashboard/datos-abiertos/generar', 'Admin@createOpenData');
+    Route::get('dashboard/datos-abiertos/actualizar', 'Admin@updateOpenData');
+
     // P E R F I L   D E L   A D M I N I S T R A D O R
     // ----------------------------------------------------------------
     // @Admin controller

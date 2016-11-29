@@ -12,3 +12,5 @@ public/img/banners/*
 public/js/bower_components
 public/img/logos/*
 !public/img/logos/default.png
+public/csv/*
+!public/csv/index.html

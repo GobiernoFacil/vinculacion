@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+use Artisan;
 use Hash;
 
 // models
@@ -23,6 +24,7 @@ use App\models\Vacant;
 use App\Http\Requests\UpdateMeRequest;
 use App\Http\Requests\SaveAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+
 
 class Admin extends Controller
 {
@@ -49,21 +51,25 @@ class Admin extends Controller
     $companies = User::where("type", "company")->with("company")->count();
     $vacancies = Vacant::with('company')->count();
     $contracts = Contract::all()->count();
+    $openData  = OpenData::all();
+    $busy = OpenData::where("busy", 1)->count(); 
 
     // [3] regresa el view
     return view('admin.dashboard')->with([
-      "user" => $user,
-
+      "user"      => $user,
       // users
       "admins"    => $admins,
       "opds"      => $opds,
       "chambers"  => $chambers,
       "students"  => $students,
       "companies" => $companies,
-	  //vacancies
+	    //vacancies
       "vacancies" => $vacancies,
       //contracts
-      "contracts" => $contracts
+      "contracts" => $contracts,
+      // open data
+      "openData"  => $openData,
+      "busy"      => $busy,
     ]);
   }
 
@@ -206,9 +212,45 @@ class Admin extends Controller
 
   }
 
+  /*
+   * G E N E R A R   D A T O S   A B I E R T O S
+   * ---------------------------------------------------------------- 
+   */
+  
+  // Crear las entradas para cada elemento de descarga de datos abiertos
+  //
+  //
+  public function createOpenData(){
+    $opds      = OpenData::firstOrCreate(["resource" => "opds"]);
+    $vacancies = OpenData::firstOrCreate(["resource" => "vacancies"]);
+    $contracts = OpenData::firstOrCreate(["resource" => "contracts"]);
 
+    // genera el archivo para opds
+    if(!$opds->file){
+      $opds->busy = 1;
+      $opds->save();
+      Artisan::call('update:opds_open_data');
+      //exec("php {$path}/artisan update:opds_open_data > /dev/null &");
+    }
 
+    /*
+    // genera el archivo para vacantes
+    if(!$vacancies->file){
+      $vacancies->busy = 1;
+      $vacancies->save();
+      exec("php {$path}/artisan update:vacancies_open_data > /dev/null &");
+    }
 
+    // genera el archivo para contratos
+    if(!$contracts->file){
+      $contracts->busy = 1;
+      $contracts->save();
+      exec("php {$path}/artisan update:contracts_open_data > /dev/null &");
+    }
+    */
+
+    return redirect("dashboard");
+  }
 
   /*
    * P E R F I L   D E L   A D M I N I S T R A D O R
