@@ -46,7 +46,7 @@ class UpdateVacancyRequest extends Request
       // revisa si el usuario puede editar el recurso
       return Vacant::where('id', $id)
                   ->where('company_id', $_id)->exists();
-        
+
     }
 
     /**
@@ -59,7 +59,8 @@ class UpdateVacancyRequest extends Request
         return [
           "job"    => 'required',
           "url"    => 'url',
-          "salary" => 'numeric'
+          "salary" => 'numeric',
+          "tags"   => 'required'
         ];
     }
 }

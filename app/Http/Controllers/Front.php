@@ -75,13 +75,26 @@ class Front extends Controller
   public function opd($id){
     $opd 	= Opd::find($id);
     $offers = AcademicOffer::where('opd_id', $id)->orderBy("academic_name", "asc")->get();
-    $offers_tags = AcademicOffer::where('opd_id', $id)->pluck('academic_name');
-    $vacancies = Vacant::whereIn('tags', $offers_tags->toArray())->orderBy("job", "desc")->get();
-    return view("frontend.opd-profile")->with([
+    $offers_tags = AcademicOffer::where('opd_id', $id)->pluck('academic_name')->toArray();
+    $vacancies = [];
+    foreach ($offers_tags as $tag) {
+    $vacants = Vacant::where('tags', 'like','%'.$tag.'%')->orderBy("created_at", "desc")->get();
+    //Se limita a 7 vacantes para desplegar en perfil de universidades
+      if($vacants->count() > 0 && sizeof($vacancies) < 7){
+        foreach ($vacants as $vacant) {
+          if(sizeof($vacancies) < 7){
+            $vacancies[]=$vacant;
+          }else{
+            break;
+          }
+        }
+      }
+    }
+   return view("frontend.opd-profile")->with([
       "opd"  	=> $opd,
       "offers"	=> $offers,
       "vacancies" => $vacancies
-      ]);
+    ]);
   }
 
   ///// companies list

@@ -67,6 +67,20 @@ class Companies extends Controller
     ]);
   }
 
+  // Ver convenio
+  //
+  //
+  public function viewContracts($id){
+    $user      = Auth::user();
+    $company   = $user->company;
+    $contract  = $company->contracts()->find($id);
+   return view('companies.contracts.contract-view')->with([
+      "user"      => $user,
+      "company"   => $company,
+      "contract"  => $contract
+    ]);
+  }
+
   /*
    * P E R F I L   D E   L A   E M P R E S A
    * ----------------------------------------------------------------

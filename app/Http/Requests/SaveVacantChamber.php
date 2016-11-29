@@ -31,7 +31,8 @@ class SaveVacantChamber extends Request
         "job"    => 'required',
         "url"    => 'url',
         "salary" => 'numeric',
-        "company"=> 'required'
+        "company"=> 'required',
+        "tags"   => 'required'
       ];
     }
 }

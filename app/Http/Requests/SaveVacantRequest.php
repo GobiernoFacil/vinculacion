@@ -31,7 +31,8 @@ class SaveVacantRequest extends Request
         return [
           "job"    => 'required',
           "url"    => 'url',
-          "salary" => 'numeric'
+          "salary" => 'numeric',
+          "tags"   => 'required'
         ];
     }
 }
