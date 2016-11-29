@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
       Commands\FindAcademicOffer::class,
       Commands\UpdateAcademicOffer::class,
       Commands\createOpdsOpenData::class,
+      Commands\createVacantsOpenData::class,
     ];
 
     /**

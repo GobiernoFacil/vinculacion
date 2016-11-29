@@ -223,24 +223,25 @@ class Admin extends Controller
   public function createOpenData(){
     $opds      = OpenData::firstOrCreate(["resource" => "opds"]);
     $vacancies = OpenData::firstOrCreate(["resource" => "vacancies"]);
-    $contracts = OpenData::firstOrCreate(["resource" => "contracts"]);
+    $path      = base_path();
+    // $contracts = OpenData::firstOrCreate(["resource" => "contracts"]);
 
     // genera el archivo para opds
     if(!$opds->file){
       $opds->busy = 1;
       $opds->save();
-      Artisan::call('update:opds_open_data');
-      //exec("php {$path}/artisan update:opds_open_data > /dev/null &");
+      //Artisan::call('update:opds_open_data');
+      exec("php {$path}/artisan update:opds_open_data > /dev/null &");
     }
 
-    /*
+    
     // genera el archivo para vacantes
     if(!$vacancies->file){
       $vacancies->busy = 1;
       $vacancies->save();
       exec("php {$path}/artisan update:vacancies_open_data > /dev/null &");
     }
-
+    /*
     // genera el archivo para contratos
     if(!$contracts->file){
       $contracts->busy = 1;
