@@ -78,7 +78,9 @@ class AuthController extends Controller
     }
 
     public function authenticated($request,$user){
-          if($user->type ==='admin'){
+          if($user->type ==='superAdmin'){
+              return redirect('dashboard');
+          }else if($user->type ==='admin'){
               return redirect('dashboard');
           }else if($user->type==='opd'){
               return redirect('tablero-opd');

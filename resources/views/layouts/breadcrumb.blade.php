@@ -3,7 +3,7 @@
 		<div class="col-sm-12 breadcrumb">
 			<ul>
 				<li><a href="{{ url('dashboard')}}"><i class="material-icons">home</i> </a></li>
-				@if ($user->type == 'admin')
+				@if ($user->type == 'admin'|| $user->type == 'superAdmin')
 					<!--admin-->
 					@include('layouts.breadcrumbs.bread-admin')
 				@endif

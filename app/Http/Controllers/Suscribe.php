@@ -69,8 +69,10 @@ class Suscribe extends Controller
   //
   public function redirectToDashboard(){
     $u = Auth::user();
-    
-    if($u->type ==='admin'){
+
+    if($u->type ==='superAdmin'){
+      return redirect('dashboard');
+    }elseif($u->type ==='admin'){
       return redirect('dashboard');
     }elseif($u->type==='opd'){
       return redirect('tablero-opd');

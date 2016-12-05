@@ -49,10 +49,11 @@ class Admin extends Controller
     $chambers  = User::where("type", "chamber")->with("chamber")->count();
     $students  = User::where("type", "student")->with("student")->count();
     $companies = User::where("type", "company")->with("company")->count();
+    $secotrade = User::where("type", "puebla")->count();
     $vacancies = Vacant::with('company')->count();
     $contracts = Contract::all()->count();
     $openData  = OpenData::all();
-    $busy = OpenData::where("busy", 1)->count(); 
+    $busy = OpenData::where("busy", 1)->count();
 
     // [3] regresa el view
     return view('admin.dashboard')->with([
@@ -70,6 +71,7 @@ class Admin extends Controller
       // open data
       "openData"  => $openData,
       "busy"      => $busy,
+      "secotrade" => $secotrade
     ]);
   }
 
@@ -214,9 +216,9 @@ class Admin extends Controller
 
   /*
    * G E N E R A R   D A T O S   A B I E R T O S
-   * ---------------------------------------------------------------- 
+   * ----------------------------------------------------------------
    */
-  
+
   // Crear las entradas para cada elemento de descarga de datos abiertos
   //
   //
@@ -234,7 +236,7 @@ class Admin extends Controller
       exec("php {$path}/artisan update:opds_open_data > /dev/null &");
     }
 
-    
+
     // genera el archivo para vacantes
     if(!$vacancies->file){
       $vacancies->busy = 1;

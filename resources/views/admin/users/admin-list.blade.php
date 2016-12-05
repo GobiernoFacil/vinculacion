@@ -46,7 +46,7 @@
 	</ul>
 
 	@else
-	<p>Eres el único administrador</p>
+	<p>{{$user->type ==="superAdmin" ? 'No hay administradores' : 'Eres el único administrador'}}</p>
 	@endif
 
 	{{ $admins->links() }}

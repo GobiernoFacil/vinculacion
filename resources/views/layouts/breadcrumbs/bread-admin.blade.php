@@ -1,3 +1,23 @@
+@if ($__env->yieldContent('breadcrumb_a') == 'secotrade')
+<!-- secotrade -->
+<li>Usuarios SECOTRADE</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'secotrade create')
+<li><a href="{{ url('dashboard/secotrade')}}">Usuarios SECOTRADE
+</a></li>
+<li>Crear usuario SECOTRADE</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'secotrade-update')
+<li><a href="{{ url('dashboard/secotrade')}}">Usuarios SECOTRADE
+</a></li>
+<li>Editar usuario SECOTRADE</li>
+@endif
+@if ($__env->yieldContent('breadcrumb_a') == 'secotrade-view')
+<li><a href="{{ url('dashboard/secotrade')}}">Usuarios SECOTRADE
+</a></li>
+<li>Ver Usuario</li>
+@endif
+
 @if ($__env->yieldContent('breadcrumb_a') == 'user')
 <!-- users -->
 <li>Usuarios Administradores</li>

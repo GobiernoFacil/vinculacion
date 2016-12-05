@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="col-sm-12">
 			<a href="javascript:void(0);" onclick="myFunction()" class="icon">&#9776;</a>
-			@if ($user->type == 'admin')
+			@if ($user->type == 'admin' || $user->type == 'superAdmin' )
 			<!-- nav admin-->
 				@include('layouts.nav.nav_admin')
 			@endif
