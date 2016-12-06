@@ -13,14 +13,18 @@ class TypeMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $type)
+    public function handle($request, Closure $next, $type,$orType= NULL)
     {
       if($request->user()->type == $type){
         return $next($request);
       }
       else{
-        return redirect("guide-me");
+          if($request->user()->type == $orType){
+           return $next($request);
+          }else{
+           return redirect("guide-me");
+         }
       }
-      
+
     }
 }

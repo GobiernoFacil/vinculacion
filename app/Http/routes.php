@@ -26,9 +26,9 @@ Route::get('privacidad', "Front@privacy");
 
 
 /* RUTAS PARA REGISTRO
- * --------------------------------------------------------------------------------
- *
- */
+* --------------------------------------------------------------------------------
+*
+*/
 
 // @Suscribe controller
 // el proceso de inscripción
@@ -36,9 +36,9 @@ Route::get('registro', "Suscribe@index");
 Route::post('registro', "Suscribe@suscribe");
 
 /* RUTAS QUE REQUIEREN VALIDACIÓN
- * --------------------------------------------------------------------------------
- *
- */
+* --------------------------------------------------------------------------------
+*
+*/
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -46,15 +46,31 @@ Route::group(['middleware' => ['auth']], function () {
   // una vez autorizado el usuario, se redireciona al dashboard que le corresponde
   Route::get('guide-me', 'Suscribe@redirectToDashboard');
 
+  /* R U T A S  UNICAS DEL  SUPER A D M I N
+  * --------------------------------------------------------------------------------
+  *
+  */
+  Route::group(['middleware' => 'type:superAdmin' ], function(){
+    // U S U A R I O S SECOTRADE
+    // ----------------------------------------------------------------
+    // @AdminSecotrade controller
+    Route::get('dashboard/secotrade', 'AdminSecotrade@index');
+    Route::get('dashboard/secotrade/crear', 'AdminSecotrade@add');
+    Route::post('dashboard/secotrade/crear', 'AdminSecotrade@save');
+    Route::get('dashboard/secotrade/editar/{id}', 'AdminSecotrade@edit');
+    Route::post('dashboard/secotrade/editar/{id}', 'AdminSecotrade@update');
+    Route::get('dashboard/secotrade/eliminar/{id}', 'AdminSecotrade@delete');
+    Route::get('dashboard/secotrade/ver/{id}', 'AdminSecotrade@view');
 
+  });
 
 
 
   /* R U T A S   D E L   A D M I N
-   * --------------------------------------------------------------------------------
-   *
-   */
-  Route::group(['middleware' => 'type:admin' ], function(){
+  * --------------------------------------------------------------------------------
+  *
+  */
+  Route::group(['middleware' => 'type:admin,superAdmin' ], function(){
 
     // D A S H B O A R D   Y   L I S T A   D E   U S U A R I O S
     // ----------------------------------------------------------------
@@ -189,9 +205,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
   /* RUTAS DE LA EMPRESA
-   * --------------------------------------------------------------------------------
-   *
-   */
+  * --------------------------------------------------------------------------------
+  *
+  */
   Route::group(['middleware' => 'type:company' ], function(){
     // @Companies controller
     Route::get("tablero-empresa", "Companies@index");
@@ -233,9 +249,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
   /* RUTAS DE LA OPD
-   * --------------------------------------------------------------------------------
-   *
-   */
+  * --------------------------------------------------------------------------------
+  *
+  */
   Route::group([ 'middleware' => 'type:opd' ], function(){
     // dashboard and self
     Route::get("tablero-opd", "Opds@index");
@@ -291,9 +307,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
   /* RUTAS DEL ALUMNO
-   * --------------------------------------------------------------------------------
-   *
-   */
+  * --------------------------------------------------------------------------------
+  *
+  */
   Route::group(['middleware' => 'type:student' ], function(){
     Route::get("tablero-estudiante", "Students@index");
     Route::get("tablero-estudiante/yo", "Students@me");
@@ -337,9 +353,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
   /* RUTAS DE LA CÁMARA
-   * --------------------------------------------------------------------------------
-   *
-   */
+  * --------------------------------------------------------------------------------
+  *
+  */
   Route::group(['middleware' => 'type:chamber'], function(){
     Route::get("tablero-camara", "Chambers@index");
     //
@@ -379,9 +395,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
   /* RUTAS DE EMPLEOS PUEBLA
-   * --------------------------------------------------------------------------------
-   *
-   */
+  * --------------------------------------------------------------------------------
+  *
+  */
   Route::group(['middleware' => 'type:puebla'], function(){
     Route::get("tablero-secotrade", "Puebla@index");
     Route::get("tablero-secotrade/yo", "Puebla@me");

@@ -17,10 +17,23 @@
 			@if($admins > 0 )
 			<span class="count">{{$admins}}</span>
 			@else
-			<span>Eres el único administrador</span>
+			<span>{{$user->type ==="superAdmin" ? 'No hay administradores' : 'Eres el único administrador'}}</span>
 			@endif
 		</a>
 	</div>
+	<!-- SECOTRADE -->
+	@if($user->type ==="superAdmin")
+	<div class="col-sm-4">
+		<a class="box" href="{{url('dashboard/secotrade')}}">
+			<span><strong>Usuarios SECOTRADE</strong></span>
+			@if($secotrade > 0 )
+			<span class="count">{{$secotrade}}</span>
+			@else
+			<span>No hay usuarios</span>
+			@endif
+		</a>
+	</div>
+	@endif
 	<!-- Universidades -->
 	<div class="col-sm-4">
 		<a class="box" href="{{url('dashboard/opds')}}">
@@ -91,16 +104,18 @@
 
 <!-- datos abiertos -->
 <div class="row">
-@if($busy)
-  <p>Se están generando los datos abiertos. En unos minutos estarán disponibles. 
-  (puedes recargar la página para revisar si están listos)</p>
-@elseif(!$openData->count())
-  <p><a href="{{url('dashboard/datos-abiertos/generar')}}">generar datos abiertos</p>
-@else
-  <p><a href="{{url('dashboard/datos-abiertos/actualizar')}}">actualizar datos abiertos</p>
-@endif
-  
-  
+	<div class="col-sm-6">
+	<div class="separator"></div>
+	<h2>Datos Abiertos</h2>
+	@if($busy)
+	  <p>Se están generando los datos abiertos. En unos minutos estarán disponibles.
+	  (puedes recargar la página para revisar si están listos)</p>
+	@elseif(!$openData->count())
+	  <p><a href="{{url('dashboard/datos-abiertos/generar')}}" class="btn">Generar datos abiertos</p>
+	@else
+	  <p><a href="{{url('dashboard/datos-abiertos/actualizar')}}"  class="btn">Actualizar datos abiertos</p>
+	@endif
+	</div>
 </div>
 
 @endsection

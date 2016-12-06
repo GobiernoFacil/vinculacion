@@ -4,12 +4,8 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-// [ LOAD TRAITS ]
-use App\Traits\MessagesTrait;
-
-class AddCompaniesByFile extends Request
+class saveSecotrade extends Request
 {
-    use MessagesTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,8 +23,10 @@ class AddCompaniesByFile extends Request
      */
     public function rules()
     {
-        return [
-          'file' => 'required|file|mimes:xls,xlsx|max:2000',
-        ];
+      return [
+       'name'     => 'required',
+       'email'    => 'required|email|max:255|unique:users',
+       'password' => 'required|min:6'
+     ];
     }
 }
