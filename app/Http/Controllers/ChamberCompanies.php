@@ -10,7 +10,7 @@ use File;
 use Artisan;
 use App\models\Company;
 use App\models\ChamberCompany;
-
+use App\Http\Requests\AddChamberCompaniesByFile;
 class ChamberCompanies extends Controller
 {
 
@@ -114,7 +114,7 @@ class ChamberCompanies extends Controller
     return view("chambers.companies.companies-add-xlsx")->with(["user" => $user]);
   }
 
-  public function saveGroup(Request $request){
+  public function saveGroup(AddChamberCompaniesByFile $request){
     $user  = Auth::user();
     $path  = base_path();
     $_path = storage_path('app');

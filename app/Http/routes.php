@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
   // una vez autorizado el usuario, se redireciona al dashboard que le corresponde
   Route::get('guide-me', 'Suscribe@redirectToDashboard');
 
-  /* R U T A S   D E L UNICAS DEL  SUPER A D M I N
+  /* R U T A S  UNICAS DEL  SUPER A D M I N
   * --------------------------------------------------------------------------------
   *
   */
