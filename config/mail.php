@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => "empleouniversitario@puebla.gob.mx", 'name' => "Empleo universitario"],
 
     /*
     |--------------------------------------------------------------------------
