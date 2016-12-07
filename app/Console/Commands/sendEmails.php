@@ -49,7 +49,7 @@ class sendEmails extends Command
           $this->changeEmail($this->argument('data'));
           break;
 
-        default: 
+        default:
           return;
           break;
       }
@@ -59,7 +59,7 @@ class sendEmails extends Command
       $user = User::findOrFail($id);
 
       Mail::send('emails.suscribe', ['user' => $user], function ($m) use ($user) {
-        $m->from('hello@gapeapp.com', 'GAPE app');
+        $m->from('empleouniversitario@puebla.gob.mx', 'Empleo Universitario');
         $m->to($user->email, "Estimado usuario")->subject('bienvenido a la plataforma de trabajo abierto!');
       });
     }
@@ -68,7 +68,7 @@ class sendEmails extends Command
       $user = User::findOrFail($id);
 
       Mail::send('emails.new-email', ['user' => $user], function($m) use($user){
-        $m->from('hello@gapeapp.com', 'GAPE app');
+        $m->from('empleouniversitario@puebla.gob.mx', 'Empleo Universitario');
         $m->to($user->email, "Estimado usuario")->subject('Tu usuario de empleo abierto ha cambiado!');
       });
     }
