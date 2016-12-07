@@ -60,7 +60,7 @@ class sendEmails extends Command
 
       Mail::send('emails.suscribe', ['user' => $user], function ($m) use ($user) {
         $m->from('empleouniversitario@puebla.gob.mx', 'Empleo Universitario');
-        $m->to($user->email, "Estimado usuario")->subject('bienvenido a la plataforma de trabajo abierto!');
+        $m->to($user->email, "Estimado usuario")->subject('¡Bienvenido a la plataforma de trabajo abierto!');
       });
     }
 
@@ -69,7 +69,7 @@ class sendEmails extends Command
 
       Mail::send('emails.new-email', ['user' => $user], function($m) use($user){
         $m->from('empleouniversitario@puebla.gob.mx', 'Empleo Universitario');
-        $m->to($user->email, "Estimado usuario")->subject('Tu usuario de empleo abierto ha cambiado!');
+        $m->to($user->email, "Estimado usuario")->subject('¡Tu usuario de Empleo Universitario ha cambiado!');
       });
     }
 }
