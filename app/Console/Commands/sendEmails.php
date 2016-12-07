@@ -60,7 +60,7 @@ class sendEmails extends Command
 
       Mail::send('emails.suscribe', ['user' => $user], function ($m) use ($user) {
         $m->from('empleouniversitario@puebla.gob.mx', 'Empleo Universitario');
-        $m->to($user->email, "Estimado usuario")->subject('¡Bienvenido a la plataforma de trabajo abierto!');
+        $m->to($user->email, "Estimado usuario")->subject('¡Bienvenido a la plataforma de Empleo Universitario!');
       });
     }
 
