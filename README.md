@@ -236,26 +236,26 @@ MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxxxx.mailgun.org
 MAILGUN_SECRET=key-xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-7: dentro de este mismo archivo de .env se debe definir el usuario para el primer admin del sistema, y para el usuario perteneciente a la SECOTRADE:
-
-para configurar el usuario para secotrade en el archivo /www/sitios/empleosabiertos/.env
-```bash
-ADMIN_PUEBLA_NAME="secotrade"
-ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
-ADMIN_PUEBLA_PASSWORD=secret_pass_2
-```
-
-para configurar el usuario para la SEP en el archivo /www/sitios/empleosabiertos/.env
+7: dentro de este mismo archivo de .env se debe definir el usuario para el súper administrador:
+para configurar el usuario súper administrador en el archivo /www/sitios/empleosabiertos/.env
+(el password que se selccionó aquí, requerirá ser actualizado mediante el login, al recuperar el password, pues se encripta la contraseña del usuario)
 ```bash
 ADMIN_EMAIL=howdy@gobiernofacil.com
 ADMIN_NAME="arturo c."
 ADMIN_PASSWORD=secret_pass_1
 ```
 
+8: si se instala en producción, se recomienda cambiar las variables de entorno y de debug de la siguiente manera:
+/www/sitios/empleosabiertos/.env
+```bash
+APP_ENV=production
+APP_DEBUG=false
+```
+
 El archivo .env debe verse más o menos así:
 ```bash
-APP_ENV=local
-APP_DEBUG=true
+APP_ENV=production
+APP_DEBUG=false
 APP_KEY=some_key
 APP_URL=http://localhost
 
@@ -292,30 +292,30 @@ ADMIN_PUEBLA_EMAIL=secotrade@puebla.gob.mx
 ADMIN_PUEBLA_PASSWORD=secret_pass_2
 ```
 
-7: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
+9: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
 ```bash
 php artisan key:generate
 ```
 Debe arrojar el estatus de sistema después de este comando (decir que se generó la llave)
 
-8: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
+10: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
 ```bash
 php artisan migrate
 ```
 Conforme se van creando, aparecven los mensajes de confirmación
 
-9: Ya con las tablas disponibles, hay que copiar la información inicial: universidades, usuarios, códigos postales, etc., mediante el siguiente comando:
+11: Ya con las tablas disponibles, hay que copiar la información inicial: universidades, usuarios, códigos postales, etc., mediante el siguiente comando:
 ```bash
 php artisan db:seed
 ```
 Esto puede tardar unos minutos, dependiendo de la velocidad del equipo. Toda la información que se carga en el sistema de inicio, viene en un archivo excel. No hay necesidad de capturar nada.
 
-10: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
+12: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener las dependencias de Javascript
 ```bash
 bower update
 ```
 
-10.5 es posible que bower no se encuentre disponible aun después de instalado. Para corregir este error en ubuntu, hay que ejecutar el siguiente comando:
+12.5 es posible que bower no se encuentre disponible aun después de instalado. Para corregir este error en ubuntu, hay que ejecutar el siguiente comando:
 ```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
@@ -379,7 +379,24 @@ service apache2 restart
 Con esto, el sitio debería funcionar de manera correcta, en Ubuntu/Azure (que es donde se realizó la prueba de instalación)
 
 
+## Guía para actualizar el sistema
+1: obtener los cambios del código con git
+```bash
+git pull origin master
+```
 
+2: es posible que haya cambios en la DB y nuevas librerías de PHP. Esto no es común, pero mejor revisar:
+```bash
+composer install
+php artisan migrate
+```
+
+3: dentro de la carpeta  "public/js"  es necesario  ejecutar  el siguiente comando,  para  obtener nuevas dependencias de Javascript
+```bash
+bower update
+```
+
+(cuando esto se ejecuta en un servidor de producción, Artisan pide confirmación para realizar el _migrate_. Esto no debería afectar los registros de la DB).
 
 
 
