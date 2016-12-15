@@ -63,5 +63,24 @@ function myFunction() {
     }
 }
 </script>
+
+<script src="{{url('js/bower_components/js-sha256/build/sha256.min.js')}}"></script>
+<script>
+  var i, sha_forms = document.querySelectorAll("form");
+
+  for(i = 0; i < sha_forms.length; i++){
+    sha_forms[i].addEventListener("submit", function(e){
+        e.preventDefault();
+        
+        var j, sha_passwords = this.querySelectorAll("input[type='password']");
+        for(j = 0; j < sha_passwords.length; j++){
+          sha_passwords[j].value = sha_passwords[j].value.length ? sha256(sha_passwords[j].value) : sha_passwords[j].value;
+        }
+
+        this.submit();
+    });
+  }
+
+</script>
 </body>
 </html>
