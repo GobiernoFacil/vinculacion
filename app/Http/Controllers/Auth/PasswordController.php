@@ -21,6 +21,8 @@ class PasswordController extends Controller
     use ResetsPasswords;
 
     protected $redirectTo = 'guide-me';
+    protected $subject    = "Recuperar contraseña de Empleo abierto";   
+
     /**
      * Create a new password controller instance.
      *
