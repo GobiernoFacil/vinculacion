@@ -9,7 +9,7 @@
 <div class="row">
 	<!-- Admins -->
 	<div class="col-sm-12">
-		<h1>Usuarios SECOTRADE</h1>
+		<h1>Usuario Reviso</h1>
 	</div>
 	<div class="col-sm-3 col-sm-offset-9">
 		<p><a href="{{url("dashboard/secotrade/crear")}}" class="btn add"> + Crear usuario</a></p>
