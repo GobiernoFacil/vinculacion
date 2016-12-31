@@ -14,3 +14,4 @@ public/img/logos/*
 !public/img/logos/default.png
 public/csv/*
 !public/csv/index.html
+assets
