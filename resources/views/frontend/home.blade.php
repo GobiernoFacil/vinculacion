@@ -70,7 +70,7 @@
 			<h1>Encuentra tu próximo empleo</h1>
 		</div>
 		<div class="col-sm-8 col-sm-offset-2">
-			<p class="lead">Fácil vinculación y acceso a oportunidades laborales a <strong>estudiantes</strong> de las Universidades Politécnicas del Estado de Puebla</p>
+			<p class="lead">Fácil vinculación y acceso a oportunidades laborales a <strong>estudiantes</strong> de las instituciones oficiales de educación superior del estado de Puebla.</p>
 		</div>
 	</div>
 	<div class="row">
@@ -99,7 +99,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h2>Tu próximo trabajo podría estar con una de estas empresas</h2>
-				<p>Si estudias o eres egresado de alguna Universidad Politécnica del Estado de Puebla, agrega tu CV.</p>
+				<p>Si estudias o eres egresado de alguna de las instituciones oficiales de educación superior del estado de Puebla, agrega tu CV.</p>
 			</div>
 		</div>
 		
